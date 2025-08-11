@@ -1,5 +1,22 @@
 /* USER CODE BEGIN Header */
 /**
+ *
+*/
+
+// Track which mode is active (1 = Mode 1, 2 = Mode 2, 3 = Mode 3)
+uint8_t currentMode = 1;
+
+// Which LED position we are at (0 = LED0, 7 = LED7)
+uint8_t ledIndex = 0;
+
+// Direction flag: 1 = moving right, 0 = moving left
+uint8_t direction = 1;
+
+// Timer delay toggle: 0 = 1 second, 1 = 0.5 second
+uint8_t delayToggle = 0;
+/**
+ */
+/**
   ******************************************************************************
   * @file           : main.c
   * @brief          : Main program body
