@@ -1,0 +1,1 @@
+Implementation of Simscape micro-mouse model in lectures https://www.youtube.com/watch?v=NWketFAXq8g&list=PLM4RkhYRR_bKJ2UFXuyNVK9OMAJlmVcfb.  Requires "mathworks-Simscape-Multibody-Contact-Forces-Library"
