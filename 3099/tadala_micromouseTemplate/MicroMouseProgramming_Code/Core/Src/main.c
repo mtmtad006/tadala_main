@@ -75,7 +75,7 @@ DMA_HandleTypeDef hdma_usart1_tx;
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
-static void MX_NVIC_Init(void);
+ void MX_NVIC_Init(void); 
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -589,7 +589,7 @@ void SystemClock_Config(void)
   * @brief NVIC Configuration.
   * @retval None
   */
-static void MX_NVIC_Init(void)
+ void MX_NVIC_Init(void) 
 {
   /* FLASH_IRQn interrupt configuration */
   HAL_NVIC_SetPriority(FLASH_IRQn, 0, 0);
@@ -1370,3 +1370,5 @@ void assert_failed(uint8_t *file, uint32_t line)
   /* USER CODE END 6 */
 }
 #endif /* USE_FULL_ASSERT */
+
+/*SimulinkGeneratedCode*/
