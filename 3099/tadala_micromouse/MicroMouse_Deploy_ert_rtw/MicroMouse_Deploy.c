@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'MicroMouse_Deploy'.
  *
- * Model version                  : 5.0
+ * Model version                  : 5.5
  * Simulink Coder version         : 25.1 (R2025a) 21-Nov-2024
- * C/C++ source code generated on : Fri Sep 12 19:52:49 2025
+ * C/C++ source code generated on : Sat Sep 13 18:27:11 2025
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -21,11 +21,16 @@
  */
 
 #include "MicroMouse_Deploy.h"
+#include "rtwtypes.h"
 #include <math.h>
 #include <stdio.h>
 #include <string.h>
-#include "rtwtypes.h"
 #include "MicroMouse_Deploy_private.h"
+
+/* Named constants for Chart: '<S3>/distance_control' */
+#define MicroMouse_D_IN_NO_ACTIVE_CHILD ((uint8_T)0U)
+#define MicroMouse_Deploy_IN_Run       ((uint8_T)1U)
+#define MicroMouse_Deploy_IN_Stop      ((uint8_T)2U)
 
 /* Block signals (default storage) */
 B_MicroMouse_Deploy_T MicroMouse_Deploy_B;
@@ -52,27 +57,82 @@ void MicroMouse_Deploy_step(void)
   char_T rtb_ComposeString2_0[256];
   char_T rtb_ComposeString4_0[256];
   char_T rtb_ComposeString_0[256];
+  uint8_T rtb_Compare;
   boolean_T rtb_LogicalOperator;
   boolean_T rtb_LogicalOperator_d;
   boolean_T rtb_LogicalOperator_k;
 
+  /* RelationalOperator: '<S40>/Compare' incorporates:
+   *  Constant: '<S38>/Constant'
+   *  Constant: '<S40>/Constant'
+   *  DataStoreRead: '<S4>/Data Store Read4'
+   *  DataTypeConversion: '<S4>/Cast To Single'
+   *  Gain: '<S4>/Gain2'
+   *  RelationalOperator: '<S38>/Compare'
+   */
+  rtb_Compare = (uint8_T)((MicroMouse_Deploy_P.Gain2_Gain * (real32_T)
+    V_PHOTO_MOT_RS >= MicroMouse_Deploy_P.CompareToConstant_const_l) > (int32_T)
+    MicroMouse_Deploy_P.Constant_Value_d);
+
+  /* Sum: '<S14>/Add' incorporates:
+   *  Delay: '<S14>/Delay'
+   *  RelationalOperator: '<S39>/FixPt Relational Operator'
+   *  UnitDelay: '<S39>/Delay Input1'
+   *
+   * Block description for '<S39>/Delay Input1':
+   *
+   *  Store in Global RAM
+   */
+  MicroMouse_Deploy_DW.Delay_DSTATE = (uint8_T)((uint32_T)(rtb_Compare >
+    MicroMouse_Deploy_DW.DelayInput1_DSTATE) + MicroMouse_Deploy_DW.Delay_DSTATE);
+
+  /* Chart: '<S3>/distance_control' incorporates:
+   *  Constant: '<S16>/Circumference'
+   *  Constant: '<S3>/ref'
+   *  Delay: '<S14>/Delay'
+   *  Gain: '<S16>/Tick_per_rev'
+   *  Product: '<S16>/Product'
+   */
+  if (MicroMouse_Deploy_DW.bitsForTID0.is_active_c3_MicroMouse_Deploy == 0) {
+    MicroMouse_Deploy_DW.bitsForTID0.is_active_c3_MicroMouse_Deploy = 1U;
+    MicroMouse_Deploy_DW.bitsForTID0.is_c3_MicroMouse_Deploy =
+      MicroMouse_Deploy_IN_Run;
+  } else if (MicroMouse_Deploy_DW.bitsForTID0.is_c3_MicroMouse_Deploy ==
+             MicroMouse_Deploy_IN_Run) {
+    if ((real_T)(MicroMouse_Deploy_P.Tick_per_rev_Gain *
+                 MicroMouse_Deploy_DW.Delay_DSTATE) * 0.0009765625 *
+        MicroMouse_Deploy_P.Circumference_Value >= MicroMouse_Deploy_P.ref_Value)
+    {
+      MicroMouse_Deploy_DW.bitsForTID0.is_c3_MicroMouse_Deploy =
+        MicroMouse_Deploy_IN_Stop;
+    } else {
+      MicroMouse_Deploy_B.ang_vel = 60.0;
+    }
+  } else {
+    /* case IN_Stop: */
+    MicroMouse_Deploy_B.ang_vel = 0.0;
+  }
+
+  /* End of Chart: '<S3>/distance_control' */
+
   /* DataTypeConversion: '<S1>/Cast1' incorporates:
-   *  Constant: '<S3>/Motor_Right'
    *  DataStoreWrite: '<S1>/Data Store Write1'
    *  Gain: '<Root>/Gain1'
+   *  Sum: '<S3>/Sum'
    */
-  tmp = fmod(floor(MicroMouse_Deploy_P.Gain1_Gain *
-                   MicroMouse_Deploy_P.Motor_Right_Value), 256.0);
+  tmp = fmod(floor(MicroMouse_Deploy_P.Gain1_Gain * MicroMouse_Deploy_B.ang_vel),
+             256.0);
   MOTOR_RS = (int8_T)(tmp < 0.0 ? (int32_T)(int8_T)-(int8_T)(uint8_T)-tmp :
                       (int32_T)(int8_T)(uint8_T)tmp);
 
   /* DataTypeConversion: '<S1>/Cast' incorporates:
-   *  Constant: '<S3>/Motor_Left'
    *  DataStoreWrite: '<S1>/Data Store Write'
    *  Gain: '<Root>/Gain'
+   *  Gain: '<S3>/Gain'
+   *  Sum: '<S3>/Sum1'
    */
-  tmp = fmod(floor(MicroMouse_Deploy_P.Gain_Gain *
-                   MicroMouse_Deploy_P.Motor_Left_Value), 256.0);
+  tmp = fmod(floor(MicroMouse_Deploy_P.Gain_Gain * MicroMouse_Deploy_B.ang_vel *
+                   MicroMouse_Deploy_P.Gain_Gain_c), 256.0);
   MOTOR_LS = (int8_T)(tmp < 0.0 ? (int32_T)(int8_T)-(int8_T)(uint8_T)-tmp :
                       (int32_T)(int8_T)(uint8_T)tmp);
 
@@ -98,14 +158,14 @@ void MicroMouse_Deploy_step(void)
    */
   strncpy((char_T *)&oled_string2[0], &rtb_ComposeString4_0[0], 18U);
 
-  /* Logic: '<S14>/Logical Operator' incorporates:
-   *  Constant: '<S14>/Constant'
-   *  Constant: '<S14>/Time constant'
+  /* Logic: '<S17>/Logical Operator' incorporates:
    *  Constant: '<S17>/Constant'
-   *  Constant: '<S18>/Constant'
-   *  RelationalOperator: '<S17>/Compare'
-   *  RelationalOperator: '<S18>/Compare'
-   *  Sum: '<S14>/Sum1'
+   *  Constant: '<S17>/Time constant'
+   *  Constant: '<S20>/Constant'
+   *  Constant: '<S21>/Constant'
+   *  RelationalOperator: '<S20>/Compare'
+   *  RelationalOperator: '<S21>/Compare'
+   *  Sum: '<S17>/Sum1'
    */
   rtb_LogicalOperator = (((real32_T)
     (MicroMouse_Deploy_P.LowPassFilterDiscreteorContinuo -
@@ -121,7 +181,7 @@ void MicroMouse_Deploy_step(void)
   rtb_K = MicroMouse_Deploy_P.Gain_Gain_g * (real32_T)TOF_Distance[0] *
     MicroMouse_Deploy_P.LowPassFilterDiscreteorConti_pu;
 
-  /* DiscreteIntegrator: '<S20>/Integrator' */
+  /* DiscreteIntegrator: '<S23>/Integrator' */
   if (MicroMouse_Deploy_DW.Integrator_IC_LOADING != 0) {
     MicroMouse_Deploy_DW.Integrator_DSTATE = rtb_K;
     if (MicroMouse_Deploy_DW.Integrator_DSTATE >
@@ -149,8 +209,8 @@ void MicroMouse_Deploy_step(void)
     }
   }
 
-  /* Saturate: '<S20>/Saturation' incorporates:
-   *  DiscreteIntegrator: '<S20>/Integrator'
+  /* Saturate: '<S23>/Saturation' incorporates:
+   *  DiscreteIntegrator: '<S23>/Integrator'
    */
   if (MicroMouse_Deploy_DW.Integrator_DSTATE >
       MicroMouse_Deploy_P.Saturation_UpperSat) {
@@ -162,16 +222,16 @@ void MicroMouse_Deploy_step(void)
     rtb_Saturation = MicroMouse_Deploy_DW.Integrator_DSTATE;
   }
 
-  /* End of Saturate: '<S20>/Saturation' */
+  /* End of Saturate: '<S23>/Saturation' */
 
-  /* Logic: '<S21>/Logical Operator' incorporates:
-   *  Constant: '<S21>/Constant'
-   *  Constant: '<S21>/Time constant'
+  /* Logic: '<S24>/Logical Operator' incorporates:
    *  Constant: '<S24>/Constant'
-   *  Constant: '<S25>/Constant'
-   *  RelationalOperator: '<S24>/Compare'
-   *  RelationalOperator: '<S25>/Compare'
-   *  Sum: '<S21>/Sum1'
+   *  Constant: '<S24>/Time constant'
+   *  Constant: '<S27>/Constant'
+   *  Constant: '<S28>/Constant'
+   *  RelationalOperator: '<S27>/Compare'
+   *  RelationalOperator: '<S28>/Compare'
+   *  Sum: '<S24>/Sum1'
    */
   rtb_LogicalOperator_d = (((real32_T)
     (MicroMouse_Deploy_P.LowPassFilterDiscreteorContin_p -
@@ -187,7 +247,7 @@ void MicroMouse_Deploy_step(void)
   rtb_K_i = MicroMouse_Deploy_P.Gain_Gain_g * (real32_T)TOF_Distance[1] *
     MicroMouse_Deploy_P.LowPassFilterDiscreteorContin_a;
 
-  /* DiscreteIntegrator: '<S27>/Integrator' */
+  /* DiscreteIntegrator: '<S30>/Integrator' */
   if (MicroMouse_Deploy_DW.Integrator_IC_LOADING_k != 0) {
     MicroMouse_Deploy_DW.Integrator_DSTATE_m = rtb_K_i;
     if (MicroMouse_Deploy_DW.Integrator_DSTATE_m >
@@ -215,8 +275,8 @@ void MicroMouse_Deploy_step(void)
     }
   }
 
-  /* Saturate: '<S27>/Saturation' incorporates:
-   *  DiscreteIntegrator: '<S27>/Integrator'
+  /* Saturate: '<S30>/Saturation' incorporates:
+   *  DiscreteIntegrator: '<S30>/Integrator'
    */
   if (MicroMouse_Deploy_DW.Integrator_DSTATE_m >
       MicroMouse_Deploy_P.Saturation_UpperSat_f) {
@@ -228,16 +288,16 @@ void MicroMouse_Deploy_step(void)
     rtb_Saturation_e = MicroMouse_Deploy_DW.Integrator_DSTATE_m;
   }
 
-  /* End of Saturate: '<S27>/Saturation' */
+  /* End of Saturate: '<S30>/Saturation' */
 
-  /* Logic: '<S28>/Logical Operator' incorporates:
-   *  Constant: '<S28>/Constant'
-   *  Constant: '<S28>/Time constant'
+  /* Logic: '<S31>/Logical Operator' incorporates:
    *  Constant: '<S31>/Constant'
-   *  Constant: '<S32>/Constant'
-   *  RelationalOperator: '<S31>/Compare'
-   *  RelationalOperator: '<S32>/Compare'
-   *  Sum: '<S28>/Sum1'
+   *  Constant: '<S31>/Time constant'
+   *  Constant: '<S34>/Constant'
+   *  Constant: '<S35>/Constant'
+   *  RelationalOperator: '<S34>/Compare'
+   *  RelationalOperator: '<S35>/Compare'
+   *  Sum: '<S31>/Sum1'
    */
   rtb_LogicalOperator_k = (((real32_T)
     (MicroMouse_Deploy_P.LowPassFilterDiscreteorContin_e -
@@ -253,7 +313,7 @@ void MicroMouse_Deploy_step(void)
   rtb_K_n = MicroMouse_Deploy_P.Gain_Gain_g * (real32_T)TOF_Distance[2] *
     MicroMouse_Deploy_P.LowPassFilterDiscreteorConti_cj;
 
-  /* DiscreteIntegrator: '<S34>/Integrator' */
+  /* DiscreteIntegrator: '<S37>/Integrator' */
   if (MicroMouse_Deploy_DW.Integrator_IC_LOADING_a != 0) {
     MicroMouse_Deploy_DW.Integrator_DSTATE_i = rtb_K_n;
     if (MicroMouse_Deploy_DW.Integrator_DSTATE_i >
@@ -281,8 +341,8 @@ void MicroMouse_Deploy_step(void)
     }
   }
 
-  /* Saturate: '<S34>/Saturation' incorporates:
-   *  DiscreteIntegrator: '<S34>/Integrator'
+  /* Saturate: '<S37>/Saturation' incorporates:
+   *  DiscreteIntegrator: '<S37>/Integrator'
    */
   if (MicroMouse_Deploy_DW.Integrator_DSTATE_i >
       MicroMouse_Deploy_P.Saturation_UpperSat_c) {
@@ -294,12 +354,12 @@ void MicroMouse_Deploy_step(void)
     rtb_Saturation_g = MicroMouse_Deploy_DW.Integrator_DSTATE_i;
   }
 
-  /* End of Saturate: '<S34>/Saturation' */
+  /* End of Saturate: '<S37>/Saturation' */
 
   /* ComposeString: '<S3>/Compose String' incorporates:
-   *  Saturate: '<S20>/Saturation'
-   *  Saturate: '<S27>/Saturation'
-   *  Saturate: '<S34>/Saturation'
+   *  Saturate: '<S23>/Saturation'
+   *  Saturate: '<S30>/Saturation'
+   *  Saturate: '<S37>/Saturation'
    */
   snprintf(&rtb_ComposeString_0[0], 256U, "L%1.2f F%1.2f R%1.2f", rtb_Saturation,
            rtb_Saturation_e, rtb_Saturation_g);
@@ -340,7 +400,7 @@ void MicroMouse_Deploy_step(void)
    *  Gain: '<S3>/Gain2'
    */
   snprintf(&rtb_ComposeString2_0[0], 256U, "%1.2fV  %3.0fmA  %2.0f%%",
-           MicroMouse_Deploy_P.Gain2_Gain * (real32_T)Vbattery, (real32_T)
+           MicroMouse_Deploy_P.Gain2_Gain_f * (real32_T)Vbattery, (real32_T)
            Current, (real32_T)batteryLife);
 
   /* ComposeString: '<S2>/Compose String4' incorporates:
@@ -372,40 +432,40 @@ void MicroMouse_Deploy_step(void)
   STATE = (uint8_T)(tmp < 0.0 ? (int32_T)(uint8_T)-(int8_T)(uint8_T)-tmp :
                     (int32_T)(uint8_T)tmp);
 
-  /* MinMax: '<S14>/Max' incorporates:
-   *  Constant: '<S14>/Time constant'
+  /* MinMax: '<S17>/Max' incorporates:
+   *  Constant: '<S17>/Time constant'
    */
   rtb_Max = (real32_T)fmax(MicroMouse_Deploy_B.Probe[0],
     MicroMouse_Deploy_P.LowPassFilterDiscreteorContinuo);
 
   /* Product: '<S11>/1//T' incorporates:
-   *  Fcn: '<S14>/Avoid Divide by Zero'
+   *  Fcn: '<S17>/Avoid Divide by Zero'
    *  Sum: '<S11>/Sum1'
    */
   rtb_K = 1.0F / ((real32_T)(rtb_Max == 0.0F) * 2.22044605e-16F + rtb_Max) *
     (rtb_K - rtb_Saturation);
 
-  /* MinMax: '<S21>/Max' incorporates:
-   *  Constant: '<S21>/Time constant'
+  /* MinMax: '<S24>/Max' incorporates:
+   *  Constant: '<S24>/Time constant'
    */
   rtb_Max = (real32_T)fmax(MicroMouse_Deploy_B.Probe_h[0],
     MicroMouse_Deploy_P.LowPassFilterDiscreteorContin_p);
 
   /* Product: '<S12>/1//T' incorporates:
-   *  Fcn: '<S21>/Avoid Divide by Zero'
+   *  Fcn: '<S24>/Avoid Divide by Zero'
    *  Sum: '<S12>/Sum1'
    */
   rtb_K_i = 1.0F / ((real32_T)(rtb_Max == 0.0F) * 2.22044605e-16F + rtb_Max) *
     (rtb_K_i - rtb_Saturation_e);
 
-  /* MinMax: '<S28>/Max' incorporates:
-   *  Constant: '<S28>/Time constant'
+  /* MinMax: '<S31>/Max' incorporates:
+   *  Constant: '<S31>/Time constant'
    */
   rtb_Max = (real32_T)fmax(MicroMouse_Deploy_B.Probe_g[0],
     MicroMouse_Deploy_P.LowPassFilterDiscreteorContin_e);
 
   /* Product: '<S13>/1//T' incorporates:
-   *  Fcn: '<S28>/Avoid Divide by Zero'
+   *  Fcn: '<S31>/Avoid Divide by Zero'
    *  Sum: '<S13>/Sum1'
    */
   rtb_K_n = 1.0F / ((real32_T)(rtb_Max == 0.0F) * 2.22044605e-16F + rtb_Max) *
@@ -441,7 +501,15 @@ void MicroMouse_Deploy_step(void)
     /* System '<Root>' */
     refreshLoggedData();
 
-    /* Update for DiscreteIntegrator: '<S20>/Integrator' */
+    /* Update for UnitDelay: '<S39>/Delay Input1'
+     *
+     * Block description for '<S39>/Delay Input1':
+     *
+     *  Store in Global RAM
+     */
+    MicroMouse_Deploy_DW.DelayInput1_DSTATE = rtb_Compare;
+
+    /* Update for DiscreteIntegrator: '<S23>/Integrator' */
     MicroMouse_Deploy_DW.Integrator_IC_LOADING = 0U;
     MicroMouse_Deploy_DW.Integrator_DSTATE +=
       MicroMouse_Deploy_P.Integrator_gainval * rtb_K;
@@ -457,9 +525,9 @@ void MicroMouse_Deploy_step(void)
 
     MicroMouse_Deploy_DW.Integrator_PrevResetState = (int8_T)rtb_LogicalOperator;
 
-    /* End of Update for DiscreteIntegrator: '<S20>/Integrator' */
+    /* End of Update for DiscreteIntegrator: '<S23>/Integrator' */
 
-    /* Update for DiscreteIntegrator: '<S27>/Integrator' */
+    /* Update for DiscreteIntegrator: '<S30>/Integrator' */
     MicroMouse_Deploy_DW.Integrator_IC_LOADING_k = 0U;
     MicroMouse_Deploy_DW.Integrator_DSTATE_m +=
       MicroMouse_Deploy_P.Integrator_gainval_n * rtb_K_i;
@@ -476,9 +544,9 @@ void MicroMouse_Deploy_step(void)
     MicroMouse_Deploy_DW.Integrator_PrevResetState_a = (int8_T)
       rtb_LogicalOperator_d;
 
-    /* End of Update for DiscreteIntegrator: '<S27>/Integrator' */
+    /* End of Update for DiscreteIntegrator: '<S30>/Integrator' */
 
-    /* Update for DiscreteIntegrator: '<S34>/Integrator' */
+    /* Update for DiscreteIntegrator: '<S37>/Integrator' */
     MicroMouse_Deploy_DW.Integrator_IC_LOADING_a = 0U;
     MicroMouse_Deploy_DW.Integrator_DSTATE_i +=
       MicroMouse_Deploy_P.Integrator_gainval_k * rtb_K_n;
@@ -495,7 +563,7 @@ void MicroMouse_Deploy_step(void)
     MicroMouse_Deploy_DW.Integrator_PrevResetState_j = (int8_T)
       rtb_LogicalOperator_k;
 
-    /* End of Update for DiscreteIntegrator: '<S34>/Integrator' */
+    /* End of Update for DiscreteIntegrator: '<S37>/Integrator' */
   }
 
   {
@@ -514,15 +582,15 @@ void MicroMouse_Deploy_initialize(void)
     /* Start for DataStoreMemory: '<S1>/Data Store Memory1' */
     MOTOR_RS = MicroMouse_Deploy_P.DataStoreMemory1_InitialValu_p2;
 
-    /* Start for Probe: '<S14>/Probe' */
+    /* Start for Probe: '<S17>/Probe' */
     MicroMouse_Deploy_B.Probe[0] = 0.01F;
     MicroMouse_Deploy_B.Probe[1] = 0.0F;
 
-    /* Start for Probe: '<S21>/Probe' */
+    /* Start for Probe: '<S24>/Probe' */
     MicroMouse_Deploy_B.Probe_h[0] = 0.01F;
     MicroMouse_Deploy_B.Probe_h[1] = 0.0F;
 
-    /* Start for Probe: '<S28>/Probe' */
+    /* Start for Probe: '<S31>/Probe' */
     MicroMouse_Deploy_B.Probe_g[0] = 0.01F;
     MicroMouse_Deploy_B.Probe_g[1] = 0.0F;
     for (i = 0; i < 18; i++) {
@@ -690,14 +758,32 @@ void MicroMouse_Deploy_initialize(void)
       /* System '<Root>' */
       initADCs();
 
-      /* InitializeConditions for DiscreteIntegrator: '<S20>/Integrator' */
+      /* InitializeConditions for Delay: '<S14>/Delay' */
+      MicroMouse_Deploy_DW.Delay_DSTATE =
+        MicroMouse_Deploy_P.Delay_InitialCondition;
+
+      /* InitializeConditions for UnitDelay: '<S39>/Delay Input1'
+       *
+       * Block description for '<S39>/Delay Input1':
+       *
+       *  Store in Global RAM
+       */
+      MicroMouse_Deploy_DW.DelayInput1_DSTATE =
+        MicroMouse_Deploy_P.DetectRisePositive_vinit;
+
+      /* InitializeConditions for DiscreteIntegrator: '<S23>/Integrator' */
       MicroMouse_Deploy_DW.Integrator_IC_LOADING = 1U;
 
-      /* InitializeConditions for DiscreteIntegrator: '<S27>/Integrator' */
+      /* InitializeConditions for DiscreteIntegrator: '<S30>/Integrator' */
       MicroMouse_Deploy_DW.Integrator_IC_LOADING_k = 1U;
 
-      /* InitializeConditions for DiscreteIntegrator: '<S34>/Integrator' */
+      /* InitializeConditions for DiscreteIntegrator: '<S37>/Integrator' */
       MicroMouse_Deploy_DW.Integrator_IC_LOADING_a = 1U;
+
+      /* SystemInitialize for Chart: '<S3>/distance_control' */
+      MicroMouse_Deploy_DW.bitsForTID0.is_active_c3_MicroMouse_Deploy = 0U;
+      MicroMouse_Deploy_DW.bitsForTID0.is_c3_MicroMouse_Deploy =
+        MicroMouse_D_IN_NO_ACTIVE_CHILD;
     }
   }
 

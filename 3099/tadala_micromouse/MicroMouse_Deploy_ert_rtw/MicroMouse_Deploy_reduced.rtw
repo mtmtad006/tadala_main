@@ -11,7 +11,7 @@ CompiledModel {
     ElementsDefaults {
       RecordType	      "DataTypeElements"
     }
-    NumDataTypes	    20
+    NumDataTypes	    22
     DataType {
       Id		      0
       RecordIdx		      [0]
@@ -92,6 +92,14 @@ CompiledModel {
       Id		      19
       RecordIdx		      [19]
     }
+    DataType {
+      Id		      20
+      RecordIdx		      [20]
+    }
+    DataType {
+      Id		      21
+      RecordIdx		      [21]
+    }
   }
   Solver		  FixedStepDiscrete
   SolverType		  FixedStep
@@ -140,6 +148,15 @@ CompiledModel {
     SLName		    "<S3>/Low-Pass Filter\n(Discrete or Continuous)2"
   }
   Subsystem {
+    Name		    "<S3>/convert_encoder_signal_to_ticks"
+  }
+  Subsystem {
+    Name		    "<S3>/distance_control"
+  }
+  Subsystem {
+    Name		    "<S3>/encoder_tick_to_dist"
+  }
+  Subsystem {
     Name		    "<S11>/Enable//disable time constant"
     SLName		    "<S11>/Enable//disable\ntime constant"
   }
@@ -151,18 +168,18 @@ CompiledModel {
     SLName		    "<S11>/Integrator\n(Discrete or Continuous)"
   }
   Subsystem {
-    Name		    "<S14>/Compare To Constant"
-    SLName		    "<S14>/Compare\nTo Constant"
+    Name		    "<S17>/Compare To Constant"
+    SLName		    "<S17>/Compare\nTo Constant"
   }
   Subsystem {
-    Name		    "<S14>/Compare To Zero"
-    SLName		    "<S14>/Compare\nTo Zero"
+    Name		    "<S17>/Compare To Zero"
+    SLName		    "<S17>/Compare\nTo Zero"
   }
   Subsystem {
-    Name		    "<S15>/Init_u"
+    Name		    "<S18>/Init_u"
   }
   Subsystem {
-    Name		    "<S16>/Discrete"
+    Name		    "<S19>/Discrete"
   }
   Subsystem {
     Name		    "<S12>/Enable//disable time constant"
@@ -176,18 +193,18 @@ CompiledModel {
     SLName		    "<S12>/Integrator\n(Discrete or Continuous)"
   }
   Subsystem {
-    Name		    "<S21>/Compare To Constant"
-    SLName		    "<S21>/Compare\nTo Constant"
+    Name		    "<S24>/Compare To Constant"
+    SLName		    "<S24>/Compare\nTo Constant"
   }
   Subsystem {
-    Name		    "<S21>/Compare To Zero"
-    SLName		    "<S21>/Compare\nTo Zero"
+    Name		    "<S24>/Compare To Zero"
+    SLName		    "<S24>/Compare\nTo Zero"
   }
   Subsystem {
-    Name		    "<S22>/Init_u"
+    Name		    "<S25>/Init_u"
   }
   Subsystem {
-    Name		    "<S23>/Discrete"
+    Name		    "<S26>/Discrete"
   }
   Subsystem {
     Name		    "<S13>/Enable//disable time constant"
@@ -201,18 +218,29 @@ CompiledModel {
     SLName		    "<S13>/Integrator\n(Discrete or Continuous)"
   }
   Subsystem {
-    Name		    "<S28>/Compare To Constant"
-    SLName		    "<S28>/Compare\nTo Constant"
+    Name		    "<S31>/Compare To Constant"
+    SLName		    "<S31>/Compare\nTo Constant"
   }
   Subsystem {
-    Name		    "<S28>/Compare To Zero"
-    SLName		    "<S28>/Compare\nTo Zero"
+    Name		    "<S31>/Compare To Zero"
+    SLName		    "<S31>/Compare\nTo Zero"
   }
   Subsystem {
-    Name		    "<S29>/Init_u"
+    Name		    "<S32>/Init_u"
   }
   Subsystem {
-    Name		    "<S30>/Discrete"
+    Name		    "<S33>/Discrete"
+  }
+  Subsystem {
+    Name		    "<S14>/Compare To Constant"
+    SLName		    "<S14>/Compare\nTo Constant"
+  }
+  Subsystem {
+    Name		    "<S14>/Detect Rise Positive"
+    SLName		    "<S14>/Detect Rise\nPositive"
+  }
+  Subsystem {
+    Name		    "<S39>/Positive"
   }
   ExprCommentInfoDefaults {
     SysIdxList		    []
@@ -273,7 +301,7 @@ CompiledModel {
     LocalSolverInputCompensationMode 0
     LocalSolverOutputCompensationMode 0
   }
-  NumSystems		  1
+  NumSystems		  2
   tSS_LONG		  -2147483648
   tSS_ULONG		  -2147483645
   tSS_LONG_LONG		  -2147483644
@@ -456,6 +484,15 @@ CompiledModel {
 	Name			"<S3>/Low-Pass Filter (Discrete or Continuous)2"
       }
       Block {
+	Name			"<S3>/convert_encoder_signal_to_ticks"
+      }
+      Block {
+	Name			"<S3>/encoder_tick_to_dist"
+      }
+      Block {
+	Name			"<S3>/distance_control"
+      }
+      Block {
 	Name			"<S3>/Constant"
       }
       Block {
@@ -468,6 +505,12 @@ CompiledModel {
 	Name			"<S3>/Motor_Right"
       }
       Block {
+	Name			"<S3>/ref"
+      }
+      Block {
+	Name			"<S3>/Gain"
+      }
+      Block {
 	Name			"<S3>/Gain2"
       }
       Block {
@@ -478,6 +521,12 @@ CompiledModel {
       }
       Block {
 	Name			"<S3>/GreaterThan2"
+      }
+      Block {
+	Name			"<S3>/Sum"
+      }
+      Block {
+	Name			"<S3>/Sum1"
       }
       Block {
 	Name			"<S3>/Compose String"
@@ -532,6 +581,12 @@ CompiledModel {
       }
       Block {
 	Name			"<S4>/Data Store Read4"
+      }
+      Block {
+	Name			"<S4>/Cast To Single"
+      }
+      Block {
+	Name			"<S4>/Cast To Single1"
       }
       Block {
 	Name			"<S4>/Gain1"
@@ -784,6 +839,36 @@ CompiledModel {
       }
     }
     Subsystem {
+      Name		      "<S3>/convert_encoder_signal_to_ticks"
+      Block {
+	Name			"<S14>/Compare To Constant"
+      }
+      Block {
+	Name			"<S14>/Detect Rise Positive"
+      }
+      Block {
+	Name			"<S14>/Add"
+      }
+      Block {
+	Name			"<S14>/Delay"
+      }
+    }
+    Subsystem {
+      Name		      "<S3>/encoder_tick_to_dist"
+      Block {
+	Name			"<S16>/Circumference"
+      }
+      Block {
+	Name			"<S16>/Tick_per_rev"
+      }
+      Block {
+	Name			"<S16>/Product"
+      }
+    }
+    Subsystem {
+      Name		      "<S3>/distance_control"
+    }
+    Subsystem {
       Name		      "<S4>/System Update"
     }
     Subsystem {
@@ -822,217 +907,247 @@ CompiledModel {
     Subsystem {
       Name		      "<S11>/Enable//disable\ntime constant"
       Block {
-	Name			"<S14>/Compare To Constant"
+	Name			"<S17>/Compare To Constant"
       }
       Block {
-	Name			"<S14>/Compare To Zero"
+	Name			"<S17>/Compare To Zero"
       }
       Block {
-	Name			"<S14>/Constant"
+	Name			"<S17>/Constant"
       }
       Block {
-	Name			"<S14>/Time constant"
+	Name			"<S17>/Time constant"
       }
       Block {
-	Name			"<S14>/Avoid Divide by Zero"
+	Name			"<S17>/Avoid Divide by Zero"
       }
       Block {
-	Name			"<S14>/Logical Operator"
+	Name			"<S17>/Logical Operator"
       }
       Block {
-	Name			"<S14>/Max"
+	Name			"<S17>/Max"
       }
       Block {
-	Name			"<S14>/Probe"
+	Name			"<S17>/Probe"
       }
       Block {
-	Name			"<S14>/Sum1"
+	Name			"<S17>/Sum1"
       }
     }
     Subsystem {
       Name		      "<S11>/Initialization"
       Block {
-	Name			"<S15>/Init_u"
+	Name			"<S18>/Init_u"
       }
     }
     Subsystem {
       Name		      "<S11>/Integrator\n(Discrete or Continuous)"
       Block {
-	Name			"<S16>/Discrete"
+	Name			"<S19>/Discrete"
       }
     }
     Subsystem {
       Name		      "<S12>/Enable//disable\ntime constant"
       Block {
-	Name			"<S21>/Compare To Constant"
+	Name			"<S24>/Compare To Constant"
       }
       Block {
-	Name			"<S21>/Compare To Zero"
+	Name			"<S24>/Compare To Zero"
       }
       Block {
-	Name			"<S21>/Constant"
+	Name			"<S24>/Constant"
       }
       Block {
-	Name			"<S21>/Time constant"
+	Name			"<S24>/Time constant"
       }
       Block {
-	Name			"<S21>/Avoid Divide by Zero"
+	Name			"<S24>/Avoid Divide by Zero"
       }
       Block {
-	Name			"<S21>/Logical Operator"
+	Name			"<S24>/Logical Operator"
       }
       Block {
-	Name			"<S21>/Max"
+	Name			"<S24>/Max"
       }
       Block {
-	Name			"<S21>/Probe"
+	Name			"<S24>/Probe"
       }
       Block {
-	Name			"<S21>/Sum1"
+	Name			"<S24>/Sum1"
       }
     }
     Subsystem {
       Name		      "<S12>/Initialization"
       Block {
-	Name			"<S22>/Init_u"
+	Name			"<S25>/Init_u"
       }
     }
     Subsystem {
       Name		      "<S12>/Integrator\n(Discrete or Continuous)"
       Block {
-	Name			"<S23>/Discrete"
+	Name			"<S26>/Discrete"
       }
     }
     Subsystem {
       Name		      "<S13>/Enable//disable\ntime constant"
       Block {
-	Name			"<S28>/Compare To Constant"
+	Name			"<S31>/Compare To Constant"
       }
       Block {
-	Name			"<S28>/Compare To Zero"
+	Name			"<S31>/Compare To Zero"
       }
       Block {
-	Name			"<S28>/Constant"
+	Name			"<S31>/Constant"
       }
       Block {
-	Name			"<S28>/Time constant"
+	Name			"<S31>/Time constant"
       }
       Block {
-	Name			"<S28>/Avoid Divide by Zero"
+	Name			"<S31>/Avoid Divide by Zero"
       }
       Block {
-	Name			"<S28>/Logical Operator"
+	Name			"<S31>/Logical Operator"
       }
       Block {
-	Name			"<S28>/Max"
+	Name			"<S31>/Max"
       }
       Block {
-	Name			"<S28>/Probe"
+	Name			"<S31>/Probe"
       }
       Block {
-	Name			"<S28>/Sum1"
+	Name			"<S31>/Sum1"
       }
     }
     Subsystem {
       Name		      "<S13>/Initialization"
       Block {
-	Name			"<S29>/Init_u"
+	Name			"<S32>/Init_u"
       }
     }
     Subsystem {
       Name		      "<S13>/Integrator\n(Discrete or Continuous)"
       Block {
-	Name			"<S30>/Discrete"
+	Name			"<S33>/Discrete"
       }
     }
     Subsystem {
       Name		      "<S14>/Compare\nTo Constant"
       Block {
-	Name			"<S17>/Constant"
+	Name			"<S38>/Constant"
       }
       Block {
-	Name			"<S17>/Compare"
-      }
-    }
-    Subsystem {
-      Name		      "<S14>/Compare\nTo Zero"
-      Block {
-	Name			"<S18>/Constant"
-      }
-      Block {
-	Name			"<S18>/Compare"
+	Name			"<S38>/Compare"
       }
     }
     Subsystem {
-      Name		      "<S15>/Init_u"
-    }
-    Subsystem {
-      Name		      "<S16>/Discrete"
+      Name		      "<S14>/Detect Rise\nPositive"
       Block {
-	Name			"<S20>/Integrator"
+	Name			"<S39>/Positive"
       }
       Block {
-	Name			"<S20>/Saturation"
-      }
-    }
-    Subsystem {
-      Name		      "<S21>/Compare\nTo Constant"
-      Block {
-	Name			"<S24>/Constant"
+	Name			"<S39>/FixPt Relational Operator"
       }
       Block {
-	Name			"<S24>/Compare"
+	Name			"<S39>/Delay Input1"
       }
     }
     Subsystem {
-      Name		      "<S21>/Compare\nTo Zero"
+      Name		      "<S17>/Compare\nTo Constant"
       Block {
-	Name			"<S25>/Constant"
+	Name			"<S20>/Constant"
       }
       Block {
-	Name			"<S25>/Compare"
-      }
-    }
-    Subsystem {
-      Name		      "<S22>/Init_u"
-    }
-    Subsystem {
-      Name		      "<S23>/Discrete"
-      Block {
-	Name			"<S27>/Integrator"
-      }
-      Block {
-	Name			"<S27>/Saturation"
+	Name			"<S20>/Compare"
       }
     }
     Subsystem {
-      Name		      "<S28>/Compare\nTo Constant"
+      Name		      "<S17>/Compare\nTo Zero"
       Block {
-	Name			"<S31>/Constant"
+	Name			"<S21>/Constant"
       }
       Block {
-	Name			"<S31>/Compare"
-      }
-    }
-    Subsystem {
-      Name		      "<S28>/Compare\nTo Zero"
-      Block {
-	Name			"<S32>/Constant"
-      }
-      Block {
-	Name			"<S32>/Compare"
+	Name			"<S21>/Compare"
       }
     }
     Subsystem {
-      Name		      "<S29>/Init_u"
+      Name		      "<S18>/Init_u"
     }
     Subsystem {
-      Name		      "<S30>/Discrete"
+      Name		      "<S19>/Discrete"
       Block {
-	Name			"<S34>/Integrator"
+	Name			"<S23>/Integrator"
       }
       Block {
-	Name			"<S34>/Saturation"
+	Name			"<S23>/Saturation"
+      }
+    }
+    Subsystem {
+      Name		      "<S24>/Compare\nTo Constant"
+      Block {
+	Name			"<S27>/Constant"
+      }
+      Block {
+	Name			"<S27>/Compare"
+      }
+    }
+    Subsystem {
+      Name		      "<S24>/Compare\nTo Zero"
+      Block {
+	Name			"<S28>/Constant"
+      }
+      Block {
+	Name			"<S28>/Compare"
+      }
+    }
+    Subsystem {
+      Name		      "<S25>/Init_u"
+    }
+    Subsystem {
+      Name		      "<S26>/Discrete"
+      Block {
+	Name			"<S30>/Integrator"
+      }
+      Block {
+	Name			"<S30>/Saturation"
+      }
+    }
+    Subsystem {
+      Name		      "<S31>/Compare\nTo Constant"
+      Block {
+	Name			"<S34>/Constant"
+      }
+      Block {
+	Name			"<S34>/Compare"
+      }
+    }
+    Subsystem {
+      Name		      "<S31>/Compare\nTo Zero"
+      Block {
+	Name			"<S35>/Constant"
+      }
+      Block {
+	Name			"<S35>/Compare"
+      }
+    }
+    Subsystem {
+      Name		      "<S32>/Init_u"
+    }
+    Subsystem {
+      Name		      "<S33>/Discrete"
+      Block {
+	Name			"<S37>/Integrator"
+      }
+      Block {
+	Name			"<S37>/Saturation"
+      }
+    }
+    Subsystem {
+      Name		      "<S39>/Positive"
+      Block {
+	Name			"<S40>/Constant"
+      }
+      Block {
+	Name			"<S40>/Compare"
       }
     }
   }
@@ -1059,14 +1174,14 @@ CompiledModel {
   GenUtilsSrcInSharedLocation 0
   System {
     SystemIdx		    0
-    Name		    "<Root>"
-    Type		    "root"
-    FileNameOwnerIdx	    0
+    Name		    "<S3>/distance_control"
+    Type		    "atomic"
+    FileNameOwnerIdx	    1
     SystemNamespaceFlag	    0
-    NumBlocks		    16
+    NumBlocks		    1
     Block {
-      Type		      Constant
-      Name		      "<S3>/Motor_Right"
+      Type		      "S-Function"
+      Name		      "<S15>/ SFunction "
       RecordType	      "CompiledBlock"
       RecordIdx		      [0, 0]
       BlockIdx		      [0, 0, 0]
@@ -1074,28 +1189,47 @@ CompiledModel {
       PID		      -1
       firstEntryOfTsMapIsGCD  yes
       ExecuteBlockFcns	      0
-      NumDataInputPorts	      0
-      NumDataOutputPorts      1
+      NumDataInputPorts	      2
+      DataInputPort {
+	RecordIdx		[0, 0, 0]
+	RollRegions		[0]
+      }
+      DataInputPort {
+	RecordIdx		[0, 0, 1]
+	RollRegions		[0]
+      }
+      NumDataOutputPorts      2
       DataOutputPort {
 	RecordIdx		[0, 0, 0]
       }
-      NumDWork		      0
-      Parameters	      [1]
-      Parameter {
-	BlockParamIdx		0
-	Name			"Value"
-	RecordIdx		[0, 0, 0]
-	Value			[50.0]
-	String			"50"
+      DataOutputPort {
+	RecordIdx		[0, 0, 1]
       }
-      Value		      Parameter[0]
+      NumDWork		      2
+      DWork {
+	RecordIdx		[0, 0, 0]
+	Name			"DWORK1"
+      }
+      DWork {
+	RecordIdx		[0, 0, 1]
+	Name			"DWORK2"
+      }
+      Parameters	      [0]
     }
+  }
+  System {
+    SystemIdx		    1
+    Name		    "<Root>"
+    Type		    "root"
+    FileNameOwnerIdx	    1
+    SystemNamespaceFlag	    0
+    NumBlocks		    19
     Block {
       Type		      Constant
-      Name		      "<S3>/Motor_Left"
+      Name		      "<S38>/Constant"
       RecordType	      "CompiledBlock"
-      RecordIdx		      [0, 1]
-      BlockIdx		      [0, 0, 1]
+      RecordIdx		      [1, 0]
+      BlockIdx		      [1, 1, 0]
       TID		      0
       PID		      -1
       firstEntryOfTsMapIsGCD  yes
@@ -1103,26 +1237,25 @@ CompiledModel {
       NumDataInputPorts	      0
       NumDataOutputPorts      1
       DataOutputPort {
-	RecordIdx		[0, 1, 0]
+	RecordIdx		[1, 0, 0]
       }
       NumDWork		      0
       Parameters	      [1]
       Parameter {
 	BlockParamIdx		0
 	Name			"Value"
-	RecordIdx		[0, 1, 0]
-	Value			[-50.0]
-	String			"-50"
+	RecordIdx		[1, 0, 0]
+	Value			[1.4F]
+	String			"const"
       }
       Value		      Parameter[0]
     }
     Block {
       Type		      Constant
-      Name		      "<S14>/Time constant"
-      SLName		      "<S14>/Time\nconstant"
+      Name		      "<S16>/Circumference"
       RecordType	      "CompiledBlock"
-      RecordIdx		      [0, 2]
-      BlockIdx		      [0, 0, 2]
+      RecordIdx		      [1, 1]
+      BlockIdx		      [1, 1, 1]
       TID		      0
       PID		      -1
       firstEntryOfTsMapIsGCD  yes
@@ -1130,42 +1263,85 @@ CompiledModel {
       NumDataInputPorts	      0
       NumDataOutputPorts      1
       DataOutputPort {
-	RecordIdx		[0, 2, 0]
+	RecordIdx		[1, 1, 0]
       }
       NumDWork		      0
       Parameters	      [1]
       Parameter {
 	BlockParamIdx		0
 	Name			"Value"
-	RecordIdx		[0, 2, 0]
+	RecordIdx		[1, 1, 0]
+	Value			[0.19477874452256716]
+	String			"(2*pi*0.031)"
+      }
+      Value		      Parameter[0]
+    }
+    Block {
+      Type		      Constant
+      Name		      "<S3>/ref"
+      RecordType	      "CompiledBlock"
+      RecordIdx		      [1, 2]
+      BlockIdx		      [1, 1, 2]
+      TID		      0
+      PID		      -1
+      firstEntryOfTsMapIsGCD  yes
+      ExecuteBlockFcns	      0
+      NumDataInputPorts	      0
+      NumDataOutputPorts      1
+      DataOutputPort {
+	RecordIdx		[1, 2, 0]
+      }
+      NumDWork		      0
+      Parameters	      [1]
+      Parameter {
+	BlockParamIdx		0
+	Name			"Value"
+	RecordIdx		[1, 2, 0]
+	Value			[2.0]
+	String			"2"
+      }
+      Value		      Parameter[0]
+    }
+    Block {
+      Type		      SubSystem
+      Name		      "<S3>/distance_control"
+      RecordType	      "CompiledBlock"
+      RecordIdx		      [1, 3]
+      BlockIdx		      [1, 0, 3]
+      TID		      Subsystem
+      SubsystemTID	      0
+      PID		      -1
+      firstEntryOfTsMapIsGCD  yes
+      ExecuteBlockFcns	      0
+      NumDataInputPorts	      0
+      NumDataOutputPorts      0
+      NumDWork		      0
+      Parameters	      [0]
+    }
+    Block {
+      Type		      Constant
+      Name		      "<S17>/Time constant"
+      SLName		      "<S17>/Time\nconstant"
+      RecordType	      "CompiledBlock"
+      RecordIdx		      [1, 4]
+      BlockIdx		      [1, 1, 4]
+      TID		      0
+      PID		      -1
+      firstEntryOfTsMapIsGCD  yes
+      ExecuteBlockFcns	      0
+      NumDataInputPorts	      0
+      NumDataOutputPorts      1
+      DataOutputPort {
+	RecordIdx		[1, 4, 0]
+      }
+      NumDWork		      0
+      Parameters	      [1]
+      Parameter {
+	BlockParamIdx		0
+	Name			"Value"
+	RecordIdx		[1, 4, 0]
 	Value			[0.1]
 	String			"T"
-      }
-      Value		      Parameter[0]
-    }
-    Block {
-      Type		      Constant
-      Name		      "<S14>/Constant"
-      RecordType	      "CompiledBlock"
-      RecordIdx		      [0, 3]
-      BlockIdx		      [0, 0, 3]
-      TID		      0
-      PID		      -1
-      firstEntryOfTsMapIsGCD  yes
-      ExecuteBlockFcns	      0
-      NumDataInputPorts	      0
-      NumDataOutputPorts      1
-      DataOutputPort {
-	RecordIdx		[0, 3, 0]
-      }
-      NumDWork		      0
-      Parameters	      [1]
-      Parameter {
-	BlockParamIdx		0
-	Name			"Value"
-	RecordIdx		[0, 3, 0]
-	Value			[1.0]
-	String			"init_option"
       }
       Value		      Parameter[0]
     }
@@ -1173,8 +1349,8 @@ CompiledModel {
       Type		      Constant
       Name		      "<S17>/Constant"
       RecordType	      "CompiledBlock"
-      RecordIdx		      [0, 4]
-      BlockIdx		      [0, 0, 4]
+      RecordIdx		      [1, 5]
+      BlockIdx		      [1, 1, 5]
       TID		      0
       PID		      -1
       firstEntryOfTsMapIsGCD  yes
@@ -1182,14 +1358,40 @@ CompiledModel {
       NumDataInputPorts	      0
       NumDataOutputPorts      1
       DataOutputPort {
-	RecordIdx		[0, 4, 0]
+	RecordIdx		[1, 5, 0]
       }
       NumDWork		      0
       Parameters	      [1]
       Parameter {
 	BlockParamIdx		0
 	Name			"Value"
-	RecordIdx		[0, 4, 0]
+	RecordIdx		[1, 5, 0]
+	Value			[1.0]
+	String			"init_option"
+      }
+      Value		      Parameter[0]
+    }
+    Block {
+      Type		      Constant
+      Name		      "<S20>/Constant"
+      RecordType	      "CompiledBlock"
+      RecordIdx		      [1, 6]
+      BlockIdx		      [1, 1, 6]
+      TID		      0
+      PID		      -1
+      firstEntryOfTsMapIsGCD  yes
+      ExecuteBlockFcns	      0
+      NumDataInputPorts	      0
+      NumDataOutputPorts      1
+      DataOutputPort {
+	RecordIdx		[1, 6, 0]
+      }
+      NumDWork		      0
+      Parameters	      [1]
+      Parameter {
+	BlockParamIdx		0
+	Name			"Value"
+	RecordIdx		[1, 6, 0]
 	Value			[2.0]
 	String			"const"
       }
@@ -1197,11 +1399,11 @@ CompiledModel {
     }
     Block {
       Type		      Constant
-      Name		      "<S21>/Time constant"
-      SLName		      "<S21>/Time\nconstant"
+      Name		      "<S24>/Time constant"
+      SLName		      "<S24>/Time\nconstant"
       RecordType	      "CompiledBlock"
-      RecordIdx		      [0, 5]
-      BlockIdx		      [0, 0, 5]
+      RecordIdx		      [1, 7]
+      BlockIdx		      [1, 1, 7]
       TID		      0
       PID		      -1
       firstEntryOfTsMapIsGCD  yes
@@ -1209,42 +1411,16 @@ CompiledModel {
       NumDataInputPorts	      0
       NumDataOutputPorts      1
       DataOutputPort {
-	RecordIdx		[0, 5, 0]
+	RecordIdx		[1, 7, 0]
       }
       NumDWork		      0
       Parameters	      [1]
       Parameter {
 	BlockParamIdx		0
 	Name			"Value"
-	RecordIdx		[0, 5, 0]
+	RecordIdx		[1, 7, 0]
 	Value			[0.1]
 	String			"T"
-      }
-      Value		      Parameter[0]
-    }
-    Block {
-      Type		      Constant
-      Name		      "<S21>/Constant"
-      RecordType	      "CompiledBlock"
-      RecordIdx		      [0, 6]
-      BlockIdx		      [0, 0, 6]
-      TID		      0
-      PID		      -1
-      firstEntryOfTsMapIsGCD  yes
-      ExecuteBlockFcns	      0
-      NumDataInputPorts	      0
-      NumDataOutputPorts      1
-      DataOutputPort {
-	RecordIdx		[0, 6, 0]
-      }
-      NumDWork		      0
-      Parameters	      [1]
-      Parameter {
-	BlockParamIdx		0
-	Name			"Value"
-	RecordIdx		[0, 6, 0]
-	Value			[1.0]
-	String			"init_option"
       }
       Value		      Parameter[0]
     }
@@ -1252,8 +1428,8 @@ CompiledModel {
       Type		      Constant
       Name		      "<S24>/Constant"
       RecordType	      "CompiledBlock"
-      RecordIdx		      [0, 7]
-      BlockIdx		      [0, 0, 7]
+      RecordIdx		      [1, 8]
+      BlockIdx		      [1, 1, 8]
       TID		      0
       PID		      -1
       firstEntryOfTsMapIsGCD  yes
@@ -1261,67 +1437,14 @@ CompiledModel {
       NumDataInputPorts	      0
       NumDataOutputPorts      1
       DataOutputPort {
-	RecordIdx		[0, 7, 0]
+	RecordIdx		[1, 8, 0]
       }
       NumDWork		      0
       Parameters	      [1]
       Parameter {
 	BlockParamIdx		0
 	Name			"Value"
-	RecordIdx		[0, 7, 0]
-	Value			[2.0]
-	String			"const"
-      }
-      Value		      Parameter[0]
-    }
-    Block {
-      Type		      Constant
-      Name		      "<S28>/Time constant"
-      SLName		      "<S28>/Time\nconstant"
-      RecordType	      "CompiledBlock"
-      RecordIdx		      [0, 8]
-      BlockIdx		      [0, 0, 8]
-      TID		      0
-      PID		      -1
-      firstEntryOfTsMapIsGCD  yes
-      ExecuteBlockFcns	      0
-      NumDataInputPorts	      0
-      NumDataOutputPorts      1
-      DataOutputPort {
-	RecordIdx		[0, 8, 0]
-      }
-      NumDWork		      0
-      Parameters	      [1]
-      Parameter {
-	BlockParamIdx		0
-	Name			"Value"
-	RecordIdx		[0, 8, 0]
-	Value			[0.1]
-	String			"T"
-      }
-      Value		      Parameter[0]
-    }
-    Block {
-      Type		      Constant
-      Name		      "<S28>/Constant"
-      RecordType	      "CompiledBlock"
-      RecordIdx		      [0, 9]
-      BlockIdx		      [0, 0, 9]
-      TID		      0
-      PID		      -1
-      firstEntryOfTsMapIsGCD  yes
-      ExecuteBlockFcns	      0
-      NumDataInputPorts	      0
-      NumDataOutputPorts      1
-      DataOutputPort {
-	RecordIdx		[0, 9, 0]
-      }
-      NumDWork		      0
-      Parameters	      [1]
-      Parameter {
-	BlockParamIdx		0
-	Name			"Value"
-	RecordIdx		[0, 9, 0]
+	RecordIdx		[1, 8, 0]
 	Value			[1.0]
 	String			"init_option"
       }
@@ -1329,10 +1452,10 @@ CompiledModel {
     }
     Block {
       Type		      Constant
-      Name		      "<S31>/Constant"
+      Name		      "<S27>/Constant"
       RecordType	      "CompiledBlock"
-      RecordIdx		      [0, 10]
-      BlockIdx		      [0, 0, 10]
+      RecordIdx		      [1, 9]
+      BlockIdx		      [1, 1, 9]
       TID		      0
       PID		      -1
       firstEntryOfTsMapIsGCD  yes
@@ -1340,14 +1463,93 @@ CompiledModel {
       NumDataInputPorts	      0
       NumDataOutputPorts      1
       DataOutputPort {
-	RecordIdx		[0, 10, 0]
+	RecordIdx		[1, 9, 0]
       }
       NumDWork		      0
       Parameters	      [1]
       Parameter {
 	BlockParamIdx		0
 	Name			"Value"
-	RecordIdx		[0, 10, 0]
+	RecordIdx		[1, 9, 0]
+	Value			[2.0]
+	String			"const"
+      }
+      Value		      Parameter[0]
+    }
+    Block {
+      Type		      Constant
+      Name		      "<S31>/Time constant"
+      SLName		      "<S31>/Time\nconstant"
+      RecordType	      "CompiledBlock"
+      RecordIdx		      [1, 10]
+      BlockIdx		      [1, 1, 10]
+      TID		      0
+      PID		      -1
+      firstEntryOfTsMapIsGCD  yes
+      ExecuteBlockFcns	      0
+      NumDataInputPorts	      0
+      NumDataOutputPorts      1
+      DataOutputPort {
+	RecordIdx		[1, 10, 0]
+      }
+      NumDWork		      0
+      Parameters	      [1]
+      Parameter {
+	BlockParamIdx		0
+	Name			"Value"
+	RecordIdx		[1, 10, 0]
+	Value			[0.1]
+	String			"T"
+      }
+      Value		      Parameter[0]
+    }
+    Block {
+      Type		      Constant
+      Name		      "<S31>/Constant"
+      RecordType	      "CompiledBlock"
+      RecordIdx		      [1, 11]
+      BlockIdx		      [1, 1, 11]
+      TID		      0
+      PID		      -1
+      firstEntryOfTsMapIsGCD  yes
+      ExecuteBlockFcns	      0
+      NumDataInputPorts	      0
+      NumDataOutputPorts      1
+      DataOutputPort {
+	RecordIdx		[1, 11, 0]
+      }
+      NumDWork		      0
+      Parameters	      [1]
+      Parameter {
+	BlockParamIdx		0
+	Name			"Value"
+	RecordIdx		[1, 11, 0]
+	Value			[1.0]
+	String			"init_option"
+      }
+      Value		      Parameter[0]
+    }
+    Block {
+      Type		      Constant
+      Name		      "<S34>/Constant"
+      RecordType	      "CompiledBlock"
+      RecordIdx		      [1, 12]
+      BlockIdx		      [1, 1, 12]
+      TID		      0
+      PID		      -1
+      firstEntryOfTsMapIsGCD  yes
+      ExecuteBlockFcns	      0
+      NumDataInputPorts	      0
+      NumDataOutputPorts      1
+      DataOutputPort {
+	RecordIdx		[1, 12, 0]
+      }
+      NumDWork		      0
+      Parameters	      [1]
+      Parameter {
+	BlockParamIdx		0
+	Name			"Value"
+	RecordIdx		[1, 12, 0]
 	Value			[2.0]
 	String			"const"
       }
@@ -1357,8 +1559,8 @@ CompiledModel {
       Type		      Constant
       Name		      "<S3>/Constant1"
       RecordType	      "CompiledBlock"
-      RecordIdx		      [0, 11]
-      BlockIdx		      [0, 0, 11]
+      RecordIdx		      [1, 13]
+      BlockIdx		      [1, 1, 13]
       TID		      0
       PID		      -1
       firstEntryOfTsMapIsGCD  yes
@@ -1366,14 +1568,14 @@ CompiledModel {
       NumDataInputPorts	      0
       NumDataOutputPorts      1
       DataOutputPort {
-	RecordIdx		[0, 11, 0]
+	RecordIdx		[1, 13, 0]
       }
       NumDWork		      0
       Parameters	      [1]
       Parameter {
 	BlockParamIdx		0
 	Name			"Value"
-	RecordIdx		[0, 11, 0]
+	RecordIdx		[1, 13, 0]
 	Value			[0.3]
 	String			"0.3"
       }
@@ -1383,8 +1585,8 @@ CompiledModel {
       Type		      Constant
       Name		      "<S3>/Constant"
       RecordType	      "CompiledBlock"
-      RecordIdx		      [0, 12]
-      BlockIdx		      [0, 0, 12]
+      RecordIdx		      [1, 14]
+      BlockIdx		      [1, 1, 14]
       TID		      0
       PID		      -1
       firstEntryOfTsMapIsGCD  yes
@@ -1392,14 +1594,14 @@ CompiledModel {
       NumDataInputPorts	      0
       NumDataOutputPorts      1
       DataOutputPort {
-	RecordIdx		[0, 12, 0]
+	RecordIdx		[1, 14, 0]
       }
       NumDWork		      0
       Parameters	      [1]
       Parameter {
 	BlockParamIdx		0
 	Name			"Value"
-	RecordIdx		[0, 12, 0]
+	RecordIdx		[1, 14, 0]
 	Value			[27.0]
 	String			"27"
       }
@@ -1407,24 +1609,24 @@ CompiledModel {
     }
     Block {
       Type		      Constant
-      Name		      "<S18>/Constant"
+      Name		      "<S21>/Constant"
       RecordType	      "CompiledBlock"
-      RecordIdx		      [0, 13]
-      BlockIdx		      [0, 0, 13]
+      RecordIdx		      [1, 15]
+      BlockIdx		      [1, 1, 15]
       TID		      constant
       firstEntryOfTsMapIsGCD  yes
       ExecuteBlockFcns	      0
       NumDataInputPorts	      0
       NumDataOutputPorts      1
       DataOutputPort {
-	RecordIdx		[0, 13, 0]
+	RecordIdx		[1, 15, 0]
       }
       NumDWork		      0
       Parameters	      [1]
       Parameter {
 	BlockParamIdx		0
 	Name			"Value"
-	RecordIdx		[0, 13, 0]
+	RecordIdx		[1, 15, 0]
 	Value			[0.0F]
 	String			""
       }
@@ -1432,24 +1634,24 @@ CompiledModel {
     }
     Block {
       Type		      Constant
-      Name		      "<S25>/Constant"
+      Name		      "<S28>/Constant"
       RecordType	      "CompiledBlock"
-      RecordIdx		      [0, 14]
-      BlockIdx		      [0, 0, 14]
+      RecordIdx		      [1, 16]
+      BlockIdx		      [1, 1, 16]
       TID		      constant
       firstEntryOfTsMapIsGCD  yes
       ExecuteBlockFcns	      0
       NumDataInputPorts	      0
       NumDataOutputPorts      1
       DataOutputPort {
-	RecordIdx		[0, 14, 0]
+	RecordIdx		[1, 16, 0]
       }
       NumDWork		      0
       Parameters	      [1]
       Parameter {
 	BlockParamIdx		0
 	Name			"Value"
-	RecordIdx		[0, 14, 0]
+	RecordIdx		[1, 16, 0]
 	Value			[0.0F]
 	String			""
       }
@@ -1457,25 +1659,50 @@ CompiledModel {
     }
     Block {
       Type		      Constant
-      Name		      "<S32>/Constant"
+      Name		      "<S35>/Constant"
       RecordType	      "CompiledBlock"
-      RecordIdx		      [0, 15]
-      BlockIdx		      [0, 0, 15]
+      RecordIdx		      [1, 17]
+      BlockIdx		      [1, 1, 17]
       TID		      constant
       firstEntryOfTsMapIsGCD  yes
       ExecuteBlockFcns	      0
       NumDataInputPorts	      0
       NumDataOutputPorts      1
       DataOutputPort {
-	RecordIdx		[0, 15, 0]
+	RecordIdx		[1, 17, 0]
       }
       NumDWork		      0
       Parameters	      [1]
       Parameter {
 	BlockParamIdx		0
 	Name			"Value"
-	RecordIdx		[0, 15, 0]
+	RecordIdx		[1, 17, 0]
 	Value			[0.0F]
+	String			""
+      }
+      Value		      Parameter[0]
+    }
+    Block {
+      Type		      Constant
+      Name		      "<S40>/Constant"
+      RecordType	      "CompiledBlock"
+      RecordIdx		      [1, 18]
+      BlockIdx		      [1, 1, 18]
+      TID		      constant
+      firstEntryOfTsMapIsGCD  yes
+      ExecuteBlockFcns	      0
+      NumDataInputPorts	      0
+      NumDataOutputPorts      1
+      DataOutputPort {
+	RecordIdx		[1, 18, 0]
+      }
+      NumDWork		      0
+      Parameters	      [1]
+      Parameter {
+	BlockParamIdx		0
+	Name			"Value"
+	RecordIdx		[1, 18, 0]
+	Value			[0]
 	String			""
       }
       Value		      Parameter[0]
