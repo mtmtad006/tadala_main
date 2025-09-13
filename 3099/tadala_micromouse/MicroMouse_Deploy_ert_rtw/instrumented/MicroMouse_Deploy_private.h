@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'MicroMouse_Deploy'.
  *
- * Model version                  : 5.5
+ * Model version                  : 5.7
  * Simulink Coder version         : 25.1 (R2025a) 21-Nov-2024
- * C/C++ source code generated on : Sat Sep 13 18:27:11 2025
+ * C/C++ source code generated on : Sat Sep 13 19:09:55 2025
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -26,6 +26,20 @@
 #include "MicroMouse_Deploy_types.h"
 #include "rtw_continuous.h"
 #include "rtw_solver.h"
+
+/* Private macros used by the generated code to access rtModel */
+#ifndef rtmIsMajorTimeStep
+#define rtmIsMajorTimeStep(rtm)        (((rtm)->Timing.simTimeStep) == MAJOR_TIME_STEP)
+#endif
+
+#ifndef rtmIsMinorTimeStep
+#define rtmIsMinorTimeStep(rtm)        (((rtm)->Timing.simTimeStep) == MINOR_TIME_STEP)
+#endif
+
+#ifndef rtmSetTPtr
+#define rtmSetTPtr(rtm, val)           ((rtm)->Timing.t = (val))
+#endif
+
 #ifndef UCHAR_MAX
 #include <limits.h>
 #endif
@@ -104,6 +118,9 @@ extern uint8_T LED[3];                 /* '<S6>/Data Store Memory' */
 extern uint8_T STATE;                  /* '<S9>/Data Store Memory' */
 extern uint8_T SW[2];                  /* '<S7>/Data Store Memory' */
 extern uint8_T batteryLife;            /* '<S8>/Data Store Memory4' */
+
+/* private model entry point functions */
+extern void MicroMouse_Deploy_derivatives(void);
 
 #endif                                 /* MicroMouse_Deploy_private_h_ */
 

@@ -1,0 +1,15 @@
+%implements s2_b0_sizfn_ModuleConstants "C"
+
+%function ModuleConstants(block) Output
+
+
+/* Named constants for Chart: '<S14>/turn_adjus' */
+#define MicroMouse_D_IN_NO_ACTIVE_CHILD ((uint8_T)0U)
+#define MicroMouse_Deplo_IN_AdjustRight ((uint8_T)2U)
+#define MicroMouse_Deploy_IN_AdjustLeft ((uint8_T)1U)
+#define MicroMouse_Deploy_IN_deafult ((uint8_T)3U)
+
+/* Named constants for Chart: '<S3>/distance_control' */
+#define MicroMouse_Deploy_IN_Run ((uint8_T)1U)
+#define MicroMouse_Deploy_IN_Stop ((uint8_T)2U)
+%endfunction

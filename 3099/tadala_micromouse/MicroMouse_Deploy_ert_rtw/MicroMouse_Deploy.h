@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'MicroMouse_Deploy'.
  *
- * Model version                  : 5.5
+ * Model version                  : 5.7
  * Simulink Coder version         : 25.1 (R2025a) 21-Nov-2024
- * C/C++ source code generated on : Sat Sep 13 18:27:11 2025
+ * C/C++ source code generated on : Sat Sep 13 19:09:55 2025
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -31,16 +31,129 @@
 
 #include "MicroMouse_Deploy_types.h"
 #include "rt_nonfinite.h"
+#include <string.h>
 #include <stddef.h>
 #include "MW_target_hardware_resources.h"
 
 /* Macros for accessing real-time model data structure */
+#ifndef rtmGetContStateDisabled
+#define rtmGetContStateDisabled(rtm)   ((rtm)->contStateDisabled)
+#endif
+
+#ifndef rtmSetContStateDisabled
+#define rtmSetContStateDisabled(rtm, val) ((rtm)->contStateDisabled = (val))
+#endif
+
+#ifndef rtmGetContStates
+#define rtmGetContStates(rtm)          ((rtm)->contStates)
+#endif
+
+#ifndef rtmSetContStates
+#define rtmSetContStates(rtm, val)     ((rtm)->contStates = (val))
+#endif
+
+#ifndef rtmGetContTimeOutputInconsistentWithStateAtMajorStepFlag
+#define rtmGetContTimeOutputInconsistentWithStateAtMajorStepFlag(rtm) ((rtm)->CTOutputIncnstWithState)
+#endif
+
+#ifndef rtmSetContTimeOutputInconsistentWithStateAtMajorStepFlag
+#define rtmSetContTimeOutputInconsistentWithStateAtMajorStepFlag(rtm, val) ((rtm)->CTOutputIncnstWithState = (val))
+#endif
+
+#ifndef rtmGetDerivCacheNeedsReset
+#define rtmGetDerivCacheNeedsReset(rtm) ((rtm)->derivCacheNeedsReset)
+#endif
+
+#ifndef rtmSetDerivCacheNeedsReset
+#define rtmSetDerivCacheNeedsReset(rtm, val) ((rtm)->derivCacheNeedsReset = (val))
+#endif
+
+#ifndef rtmGetIntgData
+#define rtmGetIntgData(rtm)            ((rtm)->intgData)
+#endif
+
+#ifndef rtmSetIntgData
+#define rtmSetIntgData(rtm, val)       ((rtm)->intgData = (val))
+#endif
+
+#ifndef rtmGetOdeF
+#define rtmGetOdeF(rtm)                ((rtm)->odeF)
+#endif
+
+#ifndef rtmSetOdeF
+#define rtmSetOdeF(rtm, val)           ((rtm)->odeF = (val))
+#endif
+
+#ifndef rtmGetOdeY
+#define rtmGetOdeY(rtm)                ((rtm)->odeY)
+#endif
+
+#ifndef rtmSetOdeY
+#define rtmSetOdeY(rtm, val)           ((rtm)->odeY = (val))
+#endif
+
+#ifndef rtmGetPeriodicContStateIndices
+#define rtmGetPeriodicContStateIndices(rtm) ((rtm)->periodicContStateIndices)
+#endif
+
+#ifndef rtmSetPeriodicContStateIndices
+#define rtmSetPeriodicContStateIndices(rtm, val) ((rtm)->periodicContStateIndices = (val))
+#endif
+
+#ifndef rtmGetPeriodicContStateRanges
+#define rtmGetPeriodicContStateRanges(rtm) ((rtm)->periodicContStateRanges)
+#endif
+
+#ifndef rtmSetPeriodicContStateRanges
+#define rtmSetPeriodicContStateRanges(rtm, val) ((rtm)->periodicContStateRanges = (val))
+#endif
+
+#ifndef rtmGetZCCacheNeedsReset
+#define rtmGetZCCacheNeedsReset(rtm)   ((rtm)->zCCacheNeedsReset)
+#endif
+
+#ifndef rtmSetZCCacheNeedsReset
+#define rtmSetZCCacheNeedsReset(rtm, val) ((rtm)->zCCacheNeedsReset = (val))
+#endif
+
+#ifndef rtmGetdX
+#define rtmGetdX(rtm)                  ((rtm)->derivs)
+#endif
+
+#ifndef rtmSetdX
+#define rtmSetdX(rtm, val)             ((rtm)->derivs = (val))
+#endif
+
 #ifndef rtmGetErrorStatus
 #define rtmGetErrorStatus(rtm)         ((rtm)->errorStatus)
 #endif
 
 #ifndef rtmSetErrorStatus
 #define rtmSetErrorStatus(rtm, val)    ((rtm)->errorStatus = (val))
+#endif
+
+#ifndef rtmGetStopRequested
+#define rtmGetStopRequested(rtm)       ((rtm)->Timing.stopRequestedFlag)
+#endif
+
+#ifndef rtmSetStopRequested
+#define rtmSetStopRequested(rtm, val)  ((rtm)->Timing.stopRequestedFlag = (val))
+#endif
+
+#ifndef rtmGetStopRequestedPtr
+#define rtmGetStopRequestedPtr(rtm)    (&((rtm)->Timing.stopRequestedFlag))
+#endif
+
+#ifndef rtmGetT
+#define rtmGetT(rtm)                   (rtmGetTPtr((rtm))[0])
+#endif
+
+#ifndef rtmGetTPtr
+#define rtmGetTPtr(rtm)                ((rtm)->Timing.t)
+#endif
+
+#ifndef rtmGetTStart
+#define rtmGetTStart(rtm)              ((rtm)->Timing.tStart)
 #endif
 
 /* user code (top of header file) */
@@ -57,66 +170,125 @@
 
 /* Block signals (default storage) */
 typedef struct {
+  real_T FilterCoefficient;            /* '<S78>/Filter Coefficient' */
+  real_T DataTypeConversion[3];        /* '<S3>/Data Type Conversion' */
+  real_T IntegralGain;                 /* '<S72>/Integral Gain' */
   real_T ang_vel;                      /* '<S3>/distance_control' */
-  real32_T Probe[2];                   /* '<S17>/Probe' */
-  real32_T Probe_h[2];                 /* '<S24>/Probe' */
-  real32_T Probe_g[2];                 /* '<S31>/Probe' */
+  real_T LW_w;                         /* '<S14>/turn_adjus' */
+  real_T RW_w;                         /* '<S14>/turn_adjus' */
+  real32_T Probe[2];                   /* '<S18>/Probe' */
+  real32_T Probe_h[2];                 /* '<S25>/Probe' */
+  real32_T Probe_g[2];                 /* '<S32>/Probe' */
 } B_MicroMouse_Deploy_T;
 
 /* Block states (default storage) for system '<Root>' */
 typedef struct {
-  real32_T Integrator_DSTATE;          /* '<S23>/Integrator' */
-  real32_T Integrator_DSTATE_m;        /* '<S30>/Integrator' */
-  real32_T Integrator_DSTATE_i;        /* '<S37>/Integrator' */
+  real32_T Integrator_DSTATE;          /* '<S24>/Integrator' */
+  real32_T Integrator_DSTATE_m;        /* '<S31>/Integrator' */
+  real32_T Integrator_DSTATE_i;        /* '<S38>/Integrator' */
   struct {
     uint_T is_c3_MicroMouse_Deploy : 2;/* '<S3>/distance_control' */
+    uint_T is_c1_MicroMouse_Deploy : 2;/* '<S14>/turn_adjus' */
     uint_T is_active_c3_MicroMouse_Deploy : 1;/* '<S3>/distance_control' */
-  } bitsForTID0;
+    uint_T is_active_c1_MicroMouse_Deploy : 1;/* '<S14>/turn_adjus' */
+  } bitsForTID1;
 
-  uint8_T Delay_DSTATE;                /* '<S14>/Delay' */
-  uint8_T DelayInput1_DSTATE;          /* '<S39>/Delay Input1' */
-  int8_T Integrator_PrevResetState;    /* '<S23>/Integrator' */
-  int8_T Integrator_PrevResetState_a;  /* '<S30>/Integrator' */
-  int8_T Integrator_PrevResetState_j;  /* '<S37>/Integrator' */
-  uint8_T Integrator_IC_LOADING;       /* '<S23>/Integrator' */
-  uint8_T Integrator_IC_LOADING_k;     /* '<S30>/Integrator' */
-  uint8_T Integrator_IC_LOADING_a;     /* '<S37>/Integrator' */
+  uint8_T Delay_DSTATE;                /* '<S15>/Delay' */
+  uint8_T DelayInput1_DSTATE;          /* '<S94>/Delay Input1' */
+  int8_T Integrator_PrevResetState;    /* '<S24>/Integrator' */
+  int8_T Integrator_PrevResetState_a;  /* '<S31>/Integrator' */
+  int8_T Integrator_PrevResetState_j;  /* '<S38>/Integrator' */
+  uint8_T Integrator_IC_LOADING;       /* '<S24>/Integrator' */
+  uint8_T Integrator_IC_LOADING_k;     /* '<S31>/Integrator' */
+  uint8_T Integrator_IC_LOADING_a;     /* '<S38>/Integrator' */
 } DW_MicroMouse_Deploy_T;
+
+/* Continuous states (default storage) */
+typedef struct {
+  real_T Integrator_CSTATE;            /* '<S14>/Integrator' */
+  real_T Integrator_CSTATE_p;          /* '<S75>/Integrator' */
+  real_T Filter_CSTATE;                /* '<S70>/Filter' */
+} X_MicroMouse_Deploy_T;
+
+/* State derivatives (default storage) */
+typedef struct {
+  real_T Integrator_CSTATE;            /* '<S14>/Integrator' */
+  real_T Integrator_CSTATE_p;          /* '<S75>/Integrator' */
+  real_T Filter_CSTATE;                /* '<S70>/Filter' */
+} XDot_MicroMouse_Deploy_T;
+
+/* State disabled  */
+typedef struct {
+  boolean_T Integrator_CSTATE;         /* '<S14>/Integrator' */
+  boolean_T Integrator_CSTATE_p;       /* '<S75>/Integrator' */
+  boolean_T Filter_CSTATE;             /* '<S70>/Filter' */
+} XDis_MicroMouse_Deploy_T;
+
+#ifndef ODE3_INTG
+#define ODE3_INTG
+
+/* ODE3 Integration Data */
+typedef struct {
+  real_T *y;                           /* output */
+  real_T *f[3];                        /* derivatives */
+} ODE3_IntgData;
+
+#endif
 
 /* Parameters (default storage) */
 struct P_MicroMouse_Deploy_T_ {
+  real_T PIDController_D;              /* Mask Parameter: PIDController_D
+                                        * Referenced by: '<S68>/Derivative Gain'
+                                        */
+  real_T PIDController_I;              /* Mask Parameter: PIDController_I
+                                        * Referenced by: '<S72>/Integral Gain'
+                                        */
+  real_T PIDController_InitialConditionF;
+                              /* Mask Parameter: PIDController_InitialConditionF
+                               * Referenced by: '<S70>/Filter'
+                               */
+  real_T PIDController_InitialConditio_l;
+                              /* Mask Parameter: PIDController_InitialConditio_l
+                               * Referenced by: '<S75>/Integrator'
+                               */
+  real_T PIDController_N;              /* Mask Parameter: PIDController_N
+                                        * Referenced by: '<S78>/Filter Coefficient'
+                                        */
+  real_T PIDController_P;              /* Mask Parameter: PIDController_P
+                                        * Referenced by: '<S80>/Proportional Gain'
+                                        */
   real_T LowPassFilterDiscreteorContinuo;
                               /* Mask Parameter: LowPassFilterDiscreteorContinuo
-                               * Referenced by: '<S17>/Time constant'
+                               * Referenced by: '<S18>/Time constant'
                                */
   real_T LowPassFilterDiscreteorContin_p;
                               /* Mask Parameter: LowPassFilterDiscreteorContin_p
-                               * Referenced by: '<S24>/Time constant'
+                               * Referenced by: '<S25>/Time constant'
                                */
   real_T LowPassFilterDiscreteorContin_e;
                               /* Mask Parameter: LowPassFilterDiscreteorContin_e
-                               * Referenced by: '<S31>/Time constant'
+                               * Referenced by: '<S32>/Time constant'
                                */
   real_T CompareToConstant_const;     /* Mask Parameter: CompareToConstant_const
-                                       * Referenced by: '<S20>/Constant'
+                                       * Referenced by: '<S21>/Constant'
                                        */
   real_T CompareToConstant_const_j; /* Mask Parameter: CompareToConstant_const_j
-                                     * Referenced by: '<S27>/Constant'
+                                     * Referenced by: '<S28>/Constant'
                                      */
   real_T CompareToConstant_const_o; /* Mask Parameter: CompareToConstant_const_o
-                                     * Referenced by: '<S34>/Constant'
+                                     * Referenced by: '<S35>/Constant'
                                      */
   real_T LowPassFilterDiscreteorContin_k;
                               /* Mask Parameter: LowPassFilterDiscreteorContin_k
-                               * Referenced by: '<S17>/Constant'
+                               * Referenced by: '<S18>/Constant'
                                */
   real_T LowPassFilterDiscreteorContin_c;
                               /* Mask Parameter: LowPassFilterDiscreteorContin_c
-                               * Referenced by: '<S24>/Constant'
+                               * Referenced by: '<S25>/Constant'
                                */
   real_T LowPassFilterDiscreteorConti_cz;
                               /* Mask Parameter: LowPassFilterDiscreteorConti_cz
-                               * Referenced by: '<S31>/Constant'
+                               * Referenced by: '<S32>/Constant'
                                */
   real32_T LowPassFilterDiscreteorConti_pu;
                               /* Mask Parameter: LowPassFilterDiscreteorConti_pu
@@ -132,16 +304,22 @@ struct P_MicroMouse_Deploy_T_ {
                                */
   real32_T CompareToConstant_const_l;
                                     /* Mask Parameter: CompareToConstant_const_l
-                                     * Referenced by: '<S38>/Constant'
+                                     * Referenced by: '<S93>/Constant'
                                      */
   uint8_T DetectRisePositive_vinit;  /* Mask Parameter: DetectRisePositive_vinit
-                                      * Referenced by: '<S39>/Delay Input1'
+                                      * Referenced by: '<S94>/Delay Input1'
                                       */
   real_T Circumference_Value;          /* Expression: (2*pi*0.031)
-                                        * Referenced by: '<S16>/Circumference'
+                                        * Referenced by: '<S17>/Circumference'
                                         */
   real_T ref_Value;                    /* Expression: 2
                                         * Referenced by: '<S3>/ref'
+                                        */
+  real_T Constant2_Value;              /* Expression: 0
+                                        * Referenced by: '<S14>/Constant2'
+                                        */
+  real_T Integrator_IC;                /* Expression: 0
+                                        * Referenced by: '<S14>/Integrator'
                                         */
   real_T Gain1_Gain;                   /* Expression: 1
                                         * Referenced by: '<Root>/Gain1'
@@ -165,13 +343,13 @@ struct P_MicroMouse_Deploy_T_ {
                                         * Referenced by: '<S3>/OLED_STRING2'
                                         */
   real32_T Constant_Value_l;           /* Computed Parameter: Constant_Value_l
-                                        * Referenced by: '<S21>/Constant'
+                                        * Referenced by: '<S22>/Constant'
                                         */
   real32_T Constant_Value_i;           /* Computed Parameter: Constant_Value_i
-                                        * Referenced by: '<S28>/Constant'
+                                        * Referenced by: '<S29>/Constant'
                                         */
   real32_T Constant_Value_c;           /* Computed Parameter: Constant_Value_c
-                                        * Referenced by: '<S35>/Constant'
+                                        * Referenced by: '<S36>/Constant'
                                         */
   real32_T Gain2_Gain;                 /* Computed Parameter: Gain2_Gain
                                         * Referenced by: '<S4>/Gain2'
@@ -180,49 +358,49 @@ struct P_MicroMouse_Deploy_T_ {
                                         * Referenced by: '<S10>/Gain'
                                         */
   real32_T Integrator_gainval;         /* Computed Parameter: Integrator_gainval
-                                        * Referenced by: '<S23>/Integrator'
+                                        * Referenced by: '<S24>/Integrator'
                                         */
   real32_T Integrator_UpperSat;       /* Computed Parameter: Integrator_UpperSat
-                                       * Referenced by: '<S23>/Integrator'
+                                       * Referenced by: '<S24>/Integrator'
                                        */
   real32_T Integrator_LowerSat;       /* Computed Parameter: Integrator_LowerSat
-                                       * Referenced by: '<S23>/Integrator'
+                                       * Referenced by: '<S24>/Integrator'
                                        */
   real32_T Saturation_UpperSat;       /* Computed Parameter: Saturation_UpperSat
-                                       * Referenced by: '<S23>/Saturation'
+                                       * Referenced by: '<S24>/Saturation'
                                        */
   real32_T Saturation_LowerSat;       /* Computed Parameter: Saturation_LowerSat
-                                       * Referenced by: '<S23>/Saturation'
+                                       * Referenced by: '<S24>/Saturation'
                                        */
   real32_T Integrator_gainval_n;     /* Computed Parameter: Integrator_gainval_n
-                                      * Referenced by: '<S30>/Integrator'
+                                      * Referenced by: '<S31>/Integrator'
                                       */
   real32_T Integrator_UpperSat_k;   /* Computed Parameter: Integrator_UpperSat_k
-                                     * Referenced by: '<S30>/Integrator'
+                                     * Referenced by: '<S31>/Integrator'
                                      */
   real32_T Integrator_LowerSat_d;   /* Computed Parameter: Integrator_LowerSat_d
-                                     * Referenced by: '<S30>/Integrator'
+                                     * Referenced by: '<S31>/Integrator'
                                      */
   real32_T Saturation_UpperSat_f;   /* Computed Parameter: Saturation_UpperSat_f
-                                     * Referenced by: '<S30>/Saturation'
+                                     * Referenced by: '<S31>/Saturation'
                                      */
   real32_T Saturation_LowerSat_b;   /* Computed Parameter: Saturation_LowerSat_b
-                                     * Referenced by: '<S30>/Saturation'
+                                     * Referenced by: '<S31>/Saturation'
                                      */
   real32_T Integrator_gainval_k;     /* Computed Parameter: Integrator_gainval_k
-                                      * Referenced by: '<S37>/Integrator'
+                                      * Referenced by: '<S38>/Integrator'
                                       */
   real32_T Integrator_UpperSat_l;   /* Computed Parameter: Integrator_UpperSat_l
-                                     * Referenced by: '<S37>/Integrator'
+                                     * Referenced by: '<S38>/Integrator'
                                      */
   real32_T Integrator_LowerSat_g;   /* Computed Parameter: Integrator_LowerSat_g
-                                     * Referenced by: '<S37>/Integrator'
+                                     * Referenced by: '<S38>/Integrator'
                                      */
   real32_T Saturation_UpperSat_c;   /* Computed Parameter: Saturation_UpperSat_c
-                                     * Referenced by: '<S37>/Saturation'
+                                     * Referenced by: '<S38>/Saturation'
                                      */
   real32_T Saturation_LowerSat_o;   /* Computed Parameter: Saturation_LowerSat_o
-                                     * Referenced by: '<S37>/Saturation'
+                                     * Referenced by: '<S38>/Saturation'
                                      */
   real32_T Gain2_Gain_f;               /* Computed Parameter: Gain2_Gain_f
                                         * Referenced by: '<S3>/Gain2'
@@ -292,7 +470,7 @@ struct P_MicroMouse_Deploy_T_ {
                              * Referenced by: '<S4>/Data Store Memory4'
                              */
   boolean_T Constant_Value_d;          /* Computed Parameter: Constant_Value_d
-                                        * Referenced by: '<S40>/Constant'
+                                        * Referenced by: '<S95>/Constant'
                                         */
   int8_T DataStoreMemory_InitialValue_oa;
                           /* Computed Parameter: DataStoreMemory_InitialValue_oa
@@ -303,10 +481,10 @@ struct P_MicroMouse_Deploy_T_ {
                            * Referenced by: '<S1>/Data Store Memory1'
                            */
   uint8_T Tick_per_rev_Gain;           /* Computed Parameter: Tick_per_rev_Gain
-                                        * Referenced by: '<S16>/Tick_per_rev'
+                                        * Referenced by: '<S17>/Tick_per_rev'
                                         */
   uint8_T Delay_InitialCondition;  /* Computed Parameter: Delay_InitialCondition
-                                    * Referenced by: '<S14>/Delay'
+                                    * Referenced by: '<S15>/Delay'
                                     */
   uint8_T DataStoreMemory_InitialValue_e;
                            /* Computed Parameter: DataStoreMemory_InitialValue_e
@@ -350,7 +528,47 @@ struct P_MicroMouse_Deploy_T_ {
 
 /* Real-time Model Data Structure */
 struct tag_RTM_MicroMouse_Deploy_T {
-  const char_T * volatile errorStatus;
+  const char_T *errorStatus;
+  RTWSolverInfo solverInfo;
+  X_MicroMouse_Deploy_T *contStates;
+  int_T *periodicContStateIndices;
+  real_T *periodicContStateRanges;
+  real_T *derivs;
+  XDis_MicroMouse_Deploy_T *contStateDisabled;
+  boolean_T zCCacheNeedsReset;
+  boolean_T derivCacheNeedsReset;
+  boolean_T CTOutputIncnstWithState;
+  real_T odeY[3];
+  real_T odeF[3][3];
+  ODE3_IntgData intgData;
+
+  /*
+   * Sizes:
+   * The following substructure contains sizes information
+   * for many of the model attributes such as inputs, outputs,
+   * dwork, sample times, etc.
+   */
+  struct {
+    int_T numContStates;
+    int_T numPeriodicContStates;
+    int_T numSampTimes;
+  } Sizes;
+
+  /*
+   * Timing:
+   * The following substructure contains information regarding
+   * the timing information for the model.
+   */
+  struct {
+    uint32_T clockTick0;
+    time_T stepSize0;
+    uint32_T clockTick1;
+    time_T tStart;
+    SimTimeStep simTimeStep;
+    boolean_T stopRequestedFlag;
+    time_T *t;
+    time_T tArray[2];
+  } Timing;
 };
 
 /* Block parameters (default storage) */
@@ -358,6 +576,12 @@ extern P_MicroMouse_Deploy_T MicroMouse_Deploy_P;
 
 /* Block signals (default storage) */
 extern B_MicroMouse_Deploy_T MicroMouse_Deploy_B;
+
+/* Continuous states (default storage) */
+extern X_MicroMouse_Deploy_T MicroMouse_Deploy_X;
+
+/* Disabled states (default storage) */
+extern XDis_MicroMouse_Deploy_T MicroMouse_Deploy_XDis;
 
 /* Block states (default storage) */
 extern DW_MicroMouse_Deploy_T MicroMouse_Deploy_DW;
@@ -376,7 +600,6 @@ extern volatile boolean_T runModel;
  * These blocks were eliminated from the model due to optimizations:
  *
  * Block '<S1>/Pulse Generator' : Unused code path elimination
- * Block '<S3>/Data Type Conversion' : Unused code path elimination
  * Block '<S3>/LW_enc_signal' : Unused code path elimination
  * Block '<S3>/Motor_Left' : Unused code path elimination
  * Block '<S3>/Motor_Right' : Unused code path elimination
@@ -387,6 +610,7 @@ extern volatile boolean_T runModel;
  * Block '<S3>/Scope3' : Unused code path elimination
  * Block '<S3>/Scope4' : Unused code path elimination
  * Block '<S3>/Scope5' : Unused code path elimination
+ * Block '<S14>/Scope' : Unused code path elimination
  * Block '<S3>/dist_travelled' : Unused code path elimination
  * Block '<S3>/encoder_ticks' : Unused code path elimination
  * Block '<S3>/velocity' : Unused code path elimination
@@ -395,7 +619,6 @@ extern volatile boolean_T runModel;
  * Block '<S4>/Cast To Single4' : Unused code path elimination
  * Block '<S4>/Gain1' : Unused code path elimination
  * Block '<S4>/Gain4' : Unused code path elimination
- * Block '<S5>/Cast To Single1' : Unused code path elimination
  * Block '<S5>/Cast To Single2' : Unused code path elimination
  * Block '<S7>/NOT' : Unused code path elimination
  * Block '<S7>/NOT1' : Unused code path elimination
@@ -408,6 +631,7 @@ extern volatile boolean_T runModel;
  * Block '<S3>/Cast1' : Eliminate redundant data type conversion
  * Block '<S3>/Cast2' : Eliminate redundant data type conversion
  * Block '<S5>/Cast To Single' : Eliminate redundant data type conversion
+ * Block '<S5>/Cast To Single1' : Eliminate redundant data type conversion
  */
 
 /*-
@@ -438,33 +662,88 @@ extern volatile boolean_T runModel;
  * '<S11>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)'
  * '<S12>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)1'
  * '<S13>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)2'
- * '<S14>'  : 'MicroMouse_Deploy/StudentTemplate/convert_encoder_signal_to_ticks'
- * '<S15>'  : 'MicroMouse_Deploy/StudentTemplate/distance_control'
- * '<S16>'  : 'MicroMouse_Deploy/StudentTemplate/encoder_tick_to_dist'
- * '<S17>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)/Enable//disable time constant'
- * '<S18>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)/Initialization'
- * '<S19>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)/Integrator (Discrete or Continuous)'
- * '<S20>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)/Enable//disable time constant/Compare To Constant'
- * '<S21>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)/Enable//disable time constant/Compare To Zero'
- * '<S22>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)/Initialization/Init_u'
- * '<S23>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)/Integrator (Discrete or Continuous)/Discrete'
- * '<S24>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)1/Enable//disable time constant'
- * '<S25>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)1/Initialization'
- * '<S26>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)1/Integrator (Discrete or Continuous)'
- * '<S27>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)1/Enable//disable time constant/Compare To Constant'
- * '<S28>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)1/Enable//disable time constant/Compare To Zero'
- * '<S29>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)1/Initialization/Init_u'
- * '<S30>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)1/Integrator (Discrete or Continuous)/Discrete'
- * '<S31>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)2/Enable//disable time constant'
- * '<S32>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)2/Initialization'
- * '<S33>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)2/Integrator (Discrete or Continuous)'
- * '<S34>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)2/Enable//disable time constant/Compare To Constant'
- * '<S35>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)2/Enable//disable time constant/Compare To Zero'
- * '<S36>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)2/Initialization/Init_u'
- * '<S37>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)2/Integrator (Discrete or Continuous)/Discrete'
- * '<S38>'  : 'MicroMouse_Deploy/StudentTemplate/convert_encoder_signal_to_ticks/Compare To Constant'
- * '<S39>'  : 'MicroMouse_Deploy/StudentTemplate/convert_encoder_signal_to_ticks/Detect Rise Positive'
- * '<S40>'  : 'MicroMouse_Deploy/StudentTemplate/convert_encoder_signal_to_ticks/Detect Rise Positive/Positive'
+ * '<S14>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2'
+ * '<S15>'  : 'MicroMouse_Deploy/StudentTemplate/convert_encoder_signal_to_ticks'
+ * '<S16>'  : 'MicroMouse_Deploy/StudentTemplate/distance_control'
+ * '<S17>'  : 'MicroMouse_Deploy/StudentTemplate/encoder_tick_to_dist'
+ * '<S18>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)/Enable//disable time constant'
+ * '<S19>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)/Initialization'
+ * '<S20>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)/Integrator (Discrete or Continuous)'
+ * '<S21>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)/Enable//disable time constant/Compare To Constant'
+ * '<S22>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)/Enable//disable time constant/Compare To Zero'
+ * '<S23>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)/Initialization/Init_u'
+ * '<S24>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)/Integrator (Discrete or Continuous)/Discrete'
+ * '<S25>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)1/Enable//disable time constant'
+ * '<S26>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)1/Initialization'
+ * '<S27>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)1/Integrator (Discrete or Continuous)'
+ * '<S28>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)1/Enable//disable time constant/Compare To Constant'
+ * '<S29>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)1/Enable//disable time constant/Compare To Zero'
+ * '<S30>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)1/Initialization/Init_u'
+ * '<S31>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)1/Integrator (Discrete or Continuous)/Discrete'
+ * '<S32>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)2/Enable//disable time constant'
+ * '<S33>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)2/Initialization'
+ * '<S34>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)2/Integrator (Discrete or Continuous)'
+ * '<S35>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)2/Enable//disable time constant/Compare To Constant'
+ * '<S36>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)2/Enable//disable time constant/Compare To Zero'
+ * '<S37>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)2/Initialization/Init_u'
+ * '<S38>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)2/Integrator (Discrete or Continuous)/Discrete'
+ * '<S39>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller'
+ * '<S40>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/turn_adjus'
+ * '<S41>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Anti-windup'
+ * '<S42>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/D Gain'
+ * '<S43>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/External Derivative'
+ * '<S44>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Filter'
+ * '<S45>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Filter ICs'
+ * '<S46>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/I Gain'
+ * '<S47>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Ideal P Gain'
+ * '<S48>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Ideal P Gain Fdbk'
+ * '<S49>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Integrator'
+ * '<S50>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Integrator ICs'
+ * '<S51>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/N Copy'
+ * '<S52>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/N Gain'
+ * '<S53>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/P Copy'
+ * '<S54>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Parallel P Gain'
+ * '<S55>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Reset Signal'
+ * '<S56>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Saturation'
+ * '<S57>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Saturation Fdbk'
+ * '<S58>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Sum'
+ * '<S59>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Sum Fdbk'
+ * '<S60>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Tracking Mode'
+ * '<S61>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Tracking Mode Sum'
+ * '<S62>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Tsamp - Integral'
+ * '<S63>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Tsamp - Ngain'
+ * '<S64>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/postSat Signal'
+ * '<S65>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/preInt Signal'
+ * '<S66>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/preSat Signal'
+ * '<S67>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Anti-windup/Passthrough'
+ * '<S68>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/D Gain/Internal Parameters'
+ * '<S69>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/External Derivative/Error'
+ * '<S70>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Filter/Cont. Filter'
+ * '<S71>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Filter ICs/Internal IC - Filter'
+ * '<S72>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/I Gain/Internal Parameters'
+ * '<S73>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Ideal P Gain/Passthrough'
+ * '<S74>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Ideal P Gain Fdbk/Disabled'
+ * '<S75>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Integrator/Continuous'
+ * '<S76>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Integrator ICs/Internal IC'
+ * '<S77>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/N Copy/Disabled'
+ * '<S78>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/N Gain/Internal Parameters'
+ * '<S79>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/P Copy/Disabled'
+ * '<S80>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Parallel P Gain/Internal Parameters'
+ * '<S81>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Reset Signal/Disabled'
+ * '<S82>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Saturation/Passthrough'
+ * '<S83>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Saturation Fdbk/Disabled'
+ * '<S84>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Sum/Sum_PID'
+ * '<S85>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Sum Fdbk/Disabled'
+ * '<S86>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Tracking Mode/Disabled'
+ * '<S87>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Tracking Mode Sum/Passthrough'
+ * '<S88>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Tsamp - Integral/TsSignalSpecification'
+ * '<S89>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Tsamp - Ngain/Passthrough'
+ * '<S90>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/postSat Signal/Forward_Path'
+ * '<S91>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/preInt Signal/Internal PreInt'
+ * '<S92>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/preSat Signal/Forward_Path'
+ * '<S93>'  : 'MicroMouse_Deploy/StudentTemplate/convert_encoder_signal_to_ticks/Compare To Constant'
+ * '<S94>'  : 'MicroMouse_Deploy/StudentTemplate/convert_encoder_signal_to_ticks/Detect Rise Positive'
+ * '<S95>'  : 'MicroMouse_Deploy/StudentTemplate/convert_encoder_signal_to_ticks/Detect Rise Positive/Positive'
  */
 #endif                                 /* MicroMouse_Deploy_h_ */
 

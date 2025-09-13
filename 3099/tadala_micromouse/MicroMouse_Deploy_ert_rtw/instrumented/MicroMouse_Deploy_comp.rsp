@@ -18,4 +18,6 @@
 -IC:/ProgramData/MATLAB/SupportPackages/R2025a/3P.instrset/cmsis.instrset/CMSIS/Core/Include
 -IC:/ProgramData/MATLAB/SupportPackages/R2025a/3P.instrset/cmsis_dsp.instrset/Include
 -IC:/ProgramData/MATLAB/SupportPackages/R2025a/3P.instrset/cmsis_dsp.instrset/Include/dsp
+-IC:/Users/Student/Documents/MATLAB/tadala_main/3099/tadala_micromouseTemplate/MicroMouseProgramming_Code/Drivers/STM32L4xx_HAL_Driver/Inc/Legacy
+-IC:/Users/Student/Documents/MATLAB/tadala_main/3099/tadala_micromouseTemplate/MicroMouseProgramming_Code/Drivers/CMSIS/Include
 -I../../Core/Inc

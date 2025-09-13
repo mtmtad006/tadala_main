@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'MicroMouse_Deploy'.
  *
- * Model version                  : 5.5
+ * Model version                  : 5.7
  * Simulink Coder version         : 25.1 (R2025a) 21-Nov-2024
- * C/C++ source code generated on : Sat Sep 13 18:27:11 2025
+ * C/C++ source code generated on : Sat Sep 13 19:09:55 2025
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -23,11 +23,6 @@
 #ifndef rtmodel_h_
 #define rtmodel_h_
 #include "MicroMouse_Deploy.h"
-
-/* Macros generated for backwards compatibility  */
-#ifndef rtmGetStopRequested
-#define rtmGetStopRequested(rtm)       ((void*) 0)
-#endif
 #endif                                 /* rtmodel_h_ */
 
 /*

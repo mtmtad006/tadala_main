@@ -1,0 +1,29 @@
+%implements s2_b0_sizfn_Derivatives "C"
+
+%function Derivatives(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+XDot_MicroMouse_Deploy_T *_rtXdot;
+%closefile localVarDecl
+_rtXdot = %<(SLibCG_SE(SLibGetContStatesDerivativeStructPtr()))>;
+/* Derivatives for Integrator: '<S14>/Integrator' */
+/*@>22a8f*/_rtXdot->/*@>24824*/Integrator_CSTATE/*@>5c12*/ = /*@>2266d*/MicroMouse_Deploy_B./*@>2481b*/DataTypeConversion/*@>21c47*/[/*@>21c44*/2];
+/* Derivatives for Integrator: '<S75>/Integrator' */
+/*@>22a96*/_rtXdot->/*@>24827*/Integrator_CSTATE_p/*@>5c1e*/ = /*@>22673*/MicroMouse_Deploy_B./*@>2481e*/IntegralGain;
+/* Derivatives for Integrator: '<S70>/Filter' */
+/*@>22a9d*/_rtXdot->/*@>2482a*/Filter_CSTATE/*@>5c2a*/ = /*@>22679*/MicroMouse_Deploy_B./*@>24821*/FilterCoefficient;
+%closefile cfgTxt
+%<cfgTxt>
+%<LibSetSystemField(system, "CachedDerivativeLocalVars", localVarDecl)>
+%endfunction
+%function DerivativesFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Derivatives(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(0, 2, fcnProtoType)>
+%endfunction

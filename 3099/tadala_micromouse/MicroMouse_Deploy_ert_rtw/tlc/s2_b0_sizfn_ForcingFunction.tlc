@@ -1,0 +1,29 @@
+%implements s2_b0_sizfn_ForcingFunction "C"
+
+%function ForcingFunction(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+XDot_MicroMouse_Deploy_T *_rtXdot;
+%closefile localVarDecl
+_rtXdot = %<(SLibCG_SE(SLibGetContStatesDerivativeStructPtr()))>;
+/* ForcingFunction for Integrator: '<S14>/Integrator' */
+/*@>22ab4*/_rtXdot->/*@>2487b*/Integrator_CSTATE/*@>5c36*/ = /*@>2267f*/MicroMouse_Deploy_B./*@>24872*/DataTypeConversion/*@>21c4c*/[/*@>21c49*/2];
+/* ForcingFunction for Integrator: '<S75>/Integrator' */
+/*@>22abb*/_rtXdot->/*@>2487e*/Integrator_CSTATE_p/*@>5c42*/ = /*@>22685*/MicroMouse_Deploy_B./*@>24875*/IntegralGain;
+/* ForcingFunction for Integrator: '<S70>/Filter' */
+/*@>22ac2*/_rtXdot->/*@>24881*/Filter_CSTATE/*@>5c4e*/ = /*@>2268b*/MicroMouse_Deploy_B./*@>24878*/FilterCoefficient;
+%closefile cfgTxt
+%<cfgTxt>
+%<LibSetSystemField(system, "CachedForcingFunctionLocalVars", localVarDecl)>
+%endfunction
+%function ForcingFunctionFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void ForcingFunction(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(0, 3, fcnProtoType)>
+%endfunction

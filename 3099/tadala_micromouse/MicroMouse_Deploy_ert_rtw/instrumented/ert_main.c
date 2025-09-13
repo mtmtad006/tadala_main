@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'MicroMouse_Deploy'.
  *
- * Model version                  : 5.5
+ * Model version                  : 5.7
  * Simulink Coder version         : 25.1 (R2025a) 21-Nov-2024
- * C/C++ source code generated on : Sat Sep 13 18:27:11 2025
+ * C/C++ source code generated on : Sat Sep 13 19:09:55 2025
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -130,12 +130,14 @@ int main(int argc, char **argv)
   __disable_irq();
   ARMCM_SysTick_Config(modelBaseRate);
   runModel =
-    rtmGetErrorStatus(MicroMouse_Deploy_M) == (NULL);
+    rtmGetErrorStatus(MicroMouse_Deploy_M) == (NULL)&& !rtmGetStopRequested
+    (MicroMouse_Deploy_M);
   __enable_irq();
   __enable_irq();
   while (runModel) {
     stopRequested = !(
-                      rtmGetErrorStatus(MicroMouse_Deploy_M) == (NULL));
+                      rtmGetErrorStatus(MicroMouse_Deploy_M) == (NULL)&&
+                      !rtmGetStopRequested(MicroMouse_Deploy_M));
     if (stopRequested) {
       SysTick->CTRL &= ~SysTick_CTRL_ENABLE_Msk;
     }
