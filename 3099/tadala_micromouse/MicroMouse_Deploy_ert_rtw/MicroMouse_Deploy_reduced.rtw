@@ -1018,7 +1018,7 @@ CompiledModel {
 	Name			"<S14>/turn_adjus"
       }
       Block {
-	Name			"<S14>/Constant2"
+	Name			"<S14>/Constant"
       }
       Block {
 	Name			"<S14>/Integrator"
@@ -1904,7 +1904,7 @@ CompiledModel {
     }
     Block {
       Type		      Constant
-      Name		      "<S14>/Constant2"
+      Name		      "<S14>/Constant"
       RecordType	      "CompiledBlock"
       RecordIdx		      [2, 4]
       BlockIdx		      [2, 2, 4]

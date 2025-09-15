@@ -1,4 +1,4 @@
-%implements s2_b0_sizfn_Derivatives "C"
+%implements s2_b0_xm0jn_Derivatives "C"
 
 %function Derivatives(block, system) Output
 %assign cfgTxt = ""

@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'MicroMouse_Deploy'.
  *
- * Model version                  : 5.7
+ * Model version                  : 5.9
  * Simulink Coder version         : 25.1 (R2025a) 21-Nov-2024
- * C/C++ source code generated on : Sat Sep 13 19:09:55 2025
+ * C/C++ source code generated on : Mon Sep 15 23:24:24 2025
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -52,7 +52,7 @@ P_MicroMouse_Deploy_T MicroMouse_Deploy_P = {
   /* Mask Parameter: PIDController_P
    * Referenced by: '<S80>/Proportional Gain'
    */
-  20.0,
+  8.0,
 
   /* Mask Parameter: LowPassFilterDiscreteorContinuo
    * Referenced by: '<S18>/Time constant'
@@ -135,7 +135,7 @@ P_MicroMouse_Deploy_T MicroMouse_Deploy_P = {
   2.0,
 
   /* Expression: 0
-   * Referenced by: '<S14>/Constant2'
+   * Referenced by: '<S14>/Constant'
    */
   0.0,
 
@@ -179,7 +179,7 @@ P_MicroMouse_Deploy_T MicroMouse_Deploy_P = {
    */
   "Simulink Data Demo",
 
-  /* Computed Parameter: Constant_Value_l
+  /* Computed Parameter: Constant_Value_lf
    * Referenced by: '<S22>/Constant'
    */
   0.0F,

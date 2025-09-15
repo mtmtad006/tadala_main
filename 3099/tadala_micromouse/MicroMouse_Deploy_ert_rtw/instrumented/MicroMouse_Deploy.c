@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'MicroMouse_Deploy'.
  *
- * Model version                  : 5.7
+ * Model version                  : 5.9
  * Simulink Coder version         : 25.1 (R2025a) 21-Nov-2024
- * C/C++ source code generated on : Sat Sep 13 19:09:55 2025
+ * C/C++ source code generated on : Mon Sep 15 23:24:24 2025
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -230,10 +230,10 @@ void MicroMouse_Deploy_step(void)
   }
 
   /* Sum: '<S14>/Error' incorporates:
-   *  Constant: '<S14>/Constant2'
+   *  Constant: '<S14>/Constant'
    *  Integrator: '<S14>/Integrator'
    */
-  rtb_Error = MicroMouse_Deploy_P.Constant2_Value -
+  rtb_Error = MicroMouse_Deploy_P.Constant_Value -
     MicroMouse_Deploy_X.Integrator_CSTATE;
 
   /* Gain: '<S78>/Filter Coefficient' incorporates:
@@ -343,7 +343,7 @@ void MicroMouse_Deploy_step(void)
      */
     rtb_LogicalOperator = (((real32_T)
       (MicroMouse_Deploy_P.LowPassFilterDiscreteorContinuo -
-       MicroMouse_Deploy_B.Probe[0]) <= MicroMouse_Deploy_P.Constant_Value_l) &&
+       MicroMouse_Deploy_B.Probe[0]) <= MicroMouse_Deploy_P.Constant_Value_lf) &&
       (MicroMouse_Deploy_P.LowPassFilterDiscreteorContin_k <
        MicroMouse_Deploy_P.CompareToConstant_const));
 
@@ -611,7 +611,7 @@ void MicroMouse_Deploy_step(void)
      *  Constant: '<S3>/Constant'
      *  DataStoreWrite: '<S9>/Data Store Write'
      */
-    Sum = fmod(floor(MicroMouse_Deploy_P.Constant_Value), 256.0);
+    Sum = fmod(floor(MicroMouse_Deploy_P.Constant_Value_l), 256.0);
     STATE = (uint8_T)(Sum < 0.0 ? (int32_T)(uint8_T)-(int8_T)(uint8_T)-Sum :
                       (int32_T)(uint8_T)Sum);
 

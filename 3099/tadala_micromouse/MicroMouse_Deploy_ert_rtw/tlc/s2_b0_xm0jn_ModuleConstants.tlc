@@ -1,4 +1,4 @@
-%implements s2_b0_sizfn_ModuleConstants "C"
+%implements s2_b0_xm0jn_ModuleConstants "C"
 
 %function ModuleConstants(block) Output
 

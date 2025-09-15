@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'MicroMouse_Deploy'.
  *
- * Model version                  : 5.7
+ * Model version                  : 5.9
  * Simulink Coder version         : 25.1 (R2025a) 21-Nov-2024
- * C/C++ source code generated on : Sat Sep 13 19:09:55 2025
+ * C/C++ source code generated on : Mon Sep 15 23:24:24 2025
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -315,8 +315,8 @@ struct P_MicroMouse_Deploy_T_ {
   real_T ref_Value;                    /* Expression: 2
                                         * Referenced by: '<S3>/ref'
                                         */
-  real_T Constant2_Value;              /* Expression: 0
-                                        * Referenced by: '<S14>/Constant2'
+  real_T Constant_Value;               /* Expression: 0
+                                        * Referenced by: '<S14>/Constant'
                                         */
   real_T Integrator_IC;                /* Expression: 0
                                         * Referenced by: '<S14>/Integrator'
@@ -333,7 +333,7 @@ struct P_MicroMouse_Deploy_T_ {
   real_T Constant1_Value;              /* Expression: 0.3
                                         * Referenced by: '<S3>/Constant1'
                                         */
-  real_T Constant_Value;               /* Expression: 27
+  real_T Constant_Value_l;             /* Expression: 27
                                         * Referenced by: '<S3>/Constant'
                                         */
   char_T OLED_STRING1_String[256];     /* Expression: "UCT MICROMOUSE '25"
@@ -342,7 +342,7 @@ struct P_MicroMouse_Deploy_T_ {
   char_T OLED_STRING2_String[256];     /* Expression: "Simulink Data Demo"
                                         * Referenced by: '<S3>/OLED_STRING2'
                                         */
-  real32_T Constant_Value_l;           /* Computed Parameter: Constant_Value_l
+  real32_T Constant_Value_lf;          /* Computed Parameter: Constant_Value_lf
                                         * Referenced by: '<S22>/Constant'
                                         */
   real32_T Constant_Value_i;           /* Computed Parameter: Constant_Value_i

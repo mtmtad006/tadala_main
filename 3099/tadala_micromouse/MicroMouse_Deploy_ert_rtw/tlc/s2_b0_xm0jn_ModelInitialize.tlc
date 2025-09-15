@@ -1,4 +1,4 @@
-%implements s2_b0_sizfn_ModelInitialize "C"
+%implements s2_b0_xm0jn_ModelInitialize "C"
 
 %function ModelInitialize(block, system) Output
 %assign cfgTxt = ""
@@ -12,136 +12,136 @@ int32_T i;
 %<SLibWriteMachineInitialize()>
 %<SLibCGIRDumpSystemUserCode(2, "Start", "Header")>\
 %<SLibCGIRDumpSystemUserCode(2, "Start", "Body")>\
-/* {S!d2702}Start for DataStoreMemory: '<S1>/Data Store Memory' */
+/* {S!d2606}Start for DataStoreMemory: '<S1>/Data Store Memory' */
 /*@>13d06*/MOTOR_LS/*@>5c58*/ = /*@>22937*/MicroMouse_Deploy_P./*@>24a90*/DataStoreMemory_InitialValue_oa;
-/* {S!d2704}Start for DataStoreMemory: '<S1>/Data Store Memory1' */
+/* {S!d2608}Start for DataStoreMemory: '<S1>/Data Store Memory1' */
 /*@>13d0a*/MOTOR_RS/*@>5c5a*/ = /*@>2293d*/MicroMouse_Deploy_P./*@>24a93*/DataStoreMemory1_InitialValu_p2;
-/* {S!d2706}Start for Probe: '<S18>/Probe' */
+/* {S!d2610}Start for Probe: '<S18>/Probe' */
 /*@>22691*/MicroMouse_Deploy_B./*@>24a7e*/Probe/*@>5d7e*/[/*@>13d55*/0]/*@>5d81*/ = /*@>13d54*/0.01F;
 /*@>22697*/MicroMouse_Deploy_B./*@>24a81*/Probe/*@>5d84*/[/*@>13d57*/1]/*@>5d87*/ = /*@>13d56*/0.0F;
-/* {S!d2708}Start for Probe: '<S25>/Probe' */
+/* {S!d2612}Start for Probe: '<S25>/Probe' */
 /*@>2269d*/MicroMouse_Deploy_B./*@>24a84*/Probe_h/*@>5d91*/[/*@>13d59*/0]/*@>5d94*/ = /*@>13d58*/0.01F;
 /*@>226a3*/MicroMouse_Deploy_B./*@>24a87*/Probe_h/*@>5d97*/[/*@>13d5b*/1]/*@>5d9a*/ = /*@>13d5a*/0.0F;
-/* {S!d2710}Start for Probe: '<S32>/Probe' */
+/* {S!d2614}Start for Probe: '<S32>/Probe' */
 /*@>226a9*/MicroMouse_Deploy_B./*@>24a8a*/Probe_g/*@>5da4*/[/*@>13d5d*/0]/*@>5da7*/ = /*@>13d5c*/0.01F;
 /*@>226af*/MicroMouse_Deploy_B./*@>24a8d*/Probe_g/*@>5daa*/[/*@>13d5f*/1]/*@>5dad*/ = /*@>13d5e*/0.0F;
 /*@>102cf*/for (/*@>248af*/i = /*@>248ae*/0; /*@>248b9*/i < /*@>248b7*/18; /*@>248b5*/i/*@>248bd*/++) {
-    /* {S!d2712}Start for DataStoreMemory: '<S2>/Data Store Memory' */
+    /* {S!d2616}Start for DataStoreMemory: '<S2>/Data Store Memory' */
     /*@>13dc0*/oled_string1/*@>102c6*/[/*@>17892*/i]/*@>102c5*/ = /*@>22943*/MicroMouse_Deploy_P./*@>24a96*/DataStoreMemory_InitialValue_e;
-    /* {S!d2714}Start for DataStoreMemory: '<S2>/Data Store Memory1' incorporates:
+    /* {S!d2618}Start for DataStoreMemory: '<S2>/Data Store Memory1' incorporates:
  *  DataStoreMemory: '<S2>/Data Store Memory'
  */
     /*@>13dc2*/oled_string2/*@>102de*/[/*@>17898*/i]/*@>102dd*/ = /*@>22949*/MicroMouse_Deploy_P./*@>24a99*/DataStoreMemory1_InitialValue_b;
-    /* {S!d2716}Start for DataStoreMemory: '<S2>/Data Store Memory2' incorporates:
+    /* {S!d2620}Start for DataStoreMemory: '<S2>/Data Store Memory2' incorporates:
  *  DataStoreMemory: '<S2>/Data Store Memory'
  */
     /*@>13dc4*/oled_string3/*@>102f6*/[/*@>1789e*/i]/*@>102f5*/ = /*@>2294f*/MicroMouse_Deploy_P./*@>24a9c*/DataStoreMemory2_InitialValue_p;
-    /* {S!d2718}Start for DataStoreMemory: '<S2>/Data Store Memory3' incorporates:
+    /* {S!d2622}Start for DataStoreMemory: '<S2>/Data Store Memory3' incorporates:
  *  DataStoreMemory: '<S2>/Data Store Memory'
  */
     /*@>13dc6*/oled_string4/*@>1030e*/[/*@>178a4*/i]/*@>1030d*/ = /*@>22955*/MicroMouse_Deploy_P./*@>24a9f*/DataStoreMemory3_InitialValue_c;
-    /* {S!d2720}Start for DataStoreMemory: '<S2>/Data Store Memory4' incorporates:
+    /* {S!d2624}Start for DataStoreMemory: '<S2>/Data Store Memory4' incorporates:
  *  DataStoreMemory: '<S2>/Data Store Memory'
  */
     /*@>13dc8*/oled_string5/*@>10326*/[/*@>178aa*/i]/*@>10325*/ = /*@>2295b*/MicroMouse_Deploy_P./*@>24aa2*/DataStoreMemory4_InitialValue_f;
 }
-/* {S!d2722}Start for DataStoreMemory: '<S9>/Data Store Memory' */
+/* {S!d2626}Start for DataStoreMemory: '<S9>/Data Store Memory' */
 /*@>13d0e*/STATE/*@>5c7d*/ = /*@>22961*/MicroMouse_Deploy_P./*@>24aa5*/DataStoreMemory_InitialValue_n;
-/* {S!d2724}Start for DataStoreMemory: '<S4>/Data Store Memory' */
+/* {S!d2628}Start for DataStoreMemory: '<S4>/Data Store Memory' */
 /*@>13d12*/V_BATT/*@>5c7f*/ = /*@>22967*/MicroMouse_Deploy_P./*@>24aa8*/DataStoreMemory_InitialValue_b;
-/* {S!d2726}Start for DataStoreMemory: '<S4>/Data Store Memory1' */
+/* {S!d2630}Start for DataStoreMemory: '<S4>/Data Store Memory1' */
 /*@>13d16*/V_PHOTO_DOWN_LS/*@>5c81*/ = /*@>2296d*/MicroMouse_Deploy_P./*@>24aab*/DataStoreMemory1_InitialValue_a;
-/* {S!d2728}Start for DataStoreMemory: '<S4>/Data Store Memory2' */
+/* {S!d2632}Start for DataStoreMemory: '<S4>/Data Store Memory2' */
 /*@>13d1a*/V_PHOTO_DOWN_RS/*@>5c83*/ = /*@>22973*/MicroMouse_Deploy_P./*@>24aae*/DataStoreMemory2_InitialValue_e;
-/* {S!d2730}Start for DataStoreMemory: '<S4>/Data Store Memory3' */
+/* {S!d2634}Start for DataStoreMemory: '<S4>/Data Store Memory3' */
 /*@>13d1e*/V_PHOTO_MOT_LS/*@>5c85*/ = /*@>22979*/MicroMouse_Deploy_P./*@>24ab1*/DataStoreMemory3_InitialValue_n;
-/* {S!d2732}Start for DataStoreMemory: '<S4>/Data Store Memory4' */
+/* {S!d2636}Start for DataStoreMemory: '<S4>/Data Store Memory4' */
 /*@>13d22*/V_PHOTO_MOT_RS/*@>5c87*/ = /*@>2297f*/MicroMouse_Deploy_P./*@>24ab4*/DataStoreMemory4_InitialValue;
-/* {S!d2734}Start for DataStoreMemory: '<S6>/Data Store Memory' */
+/* {S!d2638}Start for DataStoreMemory: '<S6>/Data Store Memory' */
 /*@>13e16*/LED/*@>1302f*/[/*@>13e22*/0]/*@>1302e*/ = /*@>22985*/MicroMouse_Deploy_P./*@>24ab7*/DataStoreMemory_InitialValue_c;
-/* {S!d2736}Start for DataStoreMemory: '<S5>/Data Store Memory' */
+/* {S!d2640}Start for DataStoreMemory: '<S5>/Data Store Memory' */
 /*@>13e1a*/IMU_Accel/*@>13037*/[/*@>13e23*/0]/*@>13036*/ = /*@>2298b*/MicroMouse_Deploy_P./*@>24aba*/DataStoreMemory_InitialValue;
-/* {S!d2738}Start for DataStoreMemory: '<S5>/Data Store Memory1' */
+/* {S!d2642}Start for DataStoreMemory: '<S5>/Data Store Memory1' */
 /*@>13e1e*/IMU_Gyro/*@>1303f*/[/*@>13e24*/0]/*@>1303e*/ = /*@>22991*/MicroMouse_Deploy_P./*@>24abd*/DataStoreMemory1_InitialValue;
-/* {S!d2740}Start for DataStoreMemory: '<S6>/Data Store Memory' */
+/* {S!d2644}Start for DataStoreMemory: '<S6>/Data Store Memory' */
 /*@>13e25*/LED/*@>1304b*/[/*@>13e31*/1]/*@>1304a*/ = /*@>22997*/MicroMouse_Deploy_P./*@>24ac0*/DataStoreMemory_InitialValue_c;
-/* {S!d2742}Start for DataStoreMemory: '<S5>/Data Store Memory' */
+/* {S!d2646}Start for DataStoreMemory: '<S5>/Data Store Memory' */
 /*@>13e29*/IMU_Accel/*@>13053*/[/*@>13e32*/1]/*@>13052*/ = /*@>2299d*/MicroMouse_Deploy_P./*@>24ac3*/DataStoreMemory_InitialValue;
-/* {S!d2744}Start for DataStoreMemory: '<S5>/Data Store Memory1' */
+/* {S!d2648}Start for DataStoreMemory: '<S5>/Data Store Memory1' */
 /*@>13e2d*/IMU_Gyro/*@>1305b*/[/*@>13e33*/1]/*@>1305a*/ = /*@>229a3*/MicroMouse_Deploy_P./*@>24ac6*/DataStoreMemory1_InitialValue;
-/* {S!d2746}Start for DataStoreMemory: '<S6>/Data Store Memory' */
+/* {S!d2650}Start for DataStoreMemory: '<S6>/Data Store Memory' */
 /*@>13e34*/LED/*@>13067*/[/*@>13e40*/2]/*@>13066*/ = /*@>229a9*/MicroMouse_Deploy_P./*@>24ac9*/DataStoreMemory_InitialValue_c;
-/* {S!d2748}Start for DataStoreMemory: '<S5>/Data Store Memory' */
+/* {S!d2652}Start for DataStoreMemory: '<S5>/Data Store Memory' */
 /*@>13e38*/IMU_Accel/*@>1306f*/[/*@>13e41*/2]/*@>1306e*/ = /*@>229af*/MicroMouse_Deploy_P./*@>24acc*/DataStoreMemory_InitialValue;
-/* {S!d2750}Start for DataStoreMemory: '<S5>/Data Store Memory1' */
+/* {S!d2654}Start for DataStoreMemory: '<S5>/Data Store Memory1' */
 /*@>13e3c*/IMU_Gyro/*@>13077*/[/*@>13e42*/2]/*@>13076*/ = /*@>229b5*/MicroMouse_Deploy_P./*@>24acf*/DataStoreMemory1_InitialValue;
-/* {S!d2752}Start for DataStoreMemory: '<S5>/Data Store Memory2' */
+/* {S!d2656}Start for DataStoreMemory: '<S5>/Data Store Memory2' */
 /*@>13d26*/IMU_Temp/*@>5c93*/ = /*@>229bb*/MicroMouse_Deploy_P./*@>24ad2*/DataStoreMemory2_InitialValue;
-/* {S!d2754}Start for DataStoreMemory: '<S7>/Data Store Memory' */
+/* {S!d2658}Start for DataStoreMemory: '<S7>/Data Store Memory' */
 /*@>13e09*/SW/*@>13016*/[/*@>13e0d*/0]/*@>13015*/ = /*@>229c1*/MicroMouse_Deploy_P./*@>24ad5*/DataStoreMemory_InitialValue_h;
 /*@>13e0e*/SW/*@>13020*/[/*@>13e12*/1]/*@>1301f*/ = /*@>229c7*/MicroMouse_Deploy_P./*@>24ad8*/DataStoreMemory_InitialValue_h;
-/* {S!d2756}Start for DataStoreMemory: '<S8>/Data Store Memory' */
+/* {S!d2660}Start for DataStoreMemory: '<S8>/Data Store Memory' */
 /*@>13d2a*/Vbattery/*@>5c9a*/ = /*@>229cd*/MicroMouse_Deploy_P./*@>24adb*/DataStoreMemory_InitialValue_l;
-/* {S!d2758}Start for DataStoreMemory: '<S8>/Data Store Memory1' */
+/* {S!d2662}Start for DataStoreMemory: '<S8>/Data Store Memory1' */
 /*@>13d2e*/Vshunt/*@>5c9c*/ = /*@>229d3*/MicroMouse_Deploy_P./*@>24ade*/DataStoreMemory1_InitialValue_p;
-/* {S!d2760}Start for DataStoreMemory: '<S8>/Data Store Memory2' */
+/* {S!d2664}Start for DataStoreMemory: '<S8>/Data Store Memory2' */
 /*@>13d32*/Current/*@>5c9e*/ = /*@>229d9*/MicroMouse_Deploy_P./*@>24ae1*/DataStoreMemory2_InitialValue_n;
-/* {S!d2762}Start for DataStoreMemory: '<S8>/Data Store Memory3' */
+/* {S!d2666}Start for DataStoreMemory: '<S8>/Data Store Memory3' */
 /*@>13d36*/Power/*@>5ca0*/ = /*@>229df*/MicroMouse_Deploy_P./*@>24ae4*/DataStoreMemory3_InitialValue_g;
-/* {S!d2764}Start for DataStoreMemory: '<S8>/Data Store Memory4' */
+/* {S!d2668}Start for DataStoreMemory: '<S8>/Data Store Memory4' */
 /*@>13d3a*/batteryLife/*@>5ca2*/ = /*@>229e5*/MicroMouse_Deploy_P./*@>24ae7*/DataStoreMemory4_InitialValue_k;
-/* {S!d2766}Start for DataStoreMemory: '<S10>/Data Store Memory' */
+/* {S!d2670}Start for DataStoreMemory: '<S10>/Data Store Memory' */
 /*@>13dca*/TOF_Distance/*@>12fa2*/[/*@>13dda*/0]/*@>12fa1*/ = /*@>229eb*/MicroMouse_Deploy_P./*@>24aea*/DataStoreMemory_InitialValue_o;
-/* {S!d2768}Start for DataStoreMemory: '<S10>/Data Store Memory1' */
+/* {S!d2672}Start for DataStoreMemory: '<S10>/Data Store Memory1' */
 /*@>13dce*/TOF_Ambient/*@>12faa*/[/*@>13ddb*/0]/*@>12fa9*/ = /*@>229f1*/MicroMouse_Deploy_P./*@>24aed*/DataStoreMemory1_InitialValue_h;
-/* {S!d2770}Start for DataStoreMemory: '<S10>/Data Store Memory2' */
+/* {S!d2674}Start for DataStoreMemory: '<S10>/Data Store Memory2' */
 /*@>13dd2*/TOF_Signal/*@>12fb2*/[/*@>13ddc*/0]/*@>12fb1*/ = /*@>229f7*/MicroMouse_Deploy_P./*@>24af0*/DataStoreMemory2_InitialValue_g;
-/* {S!d2772}Start for DataStoreMemory: '<S10>/Data Store Memory3' */
+/* {S!d2676}Start for DataStoreMemory: '<S10>/Data Store Memory3' */
 /*@>13dd6*/TOF_Status/*@>12fba*/[/*@>13ddd*/0]/*@>12fb9*/ = /*@>229fd*/MicroMouse_Deploy_P./*@>24af3*/DataStoreMemory3_InitialValue;
-/* {S!d2774}Start for DataStoreMemory: '<S10>/Data Store Memory' */
+/* {S!d2678}Start for DataStoreMemory: '<S10>/Data Store Memory' */
 /*@>13dde*/TOF_Distance/*@>12fc7*/[/*@>13dee*/1]/*@>12fc6*/ = /*@>22a03*/MicroMouse_Deploy_P./*@>24af6*/DataStoreMemory_InitialValue_o;
-/* {S!d2776}Start for DataStoreMemory: '<S10>/Data Store Memory1' */
+/* {S!d2680}Start for DataStoreMemory: '<S10>/Data Store Memory1' */
 /*@>13de2*/TOF_Ambient/*@>12fcf*/[/*@>13def*/1]/*@>12fce*/ = /*@>22a09*/MicroMouse_Deploy_P./*@>24af9*/DataStoreMemory1_InitialValue_h;
-/* {S!d2778}Start for DataStoreMemory: '<S10>/Data Store Memory2' */
+/* {S!d2682}Start for DataStoreMemory: '<S10>/Data Store Memory2' */
 /*@>13de6*/TOF_Signal/*@>12fd7*/[/*@>13df0*/1]/*@>12fd6*/ = /*@>22a0f*/MicroMouse_Deploy_P./*@>24afc*/DataStoreMemory2_InitialValue_g;
-/* {S!d2780}Start for DataStoreMemory: '<S10>/Data Store Memory3' */
+/* {S!d2684}Start for DataStoreMemory: '<S10>/Data Store Memory3' */
 /*@>13dea*/TOF_Status/*@>12fdf*/[/*@>13df1*/1]/*@>12fde*/ = /*@>22a15*/MicroMouse_Deploy_P./*@>24aff*/DataStoreMemory3_InitialValue;
-/* {S!d2782}Start for DataStoreMemory: '<S10>/Data Store Memory' */
+/* {S!d2686}Start for DataStoreMemory: '<S10>/Data Store Memory' */
 /*@>13df2*/TOF_Distance/*@>12fec*/[/*@>13e02*/2]/*@>12feb*/ = /*@>22a1b*/MicroMouse_Deploy_P./*@>24b02*/DataStoreMemory_InitialValue_o;
-/* {S!d2784}Start for DataStoreMemory: '<S10>/Data Store Memory1' */
+/* {S!d2688}Start for DataStoreMemory: '<S10>/Data Store Memory1' */
 /*@>13df6*/TOF_Ambient/*@>12ff4*/[/*@>13e03*/2]/*@>12ff3*/ = /*@>22a21*/MicroMouse_Deploy_P./*@>24b05*/DataStoreMemory1_InitialValue_h;
-/* {S!d2786}Start for DataStoreMemory: '<S10>/Data Store Memory2' */
+/* {S!d2690}Start for DataStoreMemory: '<S10>/Data Store Memory2' */
 /*@>13dfa*/TOF_Signal/*@>12ffc*/[/*@>13e04*/2]/*@>12ffb*/ = /*@>22a27*/MicroMouse_Deploy_P./*@>24b08*/DataStoreMemory2_InitialValue_g;
-/* {S!d2788}Start for DataStoreMemory: '<S10>/Data Store Memory3' */
+/* {S!d2692}Start for DataStoreMemory: '<S10>/Data Store Memory3' */
 /*@>13dfe*/TOF_Status/*@>13004*/[/*@>13e05*/2]/*@>13003*/ = /*@>22a2d*/MicroMouse_Deploy_P./*@>24b0b*/DataStoreMemory3_InitialValue;
 %<SLibCGIRDumpSystemUserCode(2, "Start", "Trailer")>\
 %<SLibCGIRDumpSystemUserCode(2, "Initialize", "Header")>\
 %<SLibCGIRDumpSystemUserCode(2, "Initialize", "Body")>\
-/* {S!d2790}InitializeConditions for Delay: '<S15>/Delay' */
+/* {S!d2694}InitializeConditions for Delay: '<S15>/Delay' */
 /*@>22d21*/MicroMouse_Deploy_DW./*@>24b26*/Delay_DSTATE/*@>5df8*/ = /*@>22a33*/MicroMouse_Deploy_P./*@>24b0e*/Delay_InitialCondition;
-/* {S!d2792}InitializeConditions for UnitDelay: '<S94>/Delay Input1'
+/* {S!d2696}InitializeConditions for UnitDelay: '<S94>/Delay Input1'
  *
  * Block description for '<S94>/Delay Input1':
  *  
  *  Store in Global RAM
  */
 /*@>22d27*/MicroMouse_Deploy_DW./*@>24b29*/DelayInput1_DSTATE/*@>5e04*/ = /*@>22a39*/MicroMouse_Deploy_P./*@>24b11*/DetectRisePositive_vinit;
-/* {S!d2794}InitializeConditions for Integrator: '<S14>/Integrator' */
+/* {S!d2698}InitializeConditions for Integrator: '<S14>/Integrator' */
 /*@>22a68*/MicroMouse_Deploy_X./*@>24b1d*/Integrator_CSTATE/*@>5e11*/ = /*@>22a3f*/MicroMouse_Deploy_P./*@>24b14*/Integrator_IC;
-/* {S!d2796}InitializeConditions for Integrator: '<S75>/Integrator' */
+/* {S!d2700}InitializeConditions for Integrator: '<S75>/Integrator' */
 /*@>22a6e*/MicroMouse_Deploy_X./*@>24b20*/Integrator_CSTATE_p/*@>5e1e*/ = /*@>22a45*/MicroMouse_Deploy_P./*@>24b17*/PIDController_InitialConditio_l;
-/* {S!d2798}InitializeConditions for Integrator: '<S70>/Filter' */
+/* {S!d2702}InitializeConditions for Integrator: '<S70>/Filter' */
 /*@>22a74*/MicroMouse_Deploy_X./*@>24b23*/Filter_CSTATE/*@>5e2b*/ = /*@>22a4b*/MicroMouse_Deploy_P./*@>24b1a*/PIDController_InitialConditionF;
-/* {S!d2800}InitializeConditions for DiscreteIntegrator: '<S24>/Integrator' */
+/* {S!d2704}InitializeConditions for DiscreteIntegrator: '<S24>/Integrator' */
 /*@>22d2d*/MicroMouse_Deploy_DW./*@>24b2c*/Integrator_IC_LOADING/*@>5e3a*/ = /*@>24899*/1U;
-/* {S!d2802}InitializeConditions for DiscreteIntegrator: '<S31>/Integrator' */
+/* {S!d2706}InitializeConditions for DiscreteIntegrator: '<S31>/Integrator' */
 /*@>22d33*/MicroMouse_Deploy_DW./*@>24b2f*/Integrator_IC_LOADING_k/*@>5e49*/ = /*@>2489c*/1U;
-/* {S!d2804}InitializeConditions for DiscreteIntegrator: '<S38>/Integrator' */
+/* {S!d2708}InitializeConditions for DiscreteIntegrator: '<S38>/Integrator' */
 /*@>22d39*/MicroMouse_Deploy_DW./*@>24b32*/Integrator_IC_LOADING_a/*@>5e58*/ = /*@>2489f*/1U;
-/* {S!d2806}SystemInitialize for Chart: '<S3>/distance_control' */
+/* {S!d2710}SystemInitialize for Chart: '<S3>/distance_control' */
 /*@>22d45*/MicroMouse_Deploy_DW./*@>24b38*/bitsForTID1./*@>24b35*/is_active_c3_MicroMouse_Deploy/*@>5e62*/ = /*@>248a2*/0U;
 /*@>22d51*/MicroMouse_Deploy_DW./*@>24b3e*/bitsForTID1./*@>24b3b*/is_c3_MicroMouse_Deploy/*@>5e66*/ = /*@>13d88*/MicroMouse_D_IN_NO_ACTIVE_CHILD;
-/* {S!d2808}SystemInitialize for Chart: '<S14>/turn_adjus' */
+/* {S!d2712}SystemInitialize for Chart: '<S14>/turn_adjus' */
 /*@>22d5d*/MicroMouse_Deploy_DW./*@>24b44*/bitsForTID1./*@>24b41*/is_active_c1_MicroMouse_Deploy/*@>5e75*/ = /*@>248a5*/0U;
 /*@>22d69*/MicroMouse_Deploy_DW./*@>24b4a*/bitsForTID1./*@>24b47*/is_c1_MicroMouse_Deploy/*@>5e79*/ = /*@>13d91*/MicroMouse_D_IN_NO_ACTIVE_CHILD;
 %<SLibCGIRDumpSystemUserCode(2, "Initialize", "Trailer")>\
