@@ -1,0 +1,77 @@
+%implements s3_b0_qbdfo_Update "C"
+
+%function Update(block, system) Output
+%<SLibCGIRAccessLocalVar(49, 0, "")> %% rtb_uT
+%<SLibCGIRAccessLocalVar(96, 0, "")> %% rtb_LogicalOperator
+%<SLibCGIRAccessLocalVar(52, 0, "")> %% rtb_uT_p
+%<SLibCGIRAccessLocalVar(99, 0, "")> %% rtb_LogicalOperator_c
+%<SLibCGIRAccessLocalVar(55, 0, "")> %% rtb_uT_e
+%<SLibCGIRAccessLocalVar(102, 0, "")> %% rtb_LogicalOperator_a
+%<SLibCGIRAccessLocalVar(79, 0, "")> %% rtb_Compare
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%<SLibCGIRDumpSystemUserCode(3, "Update", "Header")>\
+%<SLibCGIRDumpSystemUserCode(3, "Update", "Body")>\
+if (%<(SLibCGIRIsSampleHit(1, 3))>) {
+    /* {S!d498}Update for UnitDelay: '<S95>/Delay Input1'
+ *
+ * Block description for '<S95>/Delay Input1':
+ *  
+ *  Store in Global RAM
+ */
+    /*@>967a0*/MicroMouse_Deploy_DW./*@>99d19*/DelayInput1_DSTATE/*@>5ca52*/ = /*@>7908a*/rtb_Compare;
+    /* {S!d500}Update for DiscreteIntegrator: '<S25>/Integrator' */
+    /*@>967a6*/MicroMouse_Deploy_DW./*@>99d1c*/Integrator_IC_LOADING/*@>594e8*/ = /*@>99c00*/0U;
+    /*@>967ac*/MicroMouse_Deploy_DW./*@>99d1f*/Integrator_DSTATE/*@>99c13*/ += /*@>9626d*/MicroMouse_Deploy_P./*@>99cec*/Integrator_gainval/*@>799d9*/ * /*@>79024*/rtb_uT;
+    /*@>594f5*/if (/*@>967b8*/MicroMouse_Deploy_DW./*@>99d22*/Integrator_DSTATE/*@>594f4*/ > /*@>96273*/MicroMouse_Deploy_P./*@>99cef*/Integrator_UpperSat) {
+        /*@>967be*/MicroMouse_Deploy_DW./*@>99d25*/Integrator_DSTATE/*@>594f8*/ = /*@>96279*/MicroMouse_Deploy_P./*@>99cf2*/Integrator_UpperSat;
+    } else /*@>594fc*/if (/*@>96842*/MicroMouse_Deploy_DW./*@>99d61*/Integrator_DSTATE/*@>594fb*/ < /*@>962bb*/MicroMouse_Deploy_P./*@>99d13*/Integrator_LowerSat) {
+        /*@>96848*/MicroMouse_Deploy_DW./*@>99d64*/Integrator_DSTATE/*@>594ff*/ = /*@>962c1*/MicroMouse_Deploy_P./*@>99d16*/Integrator_LowerSat;
+    }
+    /*@>967c4*/MicroMouse_Deploy_DW./*@>99d28*/Integrator_PrevResetState/*@>59509*/ = /*@>81aaf*/(int8_T)/*@>7903c*/rtb_LogicalOperator;
+    /* {E!d500}End of Update for DiscreteIntegrator: '<S25>/Integrator' */
+
+    /* {S!d502}Update for DiscreteIntegrator: '<S32>/Integrator' */
+    /*@>967ca*/MicroMouse_Deploy_DW./*@>99d2b*/Integrator_IC_LOADING_k/*@>59810*/ = /*@>99c03*/0U;
+    /*@>967d0*/MicroMouse_Deploy_DW./*@>99d2e*/Integrator_DSTATE_m/*@>99c14*/ += /*@>9627f*/MicroMouse_Deploy_P./*@>99cf5*/Integrator_gainval_n/*@>799ce*/ * /*@>79043*/rtb_uT_p;
+    /*@>5981d*/if (/*@>967dc*/MicroMouse_Deploy_DW./*@>99d31*/Integrator_DSTATE_m/*@>5981c*/ > /*@>96285*/MicroMouse_Deploy_P./*@>99cf8*/Integrator_UpperSat_k) {
+        /*@>967e2*/MicroMouse_Deploy_DW./*@>99d34*/Integrator_DSTATE_m/*@>59820*/ = /*@>9628b*/MicroMouse_Deploy_P./*@>99cfb*/Integrator_UpperSat_k;
+    } else /*@>59824*/if (/*@>96836*/MicroMouse_Deploy_DW./*@>99d5b*/Integrator_DSTATE_m/*@>59823*/ < /*@>962af*/MicroMouse_Deploy_P./*@>99d0d*/Integrator_LowerSat_d) {
+        /*@>9683c*/MicroMouse_Deploy_DW./*@>99d5e*/Integrator_DSTATE_m/*@>59827*/ = /*@>962b5*/MicroMouse_Deploy_P./*@>99d10*/Integrator_LowerSat_d;
+    }
+    /*@>967e8*/MicroMouse_Deploy_DW./*@>99d37*/Integrator_PrevResetState_a/*@>59831*/ = /*@>81ac3*/(int8_T)/*@>7905b*/rtb_LogicalOperator_c;
+    /* {E!d502}End of Update for DiscreteIntegrator: '<S32>/Integrator' */
+
+    /* {S!d504}Update for DiscreteIntegrator: '<S39>/Integrator' */
+    /*@>967ee*/MicroMouse_Deploy_DW./*@>99d3a*/Integrator_IC_LOADING_a/*@>59b31*/ = /*@>99c06*/0U;
+    /*@>967f4*/MicroMouse_Deploy_DW./*@>99d3d*/Integrator_DSTATE_i/*@>99c15*/ += /*@>96291*/MicroMouse_Deploy_P./*@>99cfe*/Integrator_gainval_k/*@>799c3*/ * /*@>79062*/rtb_uT_e;
+    /*@>59b3e*/if (/*@>96800*/MicroMouse_Deploy_DW./*@>99d40*/Integrator_DSTATE_i/*@>59b3d*/ > /*@>96297*/MicroMouse_Deploy_P./*@>99d01*/Integrator_UpperSat_l) {
+        /*@>96806*/MicroMouse_Deploy_DW./*@>99d43*/Integrator_DSTATE_i/*@>59b41*/ = /*@>9629d*/MicroMouse_Deploy_P./*@>99d04*/Integrator_UpperSat_l;
+    } else /*@>59b45*/if (/*@>9682a*/MicroMouse_Deploy_DW./*@>99d55*/Integrator_DSTATE_i/*@>59b44*/ < /*@>962a3*/MicroMouse_Deploy_P./*@>99d07*/Integrator_LowerSat_g) {
+        /*@>96830*/MicroMouse_Deploy_DW./*@>99d58*/Integrator_DSTATE_i/*@>59b48*/ = /*@>962a9*/MicroMouse_Deploy_P./*@>99d0a*/Integrator_LowerSat_g;
+    }
+    /*@>9680c*/MicroMouse_Deploy_DW./*@>99d46*/Integrator_PrevResetState_j/*@>59b52*/ = /*@>81ad7*/(int8_T)/*@>7907a*/rtb_LogicalOperator_a;
+    /* {E!d504}End of Update for DiscreteIntegrator: '<S39>/Integrator' */
+
+    /* {S!d506}Update for UnitDelay: '<S98>/Unit Delay1' */
+    /*@>96812*/MicroMouse_Deploy_DW./*@>99d49*/UnitDelay1_DSTATE/*@>5ca5e*/ = /*@>95f7b*/MicroMouse_Deploy_B./*@>99ce0*/Sum1;
+    /* {S!d508}Update for UnitDelay: '<S99>/Unit Delay1' */
+    /*@>96818*/MicroMouse_Deploy_DW./*@>99d4c*/UnitDelay1_DSTATE_a/*@>5ca6a*/ = /*@>95f81*/MicroMouse_Deploy_B./*@>99ce3*/Sum1_k;
+    /* {S!d510}Update for UnitDelay: '<S98>/Unit Delay2' */
+    /*@>9681e*/MicroMouse_Deploy_DW./*@>99d4f*/UnitDelay2_DSTATE/*@>5ca76*/ = /*@>95f87*/MicroMouse_Deploy_B./*@>99ce6*/Sum3;
+    /* {S!d512}Update for UnitDelay: '<S99>/Unit Delay2' */
+    /*@>96824*/MicroMouse_Deploy_DW./*@>99d52*/UnitDelay2_DSTATE_o/*@>5ca82*/ = /*@>95f8d*/MicroMouse_Deploy_B./*@>99ce9*/Sum3_n;
+}
+%<SLibCGIRDumpSystemUserCode(3, "Update", "Trailer")>\
+%closefile cfgTxt
+%<cfgTxt>
+%endfunction
+%function UpdateFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Update(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(0, 4, fcnProtoType)>
+%endfunction

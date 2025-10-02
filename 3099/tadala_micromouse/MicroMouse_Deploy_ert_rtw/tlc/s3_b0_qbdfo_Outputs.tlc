@@ -1,0 +1,657 @@
+%implements s3_b0_qbdfo_Outputs "C"
+
+%function Outputs(block, system) Output
+%<SLibCGIRAccessLocalVar(79, 0, "")> %% rtb_Compare
+%<SLibCGIRAccessLocalVar(96, 0, "")> %% rtb_LogicalOperator
+%<SLibCGIRAccessLocalVar(99, 0, "")> %% rtb_LogicalOperator_c
+%<SLibCGIRAccessLocalVar(102, 0, "")> %% rtb_LogicalOperator_a
+%<SLibCGIRAccessLocalVar(49, 0, "")> %% rtb_uT
+%<SLibCGIRAccessLocalVar(52, 0, "")> %% rtb_uT_p
+%<SLibCGIRAccessLocalVar(55, 0, "")> %% rtb_uT_e
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+real_T Sum;
+real_T ind1;
+real_T ind2;
+real_T p;
+real_T rtb_Product1;
+real_T rtb_Product2_d;
+real_T rtb_Sum_l;
+real_T rtb_d;
+real_T rtb_d_n;
+real_T rtb_p;
+real_T rtb_p_p;
+real_T rtb_q;
+real_T rtb_q_m;
+real_T rtb_r;
+real_T rtb_r_l;
+real_T tmp_0;
+real_T vprev;
+real32_T rtb_K;
+real32_T rtb_K_i;
+real32_T rtb_K_n;
+real32_T rtb_Max;
+real32_T rtb_Saturation;
+real32_T rtb_Saturation_e;
+real32_T rtb_Saturation_g;
+char_T rtb_ComposeString1_0[256];
+char_T rtb_ComposeString2_0[256];
+char_T rtb_ComposeString4_0[256];
+char_T rtb_ComposeString_0[256];
+boolean_T exitg1;
+boolean_T tmp;
+%closefile localVarDecl
+tmp = %<(SLibCG_SE(SLibCGIRIsSampleHit(1, 3)))>;
+if (tmp) {
+    /* {S!d328}RelationalOperator: '<S96>/Compare' incorporates:
+ *  Constant: '<S94>/Constant'
+ *  Constant: '<S96>/Constant'
+ *  DataStoreRead: '<S4>/Data Store Read4'
+ *  DataTypeConversion: '<S4>/Cast To Single'
+ *  Gain: '<S4>/Gain2'
+ *  RelationalOperator: '<S94>/Compare'
+ */
+    /*@>78980*/rtb_Compare/*@>588cd*/ = /*@>814cf*/(uint8_T)((/*@>9603f*/MicroMouse_Deploy_P./*@>997b3*/Gain2_Gain/*@>799b8*/ * /*@>814c9*/(real32_T)/*@>78cee*/V_PHOTO_MOT_RS/*@>660d9*/ >= /*@>96045*/MicroMouse_Deploy_P./*@>997b6*/CompareToConstant_const_l)/*@>5bf04*/ > /*@>814cd*/(int32_T)/*@>9604b*/MicroMouse_Deploy_P./*@>997b9*/Constant_Value_d);
+    /* {S!d330}Sum: '<S15>/Add' incorporates:
+ *  Delay: '<S15>/Delay'
+ *  RelationalOperator: '<S95>/FixPt Relational Operator'
+ *  UnitDelay: '<S95>/Delay Input1'
+ *
+ * Block description for '<S95>/Delay Input1':
+ *  
+ *  Store in Global RAM
+ */
+    /*@>9648e*/MicroMouse_Deploy_DW./*@>998d3*/Delay_DSTATE/*@>5ce62*/ = /*@>799ad*/(uint8_T)(/*@>814d5*/(uint32_T)(/*@>78c8a*/rtb_Compare/*@>660e2*/ > /*@>96494*/MicroMouse_Deploy_DW./*@>998d6*/DelayInput1_DSTATE)/*@>799a9*/ + /*@>9649a*/MicroMouse_Deploy_DW./*@>998d9*/Delay_DSTATE);
+    /* {S!d332}Chart: '<S3>/distance_control' incorporates:
+ *  Constant: '<S17>/Circumference'
+ *  Constant: '<S3>/ref'
+ *  Delay: '<S15>/Delay'
+ *  Gain: '<S17>/Tick_per_rev'
+ *  Product: '<S17>/Product'
+ */
+    /*@>5c648*/if (/*@>964a6*/MicroMouse_Deploy_DW./*@>998df*/bitsForTID1./*@>998dc*/is_active_c3_MicroMouse_Deploy/*@>5c646*/ == /*@>98df0*/0) {
+        /*@>964b2*/MicroMouse_Deploy_DW./*@>998e5*/bitsForTID1./*@>998e2*/is_active_c3_MicroMouse_Deploy/*@>5c64e*/ = /*@>98df3*/1U;
+        /*@>964be*/MicroMouse_Deploy_DW./*@>998eb*/bitsForTID1./*@>998e8*/is_c3_MicroMouse_Deploy/*@>5c65a*/ = /*@>78afd*/MicroMouse_Deploy_IN_Run;
+    } else /*@>77211*/if (/*@>96788*/MicroMouse_Deploy_DW./*@>99a4d*/bitsForTID1./*@>99a4a*/is_c3_MicroMouse_Deploy/*@>77210*/ == /*@>7ebde*/MicroMouse_Deploy_IN_Run) {
+        /*@>5c651*/if (/*@>814f4*/(real_T)(/*@>9625b*/MicroMouse_Deploy_P./*@>998c1*/Tick_per_rev_Gain/*@>7999a*/ * /*@>9678e*/MicroMouse_Deploy_DW./*@>99a50*/Delay_DSTATE)/*@>7998b*/ * /*@>7998a*/0.0009765625/*@>7997f*/ * /*@>96261*/MicroMouse_Deploy_P./*@>998c4*/Circumference_Value/*@>5c662*/ >= /*@>96267*/MicroMouse_Deploy_P./*@>998c7*/ref_Value) {
+            /*@>9679a*/MicroMouse_Deploy_DW./*@>99a56*/bitsForTID1./*@>99a53*/is_c3_MicroMouse_Deploy/*@>5c652*/ = /*@>78af7*/MicroMouse_Deploy_IN_Stop;
+        } else {
+            /*@>95f6f*/MicroMouse_Deploy_B./*@>997ad*/ang_vel/*@>5c656*/ = /*@>78afa*/70.0;
+        }
+    } else {
+        /* case IN_Stop: */
+        /*@>95f75*/MicroMouse_Deploy_B./*@>997b0*/ang_vel/*@>5c65e*/ = /*@>78b00*/0.0;
+    }
+    /* {E!d332}End of Chart: '<S3>/distance_control' */
+}
+/* {S!d334}Sum: '<S14>/Error' incorporates:
+ *  Constant: '<S14>/Constant'
+ *  Integrator: '<S14>/Integrator'
+ */
+/*@>78c17*/rtb_Sum_l/*@>5ce6a*/ = /*@>96051*/MicroMouse_Deploy_P./*@>997bc*/Constant_Value/*@>5ce67*/ - /*@>963fe*/MicroMouse_Deploy_X./*@>998ca*/Integrator_CSTATE;
+/* {S!d336}Gain: '<S79>/Filter Coefficient' incorporates:
+ *  Gain: '<S69>/Derivative Gain'
+ *  Integrator: '<S71>/Filter'
+ *  Sum: '<S71>/SumD'
+ */
+/*@>95e5b*/MicroMouse_Deploy_B./*@>99723*/FilterCoefficient/*@>58cb4*/ = (/*@>96057*/MicroMouse_Deploy_P./*@>997bf*/PIDController_D/*@>79975*/ * /*@>78cf6*/rtb_Sum_l/*@>66101*/ - /*@>96404*/MicroMouse_Deploy_X./*@>998cd*/Filter_CSTATE)/*@>7996b*/ * /*@>9605d*/MicroMouse_Deploy_P./*@>997c2*/PIDController_N;
+/* {S!d338}Sum: '<S85>/Sum' incorporates:
+ *  Gain: '<S81>/Proportional Gain'
+ *  Integrator: '<S76>/Integrator'
+ */
+/*@>78c19*/Sum/*@>5ce7b*/ = (/*@>96063*/MicroMouse_Deploy_P./*@>997c5*/PIDController_P/*@>79961*/ * /*@>78c94*/rtb_Sum_l/*@>5ce77*/ + /*@>9640a*/MicroMouse_Deploy_X./*@>998d0*/Integrator_CSTATE_p)/*@>5ce78*/ + /*@>95e61*/MicroMouse_Deploy_B./*@>99726*/FilterCoefficient;
+if (tmp) {
+    /* {S!d340}Chart: '<S14>/turn_adjus' */
+    /*@>5c676*/if (/*@>964ca*/MicroMouse_Deploy_DW./*@>998f1*/bitsForTID1./*@>998ee*/is_active_c1_MicroMouse_Deploy/*@>5c674*/ == /*@>98df5*/0) {
+        /*@>964d6*/MicroMouse_Deploy_DW./*@>998f7*/bitsForTID1./*@>998f4*/is_active_c1_MicroMouse_Deploy/*@>5c67d*/ = /*@>98df8*/1U;
+        /*@>964e2*/MicroMouse_Deploy_DW./*@>998fd*/bitsForTID1./*@>998fa*/is_c1_MicroMouse_Deploy/*@>5c692*/ = /*@>78b1d*/MicroMouse_Deploy_IN_deafult;
+    } else {
+/*@>5c677*/        switch (/*@>96764*/MicroMouse_Deploy_DW./*@>99a3b*/bitsForTID1./*@>99a38*/is_c1_MicroMouse_Deploy) {
+          case /*@>78b07*/MicroMouse_Deploy_IN_AdjustLeft:
+            /*@>95f57*/MicroMouse_Deploy_B./*@>997a1*/RW_w/*@>5c681*/ = /*@>78b0f*/Sum;
+            /*@>95f5d*/MicroMouse_Deploy_B./*@>997a4*/LW_w/*@>5c682*/ = /*@>78b13*/0.0;
+            break;
+          case /*@>78b08*/MicroMouse_Deplo_IN_AdjustRight:
+            /*@>95f4b*/MicroMouse_Deploy_B./*@>9979b*/LW_w/*@>5c68a*/ = /*@>78b16*/Sum;
+            /*@>95f51*/MicroMouse_Deploy_B./*@>9979e*/RW_w/*@>5c68b*/ = /*@>78b1a*/0.0;
+            break;
+          default:
+            /* case IN_deafult: */
+            /*@>5c696*/if (/*@>78b2a*/Sum/*@>5c6a8*/ < /*@>78b2c*/0.0) {
+                /*@>96770*/MicroMouse_Deploy_DW./*@>99a41*/bitsForTID1./*@>99a3e*/is_c1_MicroMouse_Deploy/*@>5c698*/ = /*@>78b20*/MicroMouse_Deploy_IN_AdjustLeft;
+            } else /*@>5c697*/if (/*@>78b2d*/Sum/*@>5c6ac*/ > /*@>78b2f*/0.0) {
+                /*@>9677c*/MicroMouse_Deploy_DW./*@>99a47*/bitsForTID1./*@>99a44*/is_c1_MicroMouse_Deploy/*@>5c69c*/ = /*@>78b23*/MicroMouse_Deplo_IN_AdjustRight;
+            } else {
+                /*@>95f63*/MicroMouse_Deploy_B./*@>997a7*/LW_w/*@>5c6a0*/ = /*@>78b26*/0.0;
+                /*@>95f69*/MicroMouse_Deploy_B./*@>997aa*/RW_w/*@>5c6a1*/ = /*@>78b29*/0.0;
+            }
+            break;
+        }
+    }
+    /* {E!d340}End of Chart: '<S14>/turn_adjus' */
+
+    /* {S!d342}DataTypeConversion: '<S1>/Cast1' incorporates:
+ *  DataStoreWrite: '<S1>/Data Store Write1'
+ *  Gain: '<Root>/Gain1'
+ *  Sum: '<S3>/Sum'
+ */
+/*@[1*/
+/*@[2*/
+    /*@>7992c*/rtb_Product1/*@>7992e*/ = /*@>92468*/fmod(/*@>92466*/floor((/*@>95e67*/MicroMouse_Deploy_B./*@>99729*/ang_vel/*@>6633e*/ + /*@>95e6d*/MicroMouse_Deploy_B./*@>9972c*/RW_w)/*@>79957*/ * /*@>96069*/MicroMouse_Deploy_P./*@>997c8*/Gain1_Gain), /*@>79929*/256.0);
+/*@]*/
+/*@]*/
+    /*@>7898c*/MOTOR_RS/*@>58d10*/ = /*@>81528*/(int8_T)(/*@>79935*/rtb_Product1/*@>79938*/ < /*@>79934*/0.0/*@>79938*/ ? (int32_T)/*@>7994a*/(int8_T)-/*@<79949*//*@>7993e*/(int8_T)/*@>7994c*/(uint8_T)-/*@<7993c*//*@>79939*/rtb_Product1 : (int32_T)/*@>79944*/(int8_T)/*@>7994f*/(uint8_T)/*@>79940*/rtb_Product1);
+    /* {S!d344}DataTypeConversion: '<S1>/Cast' incorporates:
+ *  DataStoreWrite: '<S1>/Data Store Write'
+ *  Gain: '<Root>/Gain'
+ *  Sum: '<S3>/Sum1'
+ */
+/*@[3*/
+/*@[4*/
+    /*@>798f3*/rtb_Product1/*@>798f5*/ = /*@>9246c*/fmod(/*@>9246a*/floor((/*@>95e73*/MicroMouse_Deploy_B./*@>9972f*/ang_vel/*@>90cf8*/ + /*@>95e79*/MicroMouse_Deploy_B./*@>99732*/LW_w)/*@>90cf7*/ * /*@>9606f*/MicroMouse_Deploy_P./*@>997cb*/Gain_Gain), /*@>798f0*/256.0);
+/*@]*/
+/*@]*/
+    /*@>78994*/MOTOR_LS/*@>58d73*/ = /*@>8153e*/(int8_T)(/*@>798fc*/rtb_Product1/*@>798ff*/ < /*@>798fb*/0.0/*@>798ff*/ ? (int32_T)/*@>79911*/(int8_T)-/*@<79910*//*@>79905*/(int8_T)/*@>79913*/(uint8_T)-/*@<79903*//*@>79900*/rtb_Product1 : (int32_T)/*@>7990b*/(int8_T)/*@>79916*/(uint8_T)/*@>79907*/rtb_Product1);
+    /* {S!d346}ComposeString: '<S2>/Compose String' incorporates:
+ *  StringConstant: '<S3>/OLED_STRING1'
+ */
+/*@[5*/
+    /*@>9246e*/snprintf(&/*@>91e9a*/rtb_ComposeString4_0/*@>91e9b*/[/*@>91e98*/0], /*@>78c30*/256U, /*@>98976*/"%<TLC_STR_CTX(0)>", &/*@>96075*/MicroMouse_Deploy_P./*@>997ce*/OLED_STRING1_String/*@>60678*/[/*@>78c32*/0]);
+/*@]*/
+    /* {S!d348}StringToASCII: '<S2>/String to ASCII' incorporates:
+ *  ComposeString: '<S2>/Compose String'
+ */
+/*@[6*/
+    /*@>92470*/strncpy(/*@>67324*/(char_T *)&/*@>78d4e*/oled_string1/*@>606a9*/[/*@>78c38*/0], &/*@>78d50*/rtb_ComposeString4_0/*@>6732b*/[/*@>78d10*/0], /*@>78c37*/18U);
+/*@]*/
+    /* {S!d350}ComposeString: '<S2>/Compose String1' incorporates:
+ *  StringConstant: '<S3>/OLED_STRING2'
+ */
+/*@[7*/
+    /*@>92472*/snprintf(&/*@>91ea4*/rtb_ComposeString4_0/*@>91ea5*/[/*@>91ea2*/0], /*@>78c39*/256U, /*@>9897a*/"%<TLC_STR_CTX(1)>", &/*@>9607b*/MicroMouse_Deploy_P./*@>997d1*/OLED_STRING2_String/*@>606dc*/[/*@>78c3b*/0]);
+/*@]*/
+    /* {S!d352}StringToASCII: '<S2>/String to ASCII1' incorporates:
+ *  ComposeString: '<S2>/Compose String1'
+ */
+/*@[8*/
+    /*@>92474*/strncpy(/*@>67348*/(char_T *)&/*@>78d56*/oled_string2/*@>606fd*/[/*@>78c41*/0], &/*@>78d58*/rtb_ComposeString4_0/*@>6734f*/[/*@>78d14*/0], /*@>78c40*/18U);
+/*@]*/
+    /* {S!d354}Logic: '<S19>/Logical Operator' incorporates:
+ *  Constant: '<S19>/Constant'
+ *  Constant: '<S19>/Time constant'
+ *  Constant: '<S22>/Constant'
+ *  Constant: '<S23>/Constant'
+ *  RelationalOperator: '<S22>/Compare'
+ *  RelationalOperator: '<S23>/Compare'
+ *  Sum: '<S19>/Sum1'
+ */
+    /*@>78996*/rtb_LogicalOperator/*@>593fb*/ = ((/*@>66346*/(real32_T)(/*@>96081*/MicroMouse_Deploy_P./*@>997d4*/LowPassFilterDiscreteorContinuo/*@>66347*/ - /*@>95e7f*/MicroMouse_Deploy_B./*@>99735*/Probe/*@>94b0b*/[/*@>94b08*/0])/*@>66133*/ <= /*@>96087*/MicroMouse_Deploy_P./*@>997d7*/Constant_Value_lf)/*@>593fa*/ && (/*@>9608d*/MicroMouse_Deploy_P./*@>997da*/LowPassFilterDiscreteorContin_k/*@>66138*/ < /*@>96093*/MicroMouse_Deploy_P./*@>997dd*/CompareToConstant_const));
+    /* {S!d356}Gain: '<S11>/K' incorporates:
+ *  DataStoreRead: '<S10>/Data Store Read'
+ *  DataTypeConversion: '<S10>/Cast To Single'
+ *  Gain: '<S10>/Gain'
+ */
+    /*@>7899a*/rtb_K/*@>59459*/ = /*@>96099*/MicroMouse_Deploy_P./*@>997e0*/Gain_Gain_g/*@>7e827*/ * /*@>7e82a*/(real32_T)/*@>94b0e*/TOF_Distance/*@>94b10*/[/*@>94b0d*/0]/*@>798c7*/ * /*@>9609f*/MicroMouse_Deploy_P./*@>997e3*/LowPassFilterDiscreteorConti_pu;
+    /* {S!d358}DiscreteIntegrator: '<S25>/Integrator' */
+    /*@>594b4*/if (/*@>964e8*/MicroMouse_Deploy_DW./*@>99900*/Integrator_IC_LOADING/*@>798c2*/ != /*@>98dfd*/0) {
+        /*@>964ee*/MicroMouse_Deploy_DW./*@>99903*/Integrator_DSTATE/*@>594b7*/ = /*@>7899e*/rtb_K;
+        /*@>594bb*/if (/*@>964f4*/MicroMouse_Deploy_DW./*@>99906*/Integrator_DSTATE/*@>594ba*/ > /*@>960a5*/MicroMouse_Deploy_P./*@>997e6*/Integrator_UpperSat) {
+            /*@>964fa*/MicroMouse_Deploy_DW./*@>99909*/Integrator_DSTATE/*@>594be*/ = /*@>960ab*/MicroMouse_Deploy_P./*@>997e9*/Integrator_UpperSat;
+        } else /*@>594c2*/if (/*@>96752*/MicroMouse_Deploy_DW./*@>99a32*/Integrator_DSTATE/*@>594c1*/ < /*@>9624f*/MicroMouse_Deploy_P./*@>998bb*/Integrator_LowerSat) {
+            /*@>96758*/MicroMouse_Deploy_DW./*@>99a35*/Integrator_DSTATE/*@>594c5*/ = /*@>96255*/MicroMouse_Deploy_P./*@>998be*/Integrator_LowerSat;
+        }
+    }
+    /*@>594cc*/if (/*@>789b2*/rtb_LogicalOperator/*@>594cb*/ || (/*@>96500*/MicroMouse_Deploy_DW./*@>9990c*/Integrator_PrevResetState/*@>798be*/ != /*@>98dff*/0)) {
+        /*@>96506*/MicroMouse_Deploy_DW./*@>9990f*/Integrator_DSTATE/*@>594cf*/ = /*@>789b7*/rtb_K;
+        /*@>594d3*/if (/*@>9650c*/MicroMouse_Deploy_DW./*@>99912*/Integrator_DSTATE/*@>594d2*/ > /*@>960b1*/MicroMouse_Deploy_P./*@>997ec*/Integrator_UpperSat) {
+            /*@>96512*/MicroMouse_Deploy_DW./*@>99915*/Integrator_DSTATE/*@>594d6*/ = /*@>960b7*/MicroMouse_Deploy_P./*@>997ef*/Integrator_UpperSat;
+        } else /*@>594da*/if (/*@>96746*/MicroMouse_Deploy_DW./*@>99a2c*/Integrator_DSTATE/*@>594d9*/ < /*@>96243*/MicroMouse_Deploy_P./*@>998b5*/Integrator_LowerSat) {
+            /*@>9674c*/MicroMouse_Deploy_DW./*@>99a2f*/Integrator_DSTATE/*@>594dd*/ = /*@>96249*/MicroMouse_Deploy_P./*@>998b8*/Integrator_LowerSat;
+        }
+    }
+    /* {S!d366}Saturate: '<S25>/Saturation' incorporates:
+ *  DiscreteIntegrator: '<S25>/Integrator'
+ */
+    /*@>7f2ae*/if (/*@>96518*/MicroMouse_Deploy_DW./*@>99918*/Integrator_DSTATE/*@>7ca5a*/ > /*@>960bd*/MicroMouse_Deploy_P./*@>997f2*/Saturation_UpperSat) {
+        /* {S!d360}Saturate: '<S25>/Saturation' */
+        /*@>7f2b2*/rtb_Saturation/*@>7f2b1*/ = /*@>960c3*/MicroMouse_Deploy_P./*@>997f5*/Saturation_UpperSat;
+    } else /*@>7f2bd*/if (/*@>9673a*/MicroMouse_Deploy_DW./*@>99a26*/Integrator_DSTATE/*@>7ca57*/ < /*@>96237*/MicroMouse_Deploy_P./*@>998af*/Saturation_LowerSat) {
+        /* {S!d362}Saturate: '<S25>/Saturation' */
+        /*@>7f2c1*/rtb_Saturation/*@>7f2c0*/ = /*@>9623d*/MicroMouse_Deploy_P./*@>998b2*/Saturation_LowerSat;
+    } else {
+        /* {S!d364}Saturate: '<S25>/Saturation' */
+        /*@>7ca70*/rtb_Saturation/*@>7ca61*/ = /*@>96740*/MicroMouse_Deploy_DW./*@>99a29*/Integrator_DSTATE;
+    }
+    /* {E!d366}End of Saturate: '<S25>/Saturation' */
+
+    /* {S!d368}Logic: '<S26>/Logical Operator' incorporates:
+ *  Constant: '<S26>/Constant'
+ *  Constant: '<S26>/Time constant'
+ *  Constant: '<S29>/Constant'
+ *  Constant: '<S30>/Constant'
+ *  RelationalOperator: '<S29>/Compare'
+ *  RelationalOperator: '<S30>/Compare'
+ *  Sum: '<S26>/Sum1'
+ */
+    /*@>789d1*/rtb_LogicalOperator_c/*@>59769*/ = ((/*@>66356*/(real32_T)(/*@>960c9*/MicroMouse_Deploy_P./*@>997f8*/LowPassFilterDiscreteorContin_p/*@>66357*/ - /*@>95e85*/MicroMouse_Deploy_B./*@>99738*/Probe_h/*@>94b49*/[/*@>94b46*/0])/*@>66150*/ <= /*@>960cf*/MicroMouse_Deploy_P./*@>997fb*/Constant_Value_i)/*@>59768*/ && (/*@>960d5*/MicroMouse_Deploy_P./*@>997fe*/LowPassFilterDiscreteorContin_c/*@>66155*/ < /*@>960db*/MicroMouse_Deploy_P./*@>99801*/CompareToConstant_const_j));
+    /* {S!d370}Gain: '<S12>/K' incorporates:
+ *  DataStoreRead: '<S10>/Data Store Read'
+ *  DataTypeConversion: '<S10>/Cast To Single'
+ *  Gain: '<S10>/Gain'
+ */
+    /*@>789d5*/rtb_K_i/*@>59781*/ = /*@>960e1*/MicroMouse_Deploy_P./*@>99804*/Gain_Gain_g/*@>7e834*/ * /*@>7e837*/(real32_T)/*@>94b5d*/TOF_Distance/*@>94b5f*/[/*@>94b5c*/1]/*@>798b4*/ * /*@>960e7*/MicroMouse_Deploy_P./*@>99807*/LowPassFilterDiscreteorContin_a;
+    /* {S!d372}DiscreteIntegrator: '<S32>/Integrator' */
+    /*@>597dc*/if (/*@>9651e*/MicroMouse_Deploy_DW./*@>9991b*/Integrator_IC_LOADING_k/*@>798af*/ != /*@>98e01*/0) {
+        /*@>96524*/MicroMouse_Deploy_DW./*@>9991e*/Integrator_DSTATE_m/*@>597df*/ = /*@>789d9*/rtb_K_i;
+        /*@>597e3*/if (/*@>9652a*/MicroMouse_Deploy_DW./*@>99921*/Integrator_DSTATE_m/*@>597e2*/ > /*@>960ed*/MicroMouse_Deploy_P./*@>9980a*/Integrator_UpperSat_k) {
+            /*@>96530*/MicroMouse_Deploy_DW./*@>99924*/Integrator_DSTATE_m/*@>597e6*/ = /*@>960f3*/MicroMouse_Deploy_P./*@>9980d*/Integrator_UpperSat_k;
+        } else /*@>597ea*/if (/*@>9672e*/MicroMouse_Deploy_DW./*@>99a20*/Integrator_DSTATE_m/*@>597e9*/ < /*@>9622b*/MicroMouse_Deploy_P./*@>998a9*/Integrator_LowerSat_d) {
+            /*@>96734*/MicroMouse_Deploy_DW./*@>99a23*/Integrator_DSTATE_m/*@>597ed*/ = /*@>96231*/MicroMouse_Deploy_P./*@>998ac*/Integrator_LowerSat_d;
+        }
+    }
+    /*@>597f4*/if (/*@>789ed*/rtb_LogicalOperator_c/*@>597f3*/ || (/*@>96536*/MicroMouse_Deploy_DW./*@>99927*/Integrator_PrevResetState_a/*@>798ab*/ != /*@>98e03*/0)) {
+        /*@>9653c*/MicroMouse_Deploy_DW./*@>9992a*/Integrator_DSTATE_m/*@>597f7*/ = /*@>789f2*/rtb_K_i;
+        /*@>597fb*/if (/*@>96542*/MicroMouse_Deploy_DW./*@>9992d*/Integrator_DSTATE_m/*@>597fa*/ > /*@>960f9*/MicroMouse_Deploy_P./*@>99810*/Integrator_UpperSat_k) {
+            /*@>96548*/MicroMouse_Deploy_DW./*@>99930*/Integrator_DSTATE_m/*@>597fe*/ = /*@>960ff*/MicroMouse_Deploy_P./*@>99813*/Integrator_UpperSat_k;
+        } else /*@>59802*/if (/*@>96722*/MicroMouse_Deploy_DW./*@>99a1a*/Integrator_DSTATE_m/*@>59801*/ < /*@>9621f*/MicroMouse_Deploy_P./*@>998a3*/Integrator_LowerSat_d) {
+            /*@>96728*/MicroMouse_Deploy_DW./*@>99a1d*/Integrator_DSTATE_m/*@>59805*/ = /*@>96225*/MicroMouse_Deploy_P./*@>998a6*/Integrator_LowerSat_d;
+        }
+    }
+    /* {S!d380}Saturate: '<S32>/Saturation' incorporates:
+ *  DiscreteIntegrator: '<S32>/Integrator'
+ */
+    /*@>7f2b3*/if (/*@>9654e*/MicroMouse_Deploy_DW./*@>99933*/Integrator_DSTATE_m/*@>7caa8*/ > /*@>96105*/MicroMouse_Deploy_P./*@>99816*/Saturation_UpperSat_f) {
+        /* {S!d374}Saturate: '<S32>/Saturation' */
+        /*@>7f2b7*/rtb_Saturation_e/*@>7f2b6*/ = /*@>9610b*/MicroMouse_Deploy_P./*@>99819*/Saturation_UpperSat_f;
+    } else /*@>7f2c2*/if (/*@>96716*/MicroMouse_Deploy_DW./*@>99a14*/Integrator_DSTATE_m/*@>7caa5*/ < /*@>96213*/MicroMouse_Deploy_P./*@>9989d*/Saturation_LowerSat_b) {
+        /* {S!d376}Saturate: '<S32>/Saturation' */
+        /*@>7f2c6*/rtb_Saturation_e/*@>7f2c5*/ = /*@>96219*/MicroMouse_Deploy_P./*@>998a0*/Saturation_LowerSat_b;
+    } else {
+        /* {S!d378}Saturate: '<S32>/Saturation' */
+        /*@>7cabe*/rtb_Saturation_e/*@>7caaf*/ = /*@>9671c*/MicroMouse_Deploy_DW./*@>99a17*/Integrator_DSTATE_m;
+    }
+    /* {E!d380}End of Saturate: '<S32>/Saturation' */
+
+    /* {S!d382}Logic: '<S33>/Logical Operator' incorporates:
+ *  Constant: '<S33>/Constant'
+ *  Constant: '<S33>/Time constant'
+ *  Constant: '<S36>/Constant'
+ *  Constant: '<S37>/Constant'
+ *  RelationalOperator: '<S36>/Compare'
+ *  RelationalOperator: '<S37>/Compare'
+ *  Sum: '<S33>/Sum1'
+ */
+    /*@>78a0c*/rtb_LogicalOperator_a/*@>59a8a*/ = ((/*@>66366*/(real32_T)(/*@>96111*/MicroMouse_Deploy_P./*@>9981c*/LowPassFilterDiscreteorContin_e/*@>66367*/ - /*@>95e8b*/MicroMouse_Deploy_B./*@>9973b*/Probe_g/*@>94c29*/[/*@>94c26*/0])/*@>66169*/ <= /*@>96117*/MicroMouse_Deploy_P./*@>9981f*/Constant_Value_c)/*@>59a89*/ && (/*@>9611d*/MicroMouse_Deploy_P./*@>99822*/LowPassFilterDiscreteorConti_cz/*@>6616e*/ < /*@>96123*/MicroMouse_Deploy_P./*@>99825*/CompareToConstant_const_o));
+    /* {S!d384}Gain: '<S13>/K' incorporates:
+ *  DataStoreRead: '<S10>/Data Store Read'
+ *  DataTypeConversion: '<S10>/Cast To Single'
+ *  Gain: '<S10>/Gain'
+ */
+    /*@>78a10*/rtb_K_n/*@>59aa2*/ = /*@>96129*/MicroMouse_Deploy_P./*@>99828*/Gain_Gain_g/*@>7e841*/ * /*@>7e844*/(real32_T)/*@>94c2c*/TOF_Distance/*@>94c2e*/[/*@>94c2b*/2]/*@>798a1*/ * /*@>9612f*/MicroMouse_Deploy_P./*@>9982b*/LowPassFilterDiscreteorConti_cj;
+    /* {S!d386}DiscreteIntegrator: '<S39>/Integrator' */
+    /*@>59afd*/if (/*@>96554*/MicroMouse_Deploy_DW./*@>99936*/Integrator_IC_LOADING_a/*@>7989c*/ != /*@>98e05*/0) {
+        /*@>9655a*/MicroMouse_Deploy_DW./*@>99939*/Integrator_DSTATE_i/*@>59b00*/ = /*@>78a14*/rtb_K_n;
+        /*@>59b04*/if (/*@>96560*/MicroMouse_Deploy_DW./*@>9993c*/Integrator_DSTATE_i/*@>59b03*/ > /*@>96135*/MicroMouse_Deploy_P./*@>9982e*/Integrator_UpperSat_l) {
+            /*@>96566*/MicroMouse_Deploy_DW./*@>9993f*/Integrator_DSTATE_i/*@>59b07*/ = /*@>9613b*/MicroMouse_Deploy_P./*@>99831*/Integrator_UpperSat_l;
+        } else /*@>59b0b*/if (/*@>9670a*/MicroMouse_Deploy_DW./*@>99a0e*/Integrator_DSTATE_i/*@>59b0a*/ < /*@>96207*/MicroMouse_Deploy_P./*@>99897*/Integrator_LowerSat_g) {
+            /*@>96710*/MicroMouse_Deploy_DW./*@>99a11*/Integrator_DSTATE_i/*@>59b0e*/ = /*@>9620d*/MicroMouse_Deploy_P./*@>9989a*/Integrator_LowerSat_g;
+        }
+    }
+    /*@>59b15*/if (/*@>78a28*/rtb_LogicalOperator_a/*@>59b14*/ || (/*@>9656c*/MicroMouse_Deploy_DW./*@>99942*/Integrator_PrevResetState_j/*@>79898*/ != /*@>98e07*/0)) {
+        /*@>96572*/MicroMouse_Deploy_DW./*@>99945*/Integrator_DSTATE_i/*@>59b18*/ = /*@>78a2d*/rtb_K_n;
+        /*@>59b1c*/if (/*@>96578*/MicroMouse_Deploy_DW./*@>99948*/Integrator_DSTATE_i/*@>59b1b*/ > /*@>96141*/MicroMouse_Deploy_P./*@>99834*/Integrator_UpperSat_l) {
+            /*@>9657e*/MicroMouse_Deploy_DW./*@>9994b*/Integrator_DSTATE_i/*@>59b1f*/ = /*@>96147*/MicroMouse_Deploy_P./*@>99837*/Integrator_UpperSat_l;
+        } else /*@>59b23*/if (/*@>966fe*/MicroMouse_Deploy_DW./*@>99a08*/Integrator_DSTATE_i/*@>59b22*/ < /*@>961fb*/MicroMouse_Deploy_P./*@>99891*/Integrator_LowerSat_g) {
+            /*@>96704*/MicroMouse_Deploy_DW./*@>99a0b*/Integrator_DSTATE_i/*@>59b26*/ = /*@>96201*/MicroMouse_Deploy_P./*@>99894*/Integrator_LowerSat_g;
+        }
+    }
+    /* {S!d394}Saturate: '<S39>/Saturation' incorporates:
+ *  DiscreteIntegrator: '<S39>/Integrator'
+ */
+    /*@>7f2b8*/if (/*@>96584*/MicroMouse_Deploy_DW./*@>9994e*/Integrator_DSTATE_i/*@>7caf6*/ > /*@>9614d*/MicroMouse_Deploy_P./*@>9983a*/Saturation_UpperSat_c) {
+        /* {S!d388}Saturate: '<S39>/Saturation' */
+        /*@>7f2bc*/rtb_Saturation_g/*@>7f2bb*/ = /*@>96153*/MicroMouse_Deploy_P./*@>9983d*/Saturation_UpperSat_c;
+    } else /*@>7f2c7*/if (/*@>966f2*/MicroMouse_Deploy_DW./*@>99a02*/Integrator_DSTATE_i/*@>7caf3*/ < /*@>961ef*/MicroMouse_Deploy_P./*@>9988b*/Saturation_LowerSat_o) {
+        /* {S!d390}Saturate: '<S39>/Saturation' */
+        /*@>7f2cb*/rtb_Saturation_g/*@>7f2ca*/ = /*@>961f5*/MicroMouse_Deploy_P./*@>9988e*/Saturation_LowerSat_o;
+    } else {
+        /* {S!d392}Saturate: '<S39>/Saturation' */
+        /*@>7cb0c*/rtb_Saturation_g/*@>7cafd*/ = /*@>966f8*/MicroMouse_Deploy_DW./*@>99a05*/Integrator_DSTATE_i;
+    }
+    /* {E!d394}End of Saturate: '<S39>/Saturation' */
+
+    /* {S!d396}ComposeString: '<S3>/Compose String' incorporates:
+ *  Saturate: '<S25>/Saturation'
+ *  Saturate: '<S32>/Saturation'
+ *  Saturate: '<S39>/Saturation'
+ */
+/*@[9*/
+    /*@>92476*/snprintf(&/*@>91eae*/rtb_ComposeString_0/*@>91eaf*/[/*@>91eac*/0], /*@>78c42*/256U, /*@>9897e*/"%<TLC_STR_CTX(2)>", /*@>78c44*/rtb_Saturation, /*@>78c46*/rtb_Saturation_e, /*@>78c48*/rtb_Saturation_g);
+/*@]*/
+    /* {S!d398}ComposeString: '<S2>/Compose String2' incorporates:
+ *  ComposeString: '<S3>/Compose String'
+ */
+/*@[a*/
+    /*@>92478*/snprintf(&/*@>91eb8*/rtb_ComposeString4_0/*@>91eb9*/[/*@>91eb6*/0], /*@>78c4e*/256U, /*@>98982*/"%<TLC_STR_CTX(3)>", &/*@>78d5e*/rtb_ComposeString_0/*@>60755*/[/*@>78c50*/0]);
+/*@]*/
+    /* {S!d400}StringToASCII: '<S2>/String to ASCII2' incorporates:
+ *  ComposeString: '<S2>/Compose String2'
+ */
+/*@[b*/
+    /*@>9247a*/strncpy(/*@>6738d*/(char_T *)&/*@>78d60*/oled_string3/*@>60776*/[/*@>78c56*/0], &/*@>78d62*/rtb_ComposeString4_0/*@>67394*/[/*@>78d1a*/0], /*@>78c55*/18U);
+/*@]*/
+    /* {S!d402}ComposeString: '<S3>/Compose String1' incorporates:
+ *  DataStoreRead: '<S5>/Data Store Read'
+ */
+/*@[c*/
+    /*@>9247c*/snprintf(&/*@>91ec2*/rtb_ComposeString1_0/*@>91ec3*/[/*@>91ec0*/0], /*@>78c57*/256U, /*@>98986*/"%<TLC_STR_CTX(4)>", /*@>94c31*/IMU_Accel/*@>94c33*/[/*@>94c30*/0], /*@>94c36*/IMU_Accel/*@>94c38*/[/*@>94c35*/1], /*@>94c3b*/IMU_Accel/*@>94c3d*/[/*@>94c3a*/2]);
+/*@]*/
+    /* {S!d404}ComposeString: '<S2>/Compose String3' incorporates:
+ *  ComposeString: '<S3>/Compose String1'
+ */
+/*@[d*/
+    /*@>9247e*/snprintf(&/*@>91ecc*/rtb_ComposeString4_0/*@>91ecd*/[/*@>91eca*/0], /*@>78c5d*/256U, /*@>9898a*/"%<TLC_STR_CTX(5)>", &/*@>78d66*/rtb_ComposeString1_0/*@>607d2*/[/*@>78c5f*/0]);
+/*@]*/
+    /* {S!d406}StringToASCII: '<S2>/String to ASCII3' incorporates:
+ *  ComposeString: '<S2>/Compose String3'
+ */
+/*@[e*/
+    /*@>92480*/strncpy(/*@>673c9*/(char_T *)&/*@>78d68*/oled_string4/*@>607f3*/[/*@>78c65*/0], &/*@>78d6a*/rtb_ComposeString4_0/*@>673d0*/[/*@>78d1f*/0], /*@>78c64*/18U);
+/*@]*/
+    /* {S!d408}ComposeString: '<S3>/Compose String2' incorporates:
+ *  DataStoreRead: '<S8>/Data Store Read'
+ *  DataStoreRead: '<S8>/Data Store Read2'
+ *  DataStoreRead: '<S8>/Data Store Read4'
+ *  DataTypeConversion: '<S8>/Cast To Single'
+ *  DataTypeConversion: '<S8>/Cast To Single2'
+ *  DataTypeConversion: '<S8>/Cast To Single4'
+ *  Gain: '<S3>/Gain2'
+ */
+/*@[f*/
+    /*@>92482*/snprintf(&/*@>91ed6*/rtb_ComposeString2_0/*@>91ed7*/[/*@>91ed4*/0], /*@>78c66*/256U, /*@>9898e*/"%<TLC_STR_CTX(6)>", /*@>96159*/MicroMouse_Deploy_P./*@>99840*/Gain2_Gain_f/*@>7988e*/ * /*@>81762*/(real32_T)/*@>78d02*/Vbattery, /*@>81764*/(real32_T)/*@>78cb0*/Current, /*@>81766*/(real32_T)/*@>78cb2*/batteryLife);
+/*@]*/
+    /* {S!d410}ComposeString: '<S2>/Compose String4' incorporates:
+ *  ComposeString: '<S3>/Compose String2'
+ */
+/*@[10*/
+    /*@>92484*/snprintf(&/*@>91ee0*/rtb_ComposeString4_0/*@>91ee1*/[/*@>91ede*/0], /*@>78c6c*/256U, /*@>98992*/"%<TLC_STR_CTX(7)>", &/*@>78d70*/rtb_ComposeString2_0/*@>60837*/[/*@>78c6e*/0]);
+/*@]*/
+    /* {S!d412}StringToASCII: '<S2>/String to ASCII4' incorporates:
+ *  ComposeString: '<S2>/Compose String4'
+ */
+/*@[11*/
+    /*@>92486*/strncpy(/*@>67405*/(char_T *)&/*@>78d72*/oled_string5/*@>60858*/[/*@>78c74*/0], &/*@>78d74*/rtb_ComposeString4_0/*@>6740c*/[/*@>78d25*/0], /*@>78c73*/18U);
+/*@]*/
+    /* {S!d414}DataTypeConversion: '<S6>/Cast To Boolean' incorporates:
+ *  Constant: '<S3>/Constant1'
+ *  DataStoreWrite: '<S6>/Data Store Write'
+ *  RelationalOperator: '<S3>/GreaterThan'
+ *  RelationalOperator: '<S3>/GreaterThan1'
+ *  RelationalOperator: '<S3>/GreaterThan2'
+ */
+    /*@>78d76*/LED/*@>6ec5e*/[/*@>78d3b*/0]/*@>6ec5d*/ = /*@>8176e*/(uint8_T)(/*@>78d3c*/rtb_Saturation/*@>79889*/ <= /*@>9615f*/MicroMouse_Deploy_P./*@>99843*/Constant1_Value);
+    /*@>78d78*/LED/*@>6ec6b*/[/*@>78d40*/1]/*@>6ec6a*/ = /*@>81774*/(uint8_T)(/*@>78d41*/rtb_Saturation_e/*@>79885*/ <= /*@>96165*/MicroMouse_Deploy_P./*@>99846*/Constant1_Value);
+    /*@>78d7a*/LED/*@>6ec78*/[/*@>78d45*/2]/*@>6ec77*/ = /*@>8177a*/(uint8_T)(/*@>78d46*/rtb_Saturation_g/*@>79881*/ <= /*@>9616b*/MicroMouse_Deploy_P./*@>99849*/Constant1_Value);
+    /* {S!d416}DataTypeConversion: '<S9>/Cast To Boolean' incorporates:
+ *  Constant: '<S3>/Constant'
+ *  DataStoreWrite: '<S9>/Data Store Write'
+ */
+/*@[12*/
+/*@[13*/
+    /*@>79859*/rtb_Product1/*@>7985b*/ = /*@>9248a*/fmod(/*@>92488*/floor(/*@>96171*/MicroMouse_Deploy_P./*@>9984c*/Constant_Value_l), /*@>79856*/256.0);
+/*@]*/
+/*@]*/
+    /*@>78a49*/STATE/*@>5a433*/ = /*@>81784*/(uint8_T)(/*@>79862*/rtb_Product1/*@>79865*/ < /*@>79861*/0.0/*@>79865*/ ? (int32_T)/*@>7986d*/(uint8_T)-/*@<79876*//*@>7986b*/(int8_T)/*@>79879*/(uint8_T)-/*@<79869*//*@>79866*/rtb_Product1 : (int32_T)/*@>7987c*/(uint8_T)/*@>7986e*/rtb_Product1);
+    /* {S!d418}MinMax: '<S19>/Max' incorporates:
+ *  Constant: '<S19>/Time constant'
+ */
+/*@[14*/
+    /*@>78ac4*/rtb_Max/*@>5c541*/ = /*@>5c53f*/(real32_T)/*@>9248c*/fmax(/*@>95e91*/MicroMouse_Deploy_B./*@>9973e*/Probe/*@>94c42*/[/*@>94c3f*/0], /*@>96177*/MicroMouse_Deploy_P./*@>9984f*/LowPassFilterDiscreteorContinuo);
+/*@]*/
+    /* {S!d420}Product: '<S11>/1//T' incorporates:
+ *  Fcn: '<S19>/Avoid Divide by Zero'
+ *  Sum: '<S11>/Sum1'
+ */
+    /*@>78a4c*/rtb_uT/*@>5a585*/ = /*@>78a4b*/1.0F/*@>79845*/ / (/*@>8178a*/(real32_T)(/*@>78cb6*/rtb_Max/*@>661ad*/ == /*@>78cb8*/0.0F)/*@>7984b*/ * /*@>78cb9*/2.22044605e-16F/*@>661a8*/ + /*@>78cb4*/rtb_Max)/*@>7983d*/ * (/*@>78cba*/rtb_K/*@>661b2*/ - /*@>78cbc*/rtb_Saturation);
+    /* {S!d422}MinMax: '<S26>/Max' incorporates:
+ *  Constant: '<S26>/Time constant'
+ */
+/*@[15*/
+    /*@>78ac6*/rtb_Max/*@>5c560*/ = /*@>5c55e*/(real32_T)/*@>9248e*/fmax(/*@>95e97*/MicroMouse_Deploy_B./*@>99741*/Probe_h/*@>94c47*/[/*@>94c44*/0], /*@>9617d*/MicroMouse_Deploy_P./*@>99852*/LowPassFilterDiscreteorContin_p);
+/*@]*/
+    /* {S!d424}Product: '<S12>/1//T' incorporates:
+ *  Fcn: '<S26>/Avoid Divide by Zero'
+ *  Sum: '<S12>/Sum1'
+ */
+    /*@>78a4f*/rtb_uT_p/*@>5a6a6*/ = /*@>78a4e*/1.0F/*@>7982d*/ / (/*@>81793*/(real32_T)(/*@>78cc0*/rtb_Max/*@>661c3*/ == /*@>78cc2*/0.0F)/*@>79833*/ * /*@>78cc3*/2.22044605e-16F/*@>661be*/ + /*@>78cbe*/rtb_Max)/*@>79825*/ * (/*@>78cc4*/rtb_K_i/*@>661c8*/ - /*@>78cc6*/rtb_Saturation_e);
+    /* {S!d426}MinMax: '<S33>/Max' incorporates:
+ *  Constant: '<S33>/Time constant'
+ */
+/*@[16*/
+    /*@>78ac8*/rtb_Max/*@>5c57f*/ = /*@>5c57d*/(real32_T)/*@>92490*/fmax(/*@>95e9d*/MicroMouse_Deploy_B./*@>99744*/Probe_g/*@>94c4c*/[/*@>94c49*/0], /*@>96183*/MicroMouse_Deploy_P./*@>99855*/LowPassFilterDiscreteorContin_e);
+/*@]*/
+    /* {S!d428}Product: '<S13>/1//T' incorporates:
+ *  Fcn: '<S33>/Avoid Divide by Zero'
+ *  Sum: '<S13>/Sum1'
+ */
+    /*@>78a52*/rtb_uT_e/*@>5a7c7*/ = /*@>78a51*/1.0F/*@>79815*/ / (/*@>8179c*/(real32_T)(/*@>78cca*/rtb_Max/*@>661d9*/ == /*@>78ccc*/0.0F)/*@>7981b*/ * /*@>78ccd*/2.22044605e-16F/*@>661d4*/ + /*@>78cc8*/rtb_Max)/*@>7980d*/ * (/*@>78cce*/rtb_K_n/*@>661de*/ - /*@>78cd0*/rtb_Saturation_g);
+    /* {S!d430}UnitDelay: '<S98>/Unit Delay1' */
+    /*@>95ea3*/MicroMouse_Deploy_B./*@>99747*/UnitDelay1/*@>5c58b*/ = /*@>9658a*/MicroMouse_Deploy_DW./*@>99951*/UnitDelay1_DSTATE;
+    /* {S!d432}Gain: '<S98>/tau' incorporates:
+ *  Constant: '<S3>/Constant2'
+ */
+    /*@>78a60*/rtb_p_p/*@>5a910*/ = /*@>96189*/MicroMouse_Deploy_P./*@>99858*/tau_Gain/*@>797f9*/ * /*@>9618f*/MicroMouse_Deploy_P./*@>9985b*/Constant2_Value;
+    /* {S!d434}Product: '<S100>/Product2' */
+    /*@>78a66*/rtb_q/*@>5a928*/ = /*@>78a62*/rtb_p_p/*@>797ef*/ * /*@>78a64*/rtb_p_p;
+    /* {S!d436}Bias: '<S100>/Bias' */
+    /*@>78ad2*/rtb_r/*@>5c59a*/ = /*@>78ace*/rtb_q/*@>5c598*/ + /*@>96195*/MicroMouse_Deploy_P./*@>9985e*/Bias_Bias;
+    /* {S!d438}Gain: '<S100>/Gain' */
+    /*@>78a6c*/rtb_p_p/*@>98e69*/ *= /*@>9619b*/MicroMouse_Deploy_P./*@>99861*/Gain_Gain_i;
+    /* {S!d440}Sum: '<S100>/Add1' */
+    /*@>78c20*/rtb_d/*@>5cf21*/ = /*@>78a6e*/rtb_r/*@>5cf1e*/ + /*@>78a70*/rtb_p_p;
+    /* {S!d442}Product: '<S100>/Product3' */
+    /*@>95ea9*/MicroMouse_Deploy_B./*@>9974a*/Product3/*@>5aa10*/ = /*@>78a72*/rtb_q/*@>797df*/ / /*@>78a74*/rtb_d;
+    /* {S!d444}UnitDelay: '<S99>/Unit Delay1' */
+    /*@>95eaf*/MicroMouse_Deploy_B./*@>9974d*/UnitDelay1_h/*@>5c5a6*/ = /*@>96590*/MicroMouse_Deploy_DW./*@>99954*/UnitDelay1_DSTATE_a;
+    /* {S!d446}Gain: '<S99>/tau' incorporates:
+ *  Constant: '<S3>/Constant2'
+ */
+    /*@>78a86*/rtb_p/*@>5ab4e*/ = /*@>961a1*/MicroMouse_Deploy_P./*@>99864*/tau_Gain_m/*@>797cd*/ * /*@>961a7*/MicroMouse_Deploy_P./*@>99867*/Constant2_Value;
+    /* {S!d448}Product: '<S101>/Product2' */
+    /*@>78a8c*/rtb_q_m/*@>5ab66*/ = /*@>78a88*/rtb_p/*@>797c3*/ * /*@>78a8a*/rtb_p;
+    /* {S!d450}Bias: '<S101>/Bias' */
+    /*@>78adc*/rtb_r_l/*@>5c5b5*/ = /*@>78ad8*/rtb_q_m/*@>5c5b3*/ + /*@>961ad*/MicroMouse_Deploy_P./*@>9986a*/Bias_Bias_l;
+    /* {S!d452}Gain: '<S101>/Gain' */
+    /*@>78a92*/rtb_p/*@>98e6a*/ *= /*@>961b3*/MicroMouse_Deploy_P./*@>9986d*/Gain_Gain_d;
+    /* {S!d454}Sum: '<S101>/Add1' */
+    /*@>78c24*/rtb_d_n/*@>5cf31*/ = /*@>78a94*/rtb_r_l/*@>5cf2e*/ + /*@>78a96*/rtb_p;
+    /* {S!d456}Product: '<S101>/Product3' */
+    /*@>95eb5*/MicroMouse_Deploy_B./*@>99750*/Product3_b/*@>5ac4e*/ = /*@>78a98*/rtb_q_m/*@>797b3*/ / /*@>78a9a*/rtb_d_n;
+}
+/* {S!d458}Gain: '<S73>/Integral Gain' */
+/*@>95ebb*/MicroMouse_Deploy_B./*@>99753*/IntegralGain/*@>5a7e0*/ = /*@>961b9*/MicroMouse_Deploy_P./*@>99870*/PIDController_I/*@>79803*/ * /*@>78a54*/rtb_Sum_l;
+/* {S!d460}Sum: '<S98>/Sum' incorporates:
+ *  DataStoreRead: '<S5>/Data Store Read1'
+ *  DataTypeConversion: '<S3>/Data Type Conversion'
+ */
+/*@>78c1e*/rtb_Product2_d/*@>5cf19*/ = /*@>94ada*/IMU_Gyro/*@>94adc*/[/*@>94ad9*/2]/*@>5cf16*/ + /*@>95ec1*/MicroMouse_Deploy_B./*@>99756*/UnitDelay1;
+/* {S!d462}Product: '<S98>/Product1' */
+/*@>78a7c*/Sum/*@>5aa1f*/ = /*@>78a78*/rtb_Product2_d/*@>797d7*/ * /*@>95ec7*/MicroMouse_Deploy_B./*@>99759*/Product3;
+/* {S!d464}Sum: '<S99>/Sum' */
+/*@>78c22*/rtb_Sum_l/*@>5cf29*/ = /*@>78a7e*/Sum/*@>5cf26*/ + /*@>95ecd*/MicroMouse_Deploy_B./*@>9975c*/UnitDelay1_h;
+/* {S!d466}Product: '<S99>/Product1' */
+/*@>78aa2*/rtb_Product1/*@>5ac5d*/ = /*@>78a9e*/rtb_Sum_l/*@>797ab*/ * /*@>95ed3*/MicroMouse_Deploy_B./*@>9975f*/Product3_b;
+/* {S!d468}MATLABSystem: '<S18>/Median Filter' */
+/*@>5c901*/if (/*@>96596*/MicroMouse_Deploy_DW./*@>99957*/obj.pMID.isInitialized/*@>5c8fd*/ != /*@>78c02*/1) {
+    /*@>9659c*/MicroMouse_Deploy_DW./*@>9995a*/obj./*@>9967e*/pMID./*@>9968a*/isInitialized/*@>5c8f5*/ = /*@>98dfb*/1;
+    /*@>965a2*/MicroMouse_Deploy_DW./*@>9995d*/obj./*@>9967b*/pMID./*@>99687*/isSetupComplete/*@>5c8f2*/ = /*@>78bbb*/true;
+/*@[17*/
+    /*@[98973*/%<(SLibCGCallSubFcn("MicroMou_MedianFilter_resetImpl", ["&/*@>99b10*/MicroMouse_Deploy_DW./*@>99b0f*/obj./*@>99b0e*/pMID"], 0, 3, 6))>/*@]*/;
+/*@]*/
+}
+/*@>78bb9*/vprev/*@>5c8e9*/ = /*@>965ae*/MicroMouse_Deploy_DW./*@>99963*/obj./*@>996c3*/pMID./*@>996c6*/pBuf/*@>94af1*/[/*@>94adf*/(int32_T)/*@>965b4*/MicroMouse_Deploy_DW./*@>99966*/obj.pMID.pIdx/*@>94ade*/ - /*@>94ae6*/1];
+/*@>965ba*/MicroMouse_Deploy_DW./*@>99969*/obj./*@>99690*/pMID./*@>9968d*/pBuf/*@>7182d*/[/*@>90d4b*/(int32_T)/*@>965c0*/MicroMouse_Deploy_DW./*@>9996c*/obj.pMID.pIdx/*@>90d4a*/ - /*@>90d52*/1]/*@>5c8e3*/ = /*@>78b59*/rtb_Product1;
+/*@>78bb7*/p/*@>5c8dc*/ = /*@>965c6*/MicroMouse_Deploy_DW./*@>9996f*/obj./*@>996c9*/pMID./*@>996cc*/pPos/*@>94b06*/[/*@>94af4*/(int32_T)/*@>965cc*/MicroMouse_Deploy_DW./*@>99972*/obj.pMID.pIdx/*@>94af3*/ - /*@>94afb*/1];
+/*@>965d2*/MicroMouse_Deploy_DW./*@>99975*/obj./*@>99675*/pMID./*@>99684*/pIdx/*@>98e6b*/++;
+/*@>5c90b*/if (/*@>965de*/MicroMouse_Deploy_DW./*@>99978*/obj.pMID.pWinLen/*@>5c89f*/ + /*@>78bb1*/1.0/*@>5c89e*/ == /*@>965e4*/MicroMouse_Deploy_DW./*@>9997b*/obj.pMID.pIdx) {
+    /*@>965ea*/MicroMouse_Deploy_DW./*@>9997e*/obj./*@>99672*/pMID./*@>99681*/pIdx/*@>5c8cd*/ = /*@>78baf*/1.0;
+}
+/*@>5c90e*/if (/*@>78bad*/p/*@>5c89d*/ > /*@>965f0*/MicroMouse_Deploy_DW./*@>99981*/obj.pMID.pMidHeap) {
+    /*@>5c90f*/if (/*@>78baa*/vprev/*@>5c89c*/ < /*@>78b4f*/rtb_Product1) {
+/*@[21*/
+        /*@[9895c*/%<(SLibCGCallSubFcn("Mic_MedianFilter_trickleDownMin", ["&/*@>99b23*/MicroMouse_Deploy_DW./*@>99b22*/obj./*@>99b21*/pMID", "(/*@>99b35*/p/*@>99b34*/ - /*@>99b39*/MicroMouse_Deploy_DW./*@>99b38*/obj.pMID.pMidHeap)/*@>99b33*/ * /*@>99b3d*/2.0"], 0, 3, 5))>/*@]*/;
+/*@]*/
+    } else {
+        /*@>78b8d*/vprev/*@>5c86d*/ = /*@>78b4d*/p/*@>5c867*/ - /*@>96620*/MicroMouse_Deploy_DW./*@>99999*/obj.pMID.pMidHeap;
+        exitg1 = false;
+        while/*@<5c913*/ ((!exitg1) && (/*@>78b8a*/vprev/*@>5c866*/ > /*@>78b89*/0.0)) {
+            /*@>86205*/p/*@>86207*/ = /*@>78bf2*/vprev/*@>7977e*/ / /*@>78bf4*/2.0;
+            /*@>861c5*/ind1/*@>861c7*/ = /*@>78de0*/vprev/*@>71b1d*/ + /*@>96626*/MicroMouse_Deploy_DW./*@>9999c*/obj.pMID.pMidHeap;
+/*@[1e*/
+            /*@>861cf*/ind2/*@>861d1*/ = /*@>924a0*/trunc(/*@>88d08*/p)/*@>71b8d*/ + /*@>9662c*/MicroMouse_Deploy_DW./*@>9999f*/obj.pMID.pMidHeap;
+/*@]*/
+            /*@>861d9*/rtb_Product1/*@>861db*/ = /*@>96632*/MicroMouse_Deploy_DW./*@>999a2*/obj./*@>996db*/pMID./*@>996de*/pHeap/*@>94b5a*/[/*@>94b4c*/(int32_T)/*@>94b4e*/ind1/*@>94b4b*/ - /*@>94b4f*/1];
+            /*@>861e3*/tmp_0/*@>861e5*/ = /*@>96638*/MicroMouse_Deploy_DW./*@>999a5*/obj./*@>996e7*/pMID./*@>996ea*/pHeap/*@>94b81*/[/*@>94b73*/(int32_T)/*@>94b75*/ind2/*@>94b72*/ - /*@>94b76*/1];
+            /*@>5c916*/if (/*@>9663e*/MicroMouse_Deploy_DW./*@>999a8*/obj./*@>996f3*/pMID./*@>996f6*/pBuf/*@>94ba3*/[/*@>94b95*/(int32_T)/*@>94b97*/rtb_Product1/*@>94b94*/ - /*@>94b98*/1]/*@>639f0*/ >= /*@>96644*/MicroMouse_Deploy_DW./*@>999ab*/obj./*@>996f9*/pMID./*@>996fc*/pBuf/*@>94bb4*/[/*@>94ba6*/(int32_T)/*@>94ba8*/tmp_0/*@>94ba5*/ - /*@>94ba9*/1]) {
+                exitg1 = true;
+            } else {
+                /*@>96650*/MicroMouse_Deploy_DW./*@>999b1*/obj./*@>99696*/pMID./*@>99693*/pHeap/*@>71d60*/[/*@>90daa*/(int32_T)/*@>90dac*/ind1/*@>90da9*/ - /*@>90dad*/1]/*@>5c7ed*/ = tmp_0;
+                /*@>96656*/MicroMouse_Deploy_DW./*@>999b4*/obj./*@>996a2*/pMID./*@>9969f*/pHeap/*@>71e0c*/[/*@>90db2*/(int32_T)/*@>90db4*/ind2/*@>90db1*/ - /*@>90db5*/1]/*@>5c7e5*/ = rtb_Product1;
+                /*@>9665c*/MicroMouse_Deploy_DW./*@>999b7*/obj./*@>996ae*/pMID./*@>996ab*/pPos/*@>71eb7*/[/*@>7973b*/(int32_T)/*@>96662*/MicroMouse_Deploy_DW./*@>999ba*/obj./*@>9970b*/pMID./*@>9970e*/pHeap/*@>94bf1*/[/*@>94be3*/(int32_T)/*@>94be5*/ind1/*@>94be2*/ - /*@>94be6*/1]/*@>71ec0*/ - /*@>78e5b*/1]/*@>5c7da*/ = ind1;
+                /*@>96668*/MicroMouse_Deploy_DW./*@>999bd*/obj./*@>996ba*/pMID./*@>996b7*/pPos/*@>71fa1*/[/*@>7972d*/(int32_T)/*@>9666e*/MicroMouse_Deploy_DW./*@>999c0*/obj./*@>99717*/pMID./*@>9971a*/pHeap/*@>94c13*/[/*@>94c05*/(int32_T)/*@>94c07*/ind2/*@>94c04*/ - /*@>94c08*/1]/*@>71faa*/ - /*@>78e73*/1]/*@>5c7cf*/ = ind2;
+/*@[1f*/
+                /*@>78b5f*/vprev/*@>5c739*/ = /*@>924a2*/trunc(p);
+/*@]*/
+            }
+        }
+        /*@>5c920*/if (/*@>78b37*/vprev/*@>5c6ea*/ == /*@>78b36*/0.0) {
+/*@[20*/
+            /*@[98944*/%<(SLibCGCallSubFcn("Mic_MedianFilter_trickleDownMax", ["&/*@>99b4e*/MicroMouse_Deploy_DW./*@>99b4d*/obj./*@>99b4c*/pMID", "/*@>99b5e*/-1.0"], 0, 3, 4))>/*@]*/;
+/*@]*/
+        }
+    }
+} else /*@>5c922*/if (/*@>78ba4*/p/*@>5c894*/ < /*@>96674*/MicroMouse_Deploy_DW./*@>999c3*/obj.pMID.pMidHeap) {
+    /*@>5c923*/if (/*@>78b57*/rtb_Product1/*@>5c893*/ < /*@>78ba1*/vprev) {
+/*@[1d*/
+        /*@[9892c*/%<(SLibCGCallSubFcn("Mic_MedianFilter_trickleDownMax", ["&/*@>99b6f*/MicroMouse_Deploy_DW./*@>99b6e*/obj./*@>99b6d*/pMID", "(/*@>99b81*/p/*@>99b80*/ - /*@>99b85*/MicroMouse_Deploy_DW./*@>99b84*/obj.pMID.pMidHeap)/*@>99b7f*/ * /*@>99b89*/2.0"], 0, 3, 3))>/*@]*/;
+/*@]*/
+    } else {
+        /*@>78b87*/vprev/*@>5c861*/ = /*@>78b55*/p/*@>5c85b*/ - /*@>96686*/MicroMouse_Deploy_DW./*@>999cc*/obj.pMID.pMidHeap;
+        exitg1 = false;
+        while/*@<5c927*/ ((!exitg1) && (/*@>78b84*/vprev/*@>5c85a*/ < /*@>78b83*/0.0)) {
+            /*@>861bb*/p/*@>861bd*/ = /*@>78be0*/vprev/*@>79718*/ / /*@>78be2*/2.0;
+/*@[1a*/
+            /*@>8617b*/ind1/*@>8617d*/ = /*@>92498*/trunc(/*@>88cc3*/p)/*@>71c01*/ + /*@>9668c*/MicroMouse_Deploy_DW./*@>999cf*/obj.pMID.pMidHeap;
+/*@]*/
+            /*@>86185*/ind2/*@>86187*/ = /*@>78e10*/vprev/*@>71c71*/ + /*@>96692*/MicroMouse_Deploy_DW./*@>999d2*/obj.pMID.pMidHeap;
+            /*@>8618f*/rtb_Product1/*@>86191*/ = /*@>96698*/MicroMouse_Deploy_DW./*@>999d5*/obj./*@>996e1*/pMID./*@>996e4*/pHeap/*@>94b70*/[/*@>94b62*/(int32_T)/*@>94b64*/ind1/*@>94b61*/ - /*@>94b65*/1];
+            /*@>86199*/tmp_0/*@>8619b*/ = /*@>9669e*/MicroMouse_Deploy_DW./*@>999d8*/obj./*@>996ed*/pMID./*@>996f0*/pHeap/*@>94b92*/[/*@>94b84*/(int32_T)/*@>94b86*/ind2/*@>94b83*/ - /*@>94b87*/1];
+            /*@>5c92a*/if (/*@>966a4*/MicroMouse_Deploy_DW./*@>999db*/obj./*@>996ff*/pMID./*@>99702*/pBuf/*@>94bc5*/[/*@>94bb7*/(int32_T)/*@>94bb9*/rtb_Product1/*@>94bb6*/ - /*@>94bba*/1]/*@>6399b*/ >= /*@>966aa*/MicroMouse_Deploy_DW./*@>999de*/obj./*@>99705*/pMID./*@>99708*/pBuf/*@>94bd6*/[/*@>94bc8*/(int32_T)/*@>94bca*/tmp_0/*@>94bc7*/ - /*@>94bcb*/1]) {
+                exitg1 = true;
+            } else {
+                /*@>966b6*/MicroMouse_Deploy_DW./*@>999e4*/obj./*@>9969c*/pMID./*@>99699*/pHeap/*@>71dce*/[/*@>90d70*/(int32_T)/*@>90d72*/ind1/*@>90d6f*/ - /*@>90d73*/1]/*@>5c78b*/ = tmp_0;
+                /*@>966bc*/MicroMouse_Deploy_DW./*@>999e7*/obj./*@>996a8*/pMID./*@>996a5*/pHeap/*@>71e4d*/[/*@>90d78*/(int32_T)/*@>90d7a*/ind2/*@>90d77*/ - /*@>90d7b*/1]/*@>5c783*/ = rtb_Product1;
+                /*@>966c2*/MicroMouse_Deploy_DW./*@>999ea*/obj./*@>996b4*/pMID./*@>996b1*/pPos/*@>71f2d*/[/*@>796d5*/(int32_T)/*@>966c8*/MicroMouse_Deploy_DW./*@>999ed*/obj./*@>99711*/pMID./*@>99714*/pHeap/*@>94c02*/[/*@>94bf4*/(int32_T)/*@>94bf6*/ind1/*@>94bf3*/ - /*@>94bf7*/1]/*@>71f36*/ - /*@>78e67*/1]/*@>5c778*/ = ind1;
+                /*@>966ce*/MicroMouse_Deploy_DW./*@>999f0*/obj./*@>996c0*/pMID./*@>996bd*/pPos/*@>720aa*/[/*@>796c7*/(int32_T)/*@>966d4*/MicroMouse_Deploy_DW./*@>999f3*/obj./*@>9971d*/pMID./*@>99720*/pHeap/*@>94c24*/[/*@>94c16*/(int32_T)/*@>94c18*/ind2/*@>94c15*/ - /*@>94c19*/1]/*@>720b3*/ - /*@>78e8b*/1]/*@>5c76d*/ = ind2;
+/*@[1b*/
+                /*@>78b5c*/vprev/*@>5c735*/ = /*@>9249a*/trunc(p);
+/*@]*/
+            }
+        }
+        /*@>5c934*/if (/*@>78b3e*/vprev/*@>5c6fc*/ == /*@>78b3d*/0.0) {
+/*@[1c*/
+            /*@[98914*/%<(SLibCGCallSubFcn("Mic_MedianFilter_trickleDownMin", ["&/*@>99b9a*/MicroMouse_Deploy_DW./*@>99b99*/obj./*@>99b98*/pMID", "/*@>99baa*/1.0"], 0, 3, 2))>/*@]*/;
+/*@]*/
+        }
+    }
+} else {
+    /*@>5c936*/if (/*@>966da*/MicroMouse_Deploy_DW./*@>999f6*/obj.pMID.pMaxHeapLength/*@>5c88b*/ != /*@>78b92*/0.0) {
+/*@[18*/
+        /*@[988fc*/%<(SLibCGCallSubFcn("Mic_MedianFilter_trickleDownMax", ["&/*@>99bbb*/MicroMouse_Deploy_DW./*@>99bba*/obj./*@>99bb9*/pMID", "/*@>99bcb*/-1.0"], 0, 3, 1))>/*@]*/;
+/*@]*/
+    }
+    /*@>5c939*/if (/*@>966e6*/MicroMouse_Deploy_DW./*@>999fc*/obj.pMID.pMinHeapLength/*@>5c887*/ > /*@>78b99*/0.0) {
+/*@[19*/
+        /*@[988e4*/%<(SLibCGCallSubFcn("Mic_MedianFilter_trickleDownMin", ["&/*@>99bdc*/MicroMouse_Deploy_DW./*@>99bdb*/obj./*@>99bda*/pMID", "/*@>99bec*/1.0"], 0, 3, 0))>/*@]*/;
+/*@]*/
+    }
+}
+/*@>8620f*/rtb_Product1/*@>86211*/ = /*@>96602*/MicroMouse_Deploy_DW./*@>9998a*/obj./*@>996d5*/pMID./*@>996d8*/pBuf/*@>94b44*/[/*@>94b28*/(int32_T)/*@>96608*/MicroMouse_Deploy_DW./*@>9998d*/obj./*@>996d2*/pMID./*@>996cf*/pHeap/*@>94b2a*/[/*@>94b31*/(int32_T)/*@>9660e*/MicroMouse_Deploy_DW./*@>99990*/obj.pMID.pMidHeap/*@>94b30*/ - /*@>94b38*/1]/*@>94b27*/ - /*@>94b39*/1];
+/* {S!d476}DeadZone: '<S18>/Dead Zone' incorporates:
+ *  MATLABSystem: '<S18>/Median Filter'
+ */
+/*@>771ae*/if (/*@>86213*/rtb_Product1/*@>5c5ce*/ > /*@>961bf*/MicroMouse_Deploy_P./*@>99873*/DeadZone_End) {
+    /* {S!d470}DeadZone: '<S18>/Dead Zone' */
+    /*@>95ed9*/MicroMouse_Deploy_B./*@>99762*/DeadZone/*@>771b1*/ = rtb_Product1/*@>5c5d4*/ - /*@>961c5*/MicroMouse_Deploy_P./*@>99876*/DeadZone_End;
+} else /*@>771b3*/if (rtb_Product1/*@>5c5db*/ >= /*@>961e3*/MicroMouse_Deploy_P./*@>99885*/DeadZone_Start) {
+    /* {S!d472}DeadZone: '<S18>/Dead Zone' */
+    /*@>95f3f*/MicroMouse_Deploy_B./*@>99795*/DeadZone/*@>771b6*/ = /*@>78ae6*/0.0;
+} else {
+    /* {S!d474}DeadZone: '<S18>/Dead Zone' */
+    /*@>95f45*/MicroMouse_Deploy_B./*@>99798*/DeadZone/*@>5c5d7*/ = rtb_Product1/*@>5c5e5*/ - /*@>961e9*/MicroMouse_Deploy_P./*@>99888*/DeadZone_Start;
+}
+/* {E!d476}End of DeadZone: '<S18>/Dead Zone' */
+if (tmp) {
+    /* {S!d478}Product: '<S100>/Product4' incorporates:
+ *  Bias: '<S100>/Bias1'
+ *  UnaryMinus: '<S100>/Unary Minus'
+ */
+    /*@>95edf*/MicroMouse_Deploy_B./*@>99765*/Product4/*@>5ae82*/ = (-/*@<79643*//*@>78d04*/rtb_q/*@>662b5*/ + /*@>961cb*/MicroMouse_Deploy_P./*@>99879*/Bias1_Bias)/*@>79641*/ / /*@>78aa4*/rtb_d;
+    /* {S!d480}Product: '<S100>/Product5' incorporates:
+ *  Sum: '<S100>/Add3'
+ */
+    /*@>95ee5*/MicroMouse_Deploy_B./*@>99768*/Product5/*@>5ae9c*/ = /*@>78aa8*/1.0/*@>7963d*/ / /*@>78aa9*/rtb_d/*@>79635*/ * (/*@>78cd4*/rtb_r/*@>662bb*/ - /*@>78cd6*/rtb_p_p);
+    /* {S!d482}UnitDelay: '<S98>/Unit Delay2' */
+    /*@>95eeb*/MicroMouse_Deploy_B./*@>9976b*/UnitDelay2/*@>5c614*/ = /*@>96614*/MicroMouse_Deploy_DW./*@>99993*/UnitDelay2_DSTATE;
+    /* {S!d484}Product: '<S101>/Product4' incorporates:
+ *  Bias: '<S101>/Bias1'
+ *  UnaryMinus: '<S101>/Unary Minus'
+ */
+    /*@>95ef1*/MicroMouse_Deploy_B./*@>9976e*/Product4_l/*@>5b158*/ = (-/*@<79612*//*@>78d06*/rtb_q_m/*@>662e0*/ + /*@>961d1*/MicroMouse_Deploy_P./*@>9987c*/Bias1_Bias_d)/*@>79610*/ / /*@>78ab7*/rtb_d_n;
+    /* {S!d486}Product: '<S101>/Product5' incorporates:
+ *  Sum: '<S101>/Add3'
+ */
+    /*@>95ef7*/MicroMouse_Deploy_B./*@>99771*/Product5_a/*@>5b172*/ = /*@>78abb*/1.0/*@>7960c*/ / /*@>78abc*/rtb_d_n/*@>79604*/ * (/*@>78ce2*/rtb_r_l/*@>662e6*/ - /*@>78ce4*/rtb_p);
+    /* {S!d488}UnitDelay: '<S99>/Unit Delay2' */
+    /*@>95efd*/MicroMouse_Deploy_B./*@>99774*/UnitDelay2_i/*@>5c63c*/ = /*@>9661a*/MicroMouse_Deploy_DW./*@>99996*/UnitDelay2_DSTATE_o;
+}
+/* {S!d490}Sum: '<S98>/Sum1' incorporates:
+ *  DataStoreRead: '<S5>/Data Store Read1'
+ *  DataTypeConversion: '<S3>/Data Type Conversion'
+ *  Gain: '<S98>/Gain1'
+ *  Product: '<S98>/Product5'
+ *  Sum: '<S98>/Sum2'
+ */
+/*@>95f03*/MicroMouse_Deploy_B./*@>99777*/Sum1/*@>5cf49*/ = (/*@>90dda*/rtb_Product2_d/*@>90dd8*/ * /*@>95f09*/MicroMouse_Deploy_B./*@>9977a*/Product4/*@>90dd7*/ + /*@>94bd9*/IMU_Gyro/*@>94bdb*/[/*@>94bd8*/2])/*@>79617*/ * /*@>961d7*/MicroMouse_Deploy_P./*@>9987f*/Gain1_Gain_f/*@>5cf46*/ + /*@>95f0f*/MicroMouse_Deploy_B./*@>9977d*/UnitDelay2;
+/* {S!d492}Sum: '<S98>/Sum3' incorporates:
+ *  DataStoreRead: '<S5>/Data Store Read1'
+ *  DataTypeConversion: '<S3>/Data Type Conversion'
+ *  Product: '<S98>/Product2'
+ */
+/*@>95f15*/MicroMouse_Deploy_B./*@>99780*/Sum3/*@>5cf51*/ = /*@>94bde*/IMU_Gyro/*@>94be0*/[/*@>94bdd*/2]/*@>5cf4e*/ - /*@>90de5*/rtb_Product2_d/*@>90de3*/ * /*@>95f1b*/MicroMouse_Deploy_B./*@>99783*/Product5;
+/* {S!d494}Sum: '<S99>/Sum1' incorporates:
+ *  Gain: '<S99>/Gain1'
+ *  Product: '<S99>/Product5'
+ *  Sum: '<S99>/Sum2'
+ */
+/*@>95f21*/MicroMouse_Deploy_B./*@>99786*/Sum1_k/*@>5cf69*/ = (/*@>78d0a*/rtb_Sum_l/*@>795fa*/ * /*@>95f27*/MicroMouse_Deploy_B./*@>99789*/Product4_l/*@>663ea*/ + /*@>78d08*/Sum)/*@>795f0*/ * /*@>961dd*/MicroMouse_Deploy_P./*@>99882*/Gain1_Gain_e/*@>5cf66*/ + /*@>95f2d*/MicroMouse_Deploy_B./*@>9978c*/UnitDelay2_i;
+/* {S!d496}Sum: '<S99>/Sum3' incorporates:
+ *  Product: '<S99>/Product2'
+ */
+/*@>95f33*/MicroMouse_Deploy_B./*@>9978f*/Sum3_n/*@>5cf71*/ = /*@>78ac2*/Sum/*@>5cf6e*/ - /*@>78ce8*/rtb_Sum_l/*@>795e6*/ * /*@>95f39*/MicroMouse_Deploy_B./*@>99792*/Product5_a;
+%<SLibInsertSolverResetCode()>\
+%closefile cfgTxt
+%<cfgTxt>
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Outputs(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(0, 3, fcnProtoType)>
+%endfunction

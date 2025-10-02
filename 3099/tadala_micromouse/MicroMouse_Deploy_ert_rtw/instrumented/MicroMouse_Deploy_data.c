@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'MicroMouse_Deploy'.
  *
- * Model version                  : 5.9
+ * Model version                  : 5.10
  * Simulink Coder version         : 25.1 (R2025a) 21-Nov-2024
- * C/C++ source code generated on : Mon Sep 15 23:24:24 2025
+ * C/C++ source code generated on : Thu Oct  2 21:44:06 2025
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -25,77 +25,77 @@
 /* Block parameters (default storage) */
 P_MicroMouse_Deploy_T MicroMouse_Deploy_P = {
   /* Mask Parameter: PIDController_D
-   * Referenced by: '<S68>/Derivative Gain'
+   * Referenced by: '<S69>/Derivative Gain'
    */
   0.001,
 
   /* Mask Parameter: PIDController_I
-   * Referenced by: '<S72>/Integral Gain'
+   * Referenced by: '<S73>/Integral Gain'
    */
   1.0,
 
   /* Mask Parameter: PIDController_InitialConditionF
-   * Referenced by: '<S70>/Filter'
+   * Referenced by: '<S71>/Filter'
    */
   0.0,
 
   /* Mask Parameter: PIDController_InitialConditio_l
-   * Referenced by: '<S75>/Integrator'
+   * Referenced by: '<S76>/Integrator'
    */
   0.0,
 
   /* Mask Parameter: PIDController_N
-   * Referenced by: '<S78>/Filter Coefficient'
+   * Referenced by: '<S79>/Filter Coefficient'
    */
   100.0,
 
   /* Mask Parameter: PIDController_P
-   * Referenced by: '<S80>/Proportional Gain'
+   * Referenced by: '<S81>/Proportional Gain'
    */
-  8.0,
+  3.2,
 
   /* Mask Parameter: LowPassFilterDiscreteorContinuo
-   * Referenced by: '<S18>/Time constant'
+   * Referenced by: '<S19>/Time constant'
    */
   0.1,
 
   /* Mask Parameter: LowPassFilterDiscreteorContin_p
-   * Referenced by: '<S25>/Time constant'
+   * Referenced by: '<S26>/Time constant'
    */
   0.1,
 
   /* Mask Parameter: LowPassFilterDiscreteorContin_e
-   * Referenced by: '<S32>/Time constant'
+   * Referenced by: '<S33>/Time constant'
    */
   0.1,
 
   /* Mask Parameter: CompareToConstant_const
-   * Referenced by: '<S21>/Constant'
+   * Referenced by: '<S22>/Constant'
    */
   2.0,
 
   /* Mask Parameter: CompareToConstant_const_j
-   * Referenced by: '<S28>/Constant'
+   * Referenced by: '<S29>/Constant'
    */
   2.0,
 
   /* Mask Parameter: CompareToConstant_const_o
-   * Referenced by: '<S35>/Constant'
+   * Referenced by: '<S36>/Constant'
    */
   2.0,
 
   /* Mask Parameter: LowPassFilterDiscreteorContin_k
-   * Referenced by: '<S18>/Constant'
+   * Referenced by: '<S19>/Constant'
    */
   1.0,
 
   /* Mask Parameter: LowPassFilterDiscreteorContin_c
-   * Referenced by: '<S25>/Constant'
+   * Referenced by: '<S26>/Constant'
    */
   1.0,
 
   /* Mask Parameter: LowPassFilterDiscreteorConti_cz
-   * Referenced by: '<S32>/Constant'
+   * Referenced by: '<S33>/Constant'
    */
   1.0,
 
@@ -115,19 +115,19 @@ P_MicroMouse_Deploy_T MicroMouse_Deploy_P = {
   1.0F,
 
   /* Mask Parameter: CompareToConstant_const_l
-   * Referenced by: '<S93>/Constant'
+   * Referenced by: '<S94>/Constant'
    */
   1.4F,
 
   /* Mask Parameter: DetectRisePositive_vinit
-   * Referenced by: '<S94>/Delay Input1'
+   * Referenced by: '<S95>/Delay Input1'
    */
   0U,
 
-  /* Expression: (2*pi*0.031)
+  /* Expression: (2*pi*0.032)
    * Referenced by: '<S17>/Circumference'
    */
-  0.19477874452256716,
+  0.20106192982974677,
 
   /* Expression: 2
    * Referenced by: '<S3>/ref'
@@ -149,11 +149,6 @@ P_MicroMouse_Deploy_T MicroMouse_Deploy_P = {
    */
   1.0,
 
-  /* Expression: -1
-   * Referenced by: '<S3>/Gain'
-   */
-  -1.0,
-
   /* Expression: 1
    * Referenced by: '<Root>/Gain'
    */
@@ -169,6 +164,91 @@ P_MicroMouse_Deploy_T MicroMouse_Deploy_P = {
    */
   27.0,
 
+  /* Expression: 5
+   * Referenced by: '<S3>/Constant2'
+   */
+  5.0,
+
+  /* Expression: 0
+   * Referenced by: '<S98>/Unit Delay1'
+   */
+  0.0,
+
+  /* Expression: tau
+   * Referenced by: '<S98>/tau'
+   */
+  0.005,
+
+  /* Expression: 1
+   * Referenced by: '<S100>/Bias'
+   */
+  1.0,
+
+  /* Expression: 2*zeta
+   * Referenced by: '<S100>/Gain'
+   */
+  0.76536686473017956,
+
+  /* Expression: 0
+   * Referenced by: '<S99>/Unit Delay1'
+   */
+  0.0,
+
+  /* Expression: tau
+   * Referenced by: '<S99>/tau'
+   */
+  0.005,
+
+  /* Expression: 1
+   * Referenced by: '<S101>/Bias'
+   */
+  1.0,
+
+  /* Expression: 2*zeta
+   * Referenced by: '<S101>/Gain'
+   */
+  1.8477590650225735,
+
+  /* Expression: -0.5
+   * Referenced by: '<S18>/Dead Zone'
+   */
+  -0.5,
+
+  /* Expression: 0.5
+   * Referenced by: '<S18>/Dead Zone'
+   */
+  0.5,
+
+  /* Expression: 1
+   * Referenced by: '<S100>/Bias1'
+   */
+  1.0,
+
+  /* Expression: 2
+   * Referenced by: '<S98>/Gain1'
+   */
+  2.0,
+
+  /* Expression: 0
+   * Referenced by: '<S98>/Unit Delay2'
+   */
+  0.0,
+
+  /* Expression: 1
+   * Referenced by: '<S101>/Bias1'
+   */
+  1.0,
+
+  /* Expression: 2
+   * Referenced by: '<S99>/Gain1'
+   */
+  2.0,
+
+  /* Expression: 0
+   * Referenced by: '<S99>/Unit Delay2'
+   */
+  0.0,
+
   /* Expression: "UCT MICROMOUSE '25"
    * Referenced by: '<S3>/OLED_STRING1'
    */
@@ -180,17 +260,17 @@ P_MicroMouse_Deploy_T MicroMouse_Deploy_P = {
   "Simulink Data Demo",
 
   /* Computed Parameter: Constant_Value_lf
-   * Referenced by: '<S22>/Constant'
+   * Referenced by: '<S23>/Constant'
    */
   0.0F,
 
   /* Computed Parameter: Constant_Value_i
-   * Referenced by: '<S29>/Constant'
+   * Referenced by: '<S30>/Constant'
    */
   0.0F,
 
   /* Computed Parameter: Constant_Value_c
-   * Referenced by: '<S36>/Constant'
+   * Referenced by: '<S37>/Constant'
    */
   0.0F,
 
@@ -205,77 +285,77 @@ P_MicroMouse_Deploy_T MicroMouse_Deploy_P = {
   0.001F,
 
   /* Computed Parameter: Integrator_gainval
-   * Referenced by: '<S24>/Integrator'
+   * Referenced by: '<S25>/Integrator'
    */
   0.01F,
 
   /* Computed Parameter: Integrator_UpperSat
-   * Referenced by: '<S24>/Integrator'
+   * Referenced by: '<S25>/Integrator'
    */
   INFINITY,
 
   /* Computed Parameter: Integrator_LowerSat
-   * Referenced by: '<S24>/Integrator'
+   * Referenced by: '<S25>/Integrator'
    */
   -INFINITY,
 
   /* Computed Parameter: Saturation_UpperSat
-   * Referenced by: '<S24>/Saturation'
+   * Referenced by: '<S25>/Saturation'
    */
   INFINITY,
 
   /* Computed Parameter: Saturation_LowerSat
-   * Referenced by: '<S24>/Saturation'
+   * Referenced by: '<S25>/Saturation'
    */
   -INFINITY,
 
   /* Computed Parameter: Integrator_gainval_n
-   * Referenced by: '<S31>/Integrator'
+   * Referenced by: '<S32>/Integrator'
    */
   0.01F,
 
   /* Computed Parameter: Integrator_UpperSat_k
-   * Referenced by: '<S31>/Integrator'
+   * Referenced by: '<S32>/Integrator'
    */
   INFINITY,
 
   /* Computed Parameter: Integrator_LowerSat_d
-   * Referenced by: '<S31>/Integrator'
+   * Referenced by: '<S32>/Integrator'
    */
   -INFINITY,
 
   /* Computed Parameter: Saturation_UpperSat_f
-   * Referenced by: '<S31>/Saturation'
+   * Referenced by: '<S32>/Saturation'
    */
   INFINITY,
 
   /* Computed Parameter: Saturation_LowerSat_b
-   * Referenced by: '<S31>/Saturation'
+   * Referenced by: '<S32>/Saturation'
    */
   -INFINITY,
 
   /* Computed Parameter: Integrator_gainval_k
-   * Referenced by: '<S38>/Integrator'
+   * Referenced by: '<S39>/Integrator'
    */
   0.01F,
 
   /* Computed Parameter: Integrator_UpperSat_l
-   * Referenced by: '<S38>/Integrator'
+   * Referenced by: '<S39>/Integrator'
    */
   INFINITY,
 
   /* Computed Parameter: Integrator_LowerSat_g
-   * Referenced by: '<S38>/Integrator'
+   * Referenced by: '<S39>/Integrator'
    */
   -INFINITY,
 
   /* Computed Parameter: Saturation_UpperSat_c
-   * Referenced by: '<S38>/Saturation'
+   * Referenced by: '<S39>/Saturation'
    */
   INFINITY,
 
   /* Computed Parameter: Saturation_LowerSat_o
-   * Referenced by: '<S38>/Saturation'
+   * Referenced by: '<S39>/Saturation'
    */
   -INFINITY,
 
@@ -365,7 +445,7 @@ P_MicroMouse_Deploy_T MicroMouse_Deploy_P = {
   0U,
 
   /* Computed Parameter: Constant_Value_d
-   * Referenced by: '<S95>/Constant'
+   * Referenced by: '<S96>/Constant'
    */
   false,
 

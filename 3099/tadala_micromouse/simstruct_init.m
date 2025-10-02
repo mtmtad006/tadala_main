@@ -1,4 +1,4 @@
-function simstruct = simstruct_init()
+function simstruct = simstruct_init(currmap)
 %SIMSTRUCT_INIT  Initialise micro-mouse simulation structure
 %   simstruct = simstruct_init() creates a simulation structure for use in
 %   various micro-mouse Simulink blocks.  If simstruct_init() is called
@@ -11,6 +11,10 @@ function simstruct = simstruct_init()
 %   struct2bus is simple and only wants numeric data types, so make sure
 %   that the fields of simstruct are sufficiently simple that the
 %   conversion succeeds (e.g. no structures in simstruct fields). 
+
+if nargin<1
+  currmap = 0;
+end
 
 simstruct = struct();
 
@@ -35,7 +39,7 @@ simstruct.robot_img = robot_img;
 simstruct.robot_imgalpha = robot_imgalpha;
 robot_imgres = 147/robot_totalwidth;  % pixels per meter
 simstruct.robot_imgxyd = ((1:size(robot_img,1)) - ceil(size(robot_img,1)/2))/robot_imgres;
-simstruct.robot_rad = 0.120/2;  % approximate mouse radius in meters for collision detection
+simstruct.robot_rad = 0.116/2;  % approximate mouse radius in meters for collision detection
 
 % robotParams.ticksPerRot = 20;                    % Ticks per rotation for encoders
 % robotParams.width = 85;                          % Distance from left to right of robot (mm)
@@ -59,7 +63,7 @@ simstruct.toflpose = [0.045 0.02 pi/2];  % [x y theta] in robot frame
 simstruct.toffpose = [0.055 0 0];
 simstruct.tofrpose = [0.045 -0.02 -pi/2];
 simstruct.tofposes = [simstruct.toflpose; simstruct.toffpose; simstruct.tofrpose];
-simstruct.tofspts = 0.01:0.005:0.5;
+simstruct.tofspts = 0.01:0.001:1.5;
 
 % Generate maze map
 mazeparm = struct();
@@ -69,10 +73,9 @@ mazeparm.wtdim = 0.006;  % wall thickness dimension (meters)
 mazeparm.res = 500;  % resolution (points per meter)
 
 % Select map
-currmap = 0;  % 0 (maze), 1 (track), 2 (field)
 switch currmap
   case 0
-    map = amaze_mm(8,12,'middle',false,false,mazeparm);
+    map = amaze_mm(4,6,'middle',false,false,mazeparm);
   case 1
     ih = mazeparm.bdim*mazeparm.res;
     iw = ih*10;
@@ -84,6 +87,13 @@ switch currmap
     mim = zeros(1500,2000);
     mim(1:3,:) = 1;  mim(end-2:end,:) = 1;  
     mim(:,1:3) = 1;  mim(:,end-2:end) = 1;  
+    map = binaryOccupancyMap(mim,mazeparm.res);
+  case 3
+    mim = zeros(750,2000); 
+    mim(250:255,:) = 1;  mim(495:500,:) = 1;
+    mim(:,(150:155)) = 1;  mim(:,(150:155)+500) = 1;  mim(:,(150:155)+1000) = 1;  mim(:,(150:155)+1500) = 1; 
+    mim(256:494,156:end) = 0;  mim(300:450,:) = 0;
+    mim(:,1:149) = 0;
     map = binaryOccupancyMap(mim,mazeparm.res);
 end
 
@@ -97,9 +107,6 @@ simstruct.mapdt = flipud(mapdtp/map.Resolution);  % distance transform in meters
 % Odometry
 simstruct.wencr = 8;  % number of wheel markers per revolution
 
-% Kalman?
-
-
 % Needed for MRTL blocks?
 mapForSim = struct();
 mapForSim.lineFollowingMap = [];
@@ -107,6 +114,11 @@ mapForSim.obsMap = occupancyMatrix(map);
 mapForSim.scaleFactor = map.Resolution;
 mapForSim.simMap = map;
 assignin('base','mapForSim',mapForSim);
+
+% Local additions to structure
+if exist('simstructlocal_init.m','file')==2
+  simstruct = simstructlocal_init(simstruct);
+end
 
 if nargout==0
   assignin('base','simstruct',simstruct);

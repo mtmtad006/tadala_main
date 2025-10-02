@@ -1,4 +1,4 @@
-%implements s2_b0_xm0jn_Derivatives "C"
+%implements s3_b0_qbdfo_Derivatives "C"
 
 %function Derivatives(block, system) Output
 %assign cfgTxt = ""
@@ -10,11 +10,11 @@ XDot_MicroMouse_Deploy_T *_rtXdot;
 %closefile localVarDecl
 _rtXdot = %<(SLibCG_SE(SLibGetContStatesDerivativeStructPtr()))>;
 /* Derivatives for Integrator: '<S14>/Integrator' */
-/*@>22a8f*/_rtXdot->/*@>24824*/Integrator_CSTATE/*@>5c12*/ = /*@>2266d*/MicroMouse_Deploy_B./*@>2481b*/DataTypeConversion/*@>21c47*/[/*@>21c44*/2];
-/* Derivatives for Integrator: '<S75>/Integrator' */
-/*@>22a96*/_rtXdot->/*@>24827*/Integrator_CSTATE_p/*@>5c1e*/ = /*@>22673*/MicroMouse_Deploy_B./*@>2481e*/IntegralGain;
-/* Derivatives for Integrator: '<S70>/Filter' */
-/*@>22a9d*/_rtXdot->/*@>2482a*/Filter_CSTATE/*@>5c2a*/ = /*@>22679*/MicroMouse_Deploy_B./*@>24821*/FilterCoefficient;
+/*@>96437*/_rtXdot->/*@>99dd1*/Integrator_CSTATE/*@>5ca8e*/ = /*@>95f93*/MicroMouse_Deploy_B./*@>99dc8*/DeadZone;
+/* Derivatives for Integrator: '<S76>/Integrator' */
+/*@>9643e*/_rtXdot->/*@>99dd4*/Integrator_CSTATE_p/*@>5ca9a*/ = /*@>95f99*/MicroMouse_Deploy_B./*@>99dcb*/IntegralGain;
+/* Derivatives for Integrator: '<S71>/Filter' */
+/*@>96445*/_rtXdot->/*@>99dd7*/Filter_CSTATE/*@>5caa6*/ = /*@>95f9f*/MicroMouse_Deploy_B./*@>99dce*/FilterCoefficient;
 %closefile cfgTxt
 %<cfgTxt>
 %<LibSetSystemField(system, "CachedDerivativeLocalVars", localVarDecl)>
@@ -25,5 +25,5 @@ _rtXdot = %<(SLibCG_SE(SLibGetContStatesDerivativeStructPtr()))>;
 static void Derivatives(\
 %assign comma = ""
 %closefile fcnProtoType
-%<SLibCG_SetFcnProtoType(0, 2, fcnProtoType)>
+%<SLibCG_SetFcnProtoType(0, 5, fcnProtoType)>
 %endfunction

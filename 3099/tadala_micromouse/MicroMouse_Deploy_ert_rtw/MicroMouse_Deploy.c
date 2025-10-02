@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'MicroMouse_Deploy'.
  *
- * Model version                  : 5.9
+ * Model version                  : 5.10
  * Simulink Coder version         : 25.1 (R2025a) 21-Nov-2024
- * C/C++ source code generated on : Mon Sep 15 23:24:24 2025
+ * C/C++ source code generated on : Thu Oct  2 21:44:06 2025
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -21,6 +21,7 @@
  */
 
 #include "MicroMouse_Deploy.h"
+#include "MicroMouse_Deploy_types.h"
 #include "rtwtypes.h"
 #include <math.h>
 #include <stdio.h>
@@ -52,6 +53,13 @@ DW_MicroMouse_Deploy_T MicroMouse_Deploy_DW;
 /* Real-time model */
 static RT_MODEL_MicroMouse_Deploy_T MicroMouse_Deploy_M_;
 RT_MODEL_MicroMouse_Deploy_T *const MicroMouse_Deploy_M = &MicroMouse_Deploy_M_;
+
+/* Forward declaration for local functions */
+static void MicroMou_MedianFilter_resetImpl(e_dsp_internal_codegen_Median_T *obj);
+static void Mic_MedianFilter_trickleDownMax(e_dsp_internal_codegen_Median_T *obj,
+  real_T i);
+static void Mic_MedianFilter_trickleDownMin(e_dsp_internal_codegen_Median_T *obj,
+  real_T i);
 
 /*
  * This function updates continuous states using the ODE3 fixed-step
@@ -134,6 +142,106 @@ static void rt_ertODEUpdateContinuousStates(RTWSolverInfo *si )
   rtsiSetSimTimeStep(si,MAJOR_TIME_STEP);
 }
 
+static void MicroMou_MedianFilter_resetImpl(e_dsp_internal_codegen_Median_T *obj)
+{
+  real_T cnt2;
+  int32_T cnt1;
+  int32_T i;
+  for (i = 0; i < 5; i++) {
+    /* Start for MATLABSystem: '<S18>/Median Filter' */
+    obj->pBuf[i] = 0.0;
+    obj->pPos[i] = 0.0;
+    obj->pHeap[i] = 0.0;
+  }
+
+  /* Start for MATLABSystem: '<S18>/Median Filter' */
+  obj->pWinLen = 5.0;
+  obj->pIdx = obj->pWinLen;
+
+  /* Start for MATLABSystem: '<S18>/Median Filter' */
+  obj->pMidHeap = ceil((obj->pWinLen + 1.0) / 2.0);
+  obj->pMinHeapLength = trunc((obj->pWinLen - 1.0) / 2.0);
+  obj->pMaxHeapLength = trunc(obj->pWinLen / 2.0);
+  cnt1 = 1;
+  cnt2 = obj->pWinLen;
+  for (i = 0; i < 5; i++) {
+    /* Start for MATLABSystem: '<S18>/Median Filter' */
+    if (fmod(5.0 - (real_T)i, 2.0) == 0.0) {
+      obj->pPos[4 - i] = cnt1;
+      cnt1++;
+    } else {
+      obj->pPos[4 - i] = cnt2;
+      cnt2--;
+    }
+
+    obj->pHeap[(int32_T)obj->pPos[4 - i] - 1] = 5.0 - (real_T)i;
+  }
+}
+
+static void Mic_MedianFilter_trickleDownMax(e_dsp_internal_codegen_Median_T *obj,
+  real_T i)
+{
+  boolean_T exitg1;
+  exitg1 = false;
+  while ((!exitg1) && (i >= -obj->pMaxHeapLength)) {
+    real_T ind1;
+    real_T ind2;
+    real_T tmp;
+    real_T tmp_0;
+    if ((i < -1.0) && (i > -obj->pMaxHeapLength) && (obj->pBuf[(int32_T)
+         obj->pHeap[(int32_T)(i + obj->pMidHeap) - 1] - 1] < obj->pBuf[(int32_T)
+         obj->pHeap[(int32_T)((i - 1.0) + obj->pMidHeap) - 1] - 1])) {
+      i--;
+    }
+
+    ind1 = trunc(i / 2.0) + obj->pMidHeap;
+    ind2 = i + obj->pMidHeap;
+    tmp = obj->pHeap[(int32_T)ind1 - 1];
+    tmp_0 = obj->pHeap[(int32_T)ind2 - 1];
+    if (obj->pBuf[(int32_T)tmp - 1] >= obj->pBuf[(int32_T)tmp_0 - 1]) {
+      exitg1 = true;
+    } else {
+      obj->pHeap[(int32_T)ind1 - 1] = tmp_0;
+      obj->pHeap[(int32_T)ind2 - 1] = tmp;
+      obj->pPos[(int32_T)obj->pHeap[(int32_T)ind1 - 1] - 1] = ind1;
+      obj->pPos[(int32_T)obj->pHeap[(int32_T)ind2 - 1] - 1] = ind2;
+      i *= 2.0;
+    }
+  }
+}
+
+static void Mic_MedianFilter_trickleDownMin(e_dsp_internal_codegen_Median_T *obj,
+  real_T i)
+{
+  boolean_T exitg1;
+  exitg1 = false;
+  while ((!exitg1) && (i <= obj->pMinHeapLength)) {
+    real_T ind1;
+    real_T ind2;
+    real_T tmp;
+    real_T tmp_0;
+    if ((i > 1.0) && (i < obj->pMinHeapLength) && (obj->pBuf[(int32_T)obj->
+         pHeap[(int32_T)((i + 1.0) + obj->pMidHeap) - 1] - 1] < obj->pBuf
+         [(int32_T)obj->pHeap[(int32_T)(i + obj->pMidHeap) - 1] - 1])) {
+      i++;
+    }
+
+    ind1 = i + obj->pMidHeap;
+    ind2 = trunc(i / 2.0) + obj->pMidHeap;
+    tmp = obj->pHeap[(int32_T)ind1 - 1];
+    tmp_0 = obj->pHeap[(int32_T)ind2 - 1];
+    if (obj->pBuf[(int32_T)tmp - 1] >= obj->pBuf[(int32_T)tmp_0 - 1]) {
+      exitg1 = true;
+    } else {
+      obj->pHeap[(int32_T)ind1 - 1] = tmp_0;
+      obj->pHeap[(int32_T)ind2 - 1] = tmp;
+      obj->pPos[(int32_T)obj->pHeap[(int32_T)ind1 - 1] - 1] = ind1;
+      obj->pPos[(int32_T)obj->pHeap[(int32_T)ind2 - 1] - 1] = ind2;
+      i *= 2.0;
+    }
+  }
+}
+
 /* Model step function */
 void MicroMouse_Deploy_step(void)
 {
@@ -146,7 +254,22 @@ void MicroMouse_Deploy_step(void)
   boolean_T rtb_LogicalOperator_c;
   boolean_T rtb_LogicalOperator_a;
   real_T Sum;
-  real_T rtb_Error;
+  real_T ind1;
+  real_T ind2;
+  real_T p;
+  real_T rtb_Product1;
+  real_T rtb_Product2_d;
+  real_T rtb_Sum_l;
+  real_T rtb_d;
+  real_T rtb_d_n;
+  real_T rtb_p;
+  real_T rtb_p_p;
+  real_T rtb_q;
+  real_T rtb_q_m;
+  real_T rtb_r;
+  real_T rtb_r_l;
+  real_T tmp_0;
+  real_T vprev;
   real32_T rtb_K;
   real32_T rtb_K_i;
   real32_T rtb_K_n;
@@ -158,6 +281,7 @@ void MicroMouse_Deploy_step(void)
   char_T rtb_ComposeString2_0[256];
   char_T rtb_ComposeString4_0[256];
   char_T rtb_ComposeString_0[256];
+  boolean_T exitg1;
   boolean_T tmp;
   if (rtmIsMajorTimeStep(MicroMouse_Deploy_M)) {
     /* set solver stop time */
@@ -173,13 +297,13 @@ void MicroMouse_Deploy_step(void)
 
   tmp = rtmIsMajorTimeStep(MicroMouse_Deploy_M);
   if (tmp) {
-    /* RelationalOperator: '<S95>/Compare' incorporates:
-     *  Constant: '<S93>/Constant'
-     *  Constant: '<S95>/Constant'
+    /* RelationalOperator: '<S96>/Compare' incorporates:
+     *  Constant: '<S94>/Constant'
+     *  Constant: '<S96>/Constant'
      *  DataStoreRead: '<S4>/Data Store Read4'
      *  DataTypeConversion: '<S4>/Cast To Single'
      *  Gain: '<S4>/Gain2'
-     *  RelationalOperator: '<S93>/Compare'
+     *  RelationalOperator: '<S94>/Compare'
      */
     rtb_Compare = (uint8_T)((MicroMouse_Deploy_P.Gain2_Gain * (real32_T)
       V_PHOTO_MOT_RS >= MicroMouse_Deploy_P.CompareToConstant_const_l) >
@@ -187,10 +311,10 @@ void MicroMouse_Deploy_step(void)
 
     /* Sum: '<S15>/Add' incorporates:
      *  Delay: '<S15>/Delay'
-     *  RelationalOperator: '<S94>/FixPt Relational Operator'
-     *  UnitDelay: '<S94>/Delay Input1'
+     *  RelationalOperator: '<S95>/FixPt Relational Operator'
+     *  UnitDelay: '<S95>/Delay Input1'
      *
-     * Block description for '<S94>/Delay Input1':
+     * Block description for '<S95>/Delay Input1':
      *
      *  Store in Global RAM
      */
@@ -218,7 +342,7 @@ void MicroMouse_Deploy_step(void)
         MicroMouse_Deploy_DW.bitsForTID1.is_c3_MicroMouse_Deploy =
           MicroMouse_Deploy_IN_Stop;
       } else {
-        MicroMouse_Deploy_B.ang_vel = 60.0;
+        MicroMouse_Deploy_B.ang_vel = 70.0;
       }
     } else {
       /* case IN_Stop: */
@@ -232,23 +356,23 @@ void MicroMouse_Deploy_step(void)
    *  Constant: '<S14>/Constant'
    *  Integrator: '<S14>/Integrator'
    */
-  rtb_Error = MicroMouse_Deploy_P.Constant_Value -
+  rtb_Sum_l = MicroMouse_Deploy_P.Constant_Value -
     MicroMouse_Deploy_X.Integrator_CSTATE;
 
-  /* Gain: '<S78>/Filter Coefficient' incorporates:
-   *  Gain: '<S68>/Derivative Gain'
-   *  Integrator: '<S70>/Filter'
-   *  Sum: '<S70>/SumD'
+  /* Gain: '<S79>/Filter Coefficient' incorporates:
+   *  Gain: '<S69>/Derivative Gain'
+   *  Integrator: '<S71>/Filter'
+   *  Sum: '<S71>/SumD'
    */
   MicroMouse_Deploy_B.FilterCoefficient = (MicroMouse_Deploy_P.PIDController_D *
-    rtb_Error - MicroMouse_Deploy_X.Filter_CSTATE) *
+    rtb_Sum_l - MicroMouse_Deploy_X.Filter_CSTATE) *
     MicroMouse_Deploy_P.PIDController_N;
 
-  /* Sum: '<S84>/Sum' incorporates:
-   *  Gain: '<S80>/Proportional Gain'
-   *  Integrator: '<S75>/Integrator'
+  /* Sum: '<S85>/Sum' incorporates:
+   *  Gain: '<S81>/Proportional Gain'
+   *  Integrator: '<S76>/Integrator'
    */
-  Sum = (MicroMouse_Deploy_P.PIDController_P * rtb_Error +
+  Sum = (MicroMouse_Deploy_P.PIDController_P * rtb_Sum_l +
          MicroMouse_Deploy_X.Integrator_CSTATE_p) +
     MicroMouse_Deploy_B.FilterCoefficient;
   if (tmp) {
@@ -292,22 +416,20 @@ void MicroMouse_Deploy_step(void)
      *  Gain: '<Root>/Gain1'
      *  Sum: '<S3>/Sum'
      */
-    Sum = fmod(floor((MicroMouse_Deploy_B.ang_vel + MicroMouse_Deploy_B.RW_w) *
-                     MicroMouse_Deploy_P.Gain1_Gain), 256.0);
-    MOTOR_RS = (int8_T)(Sum < 0.0 ? (int32_T)(int8_T)-(int8_T)(uint8_T)-Sum :
-                        (int32_T)(int8_T)(uint8_T)Sum);
+    rtb_Product1 = fmod(floor((MicroMouse_Deploy_B.ang_vel +
+      MicroMouse_Deploy_B.RW_w) * MicroMouse_Deploy_P.Gain1_Gain), 256.0);
+    MOTOR_RS = (int8_T)(rtb_Product1 < 0.0 ? (int32_T)(int8_T)-(int8_T)(uint8_T)
+                        -rtb_Product1 : (int32_T)(int8_T)(uint8_T)rtb_Product1);
 
     /* DataTypeConversion: '<S1>/Cast' incorporates:
      *  DataStoreWrite: '<S1>/Data Store Write'
      *  Gain: '<Root>/Gain'
-     *  Gain: '<S3>/Gain'
      *  Sum: '<S3>/Sum1'
      */
-    Sum = fmod(floor((MicroMouse_Deploy_B.ang_vel + MicroMouse_Deploy_B.LW_w) *
-                     MicroMouse_Deploy_P.Gain_Gain *
-                     MicroMouse_Deploy_P.Gain_Gain_c), 256.0);
-    MOTOR_LS = (int8_T)(Sum < 0.0 ? (int32_T)(int8_T)-(int8_T)(uint8_T)-Sum :
-                        (int32_T)(int8_T)(uint8_T)Sum);
+    rtb_Product1 = fmod(floor((MicroMouse_Deploy_B.ang_vel +
+      MicroMouse_Deploy_B.LW_w) * MicroMouse_Deploy_P.Gain_Gain), 256.0);
+    MOTOR_LS = (int8_T)(rtb_Product1 < 0.0 ? (int32_T)(int8_T)-(int8_T)(uint8_T)
+                        -rtb_Product1 : (int32_T)(int8_T)(uint8_T)rtb_Product1);
 
     /* ComposeString: '<S2>/Compose String' incorporates:
      *  StringConstant: '<S3>/OLED_STRING1'
@@ -331,14 +453,14 @@ void MicroMouse_Deploy_step(void)
      */
     strncpy((char_T *)&oled_string2[0], &rtb_ComposeString4_0[0], 18U);
 
-    /* Logic: '<S18>/Logical Operator' incorporates:
-     *  Constant: '<S18>/Constant'
-     *  Constant: '<S18>/Time constant'
-     *  Constant: '<S21>/Constant'
+    /* Logic: '<S19>/Logical Operator' incorporates:
+     *  Constant: '<S19>/Constant'
+     *  Constant: '<S19>/Time constant'
      *  Constant: '<S22>/Constant'
-     *  RelationalOperator: '<S21>/Compare'
+     *  Constant: '<S23>/Constant'
      *  RelationalOperator: '<S22>/Compare'
-     *  Sum: '<S18>/Sum1'
+     *  RelationalOperator: '<S23>/Compare'
+     *  Sum: '<S19>/Sum1'
      */
     rtb_LogicalOperator = (((real32_T)
       (MicroMouse_Deploy_P.LowPassFilterDiscreteorContinuo -
@@ -354,7 +476,7 @@ void MicroMouse_Deploy_step(void)
     rtb_K = MicroMouse_Deploy_P.Gain_Gain_g * (real32_T)TOF_Distance[0] *
       MicroMouse_Deploy_P.LowPassFilterDiscreteorConti_pu;
 
-    /* DiscreteIntegrator: '<S24>/Integrator' */
+    /* DiscreteIntegrator: '<S25>/Integrator' */
     if (MicroMouse_Deploy_DW.Integrator_IC_LOADING != 0) {
       MicroMouse_Deploy_DW.Integrator_DSTATE = rtb_K;
       if (MicroMouse_Deploy_DW.Integrator_DSTATE >
@@ -382,32 +504,32 @@ void MicroMouse_Deploy_step(void)
       }
     }
 
-    /* Saturate: '<S24>/Saturation' incorporates:
-     *  DiscreteIntegrator: '<S24>/Integrator'
+    /* Saturate: '<S25>/Saturation' incorporates:
+     *  DiscreteIntegrator: '<S25>/Integrator'
      */
     if (MicroMouse_Deploy_DW.Integrator_DSTATE >
         MicroMouse_Deploy_P.Saturation_UpperSat) {
-      /* Saturate: '<S24>/Saturation' */
+      /* Saturate: '<S25>/Saturation' */
       rtb_Saturation = MicroMouse_Deploy_P.Saturation_UpperSat;
     } else if (MicroMouse_Deploy_DW.Integrator_DSTATE <
                MicroMouse_Deploy_P.Saturation_LowerSat) {
-      /* Saturate: '<S24>/Saturation' */
+      /* Saturate: '<S25>/Saturation' */
       rtb_Saturation = MicroMouse_Deploy_P.Saturation_LowerSat;
     } else {
-      /* Saturate: '<S24>/Saturation' */
+      /* Saturate: '<S25>/Saturation' */
       rtb_Saturation = MicroMouse_Deploy_DW.Integrator_DSTATE;
     }
 
-    /* End of Saturate: '<S24>/Saturation' */
+    /* End of Saturate: '<S25>/Saturation' */
 
-    /* Logic: '<S25>/Logical Operator' incorporates:
-     *  Constant: '<S25>/Constant'
-     *  Constant: '<S25>/Time constant'
-     *  Constant: '<S28>/Constant'
+    /* Logic: '<S26>/Logical Operator' incorporates:
+     *  Constant: '<S26>/Constant'
+     *  Constant: '<S26>/Time constant'
      *  Constant: '<S29>/Constant'
-     *  RelationalOperator: '<S28>/Compare'
+     *  Constant: '<S30>/Constant'
      *  RelationalOperator: '<S29>/Compare'
-     *  Sum: '<S25>/Sum1'
+     *  RelationalOperator: '<S30>/Compare'
+     *  Sum: '<S26>/Sum1'
      */
     rtb_LogicalOperator_c = (((real32_T)
       (MicroMouse_Deploy_P.LowPassFilterDiscreteorContin_p -
@@ -423,7 +545,7 @@ void MicroMouse_Deploy_step(void)
     rtb_K_i = MicroMouse_Deploy_P.Gain_Gain_g * (real32_T)TOF_Distance[1] *
       MicroMouse_Deploy_P.LowPassFilterDiscreteorContin_a;
 
-    /* DiscreteIntegrator: '<S31>/Integrator' */
+    /* DiscreteIntegrator: '<S32>/Integrator' */
     if (MicroMouse_Deploy_DW.Integrator_IC_LOADING_k != 0) {
       MicroMouse_Deploy_DW.Integrator_DSTATE_m = rtb_K_i;
       if (MicroMouse_Deploy_DW.Integrator_DSTATE_m >
@@ -451,32 +573,32 @@ void MicroMouse_Deploy_step(void)
       }
     }
 
-    /* Saturate: '<S31>/Saturation' incorporates:
-     *  DiscreteIntegrator: '<S31>/Integrator'
+    /* Saturate: '<S32>/Saturation' incorporates:
+     *  DiscreteIntegrator: '<S32>/Integrator'
      */
     if (MicroMouse_Deploy_DW.Integrator_DSTATE_m >
         MicroMouse_Deploy_P.Saturation_UpperSat_f) {
-      /* Saturate: '<S31>/Saturation' */
+      /* Saturate: '<S32>/Saturation' */
       rtb_Saturation_e = MicroMouse_Deploy_P.Saturation_UpperSat_f;
     } else if (MicroMouse_Deploy_DW.Integrator_DSTATE_m <
                MicroMouse_Deploy_P.Saturation_LowerSat_b) {
-      /* Saturate: '<S31>/Saturation' */
+      /* Saturate: '<S32>/Saturation' */
       rtb_Saturation_e = MicroMouse_Deploy_P.Saturation_LowerSat_b;
     } else {
-      /* Saturate: '<S31>/Saturation' */
+      /* Saturate: '<S32>/Saturation' */
       rtb_Saturation_e = MicroMouse_Deploy_DW.Integrator_DSTATE_m;
     }
 
-    /* End of Saturate: '<S31>/Saturation' */
+    /* End of Saturate: '<S32>/Saturation' */
 
-    /* Logic: '<S32>/Logical Operator' incorporates:
-     *  Constant: '<S32>/Constant'
-     *  Constant: '<S32>/Time constant'
-     *  Constant: '<S35>/Constant'
+    /* Logic: '<S33>/Logical Operator' incorporates:
+     *  Constant: '<S33>/Constant'
+     *  Constant: '<S33>/Time constant'
      *  Constant: '<S36>/Constant'
-     *  RelationalOperator: '<S35>/Compare'
+     *  Constant: '<S37>/Constant'
      *  RelationalOperator: '<S36>/Compare'
-     *  Sum: '<S32>/Sum1'
+     *  RelationalOperator: '<S37>/Compare'
+     *  Sum: '<S33>/Sum1'
      */
     rtb_LogicalOperator_a = (((real32_T)
       (MicroMouse_Deploy_P.LowPassFilterDiscreteorContin_e -
@@ -492,7 +614,7 @@ void MicroMouse_Deploy_step(void)
     rtb_K_n = MicroMouse_Deploy_P.Gain_Gain_g * (real32_T)TOF_Distance[2] *
       MicroMouse_Deploy_P.LowPassFilterDiscreteorConti_cj;
 
-    /* DiscreteIntegrator: '<S38>/Integrator' */
+    /* DiscreteIntegrator: '<S39>/Integrator' */
     if (MicroMouse_Deploy_DW.Integrator_IC_LOADING_a != 0) {
       MicroMouse_Deploy_DW.Integrator_DSTATE_i = rtb_K_n;
       if (MicroMouse_Deploy_DW.Integrator_DSTATE_i >
@@ -520,28 +642,28 @@ void MicroMouse_Deploy_step(void)
       }
     }
 
-    /* Saturate: '<S38>/Saturation' incorporates:
-     *  DiscreteIntegrator: '<S38>/Integrator'
+    /* Saturate: '<S39>/Saturation' incorporates:
+     *  DiscreteIntegrator: '<S39>/Integrator'
      */
     if (MicroMouse_Deploy_DW.Integrator_DSTATE_i >
         MicroMouse_Deploy_P.Saturation_UpperSat_c) {
-      /* Saturate: '<S38>/Saturation' */
+      /* Saturate: '<S39>/Saturation' */
       rtb_Saturation_g = MicroMouse_Deploy_P.Saturation_UpperSat_c;
     } else if (MicroMouse_Deploy_DW.Integrator_DSTATE_i <
                MicroMouse_Deploy_P.Saturation_LowerSat_o) {
-      /* Saturate: '<S38>/Saturation' */
+      /* Saturate: '<S39>/Saturation' */
       rtb_Saturation_g = MicroMouse_Deploy_P.Saturation_LowerSat_o;
     } else {
-      /* Saturate: '<S38>/Saturation' */
+      /* Saturate: '<S39>/Saturation' */
       rtb_Saturation_g = MicroMouse_Deploy_DW.Integrator_DSTATE_i;
     }
 
-    /* End of Saturate: '<S38>/Saturation' */
+    /* End of Saturate: '<S39>/Saturation' */
 
     /* ComposeString: '<S3>/Compose String' incorporates:
-     *  Saturate: '<S24>/Saturation'
-     *  Saturate: '<S31>/Saturation'
-     *  Saturate: '<S38>/Saturation'
+     *  Saturate: '<S25>/Saturation'
+     *  Saturate: '<S32>/Saturation'
+     *  Saturate: '<S39>/Saturation'
      */
     snprintf(&rtb_ComposeString_0[0], 256U, "L%1.2f F%1.2f R%1.2f",
              rtb_Saturation, rtb_Saturation_e, rtb_Saturation_g);
@@ -610,60 +732,290 @@ void MicroMouse_Deploy_step(void)
      *  Constant: '<S3>/Constant'
      *  DataStoreWrite: '<S9>/Data Store Write'
      */
-    Sum = fmod(floor(MicroMouse_Deploy_P.Constant_Value_l), 256.0);
-    STATE = (uint8_T)(Sum < 0.0 ? (int32_T)(uint8_T)-(int8_T)(uint8_T)-Sum :
-                      (int32_T)(uint8_T)Sum);
+    rtb_Product1 = fmod(floor(MicroMouse_Deploy_P.Constant_Value_l), 256.0);
+    STATE = (uint8_T)(rtb_Product1 < 0.0 ? (int32_T)(uint8_T)-(int8_T)(uint8_T)
+                      -rtb_Product1 : (int32_T)(uint8_T)rtb_Product1);
 
-    /* MinMax: '<S18>/Max' incorporates:
-     *  Constant: '<S18>/Time constant'
+    /* MinMax: '<S19>/Max' incorporates:
+     *  Constant: '<S19>/Time constant'
      */
     rtb_Max = (real32_T)fmax(MicroMouse_Deploy_B.Probe[0],
       MicroMouse_Deploy_P.LowPassFilterDiscreteorContinuo);
 
     /* Product: '<S11>/1//T' incorporates:
-     *  Fcn: '<S18>/Avoid Divide by Zero'
+     *  Fcn: '<S19>/Avoid Divide by Zero'
      *  Sum: '<S11>/Sum1'
      */
     rtb_uT = 1.0F / ((real32_T)(rtb_Max == 0.0F) * 2.22044605e-16F + rtb_Max) *
       (rtb_K - rtb_Saturation);
 
-    /* MinMax: '<S25>/Max' incorporates:
-     *  Constant: '<S25>/Time constant'
+    /* MinMax: '<S26>/Max' incorporates:
+     *  Constant: '<S26>/Time constant'
      */
     rtb_Max = (real32_T)fmax(MicroMouse_Deploy_B.Probe_h[0],
       MicroMouse_Deploy_P.LowPassFilterDiscreteorContin_p);
 
     /* Product: '<S12>/1//T' incorporates:
-     *  Fcn: '<S25>/Avoid Divide by Zero'
+     *  Fcn: '<S26>/Avoid Divide by Zero'
      *  Sum: '<S12>/Sum1'
      */
     rtb_uT_p = 1.0F / ((real32_T)(rtb_Max == 0.0F) * 2.22044605e-16F + rtb_Max) *
       (rtb_K_i - rtb_Saturation_e);
 
-    /* MinMax: '<S32>/Max' incorporates:
-     *  Constant: '<S32>/Time constant'
+    /* MinMax: '<S33>/Max' incorporates:
+     *  Constant: '<S33>/Time constant'
      */
     rtb_Max = (real32_T)fmax(MicroMouse_Deploy_B.Probe_g[0],
       MicroMouse_Deploy_P.LowPassFilterDiscreteorContin_e);
 
     /* Product: '<S13>/1//T' incorporates:
-     *  Fcn: '<S32>/Avoid Divide by Zero'
+     *  Fcn: '<S33>/Avoid Divide by Zero'
      *  Sum: '<S13>/Sum1'
      */
     rtb_uT_e = 1.0F / ((real32_T)(rtb_Max == 0.0F) * 2.22044605e-16F + rtb_Max) *
       (rtb_K_n - rtb_Saturation_g);
+
+    /* UnitDelay: '<S98>/Unit Delay1' */
+    MicroMouse_Deploy_B.UnitDelay1 = MicroMouse_Deploy_DW.UnitDelay1_DSTATE;
+
+    /* Gain: '<S98>/tau' incorporates:
+     *  Constant: '<S3>/Constant2'
+     */
+    rtb_p_p = MicroMouse_Deploy_P.tau_Gain * MicroMouse_Deploy_P.Constant2_Value;
+
+    /* Product: '<S100>/Product2' */
+    rtb_q = rtb_p_p * rtb_p_p;
+
+    /* Bias: '<S100>/Bias' */
+    rtb_r = rtb_q + MicroMouse_Deploy_P.Bias_Bias;
+
+    /* Gain: '<S100>/Gain' */
+    rtb_p_p *= MicroMouse_Deploy_P.Gain_Gain_i;
+
+    /* Sum: '<S100>/Add1' */
+    rtb_d = rtb_r + rtb_p_p;
+
+    /* Product: '<S100>/Product3' */
+    MicroMouse_Deploy_B.Product3 = rtb_q / rtb_d;
+
+    /* UnitDelay: '<S99>/Unit Delay1' */
+    MicroMouse_Deploy_B.UnitDelay1_h = MicroMouse_Deploy_DW.UnitDelay1_DSTATE_a;
+
+    /* Gain: '<S99>/tau' incorporates:
+     *  Constant: '<S3>/Constant2'
+     */
+    rtb_p = MicroMouse_Deploy_P.tau_Gain_m * MicroMouse_Deploy_P.Constant2_Value;
+
+    /* Product: '<S101>/Product2' */
+    rtb_q_m = rtb_p * rtb_p;
+
+    /* Bias: '<S101>/Bias' */
+    rtb_r_l = rtb_q_m + MicroMouse_Deploy_P.Bias_Bias_l;
+
+    /* Gain: '<S101>/Gain' */
+    rtb_p *= MicroMouse_Deploy_P.Gain_Gain_d;
+
+    /* Sum: '<S101>/Add1' */
+    rtb_d_n = rtb_r_l + rtb_p;
+
+    /* Product: '<S101>/Product3' */
+    MicroMouse_Deploy_B.Product3_b = rtb_q_m / rtb_d_n;
   }
 
-  /* DataTypeConversion: '<S3>/Data Type Conversion' incorporates:
-   *  DataStoreRead: '<S5>/Data Store Read1'
-   */
-  MicroMouse_Deploy_B.DataTypeConversion[0] = IMU_Gyro[0];
-  MicroMouse_Deploy_B.DataTypeConversion[1] = IMU_Gyro[1];
-  MicroMouse_Deploy_B.DataTypeConversion[2] = IMU_Gyro[2];
-
-  /* Gain: '<S72>/Integral Gain' */
+  /* Gain: '<S73>/Integral Gain' */
   MicroMouse_Deploy_B.IntegralGain = MicroMouse_Deploy_P.PIDController_I *
-    rtb_Error;
+    rtb_Sum_l;
+
+  /* Sum: '<S98>/Sum' incorporates:
+   *  DataStoreRead: '<S5>/Data Store Read1'
+   *  DataTypeConversion: '<S3>/Data Type Conversion'
+   */
+  rtb_Product2_d = IMU_Gyro[2] + MicroMouse_Deploy_B.UnitDelay1;
+
+  /* Product: '<S98>/Product1' */
+  Sum = rtb_Product2_d * MicroMouse_Deploy_B.Product3;
+
+  /* Sum: '<S99>/Sum' */
+  rtb_Sum_l = Sum + MicroMouse_Deploy_B.UnitDelay1_h;
+
+  /* Product: '<S99>/Product1' */
+  rtb_Product1 = rtb_Sum_l * MicroMouse_Deploy_B.Product3_b;
+
+  /* MATLABSystem: '<S18>/Median Filter' */
+  if (MicroMouse_Deploy_DW.obj.pMID.isInitialized != 1) {
+    MicroMouse_Deploy_DW.obj.pMID.isInitialized = 1;
+    MicroMouse_Deploy_DW.obj.pMID.isSetupComplete = true;
+    MicroMou_MedianFilter_resetImpl(&MicroMouse_Deploy_DW.obj.pMID);
+  }
+
+  vprev = MicroMouse_Deploy_DW.obj.pMID.pBuf[(int32_T)
+    MicroMouse_Deploy_DW.obj.pMID.pIdx - 1];
+  MicroMouse_Deploy_DW.obj.pMID.pBuf[(int32_T)MicroMouse_Deploy_DW.obj.pMID.pIdx
+    - 1] = rtb_Product1;
+  p = MicroMouse_Deploy_DW.obj.pMID.pPos[(int32_T)
+    MicroMouse_Deploy_DW.obj.pMID.pIdx - 1];
+  MicroMouse_Deploy_DW.obj.pMID.pIdx++;
+  if (MicroMouse_Deploy_DW.obj.pMID.pWinLen + 1.0 ==
+      MicroMouse_Deploy_DW.obj.pMID.pIdx) {
+    MicroMouse_Deploy_DW.obj.pMID.pIdx = 1.0;
+  }
+
+  if (p > MicroMouse_Deploy_DW.obj.pMID.pMidHeap) {
+    if (vprev < rtb_Product1) {
+      Mic_MedianFilter_trickleDownMin(&MicroMouse_Deploy_DW.obj.pMID, (p -
+        MicroMouse_Deploy_DW.obj.pMID.pMidHeap) * 2.0);
+    } else {
+      vprev = p - MicroMouse_Deploy_DW.obj.pMID.pMidHeap;
+      exitg1 = false;
+      while ((!exitg1) && (vprev > 0.0)) {
+        p = vprev / 2.0;
+        ind1 = vprev + MicroMouse_Deploy_DW.obj.pMID.pMidHeap;
+        ind2 = trunc(p) + MicroMouse_Deploy_DW.obj.pMID.pMidHeap;
+        rtb_Product1 = MicroMouse_Deploy_DW.obj.pMID.pHeap[(int32_T)ind1 - 1];
+        tmp_0 = MicroMouse_Deploy_DW.obj.pMID.pHeap[(int32_T)ind2 - 1];
+        if (MicroMouse_Deploy_DW.obj.pMID.pBuf[(int32_T)rtb_Product1 - 1] >=
+            MicroMouse_Deploy_DW.obj.pMID.pBuf[(int32_T)tmp_0 - 1]) {
+          exitg1 = true;
+        } else {
+          MicroMouse_Deploy_DW.obj.pMID.pHeap[(int32_T)ind1 - 1] = tmp_0;
+          MicroMouse_Deploy_DW.obj.pMID.pHeap[(int32_T)ind2 - 1] = rtb_Product1;
+          MicroMouse_Deploy_DW.obj.pMID.pPos[(int32_T)
+            MicroMouse_Deploy_DW.obj.pMID.pHeap[(int32_T)ind1 - 1] - 1] = ind1;
+          MicroMouse_Deploy_DW.obj.pMID.pPos[(int32_T)
+            MicroMouse_Deploy_DW.obj.pMID.pHeap[(int32_T)ind2 - 1] - 1] = ind2;
+          vprev = trunc(p);
+        }
+      }
+
+      if (vprev == 0.0) {
+        Mic_MedianFilter_trickleDownMax(&MicroMouse_Deploy_DW.obj.pMID, -1.0);
+      }
+    }
+  } else if (p < MicroMouse_Deploy_DW.obj.pMID.pMidHeap) {
+    if (rtb_Product1 < vprev) {
+      Mic_MedianFilter_trickleDownMax(&MicroMouse_Deploy_DW.obj.pMID, (p -
+        MicroMouse_Deploy_DW.obj.pMID.pMidHeap) * 2.0);
+    } else {
+      vprev = p - MicroMouse_Deploy_DW.obj.pMID.pMidHeap;
+      exitg1 = false;
+      while ((!exitg1) && (vprev < 0.0)) {
+        p = vprev / 2.0;
+        ind1 = trunc(p) + MicroMouse_Deploy_DW.obj.pMID.pMidHeap;
+        ind2 = vprev + MicroMouse_Deploy_DW.obj.pMID.pMidHeap;
+        rtb_Product1 = MicroMouse_Deploy_DW.obj.pMID.pHeap[(int32_T)ind1 - 1];
+        tmp_0 = MicroMouse_Deploy_DW.obj.pMID.pHeap[(int32_T)ind2 - 1];
+        if (MicroMouse_Deploy_DW.obj.pMID.pBuf[(int32_T)rtb_Product1 - 1] >=
+            MicroMouse_Deploy_DW.obj.pMID.pBuf[(int32_T)tmp_0 - 1]) {
+          exitg1 = true;
+        } else {
+          MicroMouse_Deploy_DW.obj.pMID.pHeap[(int32_T)ind1 - 1] = tmp_0;
+          MicroMouse_Deploy_DW.obj.pMID.pHeap[(int32_T)ind2 - 1] = rtb_Product1;
+          MicroMouse_Deploy_DW.obj.pMID.pPos[(int32_T)
+            MicroMouse_Deploy_DW.obj.pMID.pHeap[(int32_T)ind1 - 1] - 1] = ind1;
+          MicroMouse_Deploy_DW.obj.pMID.pPos[(int32_T)
+            MicroMouse_Deploy_DW.obj.pMID.pHeap[(int32_T)ind2 - 1] - 1] = ind2;
+          vprev = trunc(p);
+        }
+      }
+
+      if (vprev == 0.0) {
+        Mic_MedianFilter_trickleDownMin(&MicroMouse_Deploy_DW.obj.pMID, 1.0);
+      }
+    }
+  } else {
+    if (MicroMouse_Deploy_DW.obj.pMID.pMaxHeapLength != 0.0) {
+      Mic_MedianFilter_trickleDownMax(&MicroMouse_Deploy_DW.obj.pMID, -1.0);
+    }
+
+    if (MicroMouse_Deploy_DW.obj.pMID.pMinHeapLength > 0.0) {
+      Mic_MedianFilter_trickleDownMin(&MicroMouse_Deploy_DW.obj.pMID, 1.0);
+    }
+  }
+
+  rtb_Product1 = MicroMouse_Deploy_DW.obj.pMID.pBuf[(int32_T)
+    MicroMouse_Deploy_DW.obj.pMID.pHeap[(int32_T)
+    MicroMouse_Deploy_DW.obj.pMID.pMidHeap - 1] - 1];
+
+  /* DeadZone: '<S18>/Dead Zone' incorporates:
+   *  MATLABSystem: '<S18>/Median Filter'
+   */
+  if (rtb_Product1 > MicroMouse_Deploy_P.DeadZone_End) {
+    /* DeadZone: '<S18>/Dead Zone' */
+    MicroMouse_Deploy_B.DeadZone = rtb_Product1 -
+      MicroMouse_Deploy_P.DeadZone_End;
+  } else if (rtb_Product1 >= MicroMouse_Deploy_P.DeadZone_Start) {
+    /* DeadZone: '<S18>/Dead Zone' */
+    MicroMouse_Deploy_B.DeadZone = 0.0;
+  } else {
+    /* DeadZone: '<S18>/Dead Zone' */
+    MicroMouse_Deploy_B.DeadZone = rtb_Product1 -
+      MicroMouse_Deploy_P.DeadZone_Start;
+  }
+
+  /* End of DeadZone: '<S18>/Dead Zone' */
+  if (tmp) {
+    /* Product: '<S100>/Product4' incorporates:
+     *  Bias: '<S100>/Bias1'
+     *  UnaryMinus: '<S100>/Unary Minus'
+     */
+    MicroMouse_Deploy_B.Product4 = (-rtb_q + MicroMouse_Deploy_P.Bias1_Bias) /
+      rtb_d;
+
+    /* Product: '<S100>/Product5' incorporates:
+     *  Sum: '<S100>/Add3'
+     */
+    MicroMouse_Deploy_B.Product5 = 1.0 / rtb_d * (rtb_r - rtb_p_p);
+
+    /* UnitDelay: '<S98>/Unit Delay2' */
+    MicroMouse_Deploy_B.UnitDelay2 = MicroMouse_Deploy_DW.UnitDelay2_DSTATE;
+
+    /* Product: '<S101>/Product4' incorporates:
+     *  Bias: '<S101>/Bias1'
+     *  UnaryMinus: '<S101>/Unary Minus'
+     */
+    MicroMouse_Deploy_B.Product4_l = (-rtb_q_m +
+      MicroMouse_Deploy_P.Bias1_Bias_d) / rtb_d_n;
+
+    /* Product: '<S101>/Product5' incorporates:
+     *  Sum: '<S101>/Add3'
+     */
+    MicroMouse_Deploy_B.Product5_a = 1.0 / rtb_d_n * (rtb_r_l - rtb_p);
+
+    /* UnitDelay: '<S99>/Unit Delay2' */
+    MicroMouse_Deploy_B.UnitDelay2_i = MicroMouse_Deploy_DW.UnitDelay2_DSTATE_o;
+  }
+
+  /* Sum: '<S98>/Sum1' incorporates:
+   *  DataStoreRead: '<S5>/Data Store Read1'
+   *  DataTypeConversion: '<S3>/Data Type Conversion'
+   *  Gain: '<S98>/Gain1'
+   *  Product: '<S98>/Product5'
+   *  Sum: '<S98>/Sum2'
+   */
+  MicroMouse_Deploy_B.Sum1 = (rtb_Product2_d * MicroMouse_Deploy_B.Product4 +
+    IMU_Gyro[2]) * MicroMouse_Deploy_P.Gain1_Gain_f +
+    MicroMouse_Deploy_B.UnitDelay2;
+
+  /* Sum: '<S98>/Sum3' incorporates:
+   *  DataStoreRead: '<S5>/Data Store Read1'
+   *  DataTypeConversion: '<S3>/Data Type Conversion'
+   *  Product: '<S98>/Product2'
+   */
+  MicroMouse_Deploy_B.Sum3 = IMU_Gyro[2] - rtb_Product2_d *
+    MicroMouse_Deploy_B.Product5;
+
+  /* Sum: '<S99>/Sum1' incorporates:
+   *  Gain: '<S99>/Gain1'
+   *  Product: '<S99>/Product5'
+   *  Sum: '<S99>/Sum2'
+   */
+  MicroMouse_Deploy_B.Sum1_k = (rtb_Sum_l * MicroMouse_Deploy_B.Product4_l + Sum)
+    * MicroMouse_Deploy_P.Gain1_Gain_e + MicroMouse_Deploy_B.UnitDelay2_i;
+
+  /* Sum: '<S99>/Sum3' incorporates:
+   *  Product: '<S99>/Product2'
+   */
+  MicroMouse_Deploy_B.Sum3_n = Sum - rtb_Sum_l * MicroMouse_Deploy_B.Product5_a;
   if (rtmIsMajorTimeStep(MicroMouse_Deploy_M)) {
     {
       {
@@ -696,15 +1048,15 @@ void MicroMouse_Deploy_step(void)
         /* System '<Root>' */
         refreshLoggedData();
         if (rtmIsMajorTimeStep(MicroMouse_Deploy_M)) {
-          /* Update for UnitDelay: '<S94>/Delay Input1'
+          /* Update for UnitDelay: '<S95>/Delay Input1'
            *
-           * Block description for '<S94>/Delay Input1':
+           * Block description for '<S95>/Delay Input1':
            *
            *  Store in Global RAM
            */
           MicroMouse_Deploy_DW.DelayInput1_DSTATE = rtb_Compare;
 
-          /* Update for DiscreteIntegrator: '<S24>/Integrator' */
+          /* Update for DiscreteIntegrator: '<S25>/Integrator' */
           MicroMouse_Deploy_DW.Integrator_IC_LOADING = 0U;
           MicroMouse_Deploy_DW.Integrator_DSTATE +=
             MicroMouse_Deploy_P.Integrator_gainval * rtb_uT;
@@ -721,9 +1073,9 @@ void MicroMouse_Deploy_step(void)
           MicroMouse_Deploy_DW.Integrator_PrevResetState = (int8_T)
             rtb_LogicalOperator;
 
-          /* End of Update for DiscreteIntegrator: '<S24>/Integrator' */
+          /* End of Update for DiscreteIntegrator: '<S25>/Integrator' */
 
-          /* Update for DiscreteIntegrator: '<S31>/Integrator' */
+          /* Update for DiscreteIntegrator: '<S32>/Integrator' */
           MicroMouse_Deploy_DW.Integrator_IC_LOADING_k = 0U;
           MicroMouse_Deploy_DW.Integrator_DSTATE_m +=
             MicroMouse_Deploy_P.Integrator_gainval_n * rtb_uT_p;
@@ -740,9 +1092,9 @@ void MicroMouse_Deploy_step(void)
           MicroMouse_Deploy_DW.Integrator_PrevResetState_a = (int8_T)
             rtb_LogicalOperator_c;
 
-          /* End of Update for DiscreteIntegrator: '<S31>/Integrator' */
+          /* End of Update for DiscreteIntegrator: '<S32>/Integrator' */
 
-          /* Update for DiscreteIntegrator: '<S38>/Integrator' */
+          /* Update for DiscreteIntegrator: '<S39>/Integrator' */
           MicroMouse_Deploy_DW.Integrator_IC_LOADING_a = 0U;
           MicroMouse_Deploy_DW.Integrator_DSTATE_i +=
             MicroMouse_Deploy_P.Integrator_gainval_k * rtb_uT_e;
@@ -759,7 +1111,19 @@ void MicroMouse_Deploy_step(void)
           MicroMouse_Deploy_DW.Integrator_PrevResetState_j = (int8_T)
             rtb_LogicalOperator_a;
 
-          /* End of Update for DiscreteIntegrator: '<S38>/Integrator' */
+          /* End of Update for DiscreteIntegrator: '<S39>/Integrator' */
+
+          /* Update for UnitDelay: '<S98>/Unit Delay1' */
+          MicroMouse_Deploy_DW.UnitDelay1_DSTATE = MicroMouse_Deploy_B.Sum1;
+
+          /* Update for UnitDelay: '<S99>/Unit Delay1' */
+          MicroMouse_Deploy_DW.UnitDelay1_DSTATE_a = MicroMouse_Deploy_B.Sum1_k;
+
+          /* Update for UnitDelay: '<S98>/Unit Delay2' */
+          MicroMouse_Deploy_DW.UnitDelay2_DSTATE = MicroMouse_Deploy_B.Sum3;
+
+          /* Update for UnitDelay: '<S99>/Unit Delay2' */
+          MicroMouse_Deploy_DW.UnitDelay2_DSTATE_o = MicroMouse_Deploy_B.Sum3_n;
         }
       }
     }
@@ -797,12 +1161,12 @@ void MicroMouse_Deploy_derivatives(void)
   _rtXdot = ((XDot_MicroMouse_Deploy_T *) MicroMouse_Deploy_M->derivs);
 
   /* Derivatives for Integrator: '<S14>/Integrator' */
-  _rtXdot->Integrator_CSTATE = MicroMouse_Deploy_B.DataTypeConversion[2];
+  _rtXdot->Integrator_CSTATE = MicroMouse_Deploy_B.DeadZone;
 
-  /* Derivatives for Integrator: '<S75>/Integrator' */
+  /* Derivatives for Integrator: '<S76>/Integrator' */
   _rtXdot->Integrator_CSTATE_p = MicroMouse_Deploy_B.IntegralGain;
 
-  /* Derivatives for Integrator: '<S70>/Filter' */
+  /* Derivatives for Integrator: '<S71>/Filter' */
   _rtXdot->Filter_CSTATE = MicroMouse_Deploy_B.FilterCoefficient;
 }
 
@@ -863,15 +1227,15 @@ void MicroMouse_Deploy_initialize(void)
     /* Start for DataStoreMemory: '<S1>/Data Store Memory1' */
     MOTOR_RS = MicroMouse_Deploy_P.DataStoreMemory1_InitialValu_p2;
 
-    /* Start for Probe: '<S18>/Probe' */
+    /* Start for Probe: '<S19>/Probe' */
     MicroMouse_Deploy_B.Probe[0] = 0.01F;
     MicroMouse_Deploy_B.Probe[1] = 0.0F;
 
-    /* Start for Probe: '<S25>/Probe' */
+    /* Start for Probe: '<S26>/Probe' */
     MicroMouse_Deploy_B.Probe_h[0] = 0.01F;
     MicroMouse_Deploy_B.Probe_h[1] = 0.0F;
 
-    /* Start for Probe: '<S32>/Probe' */
+    /* Start for Probe: '<S33>/Probe' */
     MicroMouse_Deploy_B.Probe_g[0] = 0.01F;
     MicroMouse_Deploy_B.Probe_g[1] = 0.0F;
     for (i = 0; i < 18; i++) {
@@ -1043,9 +1407,9 @@ void MicroMouse_Deploy_initialize(void)
       MicroMouse_Deploy_DW.Delay_DSTATE =
         MicroMouse_Deploy_P.Delay_InitialCondition;
 
-      /* InitializeConditions for UnitDelay: '<S94>/Delay Input1'
+      /* InitializeConditions for UnitDelay: '<S95>/Delay Input1'
        *
-       * Block description for '<S94>/Delay Input1':
+       * Block description for '<S95>/Delay Input1':
        *
        *  Store in Global RAM
        */
@@ -1055,22 +1419,38 @@ void MicroMouse_Deploy_initialize(void)
       /* InitializeConditions for Integrator: '<S14>/Integrator' */
       MicroMouse_Deploy_X.Integrator_CSTATE = MicroMouse_Deploy_P.Integrator_IC;
 
-      /* InitializeConditions for Integrator: '<S75>/Integrator' */
+      /* InitializeConditions for Integrator: '<S76>/Integrator' */
       MicroMouse_Deploy_X.Integrator_CSTATE_p =
         MicroMouse_Deploy_P.PIDController_InitialConditio_l;
 
-      /* InitializeConditions for Integrator: '<S70>/Filter' */
+      /* InitializeConditions for Integrator: '<S71>/Filter' */
       MicroMouse_Deploy_X.Filter_CSTATE =
         MicroMouse_Deploy_P.PIDController_InitialConditionF;
 
-      /* InitializeConditions for DiscreteIntegrator: '<S24>/Integrator' */
+      /* InitializeConditions for DiscreteIntegrator: '<S25>/Integrator' */
       MicroMouse_Deploy_DW.Integrator_IC_LOADING = 1U;
 
-      /* InitializeConditions for DiscreteIntegrator: '<S31>/Integrator' */
+      /* InitializeConditions for DiscreteIntegrator: '<S32>/Integrator' */
       MicroMouse_Deploy_DW.Integrator_IC_LOADING_k = 1U;
 
-      /* InitializeConditions for DiscreteIntegrator: '<S38>/Integrator' */
+      /* InitializeConditions for DiscreteIntegrator: '<S39>/Integrator' */
       MicroMouse_Deploy_DW.Integrator_IC_LOADING_a = 1U;
+
+      /* InitializeConditions for UnitDelay: '<S98>/Unit Delay1' */
+      MicroMouse_Deploy_DW.UnitDelay1_DSTATE =
+        MicroMouse_Deploy_P.UnitDelay1_InitialCondition;
+
+      /* InitializeConditions for UnitDelay: '<S99>/Unit Delay1' */
+      MicroMouse_Deploy_DW.UnitDelay1_DSTATE_a =
+        MicroMouse_Deploy_P.UnitDelay1_InitialCondition_p;
+
+      /* InitializeConditions for UnitDelay: '<S98>/Unit Delay2' */
+      MicroMouse_Deploy_DW.UnitDelay2_DSTATE =
+        MicroMouse_Deploy_P.UnitDelay2_InitialCondition;
+
+      /* InitializeConditions for UnitDelay: '<S99>/Unit Delay2' */
+      MicroMouse_Deploy_DW.UnitDelay2_DSTATE_o =
+        MicroMouse_Deploy_P.UnitDelay2_InitialCondition_n;
 
       /* SystemInitialize for Chart: '<S3>/distance_control' */
       MicroMouse_Deploy_DW.bitsForTID1.is_active_c3_MicroMouse_Deploy = 0U;
@@ -1081,6 +1461,13 @@ void MicroMouse_Deploy_initialize(void)
       MicroMouse_Deploy_DW.bitsForTID1.is_active_c1_MicroMouse_Deploy = 0U;
       MicroMouse_Deploy_DW.bitsForTID1.is_c1_MicroMouse_Deploy =
         MicroMouse_D_IN_NO_ACTIVE_CHILD;
+
+      /* Start for MATLABSystem: '<S18>/Median Filter' */
+      MicroMouse_Deploy_DW.obj.matlabCodegenIsDeleted = false;
+      MicroMouse_Deploy_DW.obj.isInitialized = 1;
+      MicroMouse_Deploy_DW.obj.NumChannels = 1;
+      MicroMouse_Deploy_DW.obj.pMID.isInitialized = 0;
+      MicroMouse_Deploy_DW.obj.isSetupComplete = true;
     }
   }
 
@@ -1091,7 +1478,19 @@ void MicroMouse_Deploy_initialize(void)
 /* Model terminate function */
 void MicroMouse_Deploy_terminate(void)
 {
-  /* (no terminate code required) */
+  /* Terminate for MATLABSystem: '<S18>/Median Filter' */
+  if (!MicroMouse_Deploy_DW.obj.matlabCodegenIsDeleted) {
+    MicroMouse_Deploy_DW.obj.matlabCodegenIsDeleted = true;
+    if ((MicroMouse_Deploy_DW.obj.isInitialized == 1) &&
+        MicroMouse_Deploy_DW.obj.isSetupComplete) {
+      MicroMouse_Deploy_DW.obj.NumChannels = -1;
+      if (MicroMouse_Deploy_DW.obj.pMID.isInitialized == 1) {
+        MicroMouse_Deploy_DW.obj.pMID.isInitialized = 2;
+      }
+    }
+  }
+
+  /* End of Terminate for MATLABSystem: '<S18>/Median Filter' */
 }
 
 /*
