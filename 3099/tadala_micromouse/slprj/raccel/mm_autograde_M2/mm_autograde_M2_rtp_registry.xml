@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MF0 version="1.1" packageUris="http://schema.mathworks.com/mf0/slsa_mm_param_rtp/R2023a">
+  <slsa.mm.param.rtp.ModelMetadata type="slsa.mm.param.rtp.ModelMetadata" uuid="22fb49e0-0a3f-4d66-8078-eff06efb7ee1">
+    <modelName>mm_autograde_M2</modelName>
+  </slsa.mm.param.rtp.ModelMetadata>
+  <slsa.mm.param.rtp.StructParameter type="slsa.mm.param.rtp.StructParameter" uuid="670e5ef5-4a85-4cd1-9cec-6930221f1311">
+    <id type="slsa.mm.param.rtp.VariableId" uuid="e38ad538-f1d9-4959-9e1c-b222ecc36f44"/>
+    <rtpLocation type="slsa.mm.param.rtp.RtpLocation" uuid="a185395d-622e-4fd3-a1bd-2281419a76d9"/>
+  </slsa.mm.param.rtp.StructParameter>
+  <slsa.mm.param.rtp.Parameter type="slsa.mm.param.rtp.Parameter" uuid="e789396f-787e-4991-bd92-1dd95742d574">
+    <id type="slsa.mm.param.rtp.BlockParameterId" uuid="81905406-a499-406b-bb5a-63d62a2b7179"/>
+    <rtpLocation type="slsa.mm.param.rtp.RtpLocation" uuid="a60fdd8e-15d4-4703-a655-ff90f8bb7ca3"/>
+  </slsa.mm.param.rtp.Parameter>
+  <slsa.mm.param.rtp.RtpLocation type="slsa.mm.param.rtp.RtpLocation" uuid="234f07ef-912c-4735-a619-3cd34e64f45d">
+    <parameter type="slsa.mm.param.rtp.Parameter" uuid="9c6c0367-e01b-4094-86b7-02068f40b34d"/>
+    <segmentIndex>4</segmentIndex>
+    <valueIndices>22</valueIndices>
+    <valueIndices>22</valueIndices>
+  </slsa.mm.param.rtp.RtpLocation>
+  <slsa.mm.param.rtp.Parameter type="slsa.mm.param.rtp.Parameter" uuid="23154e0b-a7c4-4c64-9bc0-aa2b3f9a6fa3">
+    <id type="slsa.mm.param.rtp.BlockParameterId" uuid="dcee0b25-88b2-4ce4-be30-0777d778579b"/>
+    <rtpLocation type="slsa.mm.param.rtp.RtpLocation" uuid="a6409077-10f6-4937-bf85-c5435dbbc311"/>
+  </slsa.mm.param.rtp.Parameter>
+  <slsa.mm.param.rtp.VariableId type="slsa.mm.param.rtp.VariableId" uuid="e38ad538-f1d9-4959-9e1c-b222ecc36f44">
+    <workspaceName>global-workspace</workspaceName>
+    <name>simstruct</name>
+    <parameter type="slsa.mm.param.rtp.StructParameter" uuid="670e5ef5-4a85-4cd1-9cec-6930221f1311"/>
+  </slsa.mm.param.rtp.VariableId>
+  <slsa.mm.param.rtp.BlockParameterId type="slsa.mm.param.rtp.BlockParameterId" uuid="81905406-a499-406b-bb5a-63d62a2b7179">
+    <blockPath>mm_autograde_M2/Subsystem Reference/Low-Pass Filter (Discrete or Continuous)/Integrator (Discrete or Continuous)/Discrete/Integrator</blockPath>
+    <name>UpperSaturationLimit</name>
+    <parameter type="slsa.mm.param.rtp.Parameter" uuid="e789396f-787e-4991-bd92-1dd95742d574"/>
+  </slsa.mm.param.rtp.BlockParameterId>
+  <slsa.mm.param.rtp.RtpLocation type="slsa.mm.param.rtp.RtpLocation" uuid="6198ce8b-3df6-4116-9c17-e6f2c80019f1">
+    <parameter type="slsa.mm.param.rtp.Parameter" uuid="bbac5c94-7746-4441-81ff-eab601d04489"/>
+    <segmentIndex>4</segmentIndex>
+    <valueIndices>11</valueIndices>
+    <valueIndices>11</valueIndices>
+  </slsa.mm.param.rtp.RtpLocation>
+  <slsa.mm.param.rtp.RtpLocation type="slsa.mm.param.rtp.RtpLocation" uuid="a185395d-622e-4fd3-a1bd-2281419a76d9">
+    <parameter type="slsa.mm.param.rtp.StructParameter" uuid="670e5ef5-4a85-4cd1-9cec-6930221f1311"/>
+    <valueIndices>0</valueIndices>
+    <valueIndices>0</valueIndices>
+  </slsa.mm.param.rtp.RtpLocation>
+  <slsa.mm.param.rtp.RtpLocation type="slsa.mm.param.rtp.RtpLocation" uuid="a6409077-10f6-4937-bf85-c5435dbbc311">
+    <parameter type="slsa.mm.param.rtp.Parameter" uuid="23154e0b-a7c4-4c64-9bc0-aa2b3f9a6fa3"/>
+    <segmentIndex>4</segmentIndex>
+    <valueIndices>21</valueIndices>
+    <valueIndices>21</valueIndices>
+  </slsa.mm.param.rtp.RtpLocation>
+  <slsa.mm.param.rtp.Parameter type="slsa.mm.param.rtp.Parameter" uuid="66f5e396-91db-4bcf-ae78-31b8890ffc81">
+    <id type="slsa.mm.param.rtp.BlockParameterId" uuid="5844ff4c-e2f0-4eee-b1d8-1a1f34bcd6aa"/>
+    <rtpLocation type="slsa.mm.param.rtp.RtpLocation" uuid="f70d9161-c156-4409-a211-2809b0cf3c0b"/>
+  </slsa.mm.param.rtp.Parameter>
+  <slsa.mm.param.rtp.RtpLocation type="slsa.mm.param.rtp.RtpLocation" uuid="a60fdd8e-15d4-4703-a655-ff90f8bb7ca3">
+    <parameter type="slsa.mm.param.rtp.Parameter" uuid="e789396f-787e-4991-bd92-1dd95742d574"/>
+    <segmentIndex>4</segmentIndex>
+    <valueIndices>5</valueIndices>
+    <valueIndices>5</valueIndices>
+  </slsa.mm.param.rtp.RtpLocation>
+  <slsa.mm.param.rtp.Parameter type="slsa.mm.param.rtp.Parameter" uuid="04b5f444-14d2-4da0-8e7f-8199e2bbfad4">
+    <id type="slsa.mm.param.rtp.BlockParameterId" uuid="0e2b4b85-1474-40d0-bc97-cc69a0a50087"/>
+    <rtpLocation type="slsa.mm.param.rtp.RtpLocation" uuid="c02eefb5-9b04-4436-b782-91b14cca0f15"/>
+  </slsa.mm.param.rtp.Parameter>
+  <slsa.mm.param.rtp.Parameter type="slsa.mm.param.rtp.Parameter" uuid="4ef629d0-ad47-448c-916e-912dec12e845">
+    <id type="slsa.mm.param.rtp.BlockParameterId" uuid="599160cb-ac1a-4e51-9dbf-c25ce28872eb"/>
+    <rtpLocation type="slsa.mm.param.rtp.RtpLocation" uuid="9b8d5200-1bec-45a0-83df-a3b17ebeae71"/>
+  </slsa.mm.param.rtp.Parameter>
+  <slsa.mm.param.rtp.Parameter type="slsa.mm.param.rtp.Parameter" uuid="8e4b5072-6ad7-45af-bc88-bdbbdee6aad2">
+    <id type="slsa.mm.param.rtp.BlockParameterId" uuid="8bb874b7-ab2f-4dc1-a1ee-64b8aa512bf7"/>
+    <rtpLocation type="slsa.mm.param.rtp.RtpLocation" uuid="8f465301-f07c-4f8d-96d3-992614a838f6"/>
+  </slsa.mm.param.rtp.Parameter>
+  <slsa.mm.param.rtp.BlockParameterId type="slsa.mm.param.rtp.BlockParameterId" uuid="0e2b4b85-1474-40d0-bc97-cc69a0a50087">
+    <blockPath>mm_autograde_M2/Subsystem Reference/Low-Pass Filter (Discrete or Continuous)/Integrator (Discrete or Continuous)/Discrete/Integrator</blockPath>
+    <name>LowerSaturationLimit</name>
+    <parameter type="slsa.mm.param.rtp.Parameter" uuid="04b5f444-14d2-4da0-8e7f-8199e2bbfad4"/>
+  </slsa.mm.param.rtp.BlockParameterId>
+  <slsa.mm.param.rtp.RtpLocation type="slsa.mm.param.rtp.RtpLocation" uuid="c02eefb5-9b04-4436-b782-91b14cca0f15">
+    <parameter type="slsa.mm.param.rtp.Parameter" uuid="04b5f444-14d2-4da0-8e7f-8199e2bbfad4"/>
+    <segmentIndex>4</segmentIndex>
+    <valueIndices>6</valueIndices>
+    <valueIndices>6</valueIndices>
+  </slsa.mm.param.rtp.RtpLocation>
+  <slsa.mm.param.rtp.BlockParameterId type="slsa.mm.param.rtp.BlockParameterId" uuid="5844ff4c-e2f0-4eee-b1d8-1a1f34bcd6aa">
+    <blockPath>mm_autograde_M2/Subsystem Reference/Low-Pass Filter (Discrete or Continuous)/Integrator (Discrete or Continuous)/Discrete/Saturation</blockPath>
+    <name>UpperLimit</name>
+    <parameter type="slsa.mm.param.rtp.Parameter" uuid="66f5e396-91db-4bcf-ae78-31b8890ffc81"/>
+  </slsa.mm.param.rtp.BlockParameterId>
+  <slsa.mm.param.rtp.RtpLocation type="slsa.mm.param.rtp.RtpLocation" uuid="37862820-692c-4e49-97b3-3c8c90b0dbdd">
+    <parameter type="slsa.mm.param.rtp.Parameter" uuid="7acb1c8e-d8ed-4dbd-931a-fc914bedeacd"/>
+    <segmentIndex>4</segmentIndex>
+    <valueIndices>13</valueIndices>
+    <valueIndices>13</valueIndices>
+  </slsa.mm.param.rtp.RtpLocation>
+  <slsa.mm.param.rtp.RtpLocation type="slsa.mm.param.rtp.RtpLocation" uuid="f70d9161-c156-4409-a211-2809b0cf3c0b">
+    <parameter type="slsa.mm.param.rtp.Parameter" uuid="66f5e396-91db-4bcf-ae78-31b8890ffc81"/>
+    <segmentIndex>4</segmentIndex>
+    <valueIndices>7</valueIndices>
+    <valueIndices>7</valueIndices>
+  </slsa.mm.param.rtp.RtpLocation>
+  <slsa.mm.param.rtp.BlockParameterId type="slsa.mm.param.rtp.BlockParameterId" uuid="8bb874b7-ab2f-4dc1-a1ee-64b8aa512bf7">
+    <blockPath>mm_autograde_M2/Subsystem Reference/Low-Pass Filter (Discrete or Continuous)/Integrator (Discrete or Continuous)/Discrete/Saturation</blockPath>
+    <name>LowerLimit</name>
+    <parameter type="slsa.mm.param.rtp.Parameter" uuid="8e4b5072-6ad7-45af-bc88-bdbbdee6aad2"/>
+  </slsa.mm.param.rtp.BlockParameterId>
+  <slsa.mm.param.rtp.RtpLocation type="slsa.mm.param.rtp.RtpLocation" uuid="8f465301-f07c-4f8d-96d3-992614a838f6">
+    <parameter type="slsa.mm.param.rtp.Parameter" uuid="8e4b5072-6ad7-45af-bc88-bdbbdee6aad2"/>
+    <segmentIndex>4</segmentIndex>
+    <valueIndices>8</valueIndices>
+    <valueIndices>8</valueIndices>
+  </slsa.mm.param.rtp.RtpLocation>
+  <slsa.mm.param.rtp.Parameter type="slsa.mm.param.rtp.Parameter" uuid="bbac5c94-7746-4441-81ff-eab601d04489">
+    <id type="slsa.mm.param.rtp.BlockParameterId" uuid="7d785efe-6e1f-44c9-98b2-bf99de0555d3"/>
+    <rtpLocation type="slsa.mm.param.rtp.RtpLocation" uuid="6198ce8b-3df6-4116-9c17-e6f2c80019f1"/>
+  </slsa.mm.param.rtp.Parameter>
+  <slsa.mm.param.rtp.BlockParameterId type="slsa.mm.param.rtp.BlockParameterId" uuid="7d785efe-6e1f-44c9-98b2-bf99de0555d3">
+    <blockPath>mm_autograde_M2/Subsystem Reference/Low-Pass Filter (Discrete or Continuous)2/Integrator (Discrete or Continuous)/Discrete/Integrator</blockPath>
+    <name>UpperSaturationLimit</name>
+    <parameter type="slsa.mm.param.rtp.Parameter" uuid="bbac5c94-7746-4441-81ff-eab601d04489"/>
+  </slsa.mm.param.rtp.BlockParameterId>
+  <slsa.mm.param.rtp.RtpLocation type="slsa.mm.param.rtp.RtpLocation" uuid="b25a4cf5-01ba-4c15-80ac-07d78498854b">
+    <parameter type="slsa.mm.param.rtp.Parameter" uuid="ddd18b14-1991-4e3e-b117-62c9af93a38e"/>
+    <segmentIndex>4</segmentIndex>
+    <valueIndices>14</valueIndices>
+    <valueIndices>14</valueIndices>
+  </slsa.mm.param.rtp.RtpLocation>
+  <slsa.mm.param.rtp.Parameter type="slsa.mm.param.rtp.Parameter" uuid="f2b2e373-7b86-4710-a3b6-31f85d0cc885">
+    <id type="slsa.mm.param.rtp.BlockParameterId" uuid="25456139-bec1-4ceb-ad72-897ae811ed7c"/>
+    <rtpLocation type="slsa.mm.param.rtp.RtpLocation" uuid="b049ca56-7500-4199-842b-ebf77ea5dbff"/>
+  </slsa.mm.param.rtp.Parameter>
+  <slsa.mm.param.rtp.BlockParameterId type="slsa.mm.param.rtp.BlockParameterId" uuid="25456139-bec1-4ceb-ad72-897ae811ed7c">
+    <blockPath>mm_autograde_M2/Subsystem Reference/Low-Pass Filter (Discrete or Continuous)2/Integrator (Discrete or Continuous)/Discrete/Integrator</blockPath>
+    <name>LowerSaturationLimit</name>
+    <parameter type="slsa.mm.param.rtp.Parameter" uuid="f2b2e373-7b86-4710-a3b6-31f85d0cc885"/>
+  </slsa.mm.param.rtp.BlockParameterId>
+  <slsa.mm.param.rtp.RtpLocation type="slsa.mm.param.rtp.RtpLocation" uuid="b049ca56-7500-4199-842b-ebf77ea5dbff">
+    <parameter type="slsa.mm.param.rtp.Parameter" uuid="f2b2e373-7b86-4710-a3b6-31f85d0cc885"/>
+    <segmentIndex>4</segmentIndex>
+    <valueIndices>12</valueIndices>
+    <valueIndices>12</valueIndices>
+  </slsa.mm.param.rtp.RtpLocation>
+  <slsa.mm.param.rtp.Parameter type="slsa.mm.param.rtp.Parameter" uuid="7acb1c8e-d8ed-4dbd-931a-fc914bedeacd">
+    <id type="slsa.mm.param.rtp.BlockParameterId" uuid="9950eb61-7f6d-4213-94d9-95a00f7d5083"/>
+    <rtpLocation type="slsa.mm.param.rtp.RtpLocation" uuid="37862820-692c-4e49-97b3-3c8c90b0dbdd"/>
+  </slsa.mm.param.rtp.Parameter>
+  <slsa.mm.param.rtp.BlockParameterId type="slsa.mm.param.rtp.BlockParameterId" uuid="d9f41323-82d2-41ba-a431-2fc9b08bda17">
+    <blockPath>mm_autograde_M2/Subsystem Reference/Low-Pass Filter (Discrete or Continuous)1/Integrator (Discrete or Continuous)/Discrete/Saturation</blockPath>
+    <name>LowerLimit</name>
+    <parameter type="slsa.mm.param.rtp.Parameter" uuid="9c6c0367-e01b-4094-86b7-02068f40b34d"/>
+  </slsa.mm.param.rtp.BlockParameterId>
+  <slsa.mm.param.rtp.BlockParameterId type="slsa.mm.param.rtp.BlockParameterId" uuid="599160cb-ac1a-4e51-9dbf-c25ce28872eb">
+    <blockPath>mm_autograde_M2/Subsystem Reference/Low-Pass Filter (Discrete or Continuous)1/Integrator (Discrete or Continuous)/Discrete/Integrator</blockPath>
+    <name>UpperSaturationLimit</name>
+    <parameter type="slsa.mm.param.rtp.Parameter" uuid="4ef629d0-ad47-448c-916e-912dec12e845"/>
+  </slsa.mm.param.rtp.BlockParameterId>
+  <slsa.mm.param.rtp.BlockParameterId type="slsa.mm.param.rtp.BlockParameterId" uuid="9950eb61-7f6d-4213-94d9-95a00f7d5083">
+    <blockPath>mm_autograde_M2/Subsystem Reference/Low-Pass Filter (Discrete or Continuous)2/Integrator (Discrete or Continuous)/Discrete/Saturation</blockPath>
+    <name>UpperLimit</name>
+    <parameter type="slsa.mm.param.rtp.Parameter" uuid="7acb1c8e-d8ed-4dbd-931a-fc914bedeacd"/>
+  </slsa.mm.param.rtp.BlockParameterId>
+  <slsa.mm.param.rtp.Parameter type="slsa.mm.param.rtp.Parameter" uuid="ddd18b14-1991-4e3e-b117-62c9af93a38e">
+    <id type="slsa.mm.param.rtp.BlockParameterId" uuid="38458d20-6cd4-4bf0-ba9a-3ee1e47d3919"/>
+    <rtpLocation type="slsa.mm.param.rtp.RtpLocation" uuid="b25a4cf5-01ba-4c15-80ac-07d78498854b"/>
+  </slsa.mm.param.rtp.Parameter>
+  <slsa.mm.param.rtp.BlockParameterId type="slsa.mm.param.rtp.BlockParameterId" uuid="38458d20-6cd4-4bf0-ba9a-3ee1e47d3919">
+    <blockPath>mm_autograde_M2/Subsystem Reference/Low-Pass Filter (Discrete or Continuous)2/Integrator (Discrete or Continuous)/Discrete/Saturation</blockPath>
+    <name>LowerLimit</name>
+    <parameter type="slsa.mm.param.rtp.Parameter" uuid="ddd18b14-1991-4e3e-b117-62c9af93a38e"/>
+  </slsa.mm.param.rtp.BlockParameterId>
+  <slsa.mm.param.rtp.BlockParameterId type="slsa.mm.param.rtp.BlockParameterId" uuid="5bf5b05c-0d2b-48be-bcc3-79c45b2eab94">
+    <blockPath>mm_autograde_M2/Subsystem Reference/Low-Pass Filter (Discrete or Continuous)1/Integrator (Discrete or Continuous)/Discrete/Integrator</blockPath>
+    <name>LowerSaturationLimit</name>
+    <parameter type="slsa.mm.param.rtp.Parameter" uuid="6cd44fb0-efd7-42f0-a438-a886283e46f1"/>
+  </slsa.mm.param.rtp.BlockParameterId>
+  <slsa.mm.param.rtp.RtpLocation type="slsa.mm.param.rtp.RtpLocation" uuid="9b8d5200-1bec-45a0-83df-a3b17ebeae71">
+    <parameter type="slsa.mm.param.rtp.Parameter" uuid="4ef629d0-ad47-448c-916e-912dec12e845"/>
+    <segmentIndex>4</segmentIndex>
+    <valueIndices>19</valueIndices>
+    <valueIndices>19</valueIndices>
+  </slsa.mm.param.rtp.RtpLocation>
+  <slsa.mm.param.rtp.Parameter type="slsa.mm.param.rtp.Parameter" uuid="6cd44fb0-efd7-42f0-a438-a886283e46f1">
+    <id type="slsa.mm.param.rtp.BlockParameterId" uuid="5bf5b05c-0d2b-48be-bcc3-79c45b2eab94"/>
+    <rtpLocation type="slsa.mm.param.rtp.RtpLocation" uuid="3f13cad3-e765-4f44-8d8c-6c0d67d6b5d1"/>
+  </slsa.mm.param.rtp.Parameter>
+  <slsa.mm.param.rtp.RtpLocation type="slsa.mm.param.rtp.RtpLocation" uuid="3f13cad3-e765-4f44-8d8c-6c0d67d6b5d1">
+    <parameter type="slsa.mm.param.rtp.Parameter" uuid="6cd44fb0-efd7-42f0-a438-a886283e46f1"/>
+    <segmentIndex>4</segmentIndex>
+    <valueIndices>20</valueIndices>
+    <valueIndices>20</valueIndices>
+  </slsa.mm.param.rtp.RtpLocation>
+  <slsa.mm.param.rtp.Parameter type="slsa.mm.param.rtp.Parameter" uuid="9c6c0367-e01b-4094-86b7-02068f40b34d">
+    <id type="slsa.mm.param.rtp.BlockParameterId" uuid="d9f41323-82d2-41ba-a431-2fc9b08bda17"/>
+    <rtpLocation type="slsa.mm.param.rtp.RtpLocation" uuid="234f07ef-912c-4735-a619-3cd34e64f45d"/>
+  </slsa.mm.param.rtp.Parameter>
+  <slsa.mm.param.rtp.BlockParameterId type="slsa.mm.param.rtp.BlockParameterId" uuid="dcee0b25-88b2-4ce4-be30-0777d778579b">
+    <blockPath>mm_autograde_M2/Subsystem Reference/Low-Pass Filter (Discrete or Continuous)1/Integrator (Discrete or Continuous)/Discrete/Saturation</blockPath>
+    <name>UpperLimit</name>
+    <parameter type="slsa.mm.param.rtp.Parameter" uuid="23154e0b-a7c4-4c64-9bc0-aa2b3f9a6fa3"/>
+  </slsa.mm.param.rtp.BlockParameterId>
+</MF0>

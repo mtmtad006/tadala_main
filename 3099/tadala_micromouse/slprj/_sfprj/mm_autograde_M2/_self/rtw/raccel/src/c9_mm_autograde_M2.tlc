@@ -1,0 +1,104 @@
+%implements "chartSource" "C"
+%function ChartConfig(block, system) void
+  %createrecord chartConfiguration { ...
+          executeAtInitialization  0 ...
+  }
+  %return chartConfiguration
+%endfunction
+%function ChartDataMap(block, system) void
+  %createrecord ChartDataElements {\
+    NumChartData   12 \
+    ChartDataDefaults {\
+      RecordType   "ChartData"\
+      Dimensions   []\
+      IsTestPoint  0\
+    }\
+    ChartData {\
+      Name         "start_dist"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "start_dist"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "end_dist"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "end_dist"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "theta"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "theta"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "sfEvent"\
+      Description  "ActiveChartEvent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "stateChanged"\
+      Description  "StateChanged"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "lastMajorTime"\
+      Description  "LastMajorTime"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "is_active_c9_mm_autograde_M2"\
+      Description  "StateIsActive"\
+      SFName       "is_active_c9_mm_autograde_M2"\
+      Path         "is_active_c9_mm_autograde_M2"\
+      SrcLocation  ""\
+      IsTestPoint  1\
+    }\
+    ChartData {\
+      Name         "is_c9_mm_autograde_M2"\
+      Description  "StateActiveChild"\
+      SFName       "is_c9_mm_autograde_M2"\
+      Path         "is_c9_mm_autograde_M2"\
+      SrcLocation  ""\
+      IsTestPoint  1\
+    }\
+    ChartData {\
+      Name         "temporalCounter_i1"\
+      Description  "TemporalCounter"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "presentTime"\
+      Description  "CurrentCount"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "elapsedTime"\
+      Description  "ElapsedCount"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "previousTime"\
+      Description  "PreviousCount"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  ""\
+    }\
+  }
+  %return ChartDataElements
+%endfunction

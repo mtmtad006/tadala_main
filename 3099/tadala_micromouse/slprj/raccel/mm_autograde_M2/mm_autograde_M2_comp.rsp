@@ -1,0 +1,11 @@
+-IC:/Users/Student/Documents/MATLAB/tadala_main/3099/tadala_micromouse
+-I"C:/Program Files/MATLAB/R2025a/extern/include"
+-IC:/Users/Student/Documents/MATLAB/tadala_main/3099/tadala_micromouse/slprj/raccel/mm_autograde_M2
+-I"C:/Program Files/MATLAB/R2025a/rtw/c/src/rapid"
+-I"C:/Program Files/MATLAB/R2025a/rtw/c/raccel"
+-I"C:/Program Files/MATLAB/R2025a/rtw/c/src/ext_mode/common"
+-I"C:/Program Files/MATLAB/R2025a/toolbox/coder/rtiostream/src"
+-I"C:/Program Files/MATLAB/R2025a/simulink/include"
+-I"C:/Program Files/MATLAB/R2025a/rtw/c/src"
+-I"C:/Program Files/MATLAB/R2025a/toolbox/coder/rtiostream/src/rtiostreamtcpip"
+-I"C:/Program Files/MATLAB/R2025a/toolbox/coder/rtiostream/src/utils"
