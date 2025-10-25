@@ -1,0 +1,48 @@
+%implements s13_b0_a8wlp_Terminate "C"
+
+%function Terminate(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+/* {S!d458}Terminate for MATLABSystem: '<S23>/Median Filter' */
+/*@>14bcdc*/if (!/*@<14bcda*//*@>1b7900*/MicroMouse_Deploy_DW./*@>1bf387*/obj_o.matlabCodegenIsDeleted) {
+    /*@>1b7906*/MicroMouse_Deploy_DW./*@>1bf38a*/obj_o./*@>1bf369*/matlabCodegenIsDeleted/*@>14bcd9*/ = /*@>181e0e*/true;
+    /*@>14bce2*/if ((/*@>1b790c*/MicroMouse_Deploy_DW./*@>1bf38d*/obj_o.isInitialized/*@>14bce1*/ == /*@>181e23*/1)/*@>14bd03*/ && /*@>1b7912*/MicroMouse_Deploy_DW./*@>1bf390*/obj_o.isSetupComplete) {
+        /*@>1b7918*/MicroMouse_Deploy_DW./*@>1bf393*/obj_o./*@>1bf36c*/NumChannels/*@>14bce9*/ = /*@>1bf2c5*/-1;
+        /*@>14bcf1*/if (/*@>1b791e*/MicroMouse_Deploy_DW./*@>1bf396*/obj_o.pMID.isInitialized/*@>14bcf0*/ == /*@>181e25*/1) {
+            /*@>1b7924*/MicroMouse_Deploy_DW./*@>1bf399*/obj_o./*@>1bf372*/pMID./*@>1bf36f*/isInitialized/*@>14bcef*/ = /*@>1bf2c8*/2;
+        }
+    }
+}
+/* {E!d458}End of Terminate for MATLABSystem: '<S23>/Median Filter' */
+
+/* {S!d460}Terminate for MATLABSystem: '<S24>/Moving Average' */
+/*@>14bd15*/if (!/*@<14bd13*//*@>1b792a*/MicroMouse_Deploy_DW./*@>1bf39c*/obj_b.matlabCodegenIsDeleted) {
+    /*@>1b7930*/MicroMouse_Deploy_DW./*@>1bf39f*/obj_b./*@>1bf375*/matlabCodegenIsDeleted/*@>14bd12*/ = /*@>181e2a*/true;
+    /*@>14bd1b*/if ((/*@>1b7936*/MicroMouse_Deploy_DW./*@>1bf3a2*/obj_b.isInitialized/*@>14bd1a*/ == /*@>181e2c*/1)/*@>14bd31*/ && /*@>1b793c*/MicroMouse_Deploy_DW./*@>1bf3a5*/obj_b.isSetupComplete) {
+        /*@>1b7942*/MicroMouse_Deploy_DW./*@>1bf3a8*/obj_b./*@>1bf378*/NumChannels/*@>14bd23*/ = /*@>1bf2cb*/-1;
+        /*@>1b7948*/MicroMouse_Deploy_DW./*@>1bf3ab*/obj_b./*@>1bf37b*/FrameLength/*@>14bd26*/ = /*@>1bf2ce*/-1;
+    }
+}
+/* {E!d460}End of Terminate for MATLABSystem: '<S24>/Moving Average' */
+
+/* {S!d462}Terminate for MATLABSystem: '<S24>/Moving Average1' */
+/*@>14bd42*/if (!/*@<14bd40*//*@>1b794e*/MicroMouse_Deploy_DW./*@>1bf3ae*/obj.matlabCodegenIsDeleted) {
+    /*@>1b7954*/MicroMouse_Deploy_DW./*@>1bf3b1*/obj./*@>1bf37e*/matlabCodegenIsDeleted/*@>14bd3f*/ = /*@>181e40*/true;
+    /*@>14bd48*/if ((/*@>1b795a*/MicroMouse_Deploy_DW./*@>1bf3b4*/obj.isInitialized/*@>14bd47*/ == /*@>181e42*/1)/*@>14bd5e*/ && /*@>1b7960*/MicroMouse_Deploy_DW./*@>1bf3b7*/obj.isSetupComplete) {
+        /*@>1b7966*/MicroMouse_Deploy_DW./*@>1bf3ba*/obj./*@>1bf381*/NumChannels/*@>14bd50*/ = /*@>1bf2d1*/-1;
+        /*@>1b796c*/MicroMouse_Deploy_DW./*@>1bf3bd*/obj./*@>1bf384*/FrameLength/*@>14bd53*/ = /*@>1bf2d4*/-1;
+    }
+}
+/* {E!d462}End of Terminate for MATLABSystem: '<S24>/Moving Average1' */
+%closefile cfgTxt
+%<cfgTxt>
+%endfunction
+%function TerminateFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Terminate(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(0, 11, fcnProtoType)>
+%endfunction

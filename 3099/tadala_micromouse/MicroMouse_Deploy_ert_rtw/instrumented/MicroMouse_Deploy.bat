@@ -1,6 +1,6 @@
 
 
-call  "\\EBE-GREEN-019\C$\Program Files\MATLAB\R2025a\bin\win64\checkMATLABRootForDriveMap.exe" "\\EBE-GREEN-019\C$\Program Files\MATLAB\R2025a"  > mlEnv.txt
+call  "\\EBE-GREEN-054\C$\Program Files\MATLAB\R2025a\bin\win64\checkMATLABRootForDriveMap.exe" "\\EBE-GREEN-054\C$\Program Files\MATLAB\R2025a"  > mlEnv.txt
 for /f %%a in (mlEnv.txt) do set "%%a"\n
 cd .
 

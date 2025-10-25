@@ -1,6 +1,7 @@
 MicroMouse_Deploy.c.o
 MicroMouse_Deploy_data.c.o
 ert_main.c.o
+rtGetInf.c.o
 rt_nonfinite.c.o
 IMU.c.o
 Motors.c.o

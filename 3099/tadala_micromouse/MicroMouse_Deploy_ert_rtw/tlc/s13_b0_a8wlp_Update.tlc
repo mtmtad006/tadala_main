@@ -1,0 +1,131 @@
+%implements s13_b0_a8wlp_Update "C"
+
+%function Update(block, system) Output
+%<SLibCGIRAccessLocalVar(116, 0, "")> %% rtb_LogicalOperator
+%<SLibCGIRAccessLocalVar(119, 0, "")> %% rtb_LogicalOperator_a
+%<SLibCGIRAccessLocalVar(122, 0, "")> %% rtb_LogicalOperator_c
+%<SLibCGIRAccessLocalVar(105, 0, "")> %% rtb_Compare
+%<SLibCGIRAccessLocalVar(108, 0, "")> %% rtb_Compare_g
+%<SLibCGIRAccessLocalVar(123, 0, "")> %% rtb_Compare_hh
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%<SLibCGIRDumpSystemUserCode(13, "Update", "Header")>\
+%<SLibCGIRDumpSystemUserCode(13, "Update", "Body")>\
+if (%<(SLibCGIRIsSampleHit(1, 13))>) {
+    /* {S!d356}Update for DiscreteIntegrator: '<S60>/Integrator' */
+    /*@>1b77e6*/MicroMouse_Deploy_DW./*@>1befd0*/Integrator_IC_LOADING/*@>1446f4*/ = /*@>1bee1b*/0U;
+    /*@>1b77ec*/MicroMouse_Deploy_DW./*@>1befd3*/Integrator_DSTATE/*@>1bee2e*/ += /*@>1b68d0*/MicroMouse_Deploy_P./*@>1befa3*/Integrator_gainval/*@>182c3c*/ * /*@>1b636e*/MicroMouse_Deploy_B./*@>1bef73*/uT;
+    /*@>144701*/if (/*@>1b77f8*/MicroMouse_Deploy_DW./*@>1befd6*/Integrator_DSTATE/*@>144700*/ > /*@>1b68d6*/MicroMouse_Deploy_P./*@>1befa6*/Integrator_UpperSat) {
+        /*@>1b77fe*/MicroMouse_Deploy_DW./*@>1befd9*/Integrator_DSTATE/*@>144704*/ = /*@>1b68dc*/MicroMouse_Deploy_P./*@>1befa9*/Integrator_UpperSat;
+    } else /*@>144708*/if (/*@>1b78f4*/MicroMouse_Deploy_DW./*@>1bf04e*/Integrator_DSTATE/*@>144707*/ < /*@>1b691e*/MicroMouse_Deploy_P./*@>1befca*/Integrator_LowerSat) {
+        /*@>1b78fa*/MicroMouse_Deploy_DW./*@>1bf051*/Integrator_DSTATE/*@>14470b*/ = /*@>1b6924*/MicroMouse_Deploy_P./*@>1befcd*/Integrator_LowerSat;
+    }
+    /*@>1b7804*/MicroMouse_Deploy_DW./*@>1befdc*/Integrator_PrevResetState/*@>144715*/ = /*@>193ee9*/(int8_T)/*@>181cac*/rtb_LogicalOperator;
+    /* {E!d356}End of Update for DiscreteIntegrator: '<S60>/Integrator' */
+
+    /* {S!d358}Update for DiscreteIntegrator: '<S74>/Integrator' */
+    /*@>1b780a*/MicroMouse_Deploy_DW./*@>1befdf*/Integrator_IC_LOADING_a/*@>144a20*/ = /*@>1bee1e*/0U;
+    /*@>1b7810*/MicroMouse_Deploy_DW./*@>1befe2*/Integrator_DSTATE_i/*@>1bee2f*/ += /*@>1b68e2*/MicroMouse_Deploy_P./*@>1befac*/Integrator_gainval_k/*@>182c31*/ * /*@>1b6374*/MicroMouse_Deploy_B./*@>1bef76*/uT_e;
+    /*@>144a2d*/if (/*@>1b781c*/MicroMouse_Deploy_DW./*@>1befe5*/Integrator_DSTATE_i/*@>144a2c*/ > /*@>1b68e8*/MicroMouse_Deploy_P./*@>1befaf*/Integrator_UpperSat_l) {
+        /*@>1b7822*/MicroMouse_Deploy_DW./*@>1befe8*/Integrator_DSTATE_i/*@>144a30*/ = /*@>1b68ee*/MicroMouse_Deploy_P./*@>1befb2*/Integrator_UpperSat_l;
+    } else /*@>144a34*/if (/*@>1b78e8*/MicroMouse_Deploy_DW./*@>1bf048*/Integrator_DSTATE_i/*@>144a33*/ < /*@>1b6912*/MicroMouse_Deploy_P./*@>1befc4*/Integrator_LowerSat_g) {
+        /*@>1b78ee*/MicroMouse_Deploy_DW./*@>1bf04b*/Integrator_DSTATE_i/*@>144a37*/ = /*@>1b6918*/MicroMouse_Deploy_P./*@>1befc7*/Integrator_LowerSat_g;
+    }
+    /*@>1b7828*/MicroMouse_Deploy_DW./*@>1befeb*/Integrator_PrevResetState_j/*@>144a41*/ = /*@>193f0b*/(int8_T)/*@>181ccb*/rtb_LogicalOperator_a;
+    /* {E!d358}End of Update for DiscreteIntegrator: '<S74>/Integrator' */
+
+    /* {S!d360}Update for Delay: '<S27>/Delay' */
+    /*@>1b782e*/MicroMouse_Deploy_DW./*@>1befee*/Delay_DSTATE_d/*@>14ba2c*/ = /*@>1b637a*/MicroMouse_Deploy_B./*@>1bef79*/Add_f;
+    /* {S!d362}Update for UnitDelay: '<S36>/Delay Input1'
+ *
+ * Block description for '<S36>/Delay Input1':
+ *  
+ *  Store in Global RAM
+ */
+    /*@>1b7834*/MicroMouse_Deploy_DW./*@>1beff1*/DelayInput1_DSTATE/*@>14ba38*/ = /*@>1b6380*/MicroMouse_Deploy_B./*@>1bef7c*/Compare;
+    /* {S!d364}Update for Delay: '<S26>/Delay' */
+    /*@>1b783a*/MicroMouse_Deploy_DW./*@>1beff4*/Delay_DSTATE_f/*@>14ba56*/ = /*@>1b6386*/MicroMouse_Deploy_B./*@>1bef7f*/Add_h;
+    /* {S!d366}Update for UnitDelay: '<S31>/Delay Input1'
+ *
+ * Block description for '<S31>/Delay Input1':
+ *  
+ *  Store in Global RAM
+ */
+    /*@>1b7840*/MicroMouse_Deploy_DW./*@>1beff7*/DelayInput1_DSTATE_c/*@>14ba62*/ = /*@>1b638c*/MicroMouse_Deploy_B./*@>1bef82*/Compare_a;
+    /* {S!d368}Update for DiscreteIntegrator: '<S67>/Integrator' */
+    /*@>1b7846*/MicroMouse_Deploy_DW./*@>1beffa*/Integrator_IC_LOADING_k/*@>145620*/ = /*@>1bee21*/0U;
+    /*@>1b784c*/MicroMouse_Deploy_DW./*@>1beffd*/Integrator_DSTATE_m/*@>1bee30*/ += /*@>1b68f4*/MicroMouse_Deploy_P./*@>1befb5*/Integrator_gainval_n/*@>182c26*/ * /*@>1b6392*/MicroMouse_Deploy_B./*@>1bef85*/uT_p;
+    /*@>14562d*/if (/*@>1b7858*/MicroMouse_Deploy_DW./*@>1bf000*/Integrator_DSTATE_m/*@>14562c*/ > /*@>1b68fa*/MicroMouse_Deploy_P./*@>1befb8*/Integrator_UpperSat_k) {
+        /*@>1b785e*/MicroMouse_Deploy_DW./*@>1bf003*/Integrator_DSTATE_m/*@>145630*/ = /*@>1b6900*/MicroMouse_Deploy_P./*@>1befbb*/Integrator_UpperSat_k;
+    } else /*@>145634*/if (/*@>1b78dc*/MicroMouse_Deploy_DW./*@>1bf042*/Integrator_DSTATE_m/*@>145633*/ < /*@>1b6906*/MicroMouse_Deploy_P./*@>1befbe*/Integrator_LowerSat_d) {
+        /*@>1b78e2*/MicroMouse_Deploy_DW./*@>1bf045*/Integrator_DSTATE_m/*@>145637*/ = /*@>1b690c*/MicroMouse_Deploy_P./*@>1befc1*/Integrator_LowerSat_d;
+    }
+    /*@>1b7864*/MicroMouse_Deploy_DW./*@>1bf006*/Integrator_PrevResetState_a/*@>145641*/ = /*@>193f21*/(int8_T)/*@>181cea*/rtb_LogicalOperator_c;
+    /* {E!d368}End of Update for DiscreteIntegrator: '<S67>/Integrator' */
+
+    /* {S!d370}Update for UnitDelay: '<S35>/Delay Input1'
+ *
+ * Block description for '<S35>/Delay Input1':
+ *  
+ *  Store in Global RAM
+ */
+    /*@>1b786a*/MicroMouse_Deploy_DW./*@>1bf009*/DelayInput1_DSTATE_e/*@>14ba80*/ = /*@>1b6398*/MicroMouse_Deploy_B./*@>1bef88*/Compare_n;
+    /* {S!d372}Update for UnitDelay: '<S289>/Unit Delay1' */
+    /*@>1b7870*/MicroMouse_Deploy_DW./*@>1bf00c*/UnitDelay1_DSTATE/*@>14ba8c*/ = /*@>1b639e*/MicroMouse_Deploy_B./*@>1bef8b*/Sum1;
+    /* {S!d374}Update for UnitDelay: '<S290>/Unit Delay1' */
+    /*@>1b7876*/MicroMouse_Deploy_DW./*@>1bf00f*/UnitDelay1_DSTATE_n/*@>14ba98*/ = /*@>1b63a4*/MicroMouse_Deploy_B./*@>1bef8e*/Sum1_k;
+    /* {S!d376}Update for UnitDelay: '<S289>/Unit Delay2' */
+    /*@>1b787c*/MicroMouse_Deploy_DW./*@>1bf012*/UnitDelay2_DSTATE/*@>14baa4*/ = /*@>1b63aa*/MicroMouse_Deploy_B./*@>1bef91*/Sum3;
+    /* {S!d378}Update for UnitDelay: '<S290>/Unit Delay2' */
+    /*@>1b7882*/MicroMouse_Deploy_DW./*@>1bf015*/UnitDelay2_DSTATE_j/*@>14bab0*/ = /*@>1b63b0*/MicroMouse_Deploy_B./*@>1bef94*/Sum3_o;
+    /* {S!d380}Update for UnitDelay: '<S46>/Delay Input1'
+ *
+ * Block description for '<S46>/Delay Input1':
+ *  
+ *  Store in Global RAM
+ */
+    /*@>1b7888*/MicroMouse_Deploy_DW./*@>1bf018*/DelayInput1_DSTATE_b/*@>14bac8*/ = /*@>181d2e*/rtb_Compare;
+    /* {S!d382}Update for UnitDelay: '<S51>/Delay Input1'
+ *
+ * Block description for '<S51>/Delay Input1':
+ *  
+ *  Store in Global RAM
+ */
+    /*@>1b788e*/MicroMouse_Deploy_DW./*@>1bf01b*/DelayInput1_DSTATE_k/*@>14baf2*/ = /*@>181d3a*/rtb_Compare_g;
+    /* {S!d384}Update for UnitDelay: '<S50>/Delay Input1'
+ *
+ * Block description for '<S50>/Delay Input1':
+ *  
+ *  Store in Global RAM
+ */
+    /*@>1b7894*/MicroMouse_Deploy_DW./*@>1bf01e*/DelayInput1_DSTATE_i/*@>14bb10*/ = /*@>181d46*/rtb_Compare_hh;
+}
+/* {S!d386}Update for RateLimiter: '<S11>/Rate Limiter2' incorporates:
+ *  RateLimiter: '<S11>/Rate Limiter4'
+ *  RateLimiter: '<S12>/Rate Limiter1'
+ *  RateLimiter: '<S12>/Rate Limiter2'
+ */
+/*@>1b789a*/MicroMouse_Deploy_DW./*@>1bf021*/PrevY/*@>14ba44*/ = /*@>1b63b6*/MicroMouse_Deploy_B./*@>1bef97*/RateLimiter2;
+/*@>1b78a0*/MicroMouse_Deploy_DW./*@>1bf024*/LastMajorTime/*@>19a39d*/ = /*@[1bbd4d*/%<(SLibCG_SE(LibGetTaskTime(0)))>/*@]*/;
+/* {S!d388}Update for RateLimiter: '<S11>/Rate Limiter4' */
+/*@>1b78a6*/MicroMouse_Deploy_DW./*@>1bf027*/PrevY_i/*@>14ba6e*/ = /*@>1b63bc*/MicroMouse_Deploy_B./*@>1bef9a*/RateLimiter4;
+/*@>1b78ac*/MicroMouse_Deploy_DW./*@>1bf02a*/LastMajorTime_b/*@>14ba74*/ = MicroMouse_Deploy_DW.LastMajorTime;
+/* {S!d390}Update for RateLimiter: '<S12>/Rate Limiter1' */
+/*@>1b78b8*/MicroMouse_Deploy_DW./*@>1bf030*/PrevY_l/*@>14bad4*/ = /*@>1b63c2*/MicroMouse_Deploy_B./*@>1bef9d*/RateLimiter1;
+/*@>1b78be*/MicroMouse_Deploy_DW./*@>1bf033*/LastMajorTime_c/*@>14bada*/ = MicroMouse_Deploy_DW.LastMajorTime;
+/* {S!d392}Update for RateLimiter: '<S12>/Rate Limiter2' */
+/*@>1b78ca*/MicroMouse_Deploy_DW./*@>1bf039*/PrevY_b/*@>14bafe*/ = /*@>1b63c8*/MicroMouse_Deploy_B./*@>1befa0*/RateLimiter2_j;
+/*@>1b78d0*/MicroMouse_Deploy_DW./*@>1bf03c*/LastMajorTime_k/*@>14bb04*/ = MicroMouse_Deploy_DW.LastMajorTime;
+%<SLibCGIRDumpSystemUserCode(13, "Update", "Trailer")>\
+%closefile cfgTxt
+%<cfgTxt>
+%endfunction
+%function UpdateFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Update(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(0, 8, fcnProtoType)>
+%endfunction

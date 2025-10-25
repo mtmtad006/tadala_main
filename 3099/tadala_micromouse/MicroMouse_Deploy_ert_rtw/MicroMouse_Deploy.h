@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'MicroMouse_Deploy'.
  *
- * Model version                  : 5.10
+ * Model version                  : 5.30
  * Simulink Coder version         : 25.1 (R2025a) 21-Nov-2024
- * C/C++ source code generated on : Thu Oct  2 21:44:06 2025
+ * C/C++ source code generated on : Sat Oct 25 21:13:17 2025
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -27,10 +27,12 @@
 #include "rtwtypes.h"
 #include "rtw_continuous.h"
 #include "rtw_solver.h"
+#include "rt_nonfinite.h"
+#include "math.h"
 #endif                                 /* MicroMouse_Deploy_COMMON_INCLUDES_ */
 
 #include "MicroMouse_Deploy_types.h"
-#include "rt_nonfinite.h"
+#include "rtGetInf.h"
 #include <string.h>
 #include <stddef.h>
 #include "MW_target_hardware_resources.h"
@@ -170,77 +172,221 @@
 
 /* Block signals (default storage) */
 typedef struct {
-  real_T FilterCoefficient;            /* '<S79>/Filter Coefficient' */
-  real_T IntegralGain;                 /* '<S73>/Integral Gain' */
-  real_T UnitDelay1;                   /* '<S98>/Unit Delay1' */
-  real_T Product3;                     /* '<S100>/Product3' */
-  real_T UnitDelay1_h;                 /* '<S99>/Unit Delay1' */
-  real_T Product3_b;                   /* '<S101>/Product3' */
-  real_T DeadZone;                     /* '<S18>/Dead Zone' */
-  real_T Product4;                     /* '<S100>/Product4' */
-  real_T Product5;                     /* '<S100>/Product5' */
-  real_T UnitDelay2;                   /* '<S98>/Unit Delay2' */
-  real_T Sum1;                         /* '<S98>/Sum1' */
-  real_T Sum3;                         /* '<S98>/Sum3' */
-  real_T Product4_l;                   /* '<S101>/Product4' */
-  real_T Product5_a;                   /* '<S101>/Product5' */
-  real_T UnitDelay2_i;                 /* '<S99>/Unit Delay2' */
-  real_T Sum1_k;                       /* '<S99>/Sum1' */
-  real_T Sum3_n;                       /* '<S99>/Sum3' */
-  real_T ang_vel;                      /* '<S3>/distance_control' */
-  real_T LW_w;                         /* '<S14>/turn_adjus' */
-  real_T RW_w;                         /* '<S14>/turn_adjus' */
-  real32_T Probe[2];                   /* '<S19>/Probe' */
-  real32_T Probe_h[2];                 /* '<S26>/Probe' */
-  real32_T Probe_g[2];                 /* '<S33>/Probe' */
+  real_T RateLimiter2;                 /* '<S11>/Rate Limiter2' */
+  real_T RateLimiter4;                 /* '<S11>/Rate Limiter4' */
+  real_T FilterCoefficient;            /* '<S273>/Filter Coefficient' */
+  real_T CastToDouble[3];              /* '<S3>/Cast To Double' */
+  real_T IntegralGain;                 /* '<S106>/Integral Gain' */
+  real_T FilterCoefficient_k;          /* '<S112>/Filter Coefficient' */
+  real_T FilterCoefficient_f;          /* '<S219>/Filter Coefficient' */
+  real_T IntegralGain_c;               /* '<S267>/Integral Gain' */
+  real_T UnitDelay1;                   /* '<S289>/Unit Delay1' */
+  real_T Product3_k;                   /* '<S291>/Product3' */
+  real_T UnitDelay1_n;                 /* '<S290>/Unit Delay1' */
+  real_T Product3_d;                   /* '<S292>/Product3' */
+  real_T DeadZone;                     /* '<S23>/Dead Zone' */
+  real_T Product4;                     /* '<S291>/Product4' */
+  real_T Product5;                     /* '<S291>/Product5' */
+  real_T UnitDelay2;                   /* '<S289>/Unit Delay2' */
+  real_T Sum1;                         /* '<S289>/Sum1' */
+  real_T Sum3;                         /* '<S289>/Sum3' */
+  real_T Product4_k;                   /* '<S292>/Product4' */
+  real_T Product5_a;                   /* '<S292>/Product5' */
+  real_T UnitDelay2_b;                 /* '<S290>/Unit Delay2' */
+  real_T Sum1_k;                       /* '<S290>/Sum1' */
+  real_T Sum3_o;                       /* '<S290>/Sum3' */
+  real_T RateLimiter1;                 /* '<S12>/Rate Limiter1' */
+  real_T RateLimiter2_j;               /* '<S12>/Rate Limiter2' */
+  real_T DerivativeGain;               /* '<S154>/Derivative Gain' */
+  real_T IntegralGain_i;               /* '<S158>/Integral Gain' */
+  real_T FilterCoefficient_o;          /* '<S164>/Filter Coefficient' */
+  real_T DerivativeGain_c;             /* '<S323>/Derivative Gain' */
+  real_T IntegralGain_e;               /* '<S327>/Integral Gain' */
+  real_T FilterCoefficient_j;          /* '<S333>/Filter Coefficient' */
+  real_T DerivativeGain_k;             /* '<S375>/Derivative Gain' */
+  real_T IntegralGain_k;               /* '<S379>/Integral Gain' */
+  real_T FilterCoefficient_n;          /* '<S385>/Filter Coefficient' */
+  real_T error;                      /* '<S24>/engage_disengage_straightnert' */
+  real_T TOF_L_out;                  /* '<S24>/engage_disengage_straightnert' */
+  real_T TOF_R_out;                  /* '<S24>/engage_disengage_straightnert' */
+  real_T Left_distance;                /* '<S22>/Chart' */
+  real_T Right_distance;               /* '<S22>/Chart' */
+  real_T Z_angle;                      /* '<S3>/draft2_Maze_exploration2' */
+  real_T Z_angle_l;                    /* '<S3>/draft2_Maze_exploration1' */
+  real_T LW_c;                         /* '<S3>/draft2_Maze_exploration' */
+  real_T RW_d;                         /* '<S3>/draft2_Maze_exploration' */
+  real_T turn_indicator_i;             /* '<S3>/draft2_Maze_exploration' */
+  real_T Z_angle_f;                    /* '<S3>/draft2_Maze_exploration' */
+  real_T offset;                       /* '<S18>/Chart' */
+  real32_T Probe[2];                   /* '<S54>/Probe' */
+  real32_T Saturation;                 /* '<S60>/Saturation' */
+  real32_T Probe_g[2];                 /* '<S68>/Probe' */
+  real32_T Saturation_m;               /* '<S74>/Saturation' */
+  real32_T Probe_h[2];                 /* '<S61>/Probe' */
+  real32_T Saturation_d;               /* '<S67>/Saturation' */
+  real32_T AvoidDividebyZero;          /* '<S54>/Avoid Divide by Zero' */
+  real32_T uT;                         /* '<S13>/1//T' */
+  real32_T AvoidDividebyZero_k;        /* '<S61>/Avoid Divide by Zero' */
+  real32_T uT_p;                       /* '<S14>/1//T' */
+  real32_T AvoidDividebyZero_n;        /* '<S68>/Avoid Divide by Zero' */
+  real32_T uT_e;                       /* '<S15>/1//T' */
+  uint8_T Delay;                       /* '<S27>/Delay' */
+  uint8_T Compare;                     /* '<S38>/Compare' */
+  uint8_T Uk1;                         /* '<S36>/Delay Input1' */
+  uint8_T Add_f;                       /* '<S27>/Add' */
+  uint8_T Delay_f;                     /* '<S26>/Delay' */
+  uint8_T Compare_a;                   /* '<S32>/Compare' */
+  uint8_T Uk1_k;                       /* '<S31>/Delay Input1' */
+  uint8_T Add_h;                       /* '<S26>/Add' */
+  boolean_T TOF_LEFT;                  /* '<S3>/GreaterThan' */
+  boolean_T TOF_RIGHT;                 /* '<S3>/GreaterThan2' */
+  boolean_T TOF_FRONT;                 /* '<S3>/GreaterThan1' */
+  boolean_T RelationalOperator;        /* '<S22>/Relational Operator' */
+  boolean_T RelationalOperator1;       /* '<S22>/Relational Operator1' */
+  boolean_T RelationalOperator4;       /* '<S22>/Relational Operator4' */
+  boolean_T RelationalOperator2;       /* '<S22>/Relational Operator2' */
+  boolean_T RelationalOperator3;       /* '<S22>/Relational Operator3' */
+  boolean_T RelationalOperator5;       /* '<S22>/Relational Operator5' */
+  boolean_T Compare_n;                 /* '<S37>/Compare' */
+  boolean_T RelationalOperator_n;      /* '<S3>/Relational Operator' */
 } B_MicroMouse_Deploy_T;
 
 /* Block states (default storage) for system '<Root>' */
 typedef struct {
-  dsp_simulink_MedianFilter_Mic_T obj; /* '<S18>/Median Filter' */
-  real_T UnitDelay1_DSTATE;            /* '<S98>/Unit Delay1' */
-  real_T UnitDelay1_DSTATE_a;          /* '<S99>/Unit Delay1' */
-  real_T UnitDelay2_DSTATE;            /* '<S98>/Unit Delay2' */
-  real_T UnitDelay2_DSTATE_o;          /* '<S99>/Unit Delay2' */
-  real32_T Integrator_DSTATE;          /* '<S25>/Integrator' */
-  real32_T Integrator_DSTATE_m;        /* '<S32>/Integrator' */
-  real32_T Integrator_DSTATE_i;        /* '<S39>/Integrator' */
+  dsp_simulink_MovingAverage_Mi_T obj; /* '<S24>/Moving Average1' */
+  dsp_simulink_MovingAverage_Mi_T obj_b;/* '<S24>/Moving Average' */
+  dsp_simulink_MedianFilter_Mic_T obj_o;/* '<S23>/Median Filter' */
+  real_T UnitDelay1_DSTATE;            /* '<S289>/Unit Delay1' */
+  real_T UnitDelay1_DSTATE_n;          /* '<S290>/Unit Delay1' */
+  real_T UnitDelay2_DSTATE;            /* '<S289>/Unit Delay2' */
+  real_T UnitDelay2_DSTATE_j;          /* '<S290>/Unit Delay2' */
+  real_T Delay_DSTATE;                 /* '<S39>/Delay' */
+  real_T Delay_DSTATE_k;               /* '<S40>/Delay' */
+  real_T PrevY;                        /* '<S11>/Rate Limiter2' */
+  real_T LastMajorTime;                /* '<S11>/Rate Limiter2' */
+  real_T PrevY_i;                      /* '<S11>/Rate Limiter4' */
+  real_T LastMajorTime_b;              /* '<S11>/Rate Limiter4' */
+  real_T PrevY_l;                      /* '<S12>/Rate Limiter1' */
+  real_T LastMajorTime_c;              /* '<S12>/Rate Limiter1' */
+  real_T PrevY_b;                      /* '<S12>/Rate Limiter2' */
+  real_T LastMajorTime_k;              /* '<S12>/Rate Limiter2' */
+  real_T difference;                   /* '<S22>/Chart' */
+  real_T end_dist;                     /* '<S3>/draft2_Maze_exploration' */
+  real_T turn_dist;                    /* '<S3>/draft2_Maze_exploration' */
+  real_T temporalCounter_i1;           /* '<S3>/draft2_Maze_exploration' */
+  real_T previousTime;                 /* '<S3>/draft2_Maze_exploration' */
+  real32_T Integrator_DSTATE;          /* '<S60>/Integrator' */
+  real32_T Integrator_DSTATE_i;        /* '<S74>/Integrator' */
+  real32_T Integrator_DSTATE_m;        /* '<S67>/Integrator' */
+  real32_T end_dist_o;                 /* '<S3>/draft2_Maze_exploration2' */
+  real32_T end_dist_a;                 /* '<S3>/draft2_Maze_exploration1' */
+  real32_T theta;                      /* '<S3>/draft2_Maze_exploration1' */
   struct {
-    uint_T is_c3_MicroMouse_Deploy : 2;/* '<S3>/distance_control' */
-    uint_T is_c1_MicroMouse_Deploy : 2;/* '<S14>/turn_adjus' */
-    uint_T is_active_c3_MicroMouse_Deploy : 1;/* '<S3>/distance_control' */
-    uint_T is_active_c1_MicroMouse_Deploy : 1;/* '<S14>/turn_adjus' */
+    uint_T is_c10_MicroMouse_Deploy : 4;/* '<S3>/draft2_Maze_exploration2' */
+    uint_T is_c6_MicroMouse_Deploy : 4;/* '<S3>/draft2_Maze_exploration1' */
+    uint_T is_c8_MicroMouse_Deploy : 4;/* '<S3>/draft2_Maze_exploration' */
+    uint_T is_active_c10_MicroMouse_Deploy : 1;/* '<S3>/draft2_Maze_exploration2' */
+    uint_T is_active_c6_MicroMouse_Deploy : 1;/* '<S3>/draft2_Maze_exploration1' */
+    uint_T is_active_c8_MicroMouse_Deploy : 1;/* '<S3>/draft2_Maze_exploration' */
+  } bitsForTID0;
+
+  struct {
+    uint_T is_c5_MicroMouse_Deploy : 2;/* '<S3>/turn_adjus' */
+    uint_T is_c3_MicroMouse_Deploy : 2;
+                                     /* '<S24>/engage_disengage_straightnert' */
+    uint_T is_c9_MicroMouse_Deploy : 2;/* '<S22>/Chart' */
+    uint_T is_c1_MicroMouse_Deploy : 2;/* '<S18>/turn_adjus' */
+    uint_T is_c2_MicroMouse_Deploy : 2;/* '<S18>/Chart' */
+    uint_T is_c4_MicroMouse_Deploy : 2;/* '<S40>/Chart' */
+    uint_T is_c7_MicroMouse_Deploy : 2;/* '<S27>/Chart' */
+    uint_T is_active_c5_MicroMouse_Deploy : 1;/* '<S3>/turn_adjus' */
+    uint_T is_active_c3_MicroMouse_Deploy : 1;
+                                     /* '<S24>/engage_disengage_straightnert' */
+    uint_T is_active_c9_MicroMouse_Deploy : 1;/* '<S22>/Chart' */
+    uint_T is_active_c1_MicroMouse_Deploy : 1;/* '<S18>/turn_adjus' */
+    uint_T is_active_c2_MicroMouse_Deploy : 1;/* '<S18>/Chart' */
+    uint_T is_active_c4_MicroMouse_Deploy : 1;/* '<S40>/Chart' */
+    uint_T is_active_c7_MicroMouse_Deploy : 1;/* '<S27>/Chart' */
   } bitsForTID1;
 
-  uint8_T Delay_DSTATE;                /* '<S15>/Delay' */
-  uint8_T DelayInput1_DSTATE;          /* '<S95>/Delay Input1' */
-  int8_T Integrator_PrevResetState;    /* '<S25>/Integrator' */
-  int8_T Integrator_PrevResetState_a;  /* '<S32>/Integrator' */
-  int8_T Integrator_PrevResetState_j;  /* '<S39>/Integrator' */
-  uint8_T Integrator_IC_LOADING;       /* '<S25>/Integrator' */
-  uint8_T Integrator_IC_LOADING_k;     /* '<S32>/Integrator' */
-  uint8_T Integrator_IC_LOADING_a;     /* '<S39>/Integrator' */
+  uint8_T Delay_DSTATE_d;              /* '<S27>/Delay' */
+  uint8_T DelayInput1_DSTATE;          /* '<S36>/Delay Input1' */
+  uint8_T Delay_DSTATE_f;              /* '<S26>/Delay' */
+  uint8_T DelayInput1_DSTATE_c;        /* '<S31>/Delay Input1' */
+  uint8_T DelayInput1_DSTATE_b;        /* '<S46>/Delay Input1' */
+  uint8_T DelayInput1_DSTATE_k;        /* '<S51>/Delay Input1' */
+  boolean_T DelayInput1_DSTATE_e;      /* '<S35>/Delay Input1' */
+  boolean_T DelayInput1_DSTATE_i;      /* '<S50>/Delay Input1' */
+  int8_T Integrator_PrevResetState;    /* '<S60>/Integrator' */
+  int8_T Integrator_PrevResetState_j;  /* '<S74>/Integrator' */
+  int8_T Integrator_PrevResetState_a;  /* '<S67>/Integrator' */
+  uint8_T Integrator_IC_LOADING;       /* '<S60>/Integrator' */
+  uint8_T Integrator_IC_LOADING_a;     /* '<S74>/Integrator' */
+  uint8_T Integrator_IC_LOADING_k;     /* '<S67>/Integrator' */
+  boolean_T PrevLimited;               /* '<S11>/Rate Limiter2' */
+  boolean_T PrevLimited_o;             /* '<S11>/Rate Limiter4' */
+  boolean_T PrevLimited_e;             /* '<S12>/Rate Limiter1' */
+  boolean_T PrevLimited_l;             /* '<S12>/Rate Limiter2' */
 } DW_MicroMouse_Deploy_T;
 
 /* Continuous states (default storage) */
 typedef struct {
-  real_T Integrator_CSTATE;            /* '<S14>/Integrator' */
-  real_T Integrator_CSTATE_p;          /* '<S76>/Integrator' */
-  real_T Filter_CSTATE;                /* '<S71>/Filter' */
+  real_T Integrator_CSTATE;            /* '<S3>/Integrator' */
+  real_T Integrator_CSTATE_o;          /* '<S270>/Integrator' */
+  real_T Filter_CSTATE;                /* '<S265>/Filter' */
+  real_T Integrator1_CSTATE;           /* '<S3>/Integrator1' */
+  real_T Filter_CSTATE_k;              /* '<S104>/Filter' */
+  real_T Integrator_CSTATE_e;          /* '<S109>/Integrator' */
+  real_T Integrator_CSTATE_j;          /* '<S18>/Integrator' */
+  real_T Filter_CSTATE_l;              /* '<S211>/Filter' */
+  real_T Integrator_CSTATE_f;          /* '<S12>/Integrator' */
+  real_T Integrator1_CSTATE_g;         /* '<S12>/Integrator1' */
+  real_T Filter_CSTATE_n;              /* '<S156>/Filter' */
+  real_T Integrator_CSTATE_k;          /* '<S161>/Integrator' */
+  real_T Filter_CSTATE_c;              /* '<S325>/Filter' */
+  real_T Integrator_CSTATE_g;          /* '<S330>/Integrator' */
+  real_T Filter_CSTATE_f;              /* '<S377>/Filter' */
+  real_T Integrator_CSTATE_a;          /* '<S382>/Integrator' */
 } X_MicroMouse_Deploy_T;
 
 /* State derivatives (default storage) */
 typedef struct {
-  real_T Integrator_CSTATE;            /* '<S14>/Integrator' */
-  real_T Integrator_CSTATE_p;          /* '<S76>/Integrator' */
-  real_T Filter_CSTATE;                /* '<S71>/Filter' */
+  real_T Integrator_CSTATE;            /* '<S3>/Integrator' */
+  real_T Integrator_CSTATE_o;          /* '<S270>/Integrator' */
+  real_T Filter_CSTATE;                /* '<S265>/Filter' */
+  real_T Integrator1_CSTATE;           /* '<S3>/Integrator1' */
+  real_T Filter_CSTATE_k;              /* '<S104>/Filter' */
+  real_T Integrator_CSTATE_e;          /* '<S109>/Integrator' */
+  real_T Integrator_CSTATE_j;          /* '<S18>/Integrator' */
+  real_T Filter_CSTATE_l;              /* '<S211>/Filter' */
+  real_T Integrator_CSTATE_f;          /* '<S12>/Integrator' */
+  real_T Integrator1_CSTATE_g;         /* '<S12>/Integrator1' */
+  real_T Filter_CSTATE_n;              /* '<S156>/Filter' */
+  real_T Integrator_CSTATE_k;          /* '<S161>/Integrator' */
+  real_T Filter_CSTATE_c;              /* '<S325>/Filter' */
+  real_T Integrator_CSTATE_g;          /* '<S330>/Integrator' */
+  real_T Filter_CSTATE_f;              /* '<S377>/Filter' */
+  real_T Integrator_CSTATE_a;          /* '<S382>/Integrator' */
 } XDot_MicroMouse_Deploy_T;
 
 /* State disabled  */
 typedef struct {
-  boolean_T Integrator_CSTATE;         /* '<S14>/Integrator' */
-  boolean_T Integrator_CSTATE_p;       /* '<S76>/Integrator' */
-  boolean_T Filter_CSTATE;             /* '<S71>/Filter' */
+  boolean_T Integrator_CSTATE;         /* '<S3>/Integrator' */
+  boolean_T Integrator_CSTATE_o;       /* '<S270>/Integrator' */
+  boolean_T Filter_CSTATE;             /* '<S265>/Filter' */
+  boolean_T Integrator1_CSTATE;        /* '<S3>/Integrator1' */
+  boolean_T Filter_CSTATE_k;           /* '<S104>/Filter' */
+  boolean_T Integrator_CSTATE_e;       /* '<S109>/Integrator' */
+  boolean_T Integrator_CSTATE_j;       /* '<S18>/Integrator' */
+  boolean_T Filter_CSTATE_l;           /* '<S211>/Filter' */
+  boolean_T Integrator_CSTATE_f;       /* '<S12>/Integrator' */
+  boolean_T Integrator1_CSTATE_g;      /* '<S12>/Integrator1' */
+  boolean_T Filter_CSTATE_n;           /* '<S156>/Filter' */
+  boolean_T Integrator_CSTATE_k;       /* '<S161>/Integrator' */
+  boolean_T Filter_CSTATE_c;           /* '<S325>/Filter' */
+  boolean_T Integrator_CSTATE_g;       /* '<S330>/Integrator' */
+  boolean_T Filter_CSTATE_f;           /* '<S377>/Filter' */
+  boolean_T Integrator_CSTATE_a;       /* '<S382>/Integrator' */
 } XDis_MicroMouse_Deploy_T;
 
 #ifndef ODE3_INTG
@@ -256,152 +402,361 @@ typedef struct {
 
 /* Parameters (default storage) */
 struct P_MicroMouse_Deploy_T_ {
+  real_T PIDController1_D;             /* Mask Parameter: PIDController1_D
+                                        * Referenced by: '<S263>/Derivative Gain'
+                                        */
   real_T PIDController_D;              /* Mask Parameter: PIDController_D
-                                        * Referenced by: '<S69>/Derivative Gain'
+                                        * Referenced by: '<S102>/Derivative Gain'
+                                        */
+  real_T PIDController_D_e;            /* Mask Parameter: PIDController_D_e
+                                        * Referenced by: '<S209>/Derivative Gain'
+                                        */
+  real_T PIDController4_D;             /* Mask Parameter: PIDController4_D
+                                        * Referenced by: '<S154>/Derivative Gain'
+                                        */
+  real_T PIDController1_D_p;           /* Mask Parameter: PIDController1_D_p
+                                        * Referenced by: '<S323>/Derivative Gain'
+                                        */
+  real_T PIDController2_D;             /* Mask Parameter: PIDController2_D
+                                        * Referenced by: '<S375>/Derivative Gain'
                                         */
   real_T PIDController_I;              /* Mask Parameter: PIDController_I
-                                        * Referenced by: '<S73>/Integral Gain'
+                                        * Referenced by: '<S106>/Integral Gain'
                                         */
+  real_T PIDController1_I;             /* Mask Parameter: PIDController1_I
+                                        * Referenced by: '<S267>/Integral Gain'
+                                        */
+  real_T PIDController4_I;             /* Mask Parameter: PIDController4_I
+                                        * Referenced by: '<S158>/Integral Gain'
+                                        */
+  real_T PIDController1_I_g;           /* Mask Parameter: PIDController1_I_g
+                                        * Referenced by: '<S327>/Integral Gain'
+                                        */
+  real_T PIDController2_I;             /* Mask Parameter: PIDController2_I
+                                        * Referenced by: '<S379>/Integral Gain'
+                                        */
+  real_T PIDController1_InitialCondition;
+                              /* Mask Parameter: PIDController1_InitialCondition
+                               * Referenced by: '<S265>/Filter'
+                               */
   real_T PIDController_InitialConditionF;
                               /* Mask Parameter: PIDController_InitialConditionF
-                               * Referenced by: '<S71>/Filter'
+                               * Referenced by: '<S104>/Filter'
+                               */
+  real_T PIDController_InitialConditio_a;
+                              /* Mask Parameter: PIDController_InitialConditio_a
+                               * Referenced by: '<S211>/Filter'
+                               */
+  real_T PIDController4_InitialCondition;
+                              /* Mask Parameter: PIDController4_InitialCondition
+                               * Referenced by: '<S156>/Filter'
+                               */
+  real_T PIDController1_InitialConditi_h;
+                              /* Mask Parameter: PIDController1_InitialConditi_h
+                               * Referenced by: '<S325>/Filter'
+                               */
+  real_T PIDController2_InitialCondition;
+                              /* Mask Parameter: PIDController2_InitialCondition
+                               * Referenced by: '<S377>/Filter'
+                               */
+  real_T PIDController1_InitialConditi_i;
+                              /* Mask Parameter: PIDController1_InitialConditi_i
+                               * Referenced by: '<S270>/Integrator'
                                */
   real_T PIDController_InitialConditio_l;
                               /* Mask Parameter: PIDController_InitialConditio_l
-                               * Referenced by: '<S76>/Integrator'
+                               * Referenced by: '<S109>/Integrator'
                                */
+  real_T PIDController4_InitialConditi_e;
+                              /* Mask Parameter: PIDController4_InitialConditi_e
+                               * Referenced by: '<S161>/Integrator'
+                               */
+  real_T PIDController1_InitialConditi_c;
+                              /* Mask Parameter: PIDController1_InitialConditi_c
+                               * Referenced by: '<S330>/Integrator'
+                               */
+  real_T PIDController2_InitialConditi_f;
+                              /* Mask Parameter: PIDController2_InitialConditi_f
+                               * Referenced by: '<S382>/Integrator'
+                               */
+  real_T PIDController1_N;             /* Mask Parameter: PIDController1_N
+                                        * Referenced by: '<S273>/Filter Coefficient'
+                                        */
   real_T PIDController_N;              /* Mask Parameter: PIDController_N
-                                        * Referenced by: '<S79>/Filter Coefficient'
+                                        * Referenced by: '<S112>/Filter Coefficient'
+                                        */
+  real_T PIDController_N_j;            /* Mask Parameter: PIDController_N_j
+                                        * Referenced by: '<S219>/Filter Coefficient'
+                                        */
+  real_T PIDController4_N;             /* Mask Parameter: PIDController4_N
+                                        * Referenced by: '<S164>/Filter Coefficient'
+                                        */
+  real_T PIDController1_N_m;           /* Mask Parameter: PIDController1_N_m
+                                        * Referenced by: '<S333>/Filter Coefficient'
+                                        */
+  real_T PIDController2_N;             /* Mask Parameter: PIDController2_N
+                                        * Referenced by: '<S385>/Filter Coefficient'
+                                        */
+  real_T PIDController1_P;             /* Mask Parameter: PIDController1_P
+                                        * Referenced by: '<S275>/Proportional Gain'
                                         */
   real_T PIDController_P;              /* Mask Parameter: PIDController_P
-                                        * Referenced by: '<S81>/Proportional Gain'
+                                        * Referenced by: '<S114>/Proportional Gain'
+                                        */
+  real_T PIDController_P_c;            /* Mask Parameter: PIDController_P_c
+                                        * Referenced by: '<S221>/Proportional Gain'
                                         */
   real_T LowPassFilterDiscreteorContinuo;
                               /* Mask Parameter: LowPassFilterDiscreteorContinuo
-                               * Referenced by: '<S19>/Time constant'
-                               */
-  real_T LowPassFilterDiscreteorContin_p;
-                              /* Mask Parameter: LowPassFilterDiscreteorContin_p
-                               * Referenced by: '<S26>/Time constant'
+                               * Referenced by: '<S54>/Time constant'
                                */
   real_T LowPassFilterDiscreteorContin_e;
                               /* Mask Parameter: LowPassFilterDiscreteorContin_e
-                               * Referenced by: '<S33>/Time constant'
+                               * Referenced by: '<S68>/Time constant'
+                               */
+  real_T LowPassFilterDiscreteorContin_p;
+                              /* Mask Parameter: LowPassFilterDiscreteorContin_p
+                               * Referenced by: '<S61>/Time constant'
                                */
   real_T CompareToConstant_const;     /* Mask Parameter: CompareToConstant_const
-                                       * Referenced by: '<S22>/Constant'
+                                       * Referenced by: '<S57>/Constant'
                                        */
-  real_T CompareToConstant_const_j; /* Mask Parameter: CompareToConstant_const_j
-                                     * Referenced by: '<S29>/Constant'
-                                     */
   real_T CompareToConstant_const_o; /* Mask Parameter: CompareToConstant_const_o
-                                     * Referenced by: '<S36>/Constant'
+                                     * Referenced by: '<S71>/Constant'
+                                     */
+  real_T CompareToConstant_const_j; /* Mask Parameter: CompareToConstant_const_j
+                                     * Referenced by: '<S64>/Constant'
                                      */
   real_T LowPassFilterDiscreteorContin_k;
                               /* Mask Parameter: LowPassFilterDiscreteorContin_k
-                               * Referenced by: '<S19>/Constant'
+                               * Referenced by: '<S54>/Constant'
                                */
   real_T LowPassFilterDiscreteorContin_c;
                               /* Mask Parameter: LowPassFilterDiscreteorContin_c
-                               * Referenced by: '<S26>/Constant'
+                               * Referenced by: '<S68>/Constant'
                                */
-  real_T LowPassFilterDiscreteorConti_cz;
-                              /* Mask Parameter: LowPassFilterDiscreteorConti_cz
-                               * Referenced by: '<S33>/Constant'
+  real_T LowPassFilterDiscreteorConti_ct;
+                              /* Mask Parameter: LowPassFilterDiscreteorConti_ct
+                               * Referenced by: '<S61>/Constant'
                                */
   real32_T LowPassFilterDiscreteorConti_pu;
                               /* Mask Parameter: LowPassFilterDiscreteorConti_pu
-                               * Referenced by: '<S11>/K'
-                               */
-  real32_T LowPassFilterDiscreteorContin_a;
-                              /* Mask Parameter: LowPassFilterDiscreteorContin_a
-                               * Referenced by: '<S12>/K'
+                               * Referenced by: '<S13>/K'
                                */
   real32_T LowPassFilterDiscreteorConti_cj;
                               /* Mask Parameter: LowPassFilterDiscreteorConti_cj
-                               * Referenced by: '<S13>/K'
+                               * Referenced by: '<S15>/K'
                                */
+  real32_T LowPassFilterDiscreteorContin_a;
+                              /* Mask Parameter: LowPassFilterDiscreteorContin_a
+                               * Referenced by: '<S14>/K'
+                               */
+  real32_T CompareToConstant_const_jx;
+                                   /* Mask Parameter: CompareToConstant_const_jx
+                                    * Referenced by: '<S34>/Constant'
+                                    */
+  real32_T CompareToConstant_const_c;
+                                    /* Mask Parameter: CompareToConstant_const_c
+                                     * Referenced by: '<S30>/Constant'
+                                     */
+  real32_T CompareToConstant_const_g;
+                                    /* Mask Parameter: CompareToConstant_const_g
+                                     * Referenced by: '<S45>/Constant'
+                                     */
   real32_T CompareToConstant_const_l;
                                     /* Mask Parameter: CompareToConstant_const_l
-                                     * Referenced by: '<S94>/Constant'
+                                     * Referenced by: '<S49>/Constant'
                                      */
+  boolean_T DetectFallNonpositive_vinit;
+                                  /* Mask Parameter: DetectFallNonpositive_vinit
+                                   * Referenced by: '<S35>/Delay Input1'
+                                   */
+  boolean_T DetectFallNonpositive_vinit_a;
+                                /* Mask Parameter: DetectFallNonpositive_vinit_a
+                                 * Referenced by: '<S50>/Delay Input1'
+                                 */
   uint8_T DetectRisePositive_vinit;  /* Mask Parameter: DetectRisePositive_vinit
-                                      * Referenced by: '<S95>/Delay Input1'
+                                      * Referenced by: '<S36>/Delay Input1'
                                       */
-  real_T Circumference_Value;          /* Expression: (2*pi*0.032)
-                                        * Referenced by: '<S17>/Circumference'
-                                        */
-  real_T ref_Value;                    /* Expression: 2
-                                        * Referenced by: '<S3>/ref'
-                                        */
-  real_T Constant_Value;               /* Expression: 0
-                                        * Referenced by: '<S14>/Constant'
-                                        */
-  real_T Integrator_IC;                /* Expression: 0
-                                        * Referenced by: '<S14>/Integrator'
-                                        */
-  real_T Gain1_Gain;                   /* Expression: 1
-                                        * Referenced by: '<Root>/Gain1'
-                                        */
-  real_T Gain_Gain;                    /* Expression: 1
-                                        * Referenced by: '<Root>/Gain'
-                                        */
-  real_T Constant1_Value;              /* Expression: 0.3
+  uint8_T DetectRisePositive_vinit_a;
+                                   /* Mask Parameter: DetectRisePositive_vinit_a
+                                    * Referenced by: '<S31>/Delay Input1'
+                                    */
+  uint8_T DetectRisePositive_vinit_h;
+                                   /* Mask Parameter: DetectRisePositive_vinit_h
+                                    * Referenced by: '<S46>/Delay Input1'
+                                    */
+  uint8_T DetectRisePositive_vinit_f;
+                                   /* Mask Parameter: DetectRisePositive_vinit_f
+                                    * Referenced by: '<S51>/Delay Input1'
+                                    */
+  real_T Constant1_Value;              /* Expression: 0.2
                                         * Referenced by: '<S3>/Constant1'
                                         */
-  real_T Constant_Value_l;             /* Expression: 27
-                                        * Referenced by: '<S3>/Constant'
+  real_T RateLimiter2_RisingLim;       /* Expression: 4.85
+                                        * Referenced by: '<S11>/Rate Limiter2'
                                         */
-  real_T Constant2_Value;              /* Expression: 5
+  real_T RateLimiter2_FallingLim;      /* Expression: -1
+                                        * Referenced by: '<S11>/Rate Limiter2'
+                                        */
+  real_T Tick_per_rev_Gain;            /* Expression: 1/8
+                                        * Referenced by: '<S29>/Tick_per_rev'
+                                        */
+  real_T Circumference_Value;          /* Expression: (2*pi*0.031)
+                                        * Referenced by: '<S29>/Circumference'
+                                        */
+  real_T RateLimiter4_RisingLim;       /* Expression: 4.85
+                                        * Referenced by: '<S11>/Rate Limiter4'
+                                        */
+  real_T RateLimiter4_FallingLim;      /* Expression: -1
+                                        * Referenced by: '<S11>/Rate Limiter4'
+                                        */
+  real_T Tick_per_rev_Gain_l;          /* Expression: 1/8
+                                        * Referenced by: '<S28>/Tick_per_rev'
+                                        */
+  real_T Circumference_Value_b;        /* Expression: (2*pi*0.031)
+                                        * Referenced by: '<S28>/Circumference'
+                                        */
+  real_T Gain1_Gain;                   /* Expression: 0.5
+                                        * Referenced by: '<S11>/Gain1'
+                                        */
+  real_T Constant2_Value;              /* Expression: 0.04
                                         * Referenced by: '<S3>/Constant2'
                                         */
+  real_T Integrator_IC;                /* Expression: 0
+                                        * Referenced by: '<S3>/Integrator'
+                                        */
+  real_T constant_Value;               /* Expression: 40
+                                        * Referenced by: '<S22>/constant'
+                                        */
+  real_T Gain5_Gain;                   /* Expression: 10
+                                        * Referenced by: '<S22>/Gain5'
+                                        */
+  real_T Gain6_Gain;                   /* Expression: 10
+                                        * Referenced by: '<S22>/Gain6'
+                                        */
+  real_T Constant1_Value_a;            /* Expression: 0.06
+                                        * Referenced by: '<S22>/Constant1'
+                                        */
+  real_T Constant_Value;               /* Expression: 0.06
+                                        * Referenced by: '<S22>/Constant'
+                                        */
+  real_T Constant4_Value;              /* Expression: 0.11
+                                        * Referenced by: '<S22>/Constant4'
+                                        */
+  real_T Constant2_Value_a;            /* Expression: 0.07
+                                        * Referenced by: '<S22>/Constant2'
+                                        */
+  real_T Gain3_Gain;                   /* Expression: 150
+                                        * Referenced by: '<S22>/Gain3'
+                                        */
+  real_T Constant3_Value;              /* Expression: 0.07
+                                        * Referenced by: '<S22>/Constant3'
+                                        */
+  real_T Constant5_Value;              /* Expression: 0.11
+                                        * Referenced by: '<S22>/Constant5'
+                                        */
+  real_T Gain1_Gain_d;                 /* Expression: 1
+                                        * Referenced by: '<Root>/Gain1'
+                                        */
+  real_T Gain_Gain;                    /* Expression: -1
+                                        * Referenced by: '<Root>/Gain'
+                                        */
+  real_T Constant_Value_l;             /* Expression: 11
+                                        * Referenced by: '<S3>/Constant'
+                                        */
+  real_T Constant3_Value_g;            /* Expression: 1
+                                        * Referenced by: '<S3>/Constant3'
+                                        */
+  real_T Constant4_Value_d;            /* Expression: 0
+                                        * Referenced by: '<S3>/Constant4'
+                                        */
+  real_T Constant5_Value_n;            /* Expression: 5
+                                        * Referenced by: '<S3>/Constant5'
+                                        */
+  real_T Integrator1_IC;               /* Expression: 0
+                                        * Referenced by: '<S3>/Integrator1'
+                                        */
+  real_T Motor_Left2_Value;            /* Expression: 1
+                                        * Referenced by: '<S3>/Motor_Left2'
+                                        */
+  real_T Integrator_IC_b;              /* Expression: 0
+                                        * Referenced by: '<S18>/Integrator'
+                                        */
   real_T UnitDelay1_InitialCondition;  /* Expression: 0
-                                        * Referenced by: '<S98>/Unit Delay1'
+                                        * Referenced by: '<S289>/Unit Delay1'
                                         */
   real_T tau_Gain;                     /* Expression: tau
-                                        * Referenced by: '<S98>/tau'
+                                        * Referenced by: '<S289>/tau'
                                         */
   real_T Bias_Bias;                    /* Expression: 1
-                                        * Referenced by: '<S100>/Bias'
+                                        * Referenced by: '<S291>/Bias'
                                         */
-  real_T Gain_Gain_i;                  /* Expression: 2*zeta
-                                        * Referenced by: '<S100>/Gain'
+  real_T Gain_Gain_n;                  /* Expression: 2*zeta
+                                        * Referenced by: '<S291>/Gain'
                                         */
-  real_T UnitDelay1_InitialCondition_p;/* Expression: 0
-                                        * Referenced by: '<S99>/Unit Delay1'
+  real_T UnitDelay1_InitialCondition_k;/* Expression: 0
+                                        * Referenced by: '<S290>/Unit Delay1'
                                         */
-  real_T tau_Gain_m;                   /* Expression: tau
-                                        * Referenced by: '<S99>/tau'
+  real_T tau_Gain_b;                   /* Expression: tau
+                                        * Referenced by: '<S290>/tau'
                                         */
-  real_T Bias_Bias_l;                  /* Expression: 1
-                                        * Referenced by: '<S101>/Bias'
+  real_T Bias_Bias_b;                  /* Expression: 1
+                                        * Referenced by: '<S292>/Bias'
                                         */
-  real_T Gain_Gain_d;                  /* Expression: 2*zeta
-                                        * Referenced by: '<S101>/Gain'
+  real_T Gain_Gain_l;                  /* Expression: 2*zeta
+                                        * Referenced by: '<S292>/Gain'
                                         */
   real_T DeadZone_Start;               /* Expression: -0.5
-                                        * Referenced by: '<S18>/Dead Zone'
+                                        * Referenced by: '<S23>/Dead Zone'
                                         */
   real_T DeadZone_End;                 /* Expression: 0.5
-                                        * Referenced by: '<S18>/Dead Zone'
+                                        * Referenced by: '<S23>/Dead Zone'
                                         */
   real_T Bias1_Bias;                   /* Expression: 1
-                                        * Referenced by: '<S100>/Bias1'
+                                        * Referenced by: '<S291>/Bias1'
                                         */
-  real_T Gain1_Gain_f;                 /* Expression: 2
-                                        * Referenced by: '<S98>/Gain1'
+  real_T Gain1_Gain_b;                 /* Expression: 2
+                                        * Referenced by: '<S289>/Gain1'
                                         */
   real_T UnitDelay2_InitialCondition;  /* Expression: 0
-                                        * Referenced by: '<S98>/Unit Delay2'
+                                        * Referenced by: '<S289>/Unit Delay2'
                                         */
-  real_T Bias1_Bias_d;                 /* Expression: 1
-                                        * Referenced by: '<S101>/Bias1'
+  real_T Bias1_Bias_f;                 /* Expression: 1
+                                        * Referenced by: '<S292>/Bias1'
                                         */
-  real_T Gain1_Gain_e;                 /* Expression: 2
-                                        * Referenced by: '<S99>/Gain1'
+  real_T Gain1_Gain_h;                 /* Expression: 2
+                                        * Referenced by: '<S290>/Gain1'
                                         */
-  real_T UnitDelay2_InitialCondition_n;/* Expression: 0
-                                        * Referenced by: '<S99>/Unit Delay2'
+  real_T UnitDelay2_InitialCondition_e;/* Expression: 0
+                                        * Referenced by: '<S290>/Unit Delay2'
+                                        */
+  real_T Integrator_IC_p;              /* Expression: 0
+                                        * Referenced by: '<S12>/Integrator'
+                                        */
+  real_T Delay_InitialCondition;       /* Expression: 0
+                                        * Referenced by: '<S39>/Delay'
+                                        */
+  real_T RateLimiter1_RisingLim;       /* Expression: 4.85
+                                        * Referenced by: '<S12>/Rate Limiter1'
+                                        */
+  real_T RateLimiter1_FallingLim;      /* Expression: -1
+                                        * Referenced by: '<S12>/Rate Limiter1'
+                                        */
+  real_T Integrator1_IC_o;             /* Expression: 0
+                                        * Referenced by: '<S12>/Integrator1'
+                                        */
+  real_T Delay_InitialCondition_d;     /* Expression: 0
+                                        * Referenced by: '<S40>/Delay'
+                                        */
+  real_T RateLimiter2_RisingLim_h;     /* Expression: 4.85
+                                        * Referenced by: '<S12>/Rate Limiter2'
+                                        */
+  real_T RateLimiter2_FallingLim_n;    /* Expression: -1
+                                        * Referenced by: '<S12>/Rate Limiter2'
+                                        */
+  real_T Constant_Value_g;             /* Expression: 0.0765
+                                        * Referenced by: '<S24>/Constant'
                                         */
   char_T OLED_STRING1_String[256];     /* Expression: "UCT MICROMOUSE '25"
                                         * Referenced by: '<S3>/OLED_STRING1'
@@ -410,65 +765,74 @@ struct P_MicroMouse_Deploy_T_ {
                                         * Referenced by: '<S3>/OLED_STRING2'
                                         */
   real32_T Constant_Value_lf;          /* Computed Parameter: Constant_Value_lf
-                                        * Referenced by: '<S23>/Constant'
+                                        * Referenced by: '<S58>/Constant'
                                         */
   real32_T Constant_Value_i;           /* Computed Parameter: Constant_Value_i
-                                        * Referenced by: '<S30>/Constant'
+                                        * Referenced by: '<S65>/Constant'
                                         */
   real32_T Constant_Value_c;           /* Computed Parameter: Constant_Value_c
-                                        * Referenced by: '<S37>/Constant'
-                                        */
-  real32_T Gain2_Gain;                 /* Computed Parameter: Gain2_Gain
-                                        * Referenced by: '<S4>/Gain2'
+                                        * Referenced by: '<S72>/Constant'
                                         */
   real32_T Gain_Gain_g;                /* Computed Parameter: Gain_Gain_g
                                         * Referenced by: '<S10>/Gain'
                                         */
   real32_T Integrator_gainval;         /* Computed Parameter: Integrator_gainval
-                                        * Referenced by: '<S25>/Integrator'
+                                        * Referenced by: '<S60>/Integrator'
                                         */
   real32_T Integrator_UpperSat;       /* Computed Parameter: Integrator_UpperSat
-                                       * Referenced by: '<S25>/Integrator'
+                                       * Referenced by: '<S60>/Integrator'
                                        */
   real32_T Integrator_LowerSat;       /* Computed Parameter: Integrator_LowerSat
-                                       * Referenced by: '<S25>/Integrator'
+                                       * Referenced by: '<S60>/Integrator'
                                        */
   real32_T Saturation_UpperSat;       /* Computed Parameter: Saturation_UpperSat
-                                       * Referenced by: '<S25>/Saturation'
+                                       * Referenced by: '<S60>/Saturation'
                                        */
   real32_T Saturation_LowerSat;       /* Computed Parameter: Saturation_LowerSat
-                                       * Referenced by: '<S25>/Saturation'
+                                       * Referenced by: '<S60>/Saturation'
                                        */
-  real32_T Integrator_gainval_n;     /* Computed Parameter: Integrator_gainval_n
-                                      * Referenced by: '<S32>/Integrator'
-                                      */
-  real32_T Integrator_UpperSat_k;   /* Computed Parameter: Integrator_UpperSat_k
-                                     * Referenced by: '<S32>/Integrator'
-                                     */
-  real32_T Integrator_LowerSat_d;   /* Computed Parameter: Integrator_LowerSat_d
-                                     * Referenced by: '<S32>/Integrator'
-                                     */
-  real32_T Saturation_UpperSat_f;   /* Computed Parameter: Saturation_UpperSat_f
-                                     * Referenced by: '<S32>/Saturation'
-                                     */
-  real32_T Saturation_LowerSat_b;   /* Computed Parameter: Saturation_LowerSat_b
-                                     * Referenced by: '<S32>/Saturation'
-                                     */
   real32_T Integrator_gainval_k;     /* Computed Parameter: Integrator_gainval_k
-                                      * Referenced by: '<S39>/Integrator'
+                                      * Referenced by: '<S74>/Integrator'
                                       */
   real32_T Integrator_UpperSat_l;   /* Computed Parameter: Integrator_UpperSat_l
-                                     * Referenced by: '<S39>/Integrator'
+                                     * Referenced by: '<S74>/Integrator'
                                      */
   real32_T Integrator_LowerSat_g;   /* Computed Parameter: Integrator_LowerSat_g
-                                     * Referenced by: '<S39>/Integrator'
+                                     * Referenced by: '<S74>/Integrator'
                                      */
   real32_T Saturation_UpperSat_c;   /* Computed Parameter: Saturation_UpperSat_c
-                                     * Referenced by: '<S39>/Saturation'
+                                     * Referenced by: '<S74>/Saturation'
                                      */
   real32_T Saturation_LowerSat_o;   /* Computed Parameter: Saturation_LowerSat_o
-                                     * Referenced by: '<S39>/Saturation'
+                                     * Referenced by: '<S74>/Saturation'
                                      */
+  real32_T Gain2_Gain;                 /* Computed Parameter: Gain2_Gain
+                                        * Referenced by: '<S4>/Gain2'
+                                        */
+  real32_T Integrator_gainval_n;     /* Computed Parameter: Integrator_gainval_n
+                                      * Referenced by: '<S67>/Integrator'
+                                      */
+  real32_T Integrator_UpperSat_k;   /* Computed Parameter: Integrator_UpperSat_k
+                                     * Referenced by: '<S67>/Integrator'
+                                     */
+  real32_T Integrator_LowerSat_d;   /* Computed Parameter: Integrator_LowerSat_d
+                                     * Referenced by: '<S67>/Integrator'
+                                     */
+  real32_T Saturation_UpperSat_f;   /* Computed Parameter: Saturation_UpperSat_f
+                                     * Referenced by: '<S67>/Saturation'
+                                     */
+  real32_T Saturation_LowerSat_b;   /* Computed Parameter: Saturation_LowerSat_b
+                                     * Referenced by: '<S67>/Saturation'
+                                     */
+  real32_T Gain1_Gain_a;               /* Computed Parameter: Gain1_Gain_a
+                                        * Referenced by: '<S22>/Gain1'
+                                        */
+  real32_T Gain2_Gain_k;               /* Computed Parameter: Gain2_Gain_k
+                                        * Referenced by: '<S22>/Gain2'
+                                        */
+  real32_T Gain4_Gain;                 /* Computed Parameter: Gain4_Gain
+                                        * Referenced by: '<S22>/Gain4'
+                                        */
   real32_T Gain2_Gain_f;               /* Computed Parameter: Gain2_Gain_f
                                         * Referenced by: '<S3>/Gain2'
                                         */
@@ -536,8 +900,23 @@ struct P_MicroMouse_Deploy_T_ {
                             /* Computed Parameter: DataStoreMemory4_InitialValue
                              * Referenced by: '<S4>/Data Store Memory4'
                              */
-  boolean_T Constant_Value_d;          /* Computed Parameter: Constant_Value_d
-                                        * Referenced by: '<S96>/Constant'
+  boolean_T Constant_Value_m;          /* Computed Parameter: Constant_Value_m
+                                        * Referenced by: '<S32>/Constant'
+                                        */
+  boolean_T Constant_Value_o;          /* Computed Parameter: Constant_Value_o
+                                        * Referenced by: '<S37>/Constant'
+                                        */
+  boolean_T Constant_Value_j;          /* Computed Parameter: Constant_Value_j
+                                        * Referenced by: '<S38>/Constant'
+                                        */
+  boolean_T Constant_Value_f;          /* Computed Parameter: Constant_Value_f
+                                        * Referenced by: '<S47>/Constant'
+                                        */
+  boolean_T Constant_Value_lk;         /* Computed Parameter: Constant_Value_lk
+                                        * Referenced by: '<S52>/Constant'
+                                        */
+  boolean_T Constant_Value_fp;         /* Computed Parameter: Constant_Value_fp
+                                        * Referenced by: '<S53>/Constant'
                                         */
   int8_T DataStoreMemory_InitialValue_oa;
                           /* Computed Parameter: DataStoreMemory_InitialValue_oa
@@ -547,12 +926,14 @@ struct P_MicroMouse_Deploy_T_ {
                           /* Computed Parameter: DataStoreMemory1_InitialValu_p2
                            * Referenced by: '<S1>/Data Store Memory1'
                            */
-  uint8_T Tick_per_rev_Gain;           /* Computed Parameter: Tick_per_rev_Gain
-                                        * Referenced by: '<S17>/Tick_per_rev'
-                                        */
-  uint8_T Delay_InitialCondition;  /* Computed Parameter: Delay_InitialCondition
-                                    * Referenced by: '<S15>/Delay'
-                                    */
+  uint8_T Delay_InitialCondition_j;
+                                 /* Computed Parameter: Delay_InitialCondition_j
+                                  * Referenced by: '<S27>/Delay'
+                                  */
+  uint8_T Delay_InitialCondition_c;
+                                 /* Computed Parameter: Delay_InitialCondition_c
+                                  * Referenced by: '<S26>/Delay'
+                                  */
   uint8_T DataStoreMemory_InitialValue_e;
                            /* Computed Parameter: DataStoreMemory_InitialValue_e
                             * Referenced by: '<S2>/Data Store Memory'
@@ -605,8 +986,8 @@ struct tag_RTM_MicroMouse_Deploy_T {
   boolean_T zCCacheNeedsReset;
   boolean_T derivCacheNeedsReset;
   boolean_T CTOutputIncnstWithState;
-  real_T odeY[3];
-  real_T odeF[3][3];
+  real_T odeY[16];
+  real_T odeF[3][16];
   ODE3_IntgData intgData;
 
   /*
@@ -667,21 +1048,108 @@ extern volatile boolean_T runModel;
  * These blocks were eliminated from the model due to optimizations:
  *
  * Block '<S1>/Pulse Generator' : Unused code path elimination
- * Block '<S3>/LW_enc_signal' : Unused code path elimination
- * Block '<S3>/Motor_Left' : Unused code path elimination
- * Block '<S3>/Motor_Right' : Unused code path elimination
- * Block '<S3>/RW_enc_signal' : Unused code path elimination
+ * Block '<S3>/Add' : Unused code path elimination
+ * Block '<S3>/Add1' : Unused code path elimination
+ * Block '<S11>/Average_dist_travelled1' : Unused code path elimination
+ * Block '<S11>/LW_dist_travelled1' : Unused code path elimination
+ * Block '<S11>/LW_enc_signal1' : Unused code path elimination
+ * Block '<S11>/LW_encoder_ticks3' : Unused code path elimination
+ * Block '<S11>/RW_dist_travelled1' : Unused code path elimination
+ * Block '<S11>/RW_enc_signal1' : Unused code path elimination
+ * Block '<S11>/RW_encoder_ticks2' : Unused code path elimination
+ * Block '<S26>/Scope' : Unused code path elimination
+ * Block '<S27>/Scope' : Unused code path elimination
+ * Block '<S12>/Average_dist_travelled1' : Unused code path elimination
+ * Block '<S12>/Gain1' : Unused code path elimination
+ * Block '<S12>/LW_dist_travelled1' : Unused code path elimination
+ * Block '<S12>/LW_dist_travelled2' : Unused code path elimination
+ * Block '<S12>/LW_dist_travelled3' : Unused code path elimination
+ * Block '<S12>/LW_enc_signal1' : Unused code path elimination
+ * Block '<S12>/LW_encoder_ticks1' : Unused code path elimination
+ * Block '<S12>/LW_encoder_ticks2' : Unused code path elimination
+ * Block '<S12>/LW_encoder_ticks3' : Unused code path elimination
+ * Block '<S12>/RW_dist_travelled1' : Unused code path elimination
+ * Block '<S12>/RW_enc_signal1' : Unused code path elimination
+ * Block '<S12>/RW_encoder_ticks2' : Unused code path elimination
+ * Block '<S12>/Rate Limiter' : Unused code path elimination
+ * Block '<S12>/Rate Limiter3' : Unused code path elimination
+ * Block '<S12>/Scope' : Unused code path elimination
+ * Block '<S12>/Scope1' : Unused code path elimination
+ * Block '<S12>/Scope2' : Unused code path elimination
+ * Block '<S12>/Scope5' : Unused code path elimination
+ * Block '<S12>/Sum3' : Unused code path elimination
+ * Block '<S39>/Scope' : Unused code path elimination
+ * Block '<S40>/Scope' : Unused code path elimination
+ * Block '<S41>/Circumference' : Unused code path elimination
+ * Block '<S41>/Product' : Unused code path elimination
+ * Block '<S41>/Tick_per_rev' : Unused code path elimination
+ * Block '<S42>/Circumference' : Unused code path elimination
+ * Block '<S42>/Product' : Unused code path elimination
+ * Block '<S42>/Tick_per_rev' : Unused code path elimination
+ * Block '<S43>/Circumference' : Unused code path elimination
+ * Block '<S43>/Product' : Unused code path elimination
+ * Block '<S43>/Tick_per_rev' : Unused code path elimination
+ * Block '<S44>/Circumference' : Unused code path elimination
+ * Block '<S44>/Product' : Unused code path elimination
+ * Block '<S44>/Tick_per_rev' : Unused code path elimination
+ * Block '<S3>/Display' : Unused code path elimination
+ * Block '<S3>/Display1' : Unused code path elimination
+ * Block '<S3>/Display10' : Unused code path elimination
+ * Block '<S3>/Display11' : Unused code path elimination
+ * Block '<S3>/Display12' : Unused code path elimination
+ * Block '<S3>/Display2' : Unused code path elimination
+ * Block '<S3>/Display3' : Unused code path elimination
+ * Block '<S3>/Display4' : Unused code path elimination
+ * Block '<S3>/Display5' : Unused code path elimination
+ * Block '<S3>/Display6' : Unused code path elimination
+ * Block '<S3>/Display7' : Unused code path elimination
+ * Block '<S3>/Display9' : Unused code path elimination
+ * Block '<S3>/Gain' : Unused code path elimination
+ * Block '<S3>/Gain1' : Unused code path elimination
+ * Block '<S3>/Gain3' : Unused code path elimination
+ * Block '<S3>/Gain4' : Unused code path elimination
+ * Block '<S3>/Motor_Left1' : Unused code path elimination
+ * Block '<S3>/Motor_Left3' : Unused code path elimination
+ * Block '<S3>/Motor_Right1' : Unused code path elimination
+ * Block '<S3>/NOT1' : Unused code path elimination
+ * Block '<S166>/Proportional Gain' : Unused code path elimination
+ * Block '<S170>/Sum' : Unused code path elimination
  * Block '<S3>/Scope' : Unused code path elimination
  * Block '<S3>/Scope1' : Unused code path elimination
  * Block '<S3>/Scope2' : Unused code path elimination
  * Block '<S3>/Scope3' : Unused code path elimination
  * Block '<S3>/Scope4' : Unused code path elimination
  * Block '<S3>/Scope5' : Unused code path elimination
- * Block '<S3>/Scope6' : Unused code path elimination
- * Block '<S14>/Scope' : Unused code path elimination
- * Block '<S3>/dist_travelled' : Unused code path elimination
- * Block '<S3>/encoder_ticks' : Unused code path elimination
- * Block '<S3>/velocity' : Unused code path elimination
+ * Block '<S3>/TOF_F' : Unused code path elimination
+ * Block '<S3>/TOF_L' : Unused code path elimination
+ * Block '<S3>/TOF_R' : Unused code path elimination
+ * Block '<S3>/Z_theta' : Unused code path elimination
+ * Block '<S3>/Z_w' : Unused code path elimination
+ * Block '<S3>/Z_w1' : Unused code path elimination
+ * Block '<S3>/Z_w2' : Unused code path elimination
+ * Block '<S18>/Gain' : Unused code path elimination
+ * Block '<S18>/Gain1' : Unused code path elimination
+ * Block '<S18>/Scope' : Unused code path elimination
+ * Block '<S18>/Scope1' : Unused code path elimination
+ * Block '<S18>/Scope2' : Unused code path elimination
+ * Block '<S22>/Display1' : Unused code path elimination
+ * Block '<S22>/Display2' : Unused code path elimination
+ * Block '<S22>/Display3' : Unused code path elimination
+ * Block '<S22>/Display4' : Unused code path elimination
+ * Block '<S22>/Display5' : Unused code path elimination
+ * Block '<S22>/Display6' : Unused code path elimination
+ * Block '<S22>/Display8' : Unused code path elimination
+ * Block '<S22>/Scope6' : Unused code path elimination
+ * Block '<S24>/Display9' : Unused code path elimination
+ * Block '<S24>/Gain' : Unused code path elimination
+ * Block '<S335>/Proportional Gain' : Unused code path elimination
+ * Block '<S339>/Sum' : Unused code path elimination
+ * Block '<S387>/Proportional Gain' : Unused code path elimination
+ * Block '<S391>/Sum' : Unused code path elimination
+ * Block '<S24>/Scope' : Unused code path elimination
+ * Block '<S24>/Scope1' : Unused code path elimination
+ * Block '<S24>/Scope6' : Unused code path elimination
+ * Block '<S24>/Subtract' : Unused code path elimination
  * Block '<S4>/Cast To Single2' : Unused code path elimination
  * Block '<S4>/Cast To Single3' : Unused code path elimination
  * Block '<S4>/Cast To Single4' : Unused code path elimination
@@ -727,97 +1195,395 @@ extern volatile boolean_T runModel;
  * '<S8>'   : 'MicroMouse_Deploy/Subsystem4'
  * '<S9>'   : 'MicroMouse_Deploy/Subsystem5'
  * '<S10>'  : 'MicroMouse_Deploy/ToFs'
- * '<S11>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)'
- * '<S12>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)1'
- * '<S13>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)2'
- * '<S14>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2'
- * '<S15>'  : 'MicroMouse_Deploy/StudentTemplate/convert_encoder_signal_to_ticks'
- * '<S16>'  : 'MicroMouse_Deploy/StudentTemplate/distance_control'
- * '<S17>'  : 'MicroMouse_Deploy/StudentTemplate/encoder_tick_to_dist'
- * '<S18>'  : 'MicroMouse_Deploy/StudentTemplate/gyro wave smoothing '
- * '<S19>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)/Enable//disable time constant'
- * '<S20>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)/Initialization'
- * '<S21>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)/Integrator (Discrete or Continuous)'
- * '<S22>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)/Enable//disable time constant/Compare To Constant'
- * '<S23>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)/Enable//disable time constant/Compare To Zero'
- * '<S24>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)/Initialization/Init_u'
- * '<S25>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)/Integrator (Discrete or Continuous)/Discrete'
- * '<S26>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)1/Enable//disable time constant'
- * '<S27>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)1/Initialization'
- * '<S28>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)1/Integrator (Discrete or Continuous)'
- * '<S29>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)1/Enable//disable time constant/Compare To Constant'
- * '<S30>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)1/Enable//disable time constant/Compare To Zero'
- * '<S31>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)1/Initialization/Init_u'
- * '<S32>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)1/Integrator (Discrete or Continuous)/Discrete'
- * '<S33>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)2/Enable//disable time constant'
- * '<S34>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)2/Initialization'
- * '<S35>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)2/Integrator (Discrete or Continuous)'
- * '<S36>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)2/Enable//disable time constant/Compare To Constant'
- * '<S37>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)2/Enable//disable time constant/Compare To Zero'
- * '<S38>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)2/Initialization/Init_u'
- * '<S39>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)2/Integrator (Discrete or Continuous)/Discrete'
- * '<S40>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller'
- * '<S41>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/turn_adjus'
- * '<S42>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Anti-windup'
- * '<S43>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/D Gain'
- * '<S44>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/External Derivative'
- * '<S45>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Filter'
- * '<S46>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Filter ICs'
- * '<S47>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/I Gain'
- * '<S48>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Ideal P Gain'
- * '<S49>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Ideal P Gain Fdbk'
- * '<S50>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Integrator'
- * '<S51>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Integrator ICs'
- * '<S52>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/N Copy'
- * '<S53>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/N Gain'
- * '<S54>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/P Copy'
- * '<S55>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Parallel P Gain'
- * '<S56>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Reset Signal'
- * '<S57>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Saturation'
- * '<S58>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Saturation Fdbk'
- * '<S59>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Sum'
- * '<S60>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Sum Fdbk'
- * '<S61>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Tracking Mode'
- * '<S62>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Tracking Mode Sum'
- * '<S63>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Tsamp - Integral'
- * '<S64>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Tsamp - Ngain'
- * '<S65>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/postSat Signal'
- * '<S66>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/preInt Signal'
- * '<S67>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/preSat Signal'
- * '<S68>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Anti-windup/Passthrough'
- * '<S69>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/D Gain/Internal Parameters'
- * '<S70>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/External Derivative/Error'
- * '<S71>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Filter/Cont. Filter'
- * '<S72>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Filter ICs/Internal IC - Filter'
- * '<S73>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/I Gain/Internal Parameters'
- * '<S74>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Ideal P Gain/Passthrough'
- * '<S75>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Ideal P Gain Fdbk/Disabled'
- * '<S76>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Integrator/Continuous'
- * '<S77>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Integrator ICs/Internal IC'
- * '<S78>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/N Copy/Disabled'
- * '<S79>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/N Gain/Internal Parameters'
- * '<S80>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/P Copy/Disabled'
- * '<S81>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Parallel P Gain/Internal Parameters'
- * '<S82>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Reset Signal/Disabled'
- * '<S83>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Saturation/Passthrough'
- * '<S84>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Saturation Fdbk/Disabled'
- * '<S85>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Sum/Sum_PID'
- * '<S86>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Sum Fdbk/Disabled'
- * '<S87>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Tracking Mode/Disabled'
- * '<S88>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Tracking Mode Sum/Passthrough'
- * '<S89>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Tsamp - Integral/TsSignalSpecification'
- * '<S90>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Tsamp - Ngain/Passthrough'
- * '<S91>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/postSat Signal/Forward_Path'
- * '<S92>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/preInt Signal/Internal PreInt'
- * '<S93>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/preSat Signal/Forward_Path'
- * '<S94>'  : 'MicroMouse_Deploy/StudentTemplate/convert_encoder_signal_to_ticks/Compare To Constant'
- * '<S95>'  : 'MicroMouse_Deploy/StudentTemplate/convert_encoder_signal_to_ticks/Detect Rise Positive'
- * '<S96>'  : 'MicroMouse_Deploy/StudentTemplate/convert_encoder_signal_to_ticks/Detect Rise Positive/Positive'
- * '<S97>'  : 'MicroMouse_Deploy/StudentTemplate/gyro wave smoothing /Discrete Varying Lowpass'
- * '<S98>'  : 'MicroMouse_Deploy/StudentTemplate/gyro wave smoothing /Discrete Varying Lowpass/SOS1'
- * '<S99>'  : 'MicroMouse_Deploy/StudentTemplate/gyro wave smoothing /Discrete Varying Lowpass/SOS2'
- * '<S100>' : 'MicroMouse_Deploy/StudentTemplate/gyro wave smoothing /Discrete Varying Lowpass/SOS1/Arithmetic'
- * '<S101>' : 'MicroMouse_Deploy/StudentTemplate/gyro wave smoothing /Discrete Varying Lowpass/SOS2/Arithmetic'
+ * '<S11>'  : 'MicroMouse_Deploy/StudentTemplate/DIstance measurement '
+ * '<S12>'  : 'MicroMouse_Deploy/StudentTemplate/DIstance measurement 1'
+ * '<S13>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)'
+ * '<S14>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)1'
+ * '<S15>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)2'
+ * '<S16>'  : 'MicroMouse_Deploy/StudentTemplate/PID Controller'
+ * '<S17>'  : 'MicroMouse_Deploy/StudentTemplate/PID Controller4'
+ * '<S18>'  : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2'
+ * '<S19>'  : 'MicroMouse_Deploy/StudentTemplate/draft2_Maze_exploration'
+ * '<S20>'  : 'MicroMouse_Deploy/StudentTemplate/draft2_Maze_exploration1'
+ * '<S21>'  : 'MicroMouse_Deploy/StudentTemplate/draft2_Maze_exploration2'
+ * '<S22>'  : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening'
+ * '<S23>'  : 'MicroMouse_Deploy/StudentTemplate/gyro wave smoothing '
+ * '<S24>'  : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1'
+ * '<S25>'  : 'MicroMouse_Deploy/StudentTemplate/turn_adjus'
+ * '<S26>'  : 'MicroMouse_Deploy/StudentTemplate/DIstance measurement /convert_encoder_signal_to_ticks2'
+ * '<S27>'  : 'MicroMouse_Deploy/StudentTemplate/DIstance measurement /convert_encoder_signal_to_ticks3'
+ * '<S28>'  : 'MicroMouse_Deploy/StudentTemplate/DIstance measurement /encoder_tick_to_dist2'
+ * '<S29>'  : 'MicroMouse_Deploy/StudentTemplate/DIstance measurement /encoder_tick_to_dist3'
+ * '<S30>'  : 'MicroMouse_Deploy/StudentTemplate/DIstance measurement /convert_encoder_signal_to_ticks2/Compare To Constant'
+ * '<S31>'  : 'MicroMouse_Deploy/StudentTemplate/DIstance measurement /convert_encoder_signal_to_ticks2/Detect Rise Positive'
+ * '<S32>'  : 'MicroMouse_Deploy/StudentTemplate/DIstance measurement /convert_encoder_signal_to_ticks2/Detect Rise Positive/Positive'
+ * '<S33>'  : 'MicroMouse_Deploy/StudentTemplate/DIstance measurement /convert_encoder_signal_to_ticks3/Chart'
+ * '<S34>'  : 'MicroMouse_Deploy/StudentTemplate/DIstance measurement /convert_encoder_signal_to_ticks3/Compare To Constant'
+ * '<S35>'  : 'MicroMouse_Deploy/StudentTemplate/DIstance measurement /convert_encoder_signal_to_ticks3/Detect Fall Nonpositive'
+ * '<S36>'  : 'MicroMouse_Deploy/StudentTemplate/DIstance measurement /convert_encoder_signal_to_ticks3/Detect Rise Positive'
+ * '<S37>'  : 'MicroMouse_Deploy/StudentTemplate/DIstance measurement /convert_encoder_signal_to_ticks3/Detect Fall Nonpositive/Nonpositive'
+ * '<S38>'  : 'MicroMouse_Deploy/StudentTemplate/DIstance measurement /convert_encoder_signal_to_ticks3/Detect Rise Positive/Positive'
+ * '<S39>'  : 'MicroMouse_Deploy/StudentTemplate/DIstance measurement 1/convert_encoder_signal_to_ticks2'
+ * '<S40>'  : 'MicroMouse_Deploy/StudentTemplate/DIstance measurement 1/convert_encoder_signal_to_ticks3'
+ * '<S41>'  : 'MicroMouse_Deploy/StudentTemplate/DIstance measurement 1/encoder_tick_to_dist1'
+ * '<S42>'  : 'MicroMouse_Deploy/StudentTemplate/DIstance measurement 1/encoder_tick_to_dist2'
+ * '<S43>'  : 'MicroMouse_Deploy/StudentTemplate/DIstance measurement 1/encoder_tick_to_dist3'
+ * '<S44>'  : 'MicroMouse_Deploy/StudentTemplate/DIstance measurement 1/encoder_tick_to_dist4'
+ * '<S45>'  : 'MicroMouse_Deploy/StudentTemplate/DIstance measurement 1/convert_encoder_signal_to_ticks2/Compare To Constant'
+ * '<S46>'  : 'MicroMouse_Deploy/StudentTemplate/DIstance measurement 1/convert_encoder_signal_to_ticks2/Detect Rise Positive'
+ * '<S47>'  : 'MicroMouse_Deploy/StudentTemplate/DIstance measurement 1/convert_encoder_signal_to_ticks2/Detect Rise Positive/Positive'
+ * '<S48>'  : 'MicroMouse_Deploy/StudentTemplate/DIstance measurement 1/convert_encoder_signal_to_ticks3/Chart'
+ * '<S49>'  : 'MicroMouse_Deploy/StudentTemplate/DIstance measurement 1/convert_encoder_signal_to_ticks3/Compare To Constant'
+ * '<S50>'  : 'MicroMouse_Deploy/StudentTemplate/DIstance measurement 1/convert_encoder_signal_to_ticks3/Detect Fall Nonpositive'
+ * '<S51>'  : 'MicroMouse_Deploy/StudentTemplate/DIstance measurement 1/convert_encoder_signal_to_ticks3/Detect Rise Positive'
+ * '<S52>'  : 'MicroMouse_Deploy/StudentTemplate/DIstance measurement 1/convert_encoder_signal_to_ticks3/Detect Fall Nonpositive/Nonpositive'
+ * '<S53>'  : 'MicroMouse_Deploy/StudentTemplate/DIstance measurement 1/convert_encoder_signal_to_ticks3/Detect Rise Positive/Positive'
+ * '<S54>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)/Enable//disable time constant'
+ * '<S55>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)/Initialization'
+ * '<S56>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)/Integrator (Discrete or Continuous)'
+ * '<S57>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)/Enable//disable time constant/Compare To Constant'
+ * '<S58>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)/Enable//disable time constant/Compare To Zero'
+ * '<S59>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)/Initialization/Init_u'
+ * '<S60>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)/Integrator (Discrete or Continuous)/Discrete'
+ * '<S61>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)1/Enable//disable time constant'
+ * '<S62>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)1/Initialization'
+ * '<S63>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)1/Integrator (Discrete or Continuous)'
+ * '<S64>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)1/Enable//disable time constant/Compare To Constant'
+ * '<S65>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)1/Enable//disable time constant/Compare To Zero'
+ * '<S66>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)1/Initialization/Init_u'
+ * '<S67>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)1/Integrator (Discrete or Continuous)/Discrete'
+ * '<S68>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)2/Enable//disable time constant'
+ * '<S69>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)2/Initialization'
+ * '<S70>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)2/Integrator (Discrete or Continuous)'
+ * '<S71>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)2/Enable//disable time constant/Compare To Constant'
+ * '<S72>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)2/Enable//disable time constant/Compare To Zero'
+ * '<S73>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)2/Initialization/Init_u'
+ * '<S74>'  : 'MicroMouse_Deploy/StudentTemplate/Low-Pass Filter (Discrete or Continuous)2/Integrator (Discrete or Continuous)/Discrete'
+ * '<S75>'  : 'MicroMouse_Deploy/StudentTemplate/PID Controller/Anti-windup'
+ * '<S76>'  : 'MicroMouse_Deploy/StudentTemplate/PID Controller/D Gain'
+ * '<S77>'  : 'MicroMouse_Deploy/StudentTemplate/PID Controller/External Derivative'
+ * '<S78>'  : 'MicroMouse_Deploy/StudentTemplate/PID Controller/Filter'
+ * '<S79>'  : 'MicroMouse_Deploy/StudentTemplate/PID Controller/Filter ICs'
+ * '<S80>'  : 'MicroMouse_Deploy/StudentTemplate/PID Controller/I Gain'
+ * '<S81>'  : 'MicroMouse_Deploy/StudentTemplate/PID Controller/Ideal P Gain'
+ * '<S82>'  : 'MicroMouse_Deploy/StudentTemplate/PID Controller/Ideal P Gain Fdbk'
+ * '<S83>'  : 'MicroMouse_Deploy/StudentTemplate/PID Controller/Integrator'
+ * '<S84>'  : 'MicroMouse_Deploy/StudentTemplate/PID Controller/Integrator ICs'
+ * '<S85>'  : 'MicroMouse_Deploy/StudentTemplate/PID Controller/N Copy'
+ * '<S86>'  : 'MicroMouse_Deploy/StudentTemplate/PID Controller/N Gain'
+ * '<S87>'  : 'MicroMouse_Deploy/StudentTemplate/PID Controller/P Copy'
+ * '<S88>'  : 'MicroMouse_Deploy/StudentTemplate/PID Controller/Parallel P Gain'
+ * '<S89>'  : 'MicroMouse_Deploy/StudentTemplate/PID Controller/Reset Signal'
+ * '<S90>'  : 'MicroMouse_Deploy/StudentTemplate/PID Controller/Saturation'
+ * '<S91>'  : 'MicroMouse_Deploy/StudentTemplate/PID Controller/Saturation Fdbk'
+ * '<S92>'  : 'MicroMouse_Deploy/StudentTemplate/PID Controller/Sum'
+ * '<S93>'  : 'MicroMouse_Deploy/StudentTemplate/PID Controller/Sum Fdbk'
+ * '<S94>'  : 'MicroMouse_Deploy/StudentTemplate/PID Controller/Tracking Mode'
+ * '<S95>'  : 'MicroMouse_Deploy/StudentTemplate/PID Controller/Tracking Mode Sum'
+ * '<S96>'  : 'MicroMouse_Deploy/StudentTemplate/PID Controller/Tsamp - Integral'
+ * '<S97>'  : 'MicroMouse_Deploy/StudentTemplate/PID Controller/Tsamp - Ngain'
+ * '<S98>'  : 'MicroMouse_Deploy/StudentTemplate/PID Controller/postSat Signal'
+ * '<S99>'  : 'MicroMouse_Deploy/StudentTemplate/PID Controller/preInt Signal'
+ * '<S100>' : 'MicroMouse_Deploy/StudentTemplate/PID Controller/preSat Signal'
+ * '<S101>' : 'MicroMouse_Deploy/StudentTemplate/PID Controller/Anti-windup/Passthrough'
+ * '<S102>' : 'MicroMouse_Deploy/StudentTemplate/PID Controller/D Gain/Internal Parameters'
+ * '<S103>' : 'MicroMouse_Deploy/StudentTemplate/PID Controller/External Derivative/Error'
+ * '<S104>' : 'MicroMouse_Deploy/StudentTemplate/PID Controller/Filter/Cont. Filter'
+ * '<S105>' : 'MicroMouse_Deploy/StudentTemplate/PID Controller/Filter ICs/Internal IC - Filter'
+ * '<S106>' : 'MicroMouse_Deploy/StudentTemplate/PID Controller/I Gain/Internal Parameters'
+ * '<S107>' : 'MicroMouse_Deploy/StudentTemplate/PID Controller/Ideal P Gain/Passthrough'
+ * '<S108>' : 'MicroMouse_Deploy/StudentTemplate/PID Controller/Ideal P Gain Fdbk/Disabled'
+ * '<S109>' : 'MicroMouse_Deploy/StudentTemplate/PID Controller/Integrator/Continuous'
+ * '<S110>' : 'MicroMouse_Deploy/StudentTemplate/PID Controller/Integrator ICs/Internal IC'
+ * '<S111>' : 'MicroMouse_Deploy/StudentTemplate/PID Controller/N Copy/Disabled'
+ * '<S112>' : 'MicroMouse_Deploy/StudentTemplate/PID Controller/N Gain/Internal Parameters'
+ * '<S113>' : 'MicroMouse_Deploy/StudentTemplate/PID Controller/P Copy/Disabled'
+ * '<S114>' : 'MicroMouse_Deploy/StudentTemplate/PID Controller/Parallel P Gain/Internal Parameters'
+ * '<S115>' : 'MicroMouse_Deploy/StudentTemplate/PID Controller/Reset Signal/Disabled'
+ * '<S116>' : 'MicroMouse_Deploy/StudentTemplate/PID Controller/Saturation/Passthrough'
+ * '<S117>' : 'MicroMouse_Deploy/StudentTemplate/PID Controller/Saturation Fdbk/Disabled'
+ * '<S118>' : 'MicroMouse_Deploy/StudentTemplate/PID Controller/Sum/Sum_PID'
+ * '<S119>' : 'MicroMouse_Deploy/StudentTemplate/PID Controller/Sum Fdbk/Disabled'
+ * '<S120>' : 'MicroMouse_Deploy/StudentTemplate/PID Controller/Tracking Mode/Disabled'
+ * '<S121>' : 'MicroMouse_Deploy/StudentTemplate/PID Controller/Tracking Mode Sum/Passthrough'
+ * '<S122>' : 'MicroMouse_Deploy/StudentTemplate/PID Controller/Tsamp - Integral/TsSignalSpecification'
+ * '<S123>' : 'MicroMouse_Deploy/StudentTemplate/PID Controller/Tsamp - Ngain/Passthrough'
+ * '<S124>' : 'MicroMouse_Deploy/StudentTemplate/PID Controller/postSat Signal/Forward_Path'
+ * '<S125>' : 'MicroMouse_Deploy/StudentTemplate/PID Controller/preInt Signal/Internal PreInt'
+ * '<S126>' : 'MicroMouse_Deploy/StudentTemplate/PID Controller/preSat Signal/Forward_Path'
+ * '<S127>' : 'MicroMouse_Deploy/StudentTemplate/PID Controller4/Anti-windup'
+ * '<S128>' : 'MicroMouse_Deploy/StudentTemplate/PID Controller4/D Gain'
+ * '<S129>' : 'MicroMouse_Deploy/StudentTemplate/PID Controller4/External Derivative'
+ * '<S130>' : 'MicroMouse_Deploy/StudentTemplate/PID Controller4/Filter'
+ * '<S131>' : 'MicroMouse_Deploy/StudentTemplate/PID Controller4/Filter ICs'
+ * '<S132>' : 'MicroMouse_Deploy/StudentTemplate/PID Controller4/I Gain'
+ * '<S133>' : 'MicroMouse_Deploy/StudentTemplate/PID Controller4/Ideal P Gain'
+ * '<S134>' : 'MicroMouse_Deploy/StudentTemplate/PID Controller4/Ideal P Gain Fdbk'
+ * '<S135>' : 'MicroMouse_Deploy/StudentTemplate/PID Controller4/Integrator'
+ * '<S136>' : 'MicroMouse_Deploy/StudentTemplate/PID Controller4/Integrator ICs'
+ * '<S137>' : 'MicroMouse_Deploy/StudentTemplate/PID Controller4/N Copy'
+ * '<S138>' : 'MicroMouse_Deploy/StudentTemplate/PID Controller4/N Gain'
+ * '<S139>' : 'MicroMouse_Deploy/StudentTemplate/PID Controller4/P Copy'
+ * '<S140>' : 'MicroMouse_Deploy/StudentTemplate/PID Controller4/Parallel P Gain'
+ * '<S141>' : 'MicroMouse_Deploy/StudentTemplate/PID Controller4/Reset Signal'
+ * '<S142>' : 'MicroMouse_Deploy/StudentTemplate/PID Controller4/Saturation'
+ * '<S143>' : 'MicroMouse_Deploy/StudentTemplate/PID Controller4/Saturation Fdbk'
+ * '<S144>' : 'MicroMouse_Deploy/StudentTemplate/PID Controller4/Sum'
+ * '<S145>' : 'MicroMouse_Deploy/StudentTemplate/PID Controller4/Sum Fdbk'
+ * '<S146>' : 'MicroMouse_Deploy/StudentTemplate/PID Controller4/Tracking Mode'
+ * '<S147>' : 'MicroMouse_Deploy/StudentTemplate/PID Controller4/Tracking Mode Sum'
+ * '<S148>' : 'MicroMouse_Deploy/StudentTemplate/PID Controller4/Tsamp - Integral'
+ * '<S149>' : 'MicroMouse_Deploy/StudentTemplate/PID Controller4/Tsamp - Ngain'
+ * '<S150>' : 'MicroMouse_Deploy/StudentTemplate/PID Controller4/postSat Signal'
+ * '<S151>' : 'MicroMouse_Deploy/StudentTemplate/PID Controller4/preInt Signal'
+ * '<S152>' : 'MicroMouse_Deploy/StudentTemplate/PID Controller4/preSat Signal'
+ * '<S153>' : 'MicroMouse_Deploy/StudentTemplate/PID Controller4/Anti-windup/Passthrough'
+ * '<S154>' : 'MicroMouse_Deploy/StudentTemplate/PID Controller4/D Gain/Internal Parameters'
+ * '<S155>' : 'MicroMouse_Deploy/StudentTemplate/PID Controller4/External Derivative/Error'
+ * '<S156>' : 'MicroMouse_Deploy/StudentTemplate/PID Controller4/Filter/Cont. Filter'
+ * '<S157>' : 'MicroMouse_Deploy/StudentTemplate/PID Controller4/Filter ICs/Internal IC - Filter'
+ * '<S158>' : 'MicroMouse_Deploy/StudentTemplate/PID Controller4/I Gain/Internal Parameters'
+ * '<S159>' : 'MicroMouse_Deploy/StudentTemplate/PID Controller4/Ideal P Gain/Passthrough'
+ * '<S160>' : 'MicroMouse_Deploy/StudentTemplate/PID Controller4/Ideal P Gain Fdbk/Disabled'
+ * '<S161>' : 'MicroMouse_Deploy/StudentTemplate/PID Controller4/Integrator/Continuous'
+ * '<S162>' : 'MicroMouse_Deploy/StudentTemplate/PID Controller4/Integrator ICs/Internal IC'
+ * '<S163>' : 'MicroMouse_Deploy/StudentTemplate/PID Controller4/N Copy/Disabled'
+ * '<S164>' : 'MicroMouse_Deploy/StudentTemplate/PID Controller4/N Gain/Internal Parameters'
+ * '<S165>' : 'MicroMouse_Deploy/StudentTemplate/PID Controller4/P Copy/Disabled'
+ * '<S166>' : 'MicroMouse_Deploy/StudentTemplate/PID Controller4/Parallel P Gain/Internal Parameters'
+ * '<S167>' : 'MicroMouse_Deploy/StudentTemplate/PID Controller4/Reset Signal/Disabled'
+ * '<S168>' : 'MicroMouse_Deploy/StudentTemplate/PID Controller4/Saturation/Passthrough'
+ * '<S169>' : 'MicroMouse_Deploy/StudentTemplate/PID Controller4/Saturation Fdbk/Disabled'
+ * '<S170>' : 'MicroMouse_Deploy/StudentTemplate/PID Controller4/Sum/Sum_PID'
+ * '<S171>' : 'MicroMouse_Deploy/StudentTemplate/PID Controller4/Sum Fdbk/Disabled'
+ * '<S172>' : 'MicroMouse_Deploy/StudentTemplate/PID Controller4/Tracking Mode/Disabled'
+ * '<S173>' : 'MicroMouse_Deploy/StudentTemplate/PID Controller4/Tracking Mode Sum/Passthrough'
+ * '<S174>' : 'MicroMouse_Deploy/StudentTemplate/PID Controller4/Tsamp - Integral/TsSignalSpecification'
+ * '<S175>' : 'MicroMouse_Deploy/StudentTemplate/PID Controller4/Tsamp - Ngain/Passthrough'
+ * '<S176>' : 'MicroMouse_Deploy/StudentTemplate/PID Controller4/postSat Signal/Forward_Path'
+ * '<S177>' : 'MicroMouse_Deploy/StudentTemplate/PID Controller4/preInt Signal/Internal PreInt'
+ * '<S178>' : 'MicroMouse_Deploy/StudentTemplate/PID Controller4/preSat Signal/Forward_Path'
+ * '<S179>' : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/Chart'
+ * '<S180>' : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller'
+ * '<S181>' : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/turn_adjus'
+ * '<S182>' : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Anti-windup'
+ * '<S183>' : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/D Gain'
+ * '<S184>' : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/External Derivative'
+ * '<S185>' : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Filter'
+ * '<S186>' : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Filter ICs'
+ * '<S187>' : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/I Gain'
+ * '<S188>' : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Ideal P Gain'
+ * '<S189>' : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Ideal P Gain Fdbk'
+ * '<S190>' : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Integrator'
+ * '<S191>' : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Integrator ICs'
+ * '<S192>' : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/N Copy'
+ * '<S193>' : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/N Gain'
+ * '<S194>' : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/P Copy'
+ * '<S195>' : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Parallel P Gain'
+ * '<S196>' : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Reset Signal'
+ * '<S197>' : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Saturation'
+ * '<S198>' : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Saturation Fdbk'
+ * '<S199>' : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Sum'
+ * '<S200>' : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Sum Fdbk'
+ * '<S201>' : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Tracking Mode'
+ * '<S202>' : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Tracking Mode Sum'
+ * '<S203>' : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Tsamp - Integral'
+ * '<S204>' : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Tsamp - Ngain'
+ * '<S205>' : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/postSat Signal'
+ * '<S206>' : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/preInt Signal'
+ * '<S207>' : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/preSat Signal'
+ * '<S208>' : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Anti-windup/Disabled'
+ * '<S209>' : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/D Gain/Internal Parameters'
+ * '<S210>' : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/External Derivative/Error'
+ * '<S211>' : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Filter/Cont. Filter'
+ * '<S212>' : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Filter ICs/Internal IC - Filter'
+ * '<S213>' : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/I Gain/Disabled'
+ * '<S214>' : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Ideal P Gain/Passthrough'
+ * '<S215>' : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Ideal P Gain Fdbk/Disabled'
+ * '<S216>' : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Integrator/Disabled'
+ * '<S217>' : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Integrator ICs/Disabled'
+ * '<S218>' : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/N Copy/Disabled'
+ * '<S219>' : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/N Gain/Internal Parameters'
+ * '<S220>' : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/P Copy/Disabled'
+ * '<S221>' : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Parallel P Gain/Internal Parameters'
+ * '<S222>' : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Reset Signal/Disabled'
+ * '<S223>' : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Saturation/Passthrough'
+ * '<S224>' : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Saturation Fdbk/Disabled'
+ * '<S225>' : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Sum/Sum_PD'
+ * '<S226>' : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Sum Fdbk/Disabled'
+ * '<S227>' : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Tracking Mode/Disabled'
+ * '<S228>' : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Tracking Mode Sum/Passthrough'
+ * '<S229>' : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Tsamp - Integral/TsSignalSpecification'
+ * '<S230>' : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/Tsamp - Ngain/Passthrough'
+ * '<S231>' : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/postSat Signal/Forward_Path'
+ * '<S232>' : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/preInt Signal/Internal PreInt'
+ * '<S233>' : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/preSat Signal/Forward_Path'
+ * '<S234>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/Chart'
+ * '<S235>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1'
+ * '<S236>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Anti-windup'
+ * '<S237>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/D Gain'
+ * '<S238>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/External Derivative'
+ * '<S239>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Filter'
+ * '<S240>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Filter ICs'
+ * '<S241>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/I Gain'
+ * '<S242>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Ideal P Gain'
+ * '<S243>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Ideal P Gain Fdbk'
+ * '<S244>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Integrator'
+ * '<S245>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Integrator ICs'
+ * '<S246>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/N Copy'
+ * '<S247>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/N Gain'
+ * '<S248>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/P Copy'
+ * '<S249>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Parallel P Gain'
+ * '<S250>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Reset Signal'
+ * '<S251>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Saturation'
+ * '<S252>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Saturation Fdbk'
+ * '<S253>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Sum'
+ * '<S254>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Sum Fdbk'
+ * '<S255>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Tracking Mode'
+ * '<S256>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Tracking Mode Sum'
+ * '<S257>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Tsamp - Integral'
+ * '<S258>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Tsamp - Ngain'
+ * '<S259>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/postSat Signal'
+ * '<S260>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/preInt Signal'
+ * '<S261>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/preSat Signal'
+ * '<S262>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Anti-windup/Passthrough'
+ * '<S263>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/D Gain/Internal Parameters'
+ * '<S264>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/External Derivative/Error'
+ * '<S265>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Filter/Cont. Filter'
+ * '<S266>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Filter ICs/Internal IC - Filter'
+ * '<S267>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/I Gain/Internal Parameters'
+ * '<S268>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Ideal P Gain/Passthrough'
+ * '<S269>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Ideal P Gain Fdbk/Disabled'
+ * '<S270>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Integrator/Continuous'
+ * '<S271>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Integrator ICs/Internal IC'
+ * '<S272>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/N Copy/Disabled'
+ * '<S273>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/N Gain/Internal Parameters'
+ * '<S274>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/P Copy/Disabled'
+ * '<S275>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Parallel P Gain/Internal Parameters'
+ * '<S276>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Reset Signal/Disabled'
+ * '<S277>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Saturation/Passthrough'
+ * '<S278>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Saturation Fdbk/Disabled'
+ * '<S279>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Sum/Sum_PID'
+ * '<S280>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Sum Fdbk/Disabled'
+ * '<S281>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Tracking Mode/Disabled'
+ * '<S282>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Tracking Mode Sum/Passthrough'
+ * '<S283>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Tsamp - Integral/TsSignalSpecification'
+ * '<S284>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Tsamp - Ngain/Passthrough'
+ * '<S285>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/postSat Signal/Forward_Path'
+ * '<S286>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/preInt Signal/Internal PreInt'
+ * '<S287>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/preSat Signal/Forward_Path'
+ * '<S288>' : 'MicroMouse_Deploy/StudentTemplate/gyro wave smoothing /Discrete Varying Lowpass'
+ * '<S289>' : 'MicroMouse_Deploy/StudentTemplate/gyro wave smoothing /Discrete Varying Lowpass/SOS1'
+ * '<S290>' : 'MicroMouse_Deploy/StudentTemplate/gyro wave smoothing /Discrete Varying Lowpass/SOS2'
+ * '<S291>' : 'MicroMouse_Deploy/StudentTemplate/gyro wave smoothing /Discrete Varying Lowpass/SOS1/Arithmetic'
+ * '<S292>' : 'MicroMouse_Deploy/StudentTemplate/gyro wave smoothing /Discrete Varying Lowpass/SOS2/Arithmetic'
+ * '<S293>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1'
+ * '<S294>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2'
+ * '<S295>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/engage_disengage_straightnert'
+ * '<S296>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Anti-windup'
+ * '<S297>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/D Gain'
+ * '<S298>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/External Derivative'
+ * '<S299>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Filter'
+ * '<S300>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Filter ICs'
+ * '<S301>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/I Gain'
+ * '<S302>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Ideal P Gain'
+ * '<S303>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Ideal P Gain Fdbk'
+ * '<S304>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Integrator'
+ * '<S305>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Integrator ICs'
+ * '<S306>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/N Copy'
+ * '<S307>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/N Gain'
+ * '<S308>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/P Copy'
+ * '<S309>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Parallel P Gain'
+ * '<S310>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Reset Signal'
+ * '<S311>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Saturation'
+ * '<S312>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Saturation Fdbk'
+ * '<S313>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Sum'
+ * '<S314>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Sum Fdbk'
+ * '<S315>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Tracking Mode'
+ * '<S316>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Tracking Mode Sum'
+ * '<S317>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Tsamp - Integral'
+ * '<S318>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Tsamp - Ngain'
+ * '<S319>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/postSat Signal'
+ * '<S320>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/preInt Signal'
+ * '<S321>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/preSat Signal'
+ * '<S322>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Anti-windup/Passthrough'
+ * '<S323>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/D Gain/Internal Parameters'
+ * '<S324>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/External Derivative/Error'
+ * '<S325>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Filter/Cont. Filter'
+ * '<S326>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Filter ICs/Internal IC - Filter'
+ * '<S327>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/I Gain/Internal Parameters'
+ * '<S328>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Ideal P Gain/Passthrough'
+ * '<S329>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Ideal P Gain Fdbk/Disabled'
+ * '<S330>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Integrator/Continuous'
+ * '<S331>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Integrator ICs/Internal IC'
+ * '<S332>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/N Copy/Disabled'
+ * '<S333>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/N Gain/Internal Parameters'
+ * '<S334>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/P Copy/Disabled'
+ * '<S335>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Parallel P Gain/Internal Parameters'
+ * '<S336>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Reset Signal/Disabled'
+ * '<S337>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Saturation/Passthrough'
+ * '<S338>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Saturation Fdbk/Disabled'
+ * '<S339>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Sum/Sum_PID'
+ * '<S340>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Sum Fdbk/Disabled'
+ * '<S341>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Tracking Mode/Disabled'
+ * '<S342>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Tracking Mode Sum/Passthrough'
+ * '<S343>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Tsamp - Integral/TsSignalSpecification'
+ * '<S344>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Tsamp - Ngain/Passthrough'
+ * '<S345>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/postSat Signal/Forward_Path'
+ * '<S346>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/preInt Signal/Internal PreInt'
+ * '<S347>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/preSat Signal/Forward_Path'
+ * '<S348>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Anti-windup'
+ * '<S349>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/D Gain'
+ * '<S350>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/External Derivative'
+ * '<S351>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Filter'
+ * '<S352>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Filter ICs'
+ * '<S353>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/I Gain'
+ * '<S354>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Ideal P Gain'
+ * '<S355>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Ideal P Gain Fdbk'
+ * '<S356>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Integrator'
+ * '<S357>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Integrator ICs'
+ * '<S358>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/N Copy'
+ * '<S359>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/N Gain'
+ * '<S360>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/P Copy'
+ * '<S361>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Parallel P Gain'
+ * '<S362>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Reset Signal'
+ * '<S363>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Saturation'
+ * '<S364>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Saturation Fdbk'
+ * '<S365>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Sum'
+ * '<S366>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Sum Fdbk'
+ * '<S367>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Tracking Mode'
+ * '<S368>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Tracking Mode Sum'
+ * '<S369>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Tsamp - Integral'
+ * '<S370>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Tsamp - Ngain'
+ * '<S371>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/postSat Signal'
+ * '<S372>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/preInt Signal'
+ * '<S373>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/preSat Signal'
+ * '<S374>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Anti-windup/Passthrough'
+ * '<S375>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/D Gain/Internal Parameters'
+ * '<S376>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/External Derivative/Error'
+ * '<S377>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Filter/Cont. Filter'
+ * '<S378>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Filter ICs/Internal IC - Filter'
+ * '<S379>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/I Gain/Internal Parameters'
+ * '<S380>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Ideal P Gain/Passthrough'
+ * '<S381>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Ideal P Gain Fdbk/Disabled'
+ * '<S382>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Integrator/Continuous'
+ * '<S383>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Integrator ICs/Internal IC'
+ * '<S384>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/N Copy/Disabled'
+ * '<S385>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/N Gain/Internal Parameters'
+ * '<S386>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/P Copy/Disabled'
+ * '<S387>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Parallel P Gain/Internal Parameters'
+ * '<S388>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Reset Signal/Disabled'
+ * '<S389>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Saturation/Passthrough'
+ * '<S390>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Saturation Fdbk/Disabled'
+ * '<S391>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Sum/Sum_PID'
+ * '<S392>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Sum Fdbk/Disabled'
+ * '<S393>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Tracking Mode/Disabled'
+ * '<S394>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Tracking Mode Sum/Passthrough'
+ * '<S395>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Tsamp - Integral/TsSignalSpecification'
+ * '<S396>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Tsamp - Ngain/Passthrough'
+ * '<S397>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/postSat Signal/Forward_Path'
+ * '<S398>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/preInt Signal/Internal PreInt'
+ * '<S399>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/preSat Signal/Forward_Path'
  */
 #endif                                 /* MicroMouse_Deploy_h_ */
 

@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'MicroMouse_Deploy'.
  *
- * Model version                  : 5.10
+ * Model version                  : 5.30
  * Simulink Coder version         : 25.1 (R2025a) 21-Nov-2024
- * C/C++ source code generated on : Thu Oct  2 21:44:06 2025
+ * C/C++ source code generated on : Sat Oct 25 21:13:17 2025
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -118,6 +118,11 @@ extern uint8_T LED[3];                 /* '<S6>/Data Store Memory' */
 extern uint8_T STATE;                  /* '<S9>/Data Store Memory' */
 extern uint8_T SW[2];                  /* '<S7>/Data Store Memory' */
 extern uint8_T batteryLife;            /* '<S8>/Data Store Memory4' */
+
+/* Exported functions */
+extern void mdlDerivatives_c8_MicroMouse_Deploy(void);
+extern void mdlDerivatives_c6_MicroMouse_Deploy(void);
+extern void mdlDerivatives_c10_MicroMouse_Deploy(void);
 
 /* private model entry point functions */
 extern void MicroMouse_Deploy_derivatives(void);

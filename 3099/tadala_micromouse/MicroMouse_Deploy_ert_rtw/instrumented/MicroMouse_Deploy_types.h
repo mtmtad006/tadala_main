@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'MicroMouse_Deploy'.
  *
- * Model version                  : 5.10
+ * Model version                  : 5.30
  * Simulink Coder version         : 25.1 (R2025a) 21-Nov-2024
- * C/C++ source code generated on : Thu Oct  2 21:44:06 2025
+ * C/C++ source code generated on : Sat Oct 25 21:13:17 2025
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -87,6 +87,33 @@ struct tag_K0FadUkDjNPyvxQGEfW0ZC
 typedef struct tag_K0FadUkDjNPyvxQGEfW0ZC dsp_simulink_MedianFilter_Mic_T;
 
 #endif                             /* typedef_dsp_simulink_MedianFilter_Mic_T */
+
+#ifndef struct_tag_0ydU7cpoEUmekgMPJZntVG
+#define struct_tag_0ydU7cpoEUmekgMPJZntVG
+
+struct tag_0ydU7cpoEUmekgMPJZntVG
+{
+  boolean_T matlabCodegenIsDeleted;
+  int32_T isInitialized;
+  boolean_T isSetupComplete;
+  boolean_T TunablePropsChanged;
+  cell_wrap_MicroMouse_Deploy_T inputVarSize;
+  int32_T NumChannels;
+  int32_T FrameLength;
+  real32_T pCumSum;
+  real32_T pCumSumRev[299];
+  real32_T pCumRevIndex;
+  real32_T pModValueRev;
+};
+
+#endif                                 /* struct_tag_0ydU7cpoEUmekgMPJZntVG */
+
+#ifndef typedef_dsp_simulink_MovingAverage_Mi_T
+#define typedef_dsp_simulink_MovingAverage_Mi_T
+
+typedef struct tag_0ydU7cpoEUmekgMPJZntVG dsp_simulink_MovingAverage_Mi_T;
+
+#endif                             /* typedef_dsp_simulink_MovingAverage_Mi_T */
 
 /* Parameters (default storage) */
 typedef struct P_MicroMouse_Deploy_T_ P_MicroMouse_Deploy_T;

@@ -11,7 +11,7 @@ CompiledModel {
     ElementsDefaults {
       RecordType	      "DataTypeElements"
     }
-    NumDataTypes	    23
+    NumDataTypes	    22
     DataType {
       Id		      0
       RecordIdx		      [0]
@@ -100,10 +100,6 @@ CompiledModel {
       Id		      21
       RecordIdx		      [21]
     }
-    DataType {
-      Id		      22
-      RecordIdx		      [22]
-    }
   }
   Solver		  ode3
   SolverType		  FixedStep
@@ -140,6 +136,12 @@ CompiledModel {
     Name		    "<Root>/ToFs"
   }
   Subsystem {
+    Name		    "<S3>/DIstance measurement "
+  }
+  Subsystem {
+    Name		    "<S3>/DIstance measurement 1"
+  }
+  Subsystem {
     Name		    "<S3>/Low-Pass Filter (Discrete or Continuous)"
     SLName		    "<S3>/Low-Pass Filter\n(Discrete or Continuous)"
   }
@@ -152,69 +154,128 @@ CompiledModel {
     SLName		    "<S3>/Low-Pass Filter\n(Discrete or Continuous)2"
   }
   Subsystem {
+    Name		    "<S3>/PID Controller"
+  }
+  Subsystem {
+    Name		    "<S3>/PID Controller4"
+  }
+  Subsystem {
     Name		    "<S3>/angle_adjus_draft2"
   }
   Subsystem {
-    Name		    "<S3>/convert_encoder_signal_to_ticks"
+    Name		    "<S3>/draft2_Maze_exploration"
   }
   Subsystem {
-    Name		    "<S3>/distance_control"
+    Name		    "<S3>/draft2_Maze_exploration1"
   }
   Subsystem {
-    Name		    "<S3>/encoder_tick_to_dist"
+    Name		    "<S3>/draft2_Maze_exploration2"
+  }
+  Subsystem {
+    Name		    "<S3>/encoder_straightening"
   }
   Subsystem {
     Name		    "<S3>/gyro wave smoothing "
   }
   Subsystem {
-    Name		    "<S11>/Enable//disable time constant"
-    SLName		    "<S11>/Enable//disable\ntime constant"
+    Name		    "<S3>/maze_straightener_draft1"
   }
   Subsystem {
-    Name		    "<S11>/Initialization"
+    Name		    "<S3>/turn_adjus"
   }
   Subsystem {
-    Name		    "<S11>/Integrator (Discrete or Continuous)"
-    SLName		    "<S11>/Integrator\n(Discrete or Continuous)"
+    Name		    "<S11>/convert_encoder_signal_to_ticks2"
   }
   Subsystem {
-    Name		    "<S19>/Compare To Constant"
-    SLName		    "<S19>/Compare\nTo Constant"
+    Name		    "<S11>/convert_encoder_signal_to_ticks3"
   }
   Subsystem {
-    Name		    "<S19>/Compare To Zero"
-    SLName		    "<S19>/Compare\nTo Zero"
+    Name		    "<S11>/encoder_tick_to_dist2"
   }
   Subsystem {
-    Name		    "<S20>/Init_u"
-  }
-  Subsystem {
-    Name		    "<S21>/Discrete"
-  }
-  Subsystem {
-    Name		    "<S12>/Enable//disable time constant"
-    SLName		    "<S12>/Enable//disable\ntime constant"
-  }
-  Subsystem {
-    Name		    "<S12>/Initialization"
-  }
-  Subsystem {
-    Name		    "<S12>/Integrator (Discrete or Continuous)"
-    SLName		    "<S12>/Integrator\n(Discrete or Continuous)"
+    Name		    "<S11>/encoder_tick_to_dist3"
   }
   Subsystem {
     Name		    "<S26>/Compare To Constant"
     SLName		    "<S26>/Compare\nTo Constant"
   }
   Subsystem {
-    Name		    "<S26>/Compare To Zero"
-    SLName		    "<S26>/Compare\nTo Zero"
+    Name		    "<S26>/Detect Rise Positive"
+    SLName		    "<S26>/Detect Rise\nPositive"
   }
   Subsystem {
-    Name		    "<S27>/Init_u"
+    Name		    "<S31>/Positive"
   }
   Subsystem {
-    Name		    "<S28>/Discrete"
+    Name		    "<S27>/Chart"
+  }
+  Subsystem {
+    Name		    "<S27>/Compare To Constant"
+    SLName		    "<S27>/Compare\nTo Constant"
+  }
+  Subsystem {
+    Name		    "<S27>/Detect Fall Nonpositive"
+    SLName		    "<S27>/Detect Fall\nNonpositive"
+  }
+  Subsystem {
+    Name		    "<S27>/Detect Rise Positive"
+    SLName		    "<S27>/Detect Rise\nPositive"
+  }
+  Subsystem {
+    Name		    "<S35>/Nonpositive"
+  }
+  Subsystem {
+    Name		    "<S36>/Positive"
+  }
+  Subsystem {
+    Name		    "<S12>/convert_encoder_signal_to_ticks2"
+  }
+  Subsystem {
+    Name		    "<S12>/convert_encoder_signal_to_ticks3"
+  }
+  Subsystem {
+    Name		    "<S12>/encoder_tick_to_dist1"
+  }
+  Subsystem {
+    Name		    "<S12>/encoder_tick_to_dist2"
+  }
+  Subsystem {
+    Name		    "<S12>/encoder_tick_to_dist3"
+  }
+  Subsystem {
+    Name		    "<S12>/encoder_tick_to_dist4"
+  }
+  Subsystem {
+    Name		    "<S39>/Compare To Constant"
+    SLName		    "<S39>/Compare\nTo Constant"
+  }
+  Subsystem {
+    Name		    "<S39>/Detect Rise Positive"
+    SLName		    "<S39>/Detect Rise\nPositive"
+  }
+  Subsystem {
+    Name		    "<S46>/Positive"
+  }
+  Subsystem {
+    Name		    "<S40>/Chart"
+  }
+  Subsystem {
+    Name		    "<S40>/Compare To Constant"
+    SLName		    "<S40>/Compare\nTo Constant"
+  }
+  Subsystem {
+    Name		    "<S40>/Detect Fall Nonpositive"
+    SLName		    "<S40>/Detect Fall\nNonpositive"
+  }
+  Subsystem {
+    Name		    "<S40>/Detect Rise Positive"
+    SLName		    "<S40>/Detect Rise\nPositive"
+  }
+  Subsystem {
+    Name		    "<S50>/Nonpositive"
+  }
+  Subsystem {
+    Name		    "<S51>/Positive"
   }
   Subsystem {
     Name		    "<S13>/Enable//disable time constant"
@@ -228,206 +289,1043 @@ CompiledModel {
     SLName		    "<S13>/Integrator\n(Discrete or Continuous)"
   }
   Subsystem {
-    Name		    "<S33>/Compare To Constant"
-    SLName		    "<S33>/Compare\nTo Constant"
+    Name		    "<S54>/Compare To Constant"
+    SLName		    "<S54>/Compare\nTo Constant"
   }
   Subsystem {
-    Name		    "<S33>/Compare To Zero"
-    SLName		    "<S33>/Compare\nTo Zero"
+    Name		    "<S54>/Compare To Zero"
+    SLName		    "<S54>/Compare\nTo Zero"
   }
   Subsystem {
-    Name		    "<S34>/Init_u"
+    Name		    "<S55>/Init_u"
   }
   Subsystem {
-    Name		    "<S35>/Discrete"
+    Name		    "<S56>/Discrete"
   }
   Subsystem {
-    Name		    "<S14>/PID Controller"
+    Name		    "<S14>/Enable//disable time constant"
+    SLName		    "<S14>/Enable//disable\ntime constant"
   }
   Subsystem {
-    Name		    "<S14>/turn_adjus"
+    Name		    "<S14>/Initialization"
   }
   Subsystem {
-    Name		    "<S40>/Anti-windup"
+    Name		    "<S14>/Integrator (Discrete or Continuous)"
+    SLName		    "<S14>/Integrator\n(Discrete or Continuous)"
   }
   Subsystem {
-    Name		    "<S40>/D Gain"
+    Name		    "<S61>/Compare To Constant"
+    SLName		    "<S61>/Compare\nTo Constant"
   }
   Subsystem {
-    Name		    "<S40>/External Derivative"
+    Name		    "<S61>/Compare To Zero"
+    SLName		    "<S61>/Compare\nTo Zero"
   }
   Subsystem {
-    Name		    "<S40>/Filter"
+    Name		    "<S62>/Init_u"
   }
   Subsystem {
-    Name		    "<S40>/Filter ICs"
+    Name		    "<S63>/Discrete"
   }
   Subsystem {
-    Name		    "<S40>/I Gain"
+    Name		    "<S15>/Enable//disable time constant"
+    SLName		    "<S15>/Enable//disable\ntime constant"
   }
   Subsystem {
-    Name		    "<S40>/Ideal P Gain"
+    Name		    "<S15>/Initialization"
   }
   Subsystem {
-    Name		    "<S40>/Ideal P Gain Fdbk"
+    Name		    "<S15>/Integrator (Discrete or Continuous)"
+    SLName		    "<S15>/Integrator\n(Discrete or Continuous)"
   }
   Subsystem {
-    Name		    "<S40>/Integrator"
+    Name		    "<S68>/Compare To Constant"
+    SLName		    "<S68>/Compare\nTo Constant"
   }
   Subsystem {
-    Name		    "<S40>/Integrator ICs"
+    Name		    "<S68>/Compare To Zero"
+    SLName		    "<S68>/Compare\nTo Zero"
   }
   Subsystem {
-    Name		    "<S40>/N Copy"
+    Name		    "<S69>/Init_u"
   }
   Subsystem {
-    Name		    "<S40>/N Gain"
+    Name		    "<S70>/Discrete"
   }
   Subsystem {
-    Name		    "<S40>/P Copy"
+    Name		    "<S16>/Anti-windup"
   }
   Subsystem {
-    Name		    "<S40>/Parallel P Gain"
+    Name		    "<S16>/D Gain"
   }
   Subsystem {
-    Name		    "<S40>/Reset Signal"
+    Name		    "<S16>/External Derivative"
   }
   Subsystem {
-    Name		    "<S40>/Saturation"
+    Name		    "<S16>/Filter"
   }
   Subsystem {
-    Name		    "<S40>/Saturation Fdbk"
+    Name		    "<S16>/Filter ICs"
   }
   Subsystem {
-    Name		    "<S40>/Sum"
+    Name		    "<S16>/I Gain"
   }
   Subsystem {
-    Name		    "<S40>/Sum Fdbk"
+    Name		    "<S16>/Ideal P Gain"
   }
   Subsystem {
-    Name		    "<S40>/Tracking Mode"
+    Name		    "<S16>/Ideal P Gain Fdbk"
   }
   Subsystem {
-    Name		    "<S40>/Tracking Mode Sum"
+    Name		    "<S16>/Integrator"
   }
   Subsystem {
-    Name		    "<S40>/Tsamp - Integral"
+    Name		    "<S16>/Integrator ICs"
   }
   Subsystem {
-    Name		    "<S40>/Tsamp - Ngain"
+    Name		    "<S16>/N Copy"
   }
   Subsystem {
-    Name		    "<S40>/postSat Signal"
+    Name		    "<S16>/N Gain"
   }
   Subsystem {
-    Name		    "<S40>/preInt Signal"
+    Name		    "<S16>/P Copy"
   }
   Subsystem {
-    Name		    "<S40>/preSat Signal"
+    Name		    "<S16>/Parallel P Gain"
   }
   Subsystem {
-    Name		    "<S42>/Passthrough"
+    Name		    "<S16>/Reset Signal"
   }
   Subsystem {
-    Name		    "<S43>/Internal Parameters"
+    Name		    "<S16>/Saturation"
   }
   Subsystem {
-    Name		    "<S44>/Error"
+    Name		    "<S16>/Saturation Fdbk"
   }
   Subsystem {
-    Name		    "<S45>/Cont. Filter"
+    Name		    "<S16>/Sum"
   }
   Subsystem {
-    Name		    "<S46>/Internal IC - Filter"
+    Name		    "<S16>/Sum Fdbk"
   }
   Subsystem {
-    Name		    "<S47>/Internal Parameters"
+    Name		    "<S16>/Tracking Mode"
   }
   Subsystem {
-    Name		    "<S48>/Passthrough"
+    Name		    "<S16>/Tracking Mode Sum"
   }
   Subsystem {
-    Name		    "<S49>/Disabled"
+    Name		    "<S16>/Tsamp - Integral"
   }
   Subsystem {
-    Name		    "<S50>/Continuous"
+    Name		    "<S16>/Tsamp - Ngain"
   }
   Subsystem {
-    Name		    "<S51>/Internal IC"
+    Name		    "<S16>/postSat Signal"
   }
   Subsystem {
-    Name		    "<S52>/Disabled"
+    Name		    "<S16>/preInt Signal"
   }
   Subsystem {
-    Name		    "<S53>/Internal Parameters"
+    Name		    "<S16>/preSat Signal"
   }
   Subsystem {
-    Name		    "<S54>/Disabled"
+    Name		    "<S75>/Passthrough"
   }
   Subsystem {
-    Name		    "<S55>/Internal Parameters"
+    Name		    "<S76>/Internal Parameters"
   }
   Subsystem {
-    Name		    "<S56>/Disabled"
+    Name		    "<S77>/Error"
   }
   Subsystem {
-    Name		    "<S57>/Passthrough"
+    Name		    "<S78>/Cont. Filter"
   }
   Subsystem {
-    Name		    "<S58>/Disabled"
+    Name		    "<S79>/Internal IC - Filter"
   }
   Subsystem {
-    Name		    "<S59>/Sum_PID"
+    Name		    "<S80>/Internal Parameters"
   }
   Subsystem {
-    Name		    "<S60>/Disabled"
+    Name		    "<S81>/Passthrough"
   }
   Subsystem {
-    Name		    "<S61>/Disabled"
+    Name		    "<S82>/Disabled"
   }
   Subsystem {
-    Name		    "<S62>/Passthrough"
+    Name		    "<S83>/Continuous"
   }
   Subsystem {
-    Name		    "<S63>/TsSignalSpecification"
+    Name		    "<S84>/Internal IC"
   }
   Subsystem {
-    Name		    "<S64>/Passthrough"
+    Name		    "<S85>/Disabled"
   }
   Subsystem {
-    Name		    "<S65>/Forward_Path"
+    Name		    "<S86>/Internal Parameters"
   }
   Subsystem {
-    Name		    "<S66>/Internal PreInt"
+    Name		    "<S87>/Disabled"
   }
   Subsystem {
-    Name		    "<S67>/Forward_Path"
+    Name		    "<S88>/Internal Parameters"
   }
   Subsystem {
-    Name		    "<S15>/Compare To Constant"
-    SLName		    "<S15>/Compare\nTo Constant"
+    Name		    "<S89>/Disabled"
   }
   Subsystem {
-    Name		    "<S15>/Detect Rise Positive"
-    SLName		    "<S15>/Detect Rise\nPositive"
+    Name		    "<S90>/Passthrough"
   }
   Subsystem {
-    Name		    "<S95>/Positive"
+    Name		    "<S91>/Disabled"
   }
   Subsystem {
-    Name		    "<S18>/Discrete Varying Lowpass"
+    Name		    "<S92>/Sum_PID"
   }
   Subsystem {
-    Name		    "<S97>/SOS1"
+    Name		    "<S93>/Disabled"
   }
   Subsystem {
-    Name		    "<S97>/SOS2"
+    Name		    "<S94>/Disabled"
   }
   Subsystem {
-    Name		    "<S98>/Arithmetic"
+    Name		    "<S95>/Passthrough"
   }
   Subsystem {
-    Name		    "<S99>/Arithmetic"
+    Name		    "<S96>/TsSignalSpecification"
+  }
+  Subsystem {
+    Name		    "<S97>/Passthrough"
+  }
+  Subsystem {
+    Name		    "<S98>/Forward_Path"
+  }
+  Subsystem {
+    Name		    "<S99>/Internal PreInt"
+  }
+  Subsystem {
+    Name		    "<S100>/Forward_Path"
+  }
+  Subsystem {
+    Name		    "<S17>/Anti-windup"
+  }
+  Subsystem {
+    Name		    "<S17>/D Gain"
+  }
+  Subsystem {
+    Name		    "<S17>/External Derivative"
+  }
+  Subsystem {
+    Name		    "<S17>/Filter"
+  }
+  Subsystem {
+    Name		    "<S17>/Filter ICs"
+  }
+  Subsystem {
+    Name		    "<S17>/I Gain"
+  }
+  Subsystem {
+    Name		    "<S17>/Ideal P Gain"
+  }
+  Subsystem {
+    Name		    "<S17>/Ideal P Gain Fdbk"
+  }
+  Subsystem {
+    Name		    "<S17>/Integrator"
+  }
+  Subsystem {
+    Name		    "<S17>/Integrator ICs"
+  }
+  Subsystem {
+    Name		    "<S17>/N Copy"
+  }
+  Subsystem {
+    Name		    "<S17>/N Gain"
+  }
+  Subsystem {
+    Name		    "<S17>/P Copy"
+  }
+  Subsystem {
+    Name		    "<S17>/Parallel P Gain"
+  }
+  Subsystem {
+    Name		    "<S17>/Reset Signal"
+  }
+  Subsystem {
+    Name		    "<S17>/Saturation"
+  }
+  Subsystem {
+    Name		    "<S17>/Saturation Fdbk"
+  }
+  Subsystem {
+    Name		    "<S17>/Sum"
+  }
+  Subsystem {
+    Name		    "<S17>/Sum Fdbk"
+  }
+  Subsystem {
+    Name		    "<S17>/Tracking Mode"
+  }
+  Subsystem {
+    Name		    "<S17>/Tracking Mode Sum"
+  }
+  Subsystem {
+    Name		    "<S17>/Tsamp - Integral"
+  }
+  Subsystem {
+    Name		    "<S17>/Tsamp - Ngain"
+  }
+  Subsystem {
+    Name		    "<S17>/postSat Signal"
+  }
+  Subsystem {
+    Name		    "<S17>/preInt Signal"
+  }
+  Subsystem {
+    Name		    "<S17>/preSat Signal"
+  }
+  Subsystem {
+    Name		    "<S127>/Passthrough"
+  }
+  Subsystem {
+    Name		    "<S128>/Internal Parameters"
+  }
+  Subsystem {
+    Name		    "<S129>/Error"
+  }
+  Subsystem {
+    Name		    "<S130>/Cont. Filter"
+  }
+  Subsystem {
+    Name		    "<S131>/Internal IC - Filter"
+  }
+  Subsystem {
+    Name		    "<S132>/Internal Parameters"
+  }
+  Subsystem {
+    Name		    "<S133>/Passthrough"
+  }
+  Subsystem {
+    Name		    "<S134>/Disabled"
+  }
+  Subsystem {
+    Name		    "<S135>/Continuous"
+  }
+  Subsystem {
+    Name		    "<S136>/Internal IC"
+  }
+  Subsystem {
+    Name		    "<S137>/Disabled"
+  }
+  Subsystem {
+    Name		    "<S138>/Internal Parameters"
+  }
+  Subsystem {
+    Name		    "<S139>/Disabled"
+  }
+  Subsystem {
+    Name		    "<S140>/Internal Parameters"
+  }
+  Subsystem {
+    Name		    "<S141>/Disabled"
+  }
+  Subsystem {
+    Name		    "<S142>/Passthrough"
+  }
+  Subsystem {
+    Name		    "<S143>/Disabled"
+  }
+  Subsystem {
+    Name		    "<S144>/Sum_PID"
+  }
+  Subsystem {
+    Name		    "<S145>/Disabled"
+  }
+  Subsystem {
+    Name		    "<S146>/Disabled"
+  }
+  Subsystem {
+    Name		    "<S147>/Passthrough"
+  }
+  Subsystem {
+    Name		    "<S148>/TsSignalSpecification"
+  }
+  Subsystem {
+    Name		    "<S149>/Passthrough"
+  }
+  Subsystem {
+    Name		    "<S150>/Forward_Path"
+  }
+  Subsystem {
+    Name		    "<S151>/Internal PreInt"
+  }
+  Subsystem {
+    Name		    "<S152>/Forward_Path"
+  }
+  Subsystem {
+    Name		    "<S18>/Chart"
+  }
+  Subsystem {
+    Name		    "<S18>/PID Controller"
+  }
+  Subsystem {
+    Name		    "<S18>/turn_adjus"
+  }
+  Subsystem {
+    Name		    "<S180>/Anti-windup"
+  }
+  Subsystem {
+    Name		    "<S180>/D Gain"
+  }
+  Subsystem {
+    Name		    "<S180>/External Derivative"
+  }
+  Subsystem {
+    Name		    "<S180>/Filter"
+  }
+  Subsystem {
+    Name		    "<S180>/Filter ICs"
+  }
+  Subsystem {
+    Name		    "<S180>/I Gain"
+  }
+  Subsystem {
+    Name		    "<S180>/Ideal P Gain"
+  }
+  Subsystem {
+    Name		    "<S180>/Ideal P Gain Fdbk"
+  }
+  Subsystem {
+    Name		    "<S180>/Integrator"
+  }
+  Subsystem {
+    Name		    "<S180>/Integrator ICs"
+  }
+  Subsystem {
+    Name		    "<S180>/N Copy"
+  }
+  Subsystem {
+    Name		    "<S180>/N Gain"
+  }
+  Subsystem {
+    Name		    "<S180>/P Copy"
+  }
+  Subsystem {
+    Name		    "<S180>/Parallel P Gain"
+  }
+  Subsystem {
+    Name		    "<S180>/Reset Signal"
+  }
+  Subsystem {
+    Name		    "<S180>/Saturation"
+  }
+  Subsystem {
+    Name		    "<S180>/Saturation Fdbk"
+  }
+  Subsystem {
+    Name		    "<S180>/Sum"
+  }
+  Subsystem {
+    Name		    "<S180>/Sum Fdbk"
+  }
+  Subsystem {
+    Name		    "<S180>/Tracking Mode"
+  }
+  Subsystem {
+    Name		    "<S180>/Tracking Mode Sum"
+  }
+  Subsystem {
+    Name		    "<S180>/Tsamp - Integral"
+  }
+  Subsystem {
+    Name		    "<S180>/Tsamp - Ngain"
+  }
+  Subsystem {
+    Name		    "<S180>/postSat Signal"
+  }
+  Subsystem {
+    Name		    "<S180>/preInt Signal"
+  }
+  Subsystem {
+    Name		    "<S180>/preSat Signal"
+  }
+  Subsystem {
+    Name		    "<S182>/Disabled"
+  }
+  Subsystem {
+    Name		    "<S183>/Internal Parameters"
+  }
+  Subsystem {
+    Name		    "<S184>/Error"
+  }
+  Subsystem {
+    Name		    "<S185>/Cont. Filter"
+  }
+  Subsystem {
+    Name		    "<S186>/Internal IC - Filter"
+  }
+  Subsystem {
+    Name		    "<S187>/Disabled"
+  }
+  Subsystem {
+    Name		    "<S188>/Passthrough"
+  }
+  Subsystem {
+    Name		    "<S189>/Disabled"
+  }
+  Subsystem {
+    Name		    "<S190>/Disabled"
+  }
+  Subsystem {
+    Name		    "<S191>/Disabled"
+  }
+  Subsystem {
+    Name		    "<S192>/Disabled"
+  }
+  Subsystem {
+    Name		    "<S193>/Internal Parameters"
+  }
+  Subsystem {
+    Name		    "<S194>/Disabled"
+  }
+  Subsystem {
+    Name		    "<S195>/Internal Parameters"
+  }
+  Subsystem {
+    Name		    "<S196>/Disabled"
+  }
+  Subsystem {
+    Name		    "<S197>/Passthrough"
+  }
+  Subsystem {
+    Name		    "<S198>/Disabled"
+  }
+  Subsystem {
+    Name		    "<S199>/Sum_PD"
+  }
+  Subsystem {
+    Name		    "<S200>/Disabled"
+  }
+  Subsystem {
+    Name		    "<S201>/Disabled"
+  }
+  Subsystem {
+    Name		    "<S202>/Passthrough"
+  }
+  Subsystem {
+    Name		    "<S203>/TsSignalSpecification"
+  }
+  Subsystem {
+    Name		    "<S204>/Passthrough"
+  }
+  Subsystem {
+    Name		    "<S205>/Forward_Path"
+  }
+  Subsystem {
+    Name		    "<S206>/Internal PreInt"
+  }
+  Subsystem {
+    Name		    "<S207>/Forward_Path"
+  }
+  Subsystem {
+    Name		    "<S22>/Chart"
+  }
+  Subsystem {
+    Name		    "<S22>/PID Controller1"
+  }
+  Subsystem {
+    Name		    "<S235>/Anti-windup"
+  }
+  Subsystem {
+    Name		    "<S235>/D Gain"
+  }
+  Subsystem {
+    Name		    "<S235>/External Derivative"
+  }
+  Subsystem {
+    Name		    "<S235>/Filter"
+  }
+  Subsystem {
+    Name		    "<S235>/Filter ICs"
+  }
+  Subsystem {
+    Name		    "<S235>/I Gain"
+  }
+  Subsystem {
+    Name		    "<S235>/Ideal P Gain"
+  }
+  Subsystem {
+    Name		    "<S235>/Ideal P Gain Fdbk"
+  }
+  Subsystem {
+    Name		    "<S235>/Integrator"
+  }
+  Subsystem {
+    Name		    "<S235>/Integrator ICs"
+  }
+  Subsystem {
+    Name		    "<S235>/N Copy"
+  }
+  Subsystem {
+    Name		    "<S235>/N Gain"
+  }
+  Subsystem {
+    Name		    "<S235>/P Copy"
+  }
+  Subsystem {
+    Name		    "<S235>/Parallel P Gain"
+  }
+  Subsystem {
+    Name		    "<S235>/Reset Signal"
+  }
+  Subsystem {
+    Name		    "<S235>/Saturation"
+  }
+  Subsystem {
+    Name		    "<S235>/Saturation Fdbk"
+  }
+  Subsystem {
+    Name		    "<S235>/Sum"
+  }
+  Subsystem {
+    Name		    "<S235>/Sum Fdbk"
+  }
+  Subsystem {
+    Name		    "<S235>/Tracking Mode"
+  }
+  Subsystem {
+    Name		    "<S235>/Tracking Mode Sum"
+  }
+  Subsystem {
+    Name		    "<S235>/Tsamp - Integral"
+  }
+  Subsystem {
+    Name		    "<S235>/Tsamp - Ngain"
+  }
+  Subsystem {
+    Name		    "<S235>/postSat Signal"
+  }
+  Subsystem {
+    Name		    "<S235>/preInt Signal"
+  }
+  Subsystem {
+    Name		    "<S235>/preSat Signal"
+  }
+  Subsystem {
+    Name		    "<S236>/Passthrough"
+  }
+  Subsystem {
+    Name		    "<S237>/Internal Parameters"
+  }
+  Subsystem {
+    Name		    "<S238>/Error"
+  }
+  Subsystem {
+    Name		    "<S239>/Cont. Filter"
+  }
+  Subsystem {
+    Name		    "<S240>/Internal IC - Filter"
+  }
+  Subsystem {
+    Name		    "<S241>/Internal Parameters"
+  }
+  Subsystem {
+    Name		    "<S242>/Passthrough"
+  }
+  Subsystem {
+    Name		    "<S243>/Disabled"
+  }
+  Subsystem {
+    Name		    "<S244>/Continuous"
+  }
+  Subsystem {
+    Name		    "<S245>/Internal IC"
+  }
+  Subsystem {
+    Name		    "<S246>/Disabled"
+  }
+  Subsystem {
+    Name		    "<S247>/Internal Parameters"
+  }
+  Subsystem {
+    Name		    "<S248>/Disabled"
+  }
+  Subsystem {
+    Name		    "<S249>/Internal Parameters"
+  }
+  Subsystem {
+    Name		    "<S250>/Disabled"
+  }
+  Subsystem {
+    Name		    "<S251>/Passthrough"
+  }
+  Subsystem {
+    Name		    "<S252>/Disabled"
+  }
+  Subsystem {
+    Name		    "<S253>/Sum_PID"
+  }
+  Subsystem {
+    Name		    "<S254>/Disabled"
+  }
+  Subsystem {
+    Name		    "<S255>/Disabled"
+  }
+  Subsystem {
+    Name		    "<S256>/Passthrough"
+  }
+  Subsystem {
+    Name		    "<S257>/TsSignalSpecification"
+  }
+  Subsystem {
+    Name		    "<S258>/Passthrough"
+  }
+  Subsystem {
+    Name		    "<S259>/Forward_Path"
+  }
+  Subsystem {
+    Name		    "<S260>/Internal PreInt"
+  }
+  Subsystem {
+    Name		    "<S261>/Forward_Path"
+  }
+  Subsystem {
+    Name		    "<S23>/Discrete Varying Lowpass"
+  }
+  Subsystem {
+    Name		    "<S288>/SOS1"
+  }
+  Subsystem {
+    Name		    "<S288>/SOS2"
+  }
+  Subsystem {
+    Name		    "<S289>/Arithmetic"
+  }
+  Subsystem {
+    Name		    "<S290>/Arithmetic"
+  }
+  Subsystem {
+    Name		    "<S24>/PID Controller1"
+  }
+  Subsystem {
+    Name		    "<S24>/PID Controller2"
+  }
+  Subsystem {
+    Name		    "<S24>/engage_disengage_straightnert"
+  }
+  Subsystem {
+    Name		    "<S293>/Anti-windup"
+  }
+  Subsystem {
+    Name		    "<S293>/D Gain"
+  }
+  Subsystem {
+    Name		    "<S293>/External Derivative"
+  }
+  Subsystem {
+    Name		    "<S293>/Filter"
+  }
+  Subsystem {
+    Name		    "<S293>/Filter ICs"
+  }
+  Subsystem {
+    Name		    "<S293>/I Gain"
+  }
+  Subsystem {
+    Name		    "<S293>/Ideal P Gain"
+  }
+  Subsystem {
+    Name		    "<S293>/Ideal P Gain Fdbk"
+  }
+  Subsystem {
+    Name		    "<S293>/Integrator"
+  }
+  Subsystem {
+    Name		    "<S293>/Integrator ICs"
+  }
+  Subsystem {
+    Name		    "<S293>/N Copy"
+  }
+  Subsystem {
+    Name		    "<S293>/N Gain"
+  }
+  Subsystem {
+    Name		    "<S293>/P Copy"
+  }
+  Subsystem {
+    Name		    "<S293>/Parallel P Gain"
+  }
+  Subsystem {
+    Name		    "<S293>/Reset Signal"
+  }
+  Subsystem {
+    Name		    "<S293>/Saturation"
+  }
+  Subsystem {
+    Name		    "<S293>/Saturation Fdbk"
+  }
+  Subsystem {
+    Name		    "<S293>/Sum"
+  }
+  Subsystem {
+    Name		    "<S293>/Sum Fdbk"
+  }
+  Subsystem {
+    Name		    "<S293>/Tracking Mode"
+  }
+  Subsystem {
+    Name		    "<S293>/Tracking Mode Sum"
+  }
+  Subsystem {
+    Name		    "<S293>/Tsamp - Integral"
+  }
+  Subsystem {
+    Name		    "<S293>/Tsamp - Ngain"
+  }
+  Subsystem {
+    Name		    "<S293>/postSat Signal"
+  }
+  Subsystem {
+    Name		    "<S293>/preInt Signal"
+  }
+  Subsystem {
+    Name		    "<S293>/preSat Signal"
+  }
+  Subsystem {
+    Name		    "<S296>/Passthrough"
+  }
+  Subsystem {
+    Name		    "<S297>/Internal Parameters"
+  }
+  Subsystem {
+    Name		    "<S298>/Error"
+  }
+  Subsystem {
+    Name		    "<S299>/Cont. Filter"
+  }
+  Subsystem {
+    Name		    "<S300>/Internal IC - Filter"
+  }
+  Subsystem {
+    Name		    "<S301>/Internal Parameters"
+  }
+  Subsystem {
+    Name		    "<S302>/Passthrough"
+  }
+  Subsystem {
+    Name		    "<S303>/Disabled"
+  }
+  Subsystem {
+    Name		    "<S304>/Continuous"
+  }
+  Subsystem {
+    Name		    "<S305>/Internal IC"
+  }
+  Subsystem {
+    Name		    "<S306>/Disabled"
+  }
+  Subsystem {
+    Name		    "<S307>/Internal Parameters"
+  }
+  Subsystem {
+    Name		    "<S308>/Disabled"
+  }
+  Subsystem {
+    Name		    "<S309>/Internal Parameters"
+  }
+  Subsystem {
+    Name		    "<S310>/Disabled"
+  }
+  Subsystem {
+    Name		    "<S311>/Passthrough"
+  }
+  Subsystem {
+    Name		    "<S312>/Disabled"
+  }
+  Subsystem {
+    Name		    "<S313>/Sum_PID"
+  }
+  Subsystem {
+    Name		    "<S314>/Disabled"
+  }
+  Subsystem {
+    Name		    "<S315>/Disabled"
+  }
+  Subsystem {
+    Name		    "<S316>/Passthrough"
+  }
+  Subsystem {
+    Name		    "<S317>/TsSignalSpecification"
+  }
+  Subsystem {
+    Name		    "<S318>/Passthrough"
+  }
+  Subsystem {
+    Name		    "<S319>/Forward_Path"
+  }
+  Subsystem {
+    Name		    "<S320>/Internal PreInt"
+  }
+  Subsystem {
+    Name		    "<S321>/Forward_Path"
+  }
+  Subsystem {
+    Name		    "<S294>/Anti-windup"
+  }
+  Subsystem {
+    Name		    "<S294>/D Gain"
+  }
+  Subsystem {
+    Name		    "<S294>/External Derivative"
+  }
+  Subsystem {
+    Name		    "<S294>/Filter"
+  }
+  Subsystem {
+    Name		    "<S294>/Filter ICs"
+  }
+  Subsystem {
+    Name		    "<S294>/I Gain"
+  }
+  Subsystem {
+    Name		    "<S294>/Ideal P Gain"
+  }
+  Subsystem {
+    Name		    "<S294>/Ideal P Gain Fdbk"
+  }
+  Subsystem {
+    Name		    "<S294>/Integrator"
+  }
+  Subsystem {
+    Name		    "<S294>/Integrator ICs"
+  }
+  Subsystem {
+    Name		    "<S294>/N Copy"
+  }
+  Subsystem {
+    Name		    "<S294>/N Gain"
+  }
+  Subsystem {
+    Name		    "<S294>/P Copy"
+  }
+  Subsystem {
+    Name		    "<S294>/Parallel P Gain"
+  }
+  Subsystem {
+    Name		    "<S294>/Reset Signal"
+  }
+  Subsystem {
+    Name		    "<S294>/Saturation"
+  }
+  Subsystem {
+    Name		    "<S294>/Saturation Fdbk"
+  }
+  Subsystem {
+    Name		    "<S294>/Sum"
+  }
+  Subsystem {
+    Name		    "<S294>/Sum Fdbk"
+  }
+  Subsystem {
+    Name		    "<S294>/Tracking Mode"
+  }
+  Subsystem {
+    Name		    "<S294>/Tracking Mode Sum"
+  }
+  Subsystem {
+    Name		    "<S294>/Tsamp - Integral"
+  }
+  Subsystem {
+    Name		    "<S294>/Tsamp - Ngain"
+  }
+  Subsystem {
+    Name		    "<S294>/postSat Signal"
+  }
+  Subsystem {
+    Name		    "<S294>/preInt Signal"
+  }
+  Subsystem {
+    Name		    "<S294>/preSat Signal"
+  }
+  Subsystem {
+    Name		    "<S348>/Passthrough"
+  }
+  Subsystem {
+    Name		    "<S349>/Internal Parameters"
+  }
+  Subsystem {
+    Name		    "<S350>/Error"
+  }
+  Subsystem {
+    Name		    "<S351>/Cont. Filter"
+  }
+  Subsystem {
+    Name		    "<S352>/Internal IC - Filter"
+  }
+  Subsystem {
+    Name		    "<S353>/Internal Parameters"
+  }
+  Subsystem {
+    Name		    "<S354>/Passthrough"
+  }
+  Subsystem {
+    Name		    "<S355>/Disabled"
+  }
+  Subsystem {
+    Name		    "<S356>/Continuous"
+  }
+  Subsystem {
+    Name		    "<S357>/Internal IC"
+  }
+  Subsystem {
+    Name		    "<S358>/Disabled"
+  }
+  Subsystem {
+    Name		    "<S359>/Internal Parameters"
+  }
+  Subsystem {
+    Name		    "<S360>/Disabled"
+  }
+  Subsystem {
+    Name		    "<S361>/Internal Parameters"
+  }
+  Subsystem {
+    Name		    "<S362>/Disabled"
+  }
+  Subsystem {
+    Name		    "<S363>/Passthrough"
+  }
+  Subsystem {
+    Name		    "<S364>/Disabled"
+  }
+  Subsystem {
+    Name		    "<S365>/Sum_PID"
+  }
+  Subsystem {
+    Name		    "<S366>/Disabled"
+  }
+  Subsystem {
+    Name		    "<S367>/Disabled"
+  }
+  Subsystem {
+    Name		    "<S368>/Passthrough"
+  }
+  Subsystem {
+    Name		    "<S369>/TsSignalSpecification"
+  }
+  Subsystem {
+    Name		    "<S370>/Passthrough"
+  }
+  Subsystem {
+    Name		    "<S371>/Forward_Path"
+  }
+  Subsystem {
+    Name		    "<S372>/Internal PreInt"
+  }
+  Subsystem {
+    Name		    "<S373>/Forward_Path"
   }
   ExprCommentInfoDefaults {
     SysIdxList		    []
@@ -488,7 +1386,7 @@ CompiledModel {
     LocalSolverInputCompensationMode 0
     LocalSolverOutputCompensationMode 0
   }
-  NumSystems		  4
+  NumSystems		  14
   tSS_LONG		  -2147483648
   tSS_ULONG		  -2147483645
   tSS_LONG_LONG		  -2147483644
@@ -662,6 +1560,12 @@ CompiledModel {
     Subsystem {
       Name		      "<Root>/StudentTemplate"
       Block {
+	Name			"<S3>/DIstance measurement "
+      }
+      Block {
+	Name			"<S3>/DIstance measurement 1"
+      }
+      Block {
 	Name			"<S3>/Low-Pass Filter (Discrete or Continuous)"
       }
       Block {
@@ -671,19 +1575,34 @@ CompiledModel {
 	Name			"<S3>/Low-Pass Filter (Discrete or Continuous)2"
       }
       Block {
+	Name			"<S3>/PID Controller"
+      }
+      Block {
+	Name			"<S3>/PID Controller4"
+      }
+      Block {
 	Name			"<S3>/angle_adjus_draft2"
       }
       Block {
-	Name			"<S3>/convert_encoder_signal_to_ticks"
-      }
-      Block {
-	Name			"<S3>/encoder_tick_to_dist"
+	Name			"<S3>/encoder_straightening"
       }
       Block {
 	Name			"<S3>/gyro wave smoothing "
       }
       Block {
-	Name			"<S3>/distance_control"
+	Name			"<S3>/maze_straightener_draft1"
+      }
+      Block {
+	Name			"<S3>/draft2_Maze_exploration"
+      }
+      Block {
+	Name			"<S3>/draft2_Maze_exploration1"
+      }
+      Block {
+	Name			"<S3>/draft2_Maze_exploration2"
+      }
+      Block {
+	Name			"<S3>/turn_adjus"
       }
       Block {
 	Name			"<S3>/Constant"
@@ -695,19 +1614,58 @@ CompiledModel {
 	Name			"<S3>/Constant2"
       }
       Block {
-	Name			"<S3>/Motor_Left"
+	Name			"<S3>/Constant3"
       }
       Block {
-	Name			"<S3>/Motor_Right"
+	Name			"<S3>/Constant4"
       }
       Block {
-	Name			"<S3>/ref"
+	Name			"<S3>/Constant5"
       }
       Block {
-	Name			"<S3>/Data Type Conversion"
+	Name			"<S3>/Motor_Left1"
+      }
+      Block {
+	Name			"<S3>/Motor_Left2"
+      }
+      Block {
+	Name			"<S3>/Motor_Left3"
+      }
+      Block {
+	Name			"<S3>/Motor_Right1"
+      }
+      Block {
+	Name			"<S3>/Cast To Double"
+      }
+      Block {
+	Name			"<S3>/Gain"
+      }
+      Block {
+	Name			"<S3>/Gain1"
       }
       Block {
 	Name			"<S3>/Gain2"
+      }
+      Block {
+	Name			"<S3>/Gain3"
+      }
+      Block {
+	Name			"<S3>/Gain4"
+      }
+      Block {
+	Name			"<S3>/Integrator"
+      }
+      Block {
+	Name			"<S3>/Integrator1"
+      }
+      Block {
+	Name			"<S3>/Product"
+      }
+      Block {
+	Name			"<S3>/Product1"
+      }
+      Block {
+	Name			"<S3>/Product3"
       }
       Block {
 	Name			"<S3>/GreaterThan"
@@ -719,10 +1677,10 @@ CompiledModel {
 	Name			"<S3>/GreaterThan2"
       }
       Block {
-	Name			"<S3>/Sum"
+	Name			"<S3>/Relational Operator"
       }
       Block {
-	Name			"<S3>/Sum1"
+	Name			"<S3>/Error"
       }
       Block {
 	Name			"<S3>/Compose String"
@@ -972,49 +1930,82 @@ CompiledModel {
       Name		      "<S2>/System Update"
     }
     Subsystem {
+      Name		      "<S3>/DIstance measurement "
+      Block {
+	Name			"<S11>/convert_encoder_signal_to_ticks2"
+      }
+      Block {
+	Name			"<S11>/convert_encoder_signal_to_ticks3"
+      }
+      Block {
+	Name			"<S11>/encoder_tick_to_dist2"
+      }
+      Block {
+	Name			"<S11>/encoder_tick_to_dist3"
+      }
+      Block {
+	Name			"<S11>/Data Type Conversion"
+      }
+      Block {
+	Name			"<S11>/Data Type Conversion1"
+      }
+      Block {
+	Name			"<S11>/Gain1"
+      }
+      Block {
+	Name			"<S11>/Rate Limiter2"
+      }
+      Block {
+	Name			"<S11>/Rate Limiter4"
+      }
+      Block {
+	Name			"<S11>/Sum3"
+      }
+    }
+    Subsystem {
+      Name		      "<S3>/DIstance measurement 1"
+      Block {
+	Name			"<S12>/convert_encoder_signal_to_ticks2"
+      }
+      Block {
+	Name			"<S12>/convert_encoder_signal_to_ticks3"
+      }
+      Block {
+	Name			"<S12>/encoder_tick_to_dist1"
+      }
+      Block {
+	Name			"<S12>/encoder_tick_to_dist2"
+      }
+      Block {
+	Name			"<S12>/encoder_tick_to_dist3"
+      }
+      Block {
+	Name			"<S12>/encoder_tick_to_dist4"
+      }
+      Block {
+	Name			"<S12>/Gain1"
+      }
+      Block {
+	Name			"<S12>/Integrator"
+      }
+      Block {
+	Name			"<S12>/Integrator1"
+      }
+      Block {
+	Name			"<S12>/Rate Limiter"
+      }
+      Block {
+	Name			"<S12>/Rate Limiter1"
+      }
+      Block {
+	Name			"<S12>/Rate Limiter2"
+      }
+      Block {
+	Name			"<S12>/Rate Limiter3"
+      }
+    }
+    Subsystem {
       Name		      "<S3>/Low-Pass Filter\n(Discrete or Continuous)"
-      Block {
-	Name			"<S11>/Enable//disable time constant"
-      }
-      Block {
-	Name			"<S11>/Initialization"
-      }
-      Block {
-	Name			"<S11>/Integrator (Discrete or Continuous)"
-      }
-      Block {
-	Name			"<S11>/K"
-      }
-      Block {
-	Name			"<S11>/1//T"
-      }
-      Block {
-	Name			"<S11>/Sum1"
-      }
-    }
-    Subsystem {
-      Name		      "<S3>/Low-Pass Filter\n(Discrete or Continuous)1"
-      Block {
-	Name			"<S12>/Enable//disable time constant"
-      }
-      Block {
-	Name			"<S12>/Initialization"
-      }
-      Block {
-	Name			"<S12>/Integrator (Discrete or Continuous)"
-      }
-      Block {
-	Name			"<S12>/K"
-      }
-      Block {
-	Name			"<S12>/1//T"
-      }
-      Block {
-	Name			"<S12>/Sum1"
-      }
-    }
-    Subsystem {
-      Name		      "<S3>/Low-Pass Filter\n(Discrete or Continuous)2"
       Block {
 	Name			"<S13>/Enable//disable time constant"
       }
@@ -1035,64 +2026,412 @@ CompiledModel {
       }
     }
     Subsystem {
+      Name		      "<S3>/Low-Pass Filter\n(Discrete or Continuous)1"
+      Block {
+	Name			"<S14>/Enable//disable time constant"
+      }
+      Block {
+	Name			"<S14>/Initialization"
+      }
+      Block {
+	Name			"<S14>/Integrator (Discrete or Continuous)"
+      }
+      Block {
+	Name			"<S14>/K"
+      }
+      Block {
+	Name			"<S14>/1//T"
+      }
+      Block {
+	Name			"<S14>/Sum1"
+      }
+    }
+    Subsystem {
+      Name		      "<S3>/Low-Pass Filter\n(Discrete or Continuous)2"
+      Block {
+	Name			"<S15>/Enable//disable time constant"
+      }
+      Block {
+	Name			"<S15>/Initialization"
+      }
+      Block {
+	Name			"<S15>/Integrator (Discrete or Continuous)"
+      }
+      Block {
+	Name			"<S15>/K"
+      }
+      Block {
+	Name			"<S15>/1//T"
+      }
+      Block {
+	Name			"<S15>/Sum1"
+      }
+    }
+    Subsystem {
+      Name		      "<S3>/PID Controller"
+      Block {
+	Name			"<S16>/Anti-windup"
+      }
+      Block {
+	Name			"<S16>/D Gain"
+      }
+      Block {
+	Name			"<S16>/External Derivative"
+      }
+      Block {
+	Name			"<S16>/Filter"
+      }
+      Block {
+	Name			"<S16>/Filter ICs"
+      }
+      Block {
+	Name			"<S16>/I Gain"
+      }
+      Block {
+	Name			"<S16>/Ideal P Gain"
+      }
+      Block {
+	Name			"<S16>/Ideal P Gain Fdbk"
+      }
+      Block {
+	Name			"<S16>/Integrator"
+      }
+      Block {
+	Name			"<S16>/Integrator ICs"
+      }
+      Block {
+	Name			"<S16>/N Copy"
+      }
+      Block {
+	Name			"<S16>/N Gain"
+      }
+      Block {
+	Name			"<S16>/P Copy"
+      }
+      Block {
+	Name			"<S16>/PID Compensator Formula"
+      }
+      Block {
+	Name			"<S16>/Parallel P Gain"
+      }
+      Block {
+	Name			"<S16>/Reset Signal"
+      }
+      Block {
+	Name			"<S16>/Saturation"
+      }
+      Block {
+	Name			"<S16>/Saturation Fdbk"
+      }
+      Block {
+	Name			"<S16>/Sum"
+      }
+      Block {
+	Name			"<S16>/Sum Fdbk"
+      }
+      Block {
+	Name			"<S16>/Tracking Mode"
+      }
+      Block {
+	Name			"<S16>/Tracking Mode Sum"
+      }
+      Block {
+	Name			"<S16>/Tsamp - Integral"
+      }
+      Block {
+	Name			"<S16>/Tsamp - Ngain"
+      }
+      Block {
+	Name			"<S16>/postSat Signal"
+      }
+      Block {
+	Name			"<S16>/preInt Signal"
+      }
+      Block {
+	Name			"<S16>/preSat Signal"
+      }
+    }
+    Subsystem {
+      Name		      "<S3>/PID Controller4"
+      Block {
+	Name			"<S17>/Anti-windup"
+      }
+      Block {
+	Name			"<S17>/D Gain"
+      }
+      Block {
+	Name			"<S17>/External Derivative"
+      }
+      Block {
+	Name			"<S17>/Filter"
+      }
+      Block {
+	Name			"<S17>/Filter ICs"
+      }
+      Block {
+	Name			"<S17>/I Gain"
+      }
+      Block {
+	Name			"<S17>/Ideal P Gain"
+      }
+      Block {
+	Name			"<S17>/Ideal P Gain Fdbk"
+      }
+      Block {
+	Name			"<S17>/Integrator"
+      }
+      Block {
+	Name			"<S17>/Integrator ICs"
+      }
+      Block {
+	Name			"<S17>/N Copy"
+      }
+      Block {
+	Name			"<S17>/N Gain"
+      }
+      Block {
+	Name			"<S17>/P Copy"
+      }
+      Block {
+	Name			"<S17>/PID Compensator Formula"
+      }
+      Block {
+	Name			"<S17>/Parallel P Gain"
+      }
+      Block {
+	Name			"<S17>/Reset Signal"
+      }
+      Block {
+	Name			"<S17>/Saturation"
+      }
+      Block {
+	Name			"<S17>/Saturation Fdbk"
+      }
+      Block {
+	Name			"<S17>/Sum"
+      }
+      Block {
+	Name			"<S17>/Sum Fdbk"
+      }
+      Block {
+	Name			"<S17>/Tracking Mode"
+      }
+      Block {
+	Name			"<S17>/Tracking Mode Sum"
+      }
+      Block {
+	Name			"<S17>/Tsamp - Integral"
+      }
+      Block {
+	Name			"<S17>/Tsamp - Ngain"
+      }
+      Block {
+	Name			"<S17>/postSat Signal"
+      }
+      Block {
+	Name			"<S17>/preInt Signal"
+      }
+      Block {
+	Name			"<S17>/preSat Signal"
+      }
+    }
+    Subsystem {
       Name		      "<S3>/angle_adjus_draft2"
       Block {
-	Name			"<S14>/PID Controller"
+	Name			"<S18>/PID Controller"
       }
       Block {
-	Name			"<S14>/turn_adjus"
+	Name			"<S18>/Chart"
       }
       Block {
-	Name			"<S14>/Constant"
+	Name			"<S18>/turn_adjus"
       }
       Block {
-	Name			"<S14>/Integrator"
+	Name			"<S18>/Clock"
       }
       Block {
-	Name			"<S14>/Error"
-      }
-    }
-    Subsystem {
-      Name		      "<S3>/convert_encoder_signal_to_ticks"
-      Block {
-	Name			"<S15>/Compare To Constant"
+	Name			"<S18>/Gain"
       }
       Block {
-	Name			"<S15>/Detect Rise Positive"
+	Name			"<S18>/Gain1"
       }
       Block {
-	Name			"<S15>/Add"
+	Name			"<S18>/Integrator"
       }
       Block {
-	Name			"<S15>/Delay"
+	Name			"<S18>/Error"
       }
     }
     Subsystem {
-      Name		      "<S3>/encoder_tick_to_dist"
+      Name		      "<S3>/encoder_straightening"
       Block {
-	Name			"<S17>/Circumference"
+	Name			"<S22>/PID Controller1"
       }
       Block {
-	Name			"<S17>/Tick_per_rev"
+	Name			"<S22>/Chart"
       }
       Block {
-	Name			"<S17>/Product"
+	Name			"<S22>/Constant"
+      }
+      Block {
+	Name			"<S22>/Constant1"
+      }
+      Block {
+	Name			"<S22>/Constant2"
+      }
+      Block {
+	Name			"<S22>/Constant3"
+      }
+      Block {
+	Name			"<S22>/Constant4"
+      }
+      Block {
+	Name			"<S22>/Constant5"
+      }
+      Block {
+	Name			"<S22>/constant"
+      }
+      Block {
+	Name			"<S22>/Gain1"
+      }
+      Block {
+	Name			"<S22>/Gain2"
+      }
+      Block {
+	Name			"<S22>/Gain3"
+      }
+      Block {
+	Name			"<S22>/Gain4"
+      }
+      Block {
+	Name			"<S22>/Gain5"
+      }
+      Block {
+	Name			"<S22>/Gain6"
+      }
+      Block {
+	Name			"<S22>/NOT"
+      }
+      Block {
+	Name			"<S22>/Product1"
+      }
+      Block {
+	Name			"<S22>/Product2"
+      }
+      Block {
+	Name			"<S22>/Product3"
+      }
+      Block {
+	Name			"<S22>/Product4"
+      }
+      Block {
+	Name			"<S22>/Product5"
+      }
+      Block {
+	Name			"<S22>/Relational Operator"
+      }
+      Block {
+	Name			"<S22>/Relational Operator1"
+      }
+      Block {
+	Name			"<S22>/Relational Operator2"
+      }
+      Block {
+	Name			"<S22>/Relational Operator3"
+      }
+      Block {
+	Name			"<S22>/Relational Operator4"
+      }
+      Block {
+	Name			"<S22>/Relational Operator5"
+      }
+      Block {
+	Name			"<S22>/Add1"
+      }
+      Block {
+	Name			"<S22>/Add2"
+      }
+      Block {
+	Name			"<S22>/Add3"
+      }
+      Block {
+	Name			"<S22>/Add4"
+      }
+      Block {
+	Name			"<S22>/Add5"
+      }
+      Block {
+	Name			"<S22>/Sum"
+      }
+      Block {
+	Name			"<S22>/Sum1"
       }
     }
     Subsystem {
       Name		      "<S3>/gyro wave smoothing "
       Block {
-	Name			"<S18>/Discrete Varying Lowpass"
+	Name			"<S23>/Discrete Varying Lowpass"
       }
       Block {
-	Name			"<S18>/Dead Zone"
+	Name			"<S23>/Dead Zone"
       }
       Block {
-	Name			"<S18>/Median Filter"
+	Name			"<S23>/Median Filter"
       }
     }
     Subsystem {
-      Name		      "<S3>/distance_control"
+      Name		      "<S3>/maze_straightener_draft1"
+      Block {
+	Name			"<S24>/PID Controller1"
+      }
+      Block {
+	Name			"<S24>/PID Controller2"
+      }
+      Block {
+	Name			"<S24>/engage_disengage_straightnert"
+      }
+      Block {
+	Name			"<S24>/Constant"
+      }
+      Block {
+	Name			"<S24>/Cast To Double"
+      }
+      Block {
+	Name			"<S24>/Cast To Double1"
+      }
+      Block {
+	Name			"<S24>/Gain"
+      }
+      Block {
+	Name			"<S24>/Product1"
+      }
+      Block {
+	Name			"<S24>/Product2"
+      }
+      Block {
+	Name			"<S24>/Subtract1"
+      }
+      Block {
+	Name			"<S24>/Subtract2"
+      }
+      Block {
+	Name			"<S24>/Moving Average"
+      }
+      Block {
+	Name			"<S24>/Moving Average1"
+      }
+    }
+    Subsystem {
+      Name		      "<S3>/draft2_Maze_exploration"
+    }
+    Subsystem {
+      Name		      "<S3>/draft2_Maze_exploration1"
+    }
+    Subsystem {
+      Name		      "<S3>/draft2_Maze_exploration2"
+    }
+    Subsystem {
+      Name		      "<S3>/turn_adjus"
     }
     Subsystem {
       Name		      "<S4>/System Update"
@@ -1131,289 +2470,940 @@ CompiledModel {
       Name		      "<S10>/System Update"
     }
     Subsystem {
-      Name		      "<S11>/Enable//disable\ntime constant"
-      Block {
-	Name			"<S19>/Compare To Constant"
-      }
-      Block {
-	Name			"<S19>/Compare To Zero"
-      }
-      Block {
-	Name			"<S19>/Constant"
-      }
-      Block {
-	Name			"<S19>/Time constant"
-      }
-      Block {
-	Name			"<S19>/Avoid Divide by Zero"
-      }
-      Block {
-	Name			"<S19>/Logical Operator"
-      }
-      Block {
-	Name			"<S19>/Max"
-      }
-      Block {
-	Name			"<S19>/Probe"
-      }
-      Block {
-	Name			"<S19>/Sum1"
-      }
-    }
-    Subsystem {
-      Name		      "<S11>/Initialization"
-      Block {
-	Name			"<S20>/Init_u"
-      }
-    }
-    Subsystem {
-      Name		      "<S11>/Integrator\n(Discrete or Continuous)"
-      Block {
-	Name			"<S21>/Discrete"
-      }
-    }
-    Subsystem {
-      Name		      "<S12>/Enable//disable\ntime constant"
+      Name		      "<S11>/convert_encoder_signal_to_ticks2"
       Block {
 	Name			"<S26>/Compare To Constant"
       }
       Block {
-	Name			"<S26>/Compare To Zero"
+	Name			"<S26>/Detect Rise Positive"
       }
       Block {
-	Name			"<S26>/Constant"
+	Name			"<S26>/Add"
       }
       Block {
-	Name			"<S26>/Time constant"
-      }
-      Block {
-	Name			"<S26>/Avoid Divide by Zero"
-      }
-      Block {
-	Name			"<S26>/Logical Operator"
-      }
-      Block {
-	Name			"<S26>/Max"
-      }
-      Block {
-	Name			"<S26>/Probe"
-      }
-      Block {
-	Name			"<S26>/Sum1"
+	Name			"<S26>/Delay"
       }
     }
     Subsystem {
-      Name		      "<S12>/Initialization"
+      Name		      "<S11>/convert_encoder_signal_to_ticks3"
       Block {
-	Name			"<S27>/Init_u"
+	Name			"<S27>/Compare To Constant"
+      }
+      Block {
+	Name			"<S27>/Detect Fall Nonpositive"
+      }
+      Block {
+	Name			"<S27>/Detect Rise Positive"
+      }
+      Block {
+	Name			"<S27>/Chart"
+      }
+      Block {
+	Name			"<S27>/Add"
+      }
+      Block {
+	Name			"<S27>/Delay"
       }
     }
     Subsystem {
-      Name		      "<S12>/Integrator\n(Discrete or Continuous)"
+      Name		      "<S11>/encoder_tick_to_dist2"
       Block {
-	Name			"<S28>/Discrete"
+	Name			"<S28>/Circumference"
+      }
+      Block {
+	Name			"<S28>/Tick_per_rev"
+      }
+      Block {
+	Name			"<S28>/Product"
+      }
+    }
+    Subsystem {
+      Name		      "<S11>/encoder_tick_to_dist3"
+      Block {
+	Name			"<S29>/Circumference"
+      }
+      Block {
+	Name			"<S29>/Tick_per_rev"
+      }
+      Block {
+	Name			"<S29>/Product"
+      }
+    }
+    Subsystem {
+      Name		      "<S12>/convert_encoder_signal_to_ticks2"
+      Block {
+	Name			"<S39>/Compare To Constant"
+      }
+      Block {
+	Name			"<S39>/Detect Rise Positive"
+      }
+      Block {
+	Name			"<S39>/Add"
+      }
+      Block {
+	Name			"<S39>/Delay"
+      }
+    }
+    Subsystem {
+      Name		      "<S12>/convert_encoder_signal_to_ticks3"
+      Block {
+	Name			"<S40>/Compare To Constant"
+      }
+      Block {
+	Name			"<S40>/Detect Fall Nonpositive"
+      }
+      Block {
+	Name			"<S40>/Detect Rise Positive"
+      }
+      Block {
+	Name			"<S40>/Chart"
+      }
+      Block {
+	Name			"<S40>/Add"
+      }
+      Block {
+	Name			"<S40>/Delay"
+      }
+    }
+    Subsystem {
+      Name		      "<S12>/encoder_tick_to_dist1"
+      Block {
+	Name			"<S41>/Circumference"
+      }
+      Block {
+	Name			"<S41>/Tick_per_rev"
+      }
+    }
+    Subsystem {
+      Name		      "<S12>/encoder_tick_to_dist2"
+      Block {
+	Name			"<S42>/Circumference"
+      }
+      Block {
+	Name			"<S42>/Tick_per_rev"
+      }
+    }
+    Subsystem {
+      Name		      "<S12>/encoder_tick_to_dist3"
+      Block {
+	Name			"<S43>/Circumference"
+      }
+      Block {
+	Name			"<S43>/Tick_per_rev"
+      }
+    }
+    Subsystem {
+      Name		      "<S12>/encoder_tick_to_dist4"
+      Block {
+	Name			"<S44>/Circumference"
+      }
+      Block {
+	Name			"<S44>/Tick_per_rev"
       }
     }
     Subsystem {
       Name		      "<S13>/Enable//disable\ntime constant"
       Block {
-	Name			"<S33>/Compare To Constant"
+	Name			"<S54>/Compare To Constant"
       }
       Block {
-	Name			"<S33>/Compare To Zero"
+	Name			"<S54>/Compare To Zero"
       }
       Block {
-	Name			"<S33>/Constant"
+	Name			"<S54>/Constant"
       }
       Block {
-	Name			"<S33>/Time constant"
+	Name			"<S54>/Time constant"
       }
       Block {
-	Name			"<S33>/Avoid Divide by Zero"
+	Name			"<S54>/Avoid Divide by Zero"
       }
       Block {
-	Name			"<S33>/Logical Operator"
+	Name			"<S54>/Logical Operator"
       }
       Block {
-	Name			"<S33>/Max"
+	Name			"<S54>/Max"
       }
       Block {
-	Name			"<S33>/Probe"
+	Name			"<S54>/Probe"
       }
       Block {
-	Name			"<S33>/Sum1"
+	Name			"<S54>/Sum1"
       }
     }
     Subsystem {
       Name		      "<S13>/Initialization"
       Block {
-	Name			"<S34>/Init_u"
+	Name			"<S55>/Init_u"
       }
     }
     Subsystem {
       Name		      "<S13>/Integrator\n(Discrete or Continuous)"
       Block {
-	Name			"<S35>/Discrete"
+	Name			"<S56>/Discrete"
       }
     }
     Subsystem {
-      Name		      "<S14>/PID Controller"
+      Name		      "<S14>/Enable//disable\ntime constant"
       Block {
-	Name			"<S40>/Anti-windup"
+	Name			"<S61>/Compare To Constant"
       }
       Block {
-	Name			"<S40>/D Gain"
+	Name			"<S61>/Compare To Zero"
       }
       Block {
-	Name			"<S40>/External Derivative"
+	Name			"<S61>/Constant"
       }
       Block {
-	Name			"<S40>/Filter"
+	Name			"<S61>/Time constant"
       }
       Block {
-	Name			"<S40>/Filter ICs"
+	Name			"<S61>/Avoid Divide by Zero"
       }
       Block {
-	Name			"<S40>/I Gain"
+	Name			"<S61>/Logical Operator"
       }
       Block {
-	Name			"<S40>/Ideal P Gain"
+	Name			"<S61>/Max"
       }
       Block {
-	Name			"<S40>/Ideal P Gain Fdbk"
+	Name			"<S61>/Probe"
       }
       Block {
-	Name			"<S40>/Integrator"
-      }
-      Block {
-	Name			"<S40>/Integrator ICs"
-      }
-      Block {
-	Name			"<S40>/N Copy"
-      }
-      Block {
-	Name			"<S40>/N Gain"
-      }
-      Block {
-	Name			"<S40>/P Copy"
-      }
-      Block {
-	Name			"<S40>/PID Compensator Formula"
-      }
-      Block {
-	Name			"<S40>/Parallel P Gain"
-      }
-      Block {
-	Name			"<S40>/Reset Signal"
-      }
-      Block {
-	Name			"<S40>/Saturation"
-      }
-      Block {
-	Name			"<S40>/Saturation Fdbk"
-      }
-      Block {
-	Name			"<S40>/Sum"
-      }
-      Block {
-	Name			"<S40>/Sum Fdbk"
-      }
-      Block {
-	Name			"<S40>/Tracking Mode"
-      }
-      Block {
-	Name			"<S40>/Tracking Mode Sum"
-      }
-      Block {
-	Name			"<S40>/Tsamp - Integral"
-      }
-      Block {
-	Name			"<S40>/Tsamp - Ngain"
-      }
-      Block {
-	Name			"<S40>/postSat Signal"
-      }
-      Block {
-	Name			"<S40>/preInt Signal"
-      }
-      Block {
-	Name			"<S40>/preSat Signal"
+	Name			"<S61>/Sum1"
       }
     }
     Subsystem {
-      Name		      "<S14>/turn_adjus"
-    }
-    Subsystem {
-      Name		      "<S15>/Compare\nTo Constant"
+      Name		      "<S14>/Initialization"
       Block {
-	Name			"<S94>/Constant"
-      }
-      Block {
-	Name			"<S94>/Compare"
+	Name			"<S62>/Init_u"
       }
     }
     Subsystem {
-      Name		      "<S15>/Detect Rise\nPositive"
+      Name		      "<S14>/Integrator\n(Discrete or Continuous)"
       Block {
-	Name			"<S95>/Positive"
-      }
-      Block {
-	Name			"<S95>/FixPt Relational Operator"
-      }
-      Block {
-	Name			"<S95>/Delay Input1"
+	Name			"<S63>/Discrete"
       }
     }
     Subsystem {
-      Name		      "<S18>/Discrete Varying Lowpass"
+      Name		      "<S15>/Enable//disable\ntime constant"
       Block {
-	Name			"<S97>/SOS1"
+	Name			"<S68>/Compare To Constant"
       }
       Block {
-	Name			"<S97>/SOS2"
+	Name			"<S68>/Compare To Zero"
+      }
+      Block {
+	Name			"<S68>/Constant"
+      }
+      Block {
+	Name			"<S68>/Time constant"
+      }
+      Block {
+	Name			"<S68>/Avoid Divide by Zero"
+      }
+      Block {
+	Name			"<S68>/Logical Operator"
+      }
+      Block {
+	Name			"<S68>/Max"
+      }
+      Block {
+	Name			"<S68>/Probe"
+      }
+      Block {
+	Name			"<S68>/Sum1"
       }
     }
     Subsystem {
-      Name		      "<S19>/Compare\nTo Constant"
+      Name		      "<S15>/Initialization"
       Block {
-	Name			"<S22>/Constant"
-      }
-      Block {
-	Name			"<S22>/Compare"
+	Name			"<S69>/Init_u"
       }
     }
     Subsystem {
-      Name		      "<S19>/Compare\nTo Zero"
+      Name		      "<S15>/Integrator\n(Discrete or Continuous)"
       Block {
-	Name			"<S23>/Constant"
-      }
-      Block {
-	Name			"<S23>/Compare"
+	Name			"<S70>/Discrete"
       }
     }
     Subsystem {
-      Name		      "<S20>/Init_u"
+      Name		      "<S16>/Anti-windup"
+      Block {
+	Name			"<S75>/Passthrough"
+      }
     }
     Subsystem {
-      Name		      "<S21>/Discrete"
+      Name		      "<S16>/D Gain"
       Block {
-	Name			"<S25>/Integrator"
+	Name			"<S76>/Internal Parameters"
+      }
+    }
+    Subsystem {
+      Name		      "<S16>/External Derivative"
+      Block {
+	Name			"<S77>/Error"
+      }
+    }
+    Subsystem {
+      Name		      "<S16>/Filter"
+      Block {
+	Name			"<S78>/Cont. Filter"
+      }
+    }
+    Subsystem {
+      Name		      "<S16>/Filter ICs"
+      Block {
+	Name			"<S79>/Internal IC - Filter"
+      }
+    }
+    Subsystem {
+      Name		      "<S16>/I Gain"
+      Block {
+	Name			"<S80>/Internal Parameters"
+      }
+    }
+    Subsystem {
+      Name		      "<S16>/Ideal P Gain"
+      Block {
+	Name			"<S81>/Passthrough"
+      }
+    }
+    Subsystem {
+      Name		      "<S16>/Ideal P Gain Fdbk"
+      Block {
+	Name			"<S82>/Disabled"
+      }
+    }
+    Subsystem {
+      Name		      "<S16>/Integrator"
+      Block {
+	Name			"<S83>/Continuous"
+      }
+    }
+    Subsystem {
+      Name		      "<S16>/Integrator ICs"
+      Block {
+	Name			"<S84>/Internal IC"
+      }
+    }
+    Subsystem {
+      Name		      "<S16>/N Copy"
+      Block {
+	Name			"<S85>/Disabled"
+      }
+    }
+    Subsystem {
+      Name		      "<S16>/N Gain"
+      Block {
+	Name			"<S86>/Internal Parameters"
+      }
+    }
+    Subsystem {
+      Name		      "<S16>/P Copy"
+      Block {
+	Name			"<S87>/Disabled"
+      }
+    }
+    Subsystem {
+      Name		      "<S16>/PID Compensator Formula"
+    }
+    Subsystem {
+      Name		      "<S16>/Parallel P Gain"
+      Block {
+	Name			"<S88>/Internal Parameters"
+      }
+    }
+    Subsystem {
+      Name		      "<S16>/Reset Signal"
+      Block {
+	Name			"<S89>/Disabled"
+      }
+    }
+    Subsystem {
+      Name		      "<S16>/Saturation"
+      Block {
+	Name			"<S90>/Passthrough"
+      }
+    }
+    Subsystem {
+      Name		      "<S16>/Saturation Fdbk"
+      Block {
+	Name			"<S91>/Disabled"
+      }
+    }
+    Subsystem {
+      Name		      "<S16>/Sum"
+      Block {
+	Name			"<S92>/Sum_PID"
+      }
+    }
+    Subsystem {
+      Name		      "<S16>/Sum Fdbk"
+      Block {
+	Name			"<S93>/Disabled"
+      }
+    }
+    Subsystem {
+      Name		      "<S16>/Tracking Mode"
+      Block {
+	Name			"<S94>/Disabled"
+      }
+    }
+    Subsystem {
+      Name		      "<S16>/Tracking Mode Sum"
+      Block {
+	Name			"<S95>/Passthrough"
+      }
+    }
+    Subsystem {
+      Name		      "<S16>/Tsamp - Integral"
+      Block {
+	Name			"<S96>/TsSignalSpecification"
+      }
+    }
+    Subsystem {
+      Name		      "<S16>/Tsamp - Ngain"
+      Block {
+	Name			"<S97>/Passthrough"
+      }
+    }
+    Subsystem {
+      Name		      "<S16>/postSat Signal"
+      Block {
+	Name			"<S98>/Forward_Path"
+      }
+    }
+    Subsystem {
+      Name		      "<S16>/preInt Signal"
+      Block {
+	Name			"<S99>/Internal PreInt"
+      }
+    }
+    Subsystem {
+      Name		      "<S16>/preSat Signal"
+      Block {
+	Name			"<S100>/Forward_Path"
+      }
+    }
+    Subsystem {
+      Name		      "<S17>/Anti-windup"
+      Block {
+	Name			"<S127>/Passthrough"
+      }
+    }
+    Subsystem {
+      Name		      "<S17>/D Gain"
+      Block {
+	Name			"<S128>/Internal Parameters"
+      }
+    }
+    Subsystem {
+      Name		      "<S17>/External Derivative"
+      Block {
+	Name			"<S129>/Error"
+      }
+    }
+    Subsystem {
+      Name		      "<S17>/Filter"
+      Block {
+	Name			"<S130>/Cont. Filter"
+      }
+    }
+    Subsystem {
+      Name		      "<S17>/Filter ICs"
+      Block {
+	Name			"<S131>/Internal IC - Filter"
+      }
+    }
+    Subsystem {
+      Name		      "<S17>/I Gain"
+      Block {
+	Name			"<S132>/Internal Parameters"
+      }
+    }
+    Subsystem {
+      Name		      "<S17>/Ideal P Gain"
+      Block {
+	Name			"<S133>/Passthrough"
+      }
+    }
+    Subsystem {
+      Name		      "<S17>/Ideal P Gain Fdbk"
+      Block {
+	Name			"<S134>/Disabled"
+      }
+    }
+    Subsystem {
+      Name		      "<S17>/Integrator"
+      Block {
+	Name			"<S135>/Continuous"
+      }
+    }
+    Subsystem {
+      Name		      "<S17>/Integrator ICs"
+      Block {
+	Name			"<S136>/Internal IC"
+      }
+    }
+    Subsystem {
+      Name		      "<S17>/N Copy"
+      Block {
+	Name			"<S137>/Disabled"
+      }
+    }
+    Subsystem {
+      Name		      "<S17>/N Gain"
+      Block {
+	Name			"<S138>/Internal Parameters"
+      }
+    }
+    Subsystem {
+      Name		      "<S17>/P Copy"
+      Block {
+	Name			"<S139>/Disabled"
+      }
+    }
+    Subsystem {
+      Name		      "<S17>/PID Compensator Formula"
+    }
+    Subsystem {
+      Name		      "<S17>/Parallel P Gain"
+      Block {
+	Name			"<S140>/Internal Parameters"
+      }
+    }
+    Subsystem {
+      Name		      "<S17>/Reset Signal"
+      Block {
+	Name			"<S141>/Disabled"
+      }
+    }
+    Subsystem {
+      Name		      "<S17>/Saturation"
+      Block {
+	Name			"<S142>/Passthrough"
+      }
+    }
+    Subsystem {
+      Name		      "<S17>/Saturation Fdbk"
+      Block {
+	Name			"<S143>/Disabled"
+      }
+    }
+    Subsystem {
+      Name		      "<S17>/Sum"
+      Block {
+	Name			"<S144>/Sum_PID"
+      }
+    }
+    Subsystem {
+      Name		      "<S17>/Sum Fdbk"
+      Block {
+	Name			"<S145>/Disabled"
+      }
+    }
+    Subsystem {
+      Name		      "<S17>/Tracking Mode"
+      Block {
+	Name			"<S146>/Disabled"
+      }
+    }
+    Subsystem {
+      Name		      "<S17>/Tracking Mode Sum"
+      Block {
+	Name			"<S147>/Passthrough"
+      }
+    }
+    Subsystem {
+      Name		      "<S17>/Tsamp - Integral"
+      Block {
+	Name			"<S148>/TsSignalSpecification"
+      }
+    }
+    Subsystem {
+      Name		      "<S17>/Tsamp - Ngain"
+      Block {
+	Name			"<S149>/Passthrough"
+      }
+    }
+    Subsystem {
+      Name		      "<S17>/postSat Signal"
+      Block {
+	Name			"<S150>/Forward_Path"
+      }
+    }
+    Subsystem {
+      Name		      "<S17>/preInt Signal"
+      Block {
+	Name			"<S151>/Internal PreInt"
+      }
+    }
+    Subsystem {
+      Name		      "<S17>/preSat Signal"
+      Block {
+	Name			"<S152>/Forward_Path"
+      }
+    }
+    Subsystem {
+      Name		      "<S18>/PID Controller"
+      Block {
+	Name			"<S180>/Anti-windup"
       }
       Block {
-	Name			"<S25>/Saturation"
+	Name			"<S180>/D Gain"
       }
+      Block {
+	Name			"<S180>/External Derivative"
+      }
+      Block {
+	Name			"<S180>/Filter"
+      }
+      Block {
+	Name			"<S180>/Filter ICs"
+      }
+      Block {
+	Name			"<S180>/I Gain"
+      }
+      Block {
+	Name			"<S180>/Ideal P Gain"
+      }
+      Block {
+	Name			"<S180>/Ideal P Gain Fdbk"
+      }
+      Block {
+	Name			"<S180>/Integrator"
+      }
+      Block {
+	Name			"<S180>/Integrator ICs"
+      }
+      Block {
+	Name			"<S180>/N Copy"
+      }
+      Block {
+	Name			"<S180>/N Gain"
+      }
+      Block {
+	Name			"<S180>/P Copy"
+      }
+      Block {
+	Name			"<S180>/PID Compensator Formula"
+      }
+      Block {
+	Name			"<S180>/Parallel P Gain"
+      }
+      Block {
+	Name			"<S180>/Reset Signal"
+      }
+      Block {
+	Name			"<S180>/Saturation"
+      }
+      Block {
+	Name			"<S180>/Saturation Fdbk"
+      }
+      Block {
+	Name			"<S180>/Sum"
+      }
+      Block {
+	Name			"<S180>/Sum Fdbk"
+      }
+      Block {
+	Name			"<S180>/Tracking Mode"
+      }
+      Block {
+	Name			"<S180>/Tracking Mode Sum"
+      }
+      Block {
+	Name			"<S180>/Tsamp - Integral"
+      }
+      Block {
+	Name			"<S180>/Tsamp - Ngain"
+      }
+      Block {
+	Name			"<S180>/postSat Signal"
+      }
+      Block {
+	Name			"<S180>/preInt Signal"
+      }
+      Block {
+	Name			"<S180>/preSat Signal"
+      }
+    }
+    Subsystem {
+      Name		      "<S18>/Chart"
+    }
+    Subsystem {
+      Name		      "<S18>/turn_adjus"
+    }
+    Subsystem {
+      Name		      "<S22>/PID Controller1"
+      Block {
+	Name			"<S235>/Anti-windup"
+      }
+      Block {
+	Name			"<S235>/D Gain"
+      }
+      Block {
+	Name			"<S235>/External Derivative"
+      }
+      Block {
+	Name			"<S235>/Filter"
+      }
+      Block {
+	Name			"<S235>/Filter ICs"
+      }
+      Block {
+	Name			"<S235>/I Gain"
+      }
+      Block {
+	Name			"<S235>/Ideal P Gain"
+      }
+      Block {
+	Name			"<S235>/Ideal P Gain Fdbk"
+      }
+      Block {
+	Name			"<S235>/Integrator"
+      }
+      Block {
+	Name			"<S235>/Integrator ICs"
+      }
+      Block {
+	Name			"<S235>/N Copy"
+      }
+      Block {
+	Name			"<S235>/N Gain"
+      }
+      Block {
+	Name			"<S235>/P Copy"
+      }
+      Block {
+	Name			"<S235>/PID Compensator Formula"
+      }
+      Block {
+	Name			"<S235>/Parallel P Gain"
+      }
+      Block {
+	Name			"<S235>/Reset Signal"
+      }
+      Block {
+	Name			"<S235>/Saturation"
+      }
+      Block {
+	Name			"<S235>/Saturation Fdbk"
+      }
+      Block {
+	Name			"<S235>/Sum"
+      }
+      Block {
+	Name			"<S235>/Sum Fdbk"
+      }
+      Block {
+	Name			"<S235>/Tracking Mode"
+      }
+      Block {
+	Name			"<S235>/Tracking Mode Sum"
+      }
+      Block {
+	Name			"<S235>/Tsamp - Integral"
+      }
+      Block {
+	Name			"<S235>/Tsamp - Ngain"
+      }
+      Block {
+	Name			"<S235>/postSat Signal"
+      }
+      Block {
+	Name			"<S235>/preInt Signal"
+      }
+      Block {
+	Name			"<S235>/preSat Signal"
+      }
+    }
+    Subsystem {
+      Name		      "<S22>/Chart"
+    }
+    Subsystem {
+      Name		      "<S23>/Discrete Varying Lowpass"
+      Block {
+	Name			"<S288>/SOS1"
+      }
+      Block {
+	Name			"<S288>/SOS2"
+      }
+    }
+    Subsystem {
+      Name		      "<S24>/PID Controller1"
+      Block {
+	Name			"<S293>/Anti-windup"
+      }
+      Block {
+	Name			"<S293>/D Gain"
+      }
+      Block {
+	Name			"<S293>/External Derivative"
+      }
+      Block {
+	Name			"<S293>/Filter"
+      }
+      Block {
+	Name			"<S293>/Filter ICs"
+      }
+      Block {
+	Name			"<S293>/I Gain"
+      }
+      Block {
+	Name			"<S293>/Ideal P Gain"
+      }
+      Block {
+	Name			"<S293>/Ideal P Gain Fdbk"
+      }
+      Block {
+	Name			"<S293>/Integrator"
+      }
+      Block {
+	Name			"<S293>/Integrator ICs"
+      }
+      Block {
+	Name			"<S293>/N Copy"
+      }
+      Block {
+	Name			"<S293>/N Gain"
+      }
+      Block {
+	Name			"<S293>/P Copy"
+      }
+      Block {
+	Name			"<S293>/PID Compensator Formula"
+      }
+      Block {
+	Name			"<S293>/Parallel P Gain"
+      }
+      Block {
+	Name			"<S293>/Reset Signal"
+      }
+      Block {
+	Name			"<S293>/Saturation"
+      }
+      Block {
+	Name			"<S293>/Saturation Fdbk"
+      }
+      Block {
+	Name			"<S293>/Sum"
+      }
+      Block {
+	Name			"<S293>/Sum Fdbk"
+      }
+      Block {
+	Name			"<S293>/Tracking Mode"
+      }
+      Block {
+	Name			"<S293>/Tracking Mode Sum"
+      }
+      Block {
+	Name			"<S293>/Tsamp - Integral"
+      }
+      Block {
+	Name			"<S293>/Tsamp - Ngain"
+      }
+      Block {
+	Name			"<S293>/postSat Signal"
+      }
+      Block {
+	Name			"<S293>/preInt Signal"
+      }
+      Block {
+	Name			"<S293>/preSat Signal"
+      }
+    }
+    Subsystem {
+      Name		      "<S24>/PID Controller2"
+      Block {
+	Name			"<S294>/Anti-windup"
+      }
+      Block {
+	Name			"<S294>/D Gain"
+      }
+      Block {
+	Name			"<S294>/External Derivative"
+      }
+      Block {
+	Name			"<S294>/Filter"
+      }
+      Block {
+	Name			"<S294>/Filter ICs"
+      }
+      Block {
+	Name			"<S294>/I Gain"
+      }
+      Block {
+	Name			"<S294>/Ideal P Gain"
+      }
+      Block {
+	Name			"<S294>/Ideal P Gain Fdbk"
+      }
+      Block {
+	Name			"<S294>/Integrator"
+      }
+      Block {
+	Name			"<S294>/Integrator ICs"
+      }
+      Block {
+	Name			"<S294>/N Copy"
+      }
+      Block {
+	Name			"<S294>/N Gain"
+      }
+      Block {
+	Name			"<S294>/P Copy"
+      }
+      Block {
+	Name			"<S294>/PID Compensator Formula"
+      }
+      Block {
+	Name			"<S294>/Parallel P Gain"
+      }
+      Block {
+	Name			"<S294>/Reset Signal"
+      }
+      Block {
+	Name			"<S294>/Saturation"
+      }
+      Block {
+	Name			"<S294>/Saturation Fdbk"
+      }
+      Block {
+	Name			"<S294>/Sum"
+      }
+      Block {
+	Name			"<S294>/Sum Fdbk"
+      }
+      Block {
+	Name			"<S294>/Tracking Mode"
+      }
+      Block {
+	Name			"<S294>/Tracking Mode Sum"
+      }
+      Block {
+	Name			"<S294>/Tsamp - Integral"
+      }
+      Block {
+	Name			"<S294>/Tsamp - Ngain"
+      }
+      Block {
+	Name			"<S294>/postSat Signal"
+      }
+      Block {
+	Name			"<S294>/preInt Signal"
+      }
+      Block {
+	Name			"<S294>/preSat Signal"
+      }
+    }
+    Subsystem {
+      Name		      "<S24>/engage_disengage_straightnert"
     }
     Subsystem {
       Name		      "<S26>/Compare\nTo Constant"
-      Block {
-	Name			"<S29>/Constant"
-      }
-      Block {
-	Name			"<S29>/Compare"
-      }
-    }
-    Subsystem {
-      Name		      "<S26>/Compare\nTo Zero"
       Block {
 	Name			"<S30>/Constant"
       }
@@ -1422,28 +3412,1126 @@ CompiledModel {
       }
     }
     Subsystem {
-      Name		      "<S27>/Init_u"
-    }
-    Subsystem {
-      Name		      "<S28>/Discrete"
+      Name		      "<S26>/Detect Rise\nPositive"
       Block {
-	Name			"<S32>/Integrator"
+	Name			"<S31>/Positive"
       }
       Block {
-	Name			"<S32>/Saturation"
-      }
-    }
-    Subsystem {
-      Name		      "<S33>/Compare\nTo Constant"
-      Block {
-	Name			"<S36>/Constant"
+	Name			"<S31>/FixPt Relational Operator"
       }
       Block {
-	Name			"<S36>/Compare"
+	Name			"<S31>/Delay Input1"
       }
     }
     Subsystem {
-      Name		      "<S33>/Compare\nTo Zero"
+      Name		      "<S27>/Compare\nTo Constant"
+      Block {
+	Name			"<S34>/Constant"
+      }
+      Block {
+	Name			"<S34>/Compare"
+      }
+    }
+    Subsystem {
+      Name		      "<S27>/Detect Fall\nNonpositive"
+      Block {
+	Name			"<S35>/Nonpositive"
+      }
+      Block {
+	Name			"<S35>/FixPt Relational Operator"
+      }
+      Block {
+	Name			"<S35>/Delay Input1"
+      }
+    }
+    Subsystem {
+      Name		      "<S27>/Detect Rise\nPositive"
+      Block {
+	Name			"<S36>/Positive"
+      }
+      Block {
+	Name			"<S36>/FixPt Relational Operator"
+      }
+      Block {
+	Name			"<S36>/Delay Input1"
+      }
+    }
+    Subsystem {
+      Name		      "<S27>/Chart"
+    }
+    Subsystem {
+      Name		      "<S39>/Compare\nTo Constant"
+      Block {
+	Name			"<S45>/Constant"
+      }
+      Block {
+	Name			"<S45>/Compare"
+      }
+    }
+    Subsystem {
+      Name		      "<S39>/Detect Rise\nPositive"
+      Block {
+	Name			"<S46>/Positive"
+      }
+      Block {
+	Name			"<S46>/FixPt Relational Operator"
+      }
+      Block {
+	Name			"<S46>/Delay Input1"
+      }
+    }
+    Subsystem {
+      Name		      "<S40>/Compare\nTo Constant"
+      Block {
+	Name			"<S49>/Constant"
+      }
+      Block {
+	Name			"<S49>/Compare"
+      }
+    }
+    Subsystem {
+      Name		      "<S40>/Detect Fall\nNonpositive"
+      Block {
+	Name			"<S50>/Nonpositive"
+      }
+      Block {
+	Name			"<S50>/FixPt Relational Operator"
+      }
+      Block {
+	Name			"<S50>/Delay Input1"
+      }
+    }
+    Subsystem {
+      Name		      "<S40>/Detect Rise\nPositive"
+      Block {
+	Name			"<S51>/Positive"
+      }
+      Block {
+	Name			"<S51>/FixPt Relational Operator"
+      }
+      Block {
+	Name			"<S51>/Delay Input1"
+      }
+    }
+    Subsystem {
+      Name		      "<S40>/Chart"
+    }
+    Subsystem {
+      Name		      "<S54>/Compare\nTo Constant"
+      Block {
+	Name			"<S57>/Constant"
+      }
+      Block {
+	Name			"<S57>/Compare"
+      }
+    }
+    Subsystem {
+      Name		      "<S54>/Compare\nTo Zero"
+      Block {
+	Name			"<S58>/Constant"
+      }
+      Block {
+	Name			"<S58>/Compare"
+      }
+    }
+    Subsystem {
+      Name		      "<S55>/Init_u"
+    }
+    Subsystem {
+      Name		      "<S56>/Discrete"
+      Block {
+	Name			"<S60>/Integrator"
+      }
+      Block {
+	Name			"<S60>/Saturation"
+      }
+    }
+    Subsystem {
+      Name		      "<S61>/Compare\nTo Constant"
+      Block {
+	Name			"<S64>/Constant"
+      }
+      Block {
+	Name			"<S64>/Compare"
+      }
+    }
+    Subsystem {
+      Name		      "<S61>/Compare\nTo Zero"
+      Block {
+	Name			"<S65>/Constant"
+      }
+      Block {
+	Name			"<S65>/Compare"
+      }
+    }
+    Subsystem {
+      Name		      "<S62>/Init_u"
+    }
+    Subsystem {
+      Name		      "<S63>/Discrete"
+      Block {
+	Name			"<S67>/Integrator"
+      }
+      Block {
+	Name			"<S67>/Saturation"
+      }
+    }
+    Subsystem {
+      Name		      "<S68>/Compare\nTo Constant"
+      Block {
+	Name			"<S71>/Constant"
+      }
+      Block {
+	Name			"<S71>/Compare"
+      }
+    }
+    Subsystem {
+      Name		      "<S68>/Compare\nTo Zero"
+      Block {
+	Name			"<S72>/Constant"
+      }
+      Block {
+	Name			"<S72>/Compare"
+      }
+    }
+    Subsystem {
+      Name		      "<S69>/Init_u"
+    }
+    Subsystem {
+      Name		      "<S70>/Discrete"
+      Block {
+	Name			"<S74>/Integrator"
+      }
+      Block {
+	Name			"<S74>/Saturation"
+      }
+    }
+    Subsystem {
+      Name		      "<S75>/Passthrough"
+    }
+    Subsystem {
+      Name		      "<S76>/Internal Parameters"
+      Block {
+	Name			"<S102>/Derivative Gain"
+      }
+    }
+    Subsystem {
+      Name		      "<S77>/Error"
+    }
+    Subsystem {
+      Name		      "<S78>/Cont. Filter"
+      Block {
+	Name			"<S104>/Filter"
+      }
+      Block {
+	Name			"<S104>/SumD"
+      }
+    }
+    Subsystem {
+      Name		      "<S79>/Internal IC - Filter"
+    }
+    Subsystem {
+      Name		      "<S80>/Internal Parameters"
+      Block {
+	Name			"<S106>/Integral Gain"
+      }
+    }
+    Subsystem {
+      Name		      "<S81>/Passthrough"
+    }
+    Subsystem {
+      Name		      "<S82>/Disabled"
+    }
+    Subsystem {
+      Name		      "<S83>/Continuous"
+      Block {
+	Name			"<S109>/Integrator"
+      }
+    }
+    Subsystem {
+      Name		      "<S84>/Internal IC"
+    }
+    Subsystem {
+      Name		      "<S85>/Disabled"
+    }
+    Subsystem {
+      Name		      "<S86>/Internal Parameters"
+      Block {
+	Name			"<S112>/Filter Coefficient"
+      }
+    }
+    Subsystem {
+      Name		      "<S87>/Disabled"
+    }
+    Subsystem {
+      Name		      "<S88>/Internal Parameters"
+      Block {
+	Name			"<S114>/Proportional Gain"
+      }
+    }
+    Subsystem {
+      Name		      "<S89>/Disabled"
+    }
+    Subsystem {
+      Name		      "<S90>/Passthrough"
+    }
+    Subsystem {
+      Name		      "<S91>/Disabled"
+    }
+    Subsystem {
+      Name		      "<S92>/Sum_PID"
+      Block {
+	Name			"<S118>/Sum"
+      }
+    }
+    Subsystem {
+      Name		      "<S93>/Disabled"
+    }
+    Subsystem {
+      Name		      "<S94>/Disabled"
+    }
+    Subsystem {
+      Name		      "<S95>/Passthrough"
+    }
+    Subsystem {
+      Name		      "<S96>/TsSignalSpecification"
+    }
+    Subsystem {
+      Name		      "<S97>/Passthrough"
+    }
+    Subsystem {
+      Name		      "<S98>/Forward_Path"
+    }
+    Subsystem {
+      Name		      "<S99>/Internal PreInt"
+    }
+    Subsystem {
+      Name		      "<S100>/Forward_Path"
+    }
+    Subsystem {
+      Name		      "<S127>/Passthrough"
+    }
+    Subsystem {
+      Name		      "<S128>/Internal Parameters"
+      Block {
+	Name			"<S154>/Derivative Gain"
+      }
+    }
+    Subsystem {
+      Name		      "<S129>/Error"
+    }
+    Subsystem {
+      Name		      "<S130>/Cont. Filter"
+      Block {
+	Name			"<S156>/Filter"
+      }
+      Block {
+	Name			"<S156>/SumD"
+      }
+    }
+    Subsystem {
+      Name		      "<S131>/Internal IC - Filter"
+    }
+    Subsystem {
+      Name		      "<S132>/Internal Parameters"
+      Block {
+	Name			"<S158>/Integral Gain"
+      }
+    }
+    Subsystem {
+      Name		      "<S133>/Passthrough"
+    }
+    Subsystem {
+      Name		      "<S134>/Disabled"
+    }
+    Subsystem {
+      Name		      "<S135>/Continuous"
+      Block {
+	Name			"<S161>/Integrator"
+      }
+    }
+    Subsystem {
+      Name		      "<S136>/Internal IC"
+    }
+    Subsystem {
+      Name		      "<S137>/Disabled"
+    }
+    Subsystem {
+      Name		      "<S138>/Internal Parameters"
+      Block {
+	Name			"<S164>/Filter Coefficient"
+      }
+    }
+    Subsystem {
+      Name		      "<S139>/Disabled"
+    }
+    Subsystem {
+      Name		      "<S140>/Internal Parameters"
+      Block {
+	Name			"<S166>/Proportional Gain"
+      }
+    }
+    Subsystem {
+      Name		      "<S141>/Disabled"
+    }
+    Subsystem {
+      Name		      "<S142>/Passthrough"
+    }
+    Subsystem {
+      Name		      "<S143>/Disabled"
+    }
+    Subsystem {
+      Name		      "<S144>/Sum_PID"
+    }
+    Subsystem {
+      Name		      "<S145>/Disabled"
+    }
+    Subsystem {
+      Name		      "<S146>/Disabled"
+    }
+    Subsystem {
+      Name		      "<S147>/Passthrough"
+    }
+    Subsystem {
+      Name		      "<S148>/TsSignalSpecification"
+    }
+    Subsystem {
+      Name		      "<S149>/Passthrough"
+    }
+    Subsystem {
+      Name		      "<S150>/Forward_Path"
+    }
+    Subsystem {
+      Name		      "<S151>/Internal PreInt"
+    }
+    Subsystem {
+      Name		      "<S152>/Forward_Path"
+    }
+    Subsystem {
+      Name		      "<S180>/Anti-windup"
+      Block {
+	Name			"<S182>/Disabled"
+      }
+    }
+    Subsystem {
+      Name		      "<S180>/D Gain"
+      Block {
+	Name			"<S183>/Internal Parameters"
+      }
+    }
+    Subsystem {
+      Name		      "<S180>/External Derivative"
+      Block {
+	Name			"<S184>/Error"
+      }
+    }
+    Subsystem {
+      Name		      "<S180>/Filter"
+      Block {
+	Name			"<S185>/Cont. Filter"
+      }
+    }
+    Subsystem {
+      Name		      "<S180>/Filter ICs"
+      Block {
+	Name			"<S186>/Internal IC - Filter"
+      }
+    }
+    Subsystem {
+      Name		      "<S180>/I Gain"
+      Block {
+	Name			"<S187>/Disabled"
+      }
+    }
+    Subsystem {
+      Name		      "<S180>/Ideal P Gain"
+      Block {
+	Name			"<S188>/Passthrough"
+      }
+    }
+    Subsystem {
+      Name		      "<S180>/Ideal P Gain Fdbk"
+      Block {
+	Name			"<S189>/Disabled"
+      }
+    }
+    Subsystem {
+      Name		      "<S180>/Integrator"
+      Block {
+	Name			"<S190>/Disabled"
+      }
+    }
+    Subsystem {
+      Name		      "<S180>/Integrator ICs"
+      Block {
+	Name			"<S191>/Disabled"
+      }
+    }
+    Subsystem {
+      Name		      "<S180>/N Copy"
+      Block {
+	Name			"<S192>/Disabled"
+      }
+    }
+    Subsystem {
+      Name		      "<S180>/N Gain"
+      Block {
+	Name			"<S193>/Internal Parameters"
+      }
+    }
+    Subsystem {
+      Name		      "<S180>/P Copy"
+      Block {
+	Name			"<S194>/Disabled"
+      }
+    }
+    Subsystem {
+      Name		      "<S180>/PID Compensator Formula"
+    }
+    Subsystem {
+      Name		      "<S180>/Parallel P Gain"
+      Block {
+	Name			"<S195>/Internal Parameters"
+      }
+    }
+    Subsystem {
+      Name		      "<S180>/Reset Signal"
+      Block {
+	Name			"<S196>/Disabled"
+      }
+    }
+    Subsystem {
+      Name		      "<S180>/Saturation"
+      Block {
+	Name			"<S197>/Passthrough"
+      }
+    }
+    Subsystem {
+      Name		      "<S180>/Saturation Fdbk"
+      Block {
+	Name			"<S198>/Disabled"
+      }
+    }
+    Subsystem {
+      Name		      "<S180>/Sum"
+      Block {
+	Name			"<S199>/Sum_PD"
+      }
+    }
+    Subsystem {
+      Name		      "<S180>/Sum Fdbk"
+      Block {
+	Name			"<S200>/Disabled"
+      }
+    }
+    Subsystem {
+      Name		      "<S180>/Tracking Mode"
+      Block {
+	Name			"<S201>/Disabled"
+      }
+    }
+    Subsystem {
+      Name		      "<S180>/Tracking Mode Sum"
+      Block {
+	Name			"<S202>/Passthrough"
+      }
+    }
+    Subsystem {
+      Name		      "<S180>/Tsamp - Integral"
+      Block {
+	Name			"<S203>/TsSignalSpecification"
+      }
+    }
+    Subsystem {
+      Name		      "<S180>/Tsamp - Ngain"
+      Block {
+	Name			"<S204>/Passthrough"
+      }
+    }
+    Subsystem {
+      Name		      "<S180>/postSat Signal"
+      Block {
+	Name			"<S205>/Forward_Path"
+      }
+    }
+    Subsystem {
+      Name		      "<S180>/preInt Signal"
+      Block {
+	Name			"<S206>/Internal PreInt"
+      }
+    }
+    Subsystem {
+      Name		      "<S180>/preSat Signal"
+      Block {
+	Name			"<S207>/Forward_Path"
+      }
+    }
+    Subsystem {
+      Name		      "<S235>/Anti-windup"
+      Block {
+	Name			"<S236>/Passthrough"
+      }
+    }
+    Subsystem {
+      Name		      "<S235>/D Gain"
+      Block {
+	Name			"<S237>/Internal Parameters"
+      }
+    }
+    Subsystem {
+      Name		      "<S235>/External Derivative"
+      Block {
+	Name			"<S238>/Error"
+      }
+    }
+    Subsystem {
+      Name		      "<S235>/Filter"
+      Block {
+	Name			"<S239>/Cont. Filter"
+      }
+    }
+    Subsystem {
+      Name		      "<S235>/Filter ICs"
+      Block {
+	Name			"<S240>/Internal IC - Filter"
+      }
+    }
+    Subsystem {
+      Name		      "<S235>/I Gain"
+      Block {
+	Name			"<S241>/Internal Parameters"
+      }
+    }
+    Subsystem {
+      Name		      "<S235>/Ideal P Gain"
+      Block {
+	Name			"<S242>/Passthrough"
+      }
+    }
+    Subsystem {
+      Name		      "<S235>/Ideal P Gain Fdbk"
+      Block {
+	Name			"<S243>/Disabled"
+      }
+    }
+    Subsystem {
+      Name		      "<S235>/Integrator"
+      Block {
+	Name			"<S244>/Continuous"
+      }
+    }
+    Subsystem {
+      Name		      "<S235>/Integrator ICs"
+      Block {
+	Name			"<S245>/Internal IC"
+      }
+    }
+    Subsystem {
+      Name		      "<S235>/N Copy"
+      Block {
+	Name			"<S246>/Disabled"
+      }
+    }
+    Subsystem {
+      Name		      "<S235>/N Gain"
+      Block {
+	Name			"<S247>/Internal Parameters"
+      }
+    }
+    Subsystem {
+      Name		      "<S235>/P Copy"
+      Block {
+	Name			"<S248>/Disabled"
+      }
+    }
+    Subsystem {
+      Name		      "<S235>/PID Compensator Formula"
+    }
+    Subsystem {
+      Name		      "<S235>/Parallel P Gain"
+      Block {
+	Name			"<S249>/Internal Parameters"
+      }
+    }
+    Subsystem {
+      Name		      "<S235>/Reset Signal"
+      Block {
+	Name			"<S250>/Disabled"
+      }
+    }
+    Subsystem {
+      Name		      "<S235>/Saturation"
+      Block {
+	Name			"<S251>/Passthrough"
+      }
+    }
+    Subsystem {
+      Name		      "<S235>/Saturation Fdbk"
+      Block {
+	Name			"<S252>/Disabled"
+      }
+    }
+    Subsystem {
+      Name		      "<S235>/Sum"
+      Block {
+	Name			"<S253>/Sum_PID"
+      }
+    }
+    Subsystem {
+      Name		      "<S235>/Sum Fdbk"
+      Block {
+	Name			"<S254>/Disabled"
+      }
+    }
+    Subsystem {
+      Name		      "<S235>/Tracking Mode"
+      Block {
+	Name			"<S255>/Disabled"
+      }
+    }
+    Subsystem {
+      Name		      "<S235>/Tracking Mode Sum"
+      Block {
+	Name			"<S256>/Passthrough"
+      }
+    }
+    Subsystem {
+      Name		      "<S235>/Tsamp - Integral"
+      Block {
+	Name			"<S257>/TsSignalSpecification"
+      }
+    }
+    Subsystem {
+      Name		      "<S235>/Tsamp - Ngain"
+      Block {
+	Name			"<S258>/Passthrough"
+      }
+    }
+    Subsystem {
+      Name		      "<S235>/postSat Signal"
+      Block {
+	Name			"<S259>/Forward_Path"
+      }
+    }
+    Subsystem {
+      Name		      "<S235>/preInt Signal"
+      Block {
+	Name			"<S260>/Internal PreInt"
+      }
+    }
+    Subsystem {
+      Name		      "<S235>/preSat Signal"
+      Block {
+	Name			"<S261>/Forward_Path"
+      }
+    }
+    Subsystem {
+      Name		      "<S288>/SOS1"
+      Block {
+	Name			"<S289>/Arithmetic"
+      }
+      Block {
+	Name			"<S289>/Gain1"
+      }
+      Block {
+	Name			"<S289>/tau"
+      }
+      Block {
+	Name			"<S289>/Product1"
+      }
+      Block {
+	Name			"<S289>/Product2"
+      }
+      Block {
+	Name			"<S289>/Product5"
+      }
+      Block {
+	Name			"<S289>/Sum"
+      }
+      Block {
+	Name			"<S289>/Sum1"
+      }
+      Block {
+	Name			"<S289>/Sum2"
+      }
+      Block {
+	Name			"<S289>/Sum3"
+      }
+      Block {
+	Name			"<S289>/Unit Delay1"
+      }
+      Block {
+	Name			"<S289>/Unit Delay2"
+      }
+    }
+    Subsystem {
+      Name		      "<S288>/SOS2"
+      Block {
+	Name			"<S290>/Arithmetic"
+      }
+      Block {
+	Name			"<S290>/Gain1"
+      }
+      Block {
+	Name			"<S290>/tau"
+      }
+      Block {
+	Name			"<S290>/Product1"
+      }
+      Block {
+	Name			"<S290>/Product2"
+      }
+      Block {
+	Name			"<S290>/Product5"
+      }
+      Block {
+	Name			"<S290>/Sum"
+      }
+      Block {
+	Name			"<S290>/Sum1"
+      }
+      Block {
+	Name			"<S290>/Sum2"
+      }
+      Block {
+	Name			"<S290>/Sum3"
+      }
+      Block {
+	Name			"<S290>/Unit Delay1"
+      }
+      Block {
+	Name			"<S290>/Unit Delay2"
+      }
+    }
+    Subsystem {
+      Name		      "<S293>/Anti-windup"
+      Block {
+	Name			"<S296>/Passthrough"
+      }
+    }
+    Subsystem {
+      Name		      "<S293>/D Gain"
+      Block {
+	Name			"<S297>/Internal Parameters"
+      }
+    }
+    Subsystem {
+      Name		      "<S293>/External Derivative"
+      Block {
+	Name			"<S298>/Error"
+      }
+    }
+    Subsystem {
+      Name		      "<S293>/Filter"
+      Block {
+	Name			"<S299>/Cont. Filter"
+      }
+    }
+    Subsystem {
+      Name		      "<S293>/Filter ICs"
+      Block {
+	Name			"<S300>/Internal IC - Filter"
+      }
+    }
+    Subsystem {
+      Name		      "<S293>/I Gain"
+      Block {
+	Name			"<S301>/Internal Parameters"
+      }
+    }
+    Subsystem {
+      Name		      "<S293>/Ideal P Gain"
+      Block {
+	Name			"<S302>/Passthrough"
+      }
+    }
+    Subsystem {
+      Name		      "<S293>/Ideal P Gain Fdbk"
+      Block {
+	Name			"<S303>/Disabled"
+      }
+    }
+    Subsystem {
+      Name		      "<S293>/Integrator"
+      Block {
+	Name			"<S304>/Continuous"
+      }
+    }
+    Subsystem {
+      Name		      "<S293>/Integrator ICs"
+      Block {
+	Name			"<S305>/Internal IC"
+      }
+    }
+    Subsystem {
+      Name		      "<S293>/N Copy"
+      Block {
+	Name			"<S306>/Disabled"
+      }
+    }
+    Subsystem {
+      Name		      "<S293>/N Gain"
+      Block {
+	Name			"<S307>/Internal Parameters"
+      }
+    }
+    Subsystem {
+      Name		      "<S293>/P Copy"
+      Block {
+	Name			"<S308>/Disabled"
+      }
+    }
+    Subsystem {
+      Name		      "<S293>/PID Compensator Formula"
+    }
+    Subsystem {
+      Name		      "<S293>/Parallel P Gain"
+      Block {
+	Name			"<S309>/Internal Parameters"
+      }
+    }
+    Subsystem {
+      Name		      "<S293>/Reset Signal"
+      Block {
+	Name			"<S310>/Disabled"
+      }
+    }
+    Subsystem {
+      Name		      "<S293>/Saturation"
+      Block {
+	Name			"<S311>/Passthrough"
+      }
+    }
+    Subsystem {
+      Name		      "<S293>/Saturation Fdbk"
+      Block {
+	Name			"<S312>/Disabled"
+      }
+    }
+    Subsystem {
+      Name		      "<S293>/Sum"
+      Block {
+	Name			"<S313>/Sum_PID"
+      }
+    }
+    Subsystem {
+      Name		      "<S293>/Sum Fdbk"
+      Block {
+	Name			"<S314>/Disabled"
+      }
+    }
+    Subsystem {
+      Name		      "<S293>/Tracking Mode"
+      Block {
+	Name			"<S315>/Disabled"
+      }
+    }
+    Subsystem {
+      Name		      "<S293>/Tracking Mode Sum"
+      Block {
+	Name			"<S316>/Passthrough"
+      }
+    }
+    Subsystem {
+      Name		      "<S293>/Tsamp - Integral"
+      Block {
+	Name			"<S317>/TsSignalSpecification"
+      }
+    }
+    Subsystem {
+      Name		      "<S293>/Tsamp - Ngain"
+      Block {
+	Name			"<S318>/Passthrough"
+      }
+    }
+    Subsystem {
+      Name		      "<S293>/postSat Signal"
+      Block {
+	Name			"<S319>/Forward_Path"
+      }
+    }
+    Subsystem {
+      Name		      "<S293>/preInt Signal"
+      Block {
+	Name			"<S320>/Internal PreInt"
+      }
+    }
+    Subsystem {
+      Name		      "<S293>/preSat Signal"
+      Block {
+	Name			"<S321>/Forward_Path"
+      }
+    }
+    Subsystem {
+      Name		      "<S294>/Anti-windup"
+      Block {
+	Name			"<S348>/Passthrough"
+      }
+    }
+    Subsystem {
+      Name		      "<S294>/D Gain"
+      Block {
+	Name			"<S349>/Internal Parameters"
+      }
+    }
+    Subsystem {
+      Name		      "<S294>/External Derivative"
+      Block {
+	Name			"<S350>/Error"
+      }
+    }
+    Subsystem {
+      Name		      "<S294>/Filter"
+      Block {
+	Name			"<S351>/Cont. Filter"
+      }
+    }
+    Subsystem {
+      Name		      "<S294>/Filter ICs"
+      Block {
+	Name			"<S352>/Internal IC - Filter"
+      }
+    }
+    Subsystem {
+      Name		      "<S294>/I Gain"
+      Block {
+	Name			"<S353>/Internal Parameters"
+      }
+    }
+    Subsystem {
+      Name		      "<S294>/Ideal P Gain"
+      Block {
+	Name			"<S354>/Passthrough"
+      }
+    }
+    Subsystem {
+      Name		      "<S294>/Ideal P Gain Fdbk"
+      Block {
+	Name			"<S355>/Disabled"
+      }
+    }
+    Subsystem {
+      Name		      "<S294>/Integrator"
+      Block {
+	Name			"<S356>/Continuous"
+      }
+    }
+    Subsystem {
+      Name		      "<S294>/Integrator ICs"
+      Block {
+	Name			"<S357>/Internal IC"
+      }
+    }
+    Subsystem {
+      Name		      "<S294>/N Copy"
+      Block {
+	Name			"<S358>/Disabled"
+      }
+    }
+    Subsystem {
+      Name		      "<S294>/N Gain"
+      Block {
+	Name			"<S359>/Internal Parameters"
+      }
+    }
+    Subsystem {
+      Name		      "<S294>/P Copy"
+      Block {
+	Name			"<S360>/Disabled"
+      }
+    }
+    Subsystem {
+      Name		      "<S294>/PID Compensator Formula"
+    }
+    Subsystem {
+      Name		      "<S294>/Parallel P Gain"
+      Block {
+	Name			"<S361>/Internal Parameters"
+      }
+    }
+    Subsystem {
+      Name		      "<S294>/Reset Signal"
+      Block {
+	Name			"<S362>/Disabled"
+      }
+    }
+    Subsystem {
+      Name		      "<S294>/Saturation"
+      Block {
+	Name			"<S363>/Passthrough"
+      }
+    }
+    Subsystem {
+      Name		      "<S294>/Saturation Fdbk"
+      Block {
+	Name			"<S364>/Disabled"
+      }
+    }
+    Subsystem {
+      Name		      "<S294>/Sum"
+      Block {
+	Name			"<S365>/Sum_PID"
+      }
+    }
+    Subsystem {
+      Name		      "<S294>/Sum Fdbk"
+      Block {
+	Name			"<S366>/Disabled"
+      }
+    }
+    Subsystem {
+      Name		      "<S294>/Tracking Mode"
+      Block {
+	Name			"<S367>/Disabled"
+      }
+    }
+    Subsystem {
+      Name		      "<S294>/Tracking Mode Sum"
+      Block {
+	Name			"<S368>/Passthrough"
+      }
+    }
+    Subsystem {
+      Name		      "<S294>/Tsamp - Integral"
+      Block {
+	Name			"<S369>/TsSignalSpecification"
+      }
+    }
+    Subsystem {
+      Name		      "<S294>/Tsamp - Ngain"
+      Block {
+	Name			"<S370>/Passthrough"
+      }
+    }
+    Subsystem {
+      Name		      "<S294>/postSat Signal"
+      Block {
+	Name			"<S371>/Forward_Path"
+      }
+    }
+    Subsystem {
+      Name		      "<S294>/preInt Signal"
+      Block {
+	Name			"<S372>/Internal PreInt"
+      }
+    }
+    Subsystem {
+      Name		      "<S294>/preSat Signal"
+      Block {
+	Name			"<S373>/Forward_Path"
+      }
+    }
+    Subsystem {
+      Name		      "<S31>/Positive"
+      Block {
+	Name			"<S32>/Constant"
+      }
+      Block {
+	Name			"<S32>/Compare"
+      }
+    }
+    Subsystem {
+      Name		      "<S35>/Nonpositive"
       Block {
 	Name			"<S37>/Constant"
       }
@@ -1452,430 +4540,502 @@ CompiledModel {
       }
     }
     Subsystem {
-      Name		      "<S34>/Init_u"
-    }
-    Subsystem {
-      Name		      "<S35>/Discrete"
+      Name		      "<S36>/Positive"
       Block {
-	Name			"<S39>/Integrator"
+	Name			"<S38>/Constant"
       }
       Block {
-	Name			"<S39>/Saturation"
+	Name			"<S38>/Compare"
       }
     }
     Subsystem {
-      Name		      "<S40>/Anti-windup"
+      Name		      "<S46>/Positive"
       Block {
-	Name			"<S42>/Passthrough"
+	Name			"<S47>/Constant"
+      }
+      Block {
+	Name			"<S47>/Compare"
       }
     }
     Subsystem {
-      Name		      "<S40>/D Gain"
+      Name		      "<S50>/Nonpositive"
       Block {
-	Name			"<S43>/Internal Parameters"
+	Name			"<S52>/Constant"
+      }
+      Block {
+	Name			"<S52>/Compare"
       }
     }
     Subsystem {
-      Name		      "<S40>/External Derivative"
+      Name		      "<S51>/Positive"
       Block {
-	Name			"<S44>/Error"
+	Name			"<S53>/Constant"
+      }
+      Block {
+	Name			"<S53>/Compare"
       }
     }
     Subsystem {
-      Name		      "<S40>/Filter"
+      Name		      "<S182>/Disabled"
+    }
+    Subsystem {
+      Name		      "<S183>/Internal Parameters"
       Block {
-	Name			"<S45>/Cont. Filter"
+	Name			"<S209>/Derivative Gain"
       }
     }
     Subsystem {
-      Name		      "<S40>/Filter ICs"
+      Name		      "<S184>/Error"
+    }
+    Subsystem {
+      Name		      "<S185>/Cont. Filter"
       Block {
-	Name			"<S46>/Internal IC - Filter"
+	Name			"<S211>/Filter"
+      }
+      Block {
+	Name			"<S211>/SumD"
       }
     }
     Subsystem {
-      Name		      "<S40>/I Gain"
+      Name		      "<S186>/Internal IC - Filter"
+    }
+    Subsystem {
+      Name		      "<S187>/Disabled"
+    }
+    Subsystem {
+      Name		      "<S188>/Passthrough"
+    }
+    Subsystem {
+      Name		      "<S189>/Disabled"
+    }
+    Subsystem {
+      Name		      "<S190>/Disabled"
+    }
+    Subsystem {
+      Name		      "<S191>/Disabled"
+    }
+    Subsystem {
+      Name		      "<S192>/Disabled"
+    }
+    Subsystem {
+      Name		      "<S193>/Internal Parameters"
       Block {
-	Name			"<S47>/Internal Parameters"
+	Name			"<S219>/Filter Coefficient"
       }
     }
     Subsystem {
-      Name		      "<S40>/Ideal P Gain"
+      Name		      "<S194>/Disabled"
+    }
+    Subsystem {
+      Name		      "<S195>/Internal Parameters"
       Block {
-	Name			"<S48>/Passthrough"
+	Name			"<S221>/Proportional Gain"
       }
     }
     Subsystem {
-      Name		      "<S40>/Ideal P Gain Fdbk"
+      Name		      "<S196>/Disabled"
+    }
+    Subsystem {
+      Name		      "<S197>/Passthrough"
+    }
+    Subsystem {
+      Name		      "<S198>/Disabled"
+    }
+    Subsystem {
+      Name		      "<S199>/Sum_PD"
       Block {
-	Name			"<S49>/Disabled"
+	Name			"<S225>/Sum"
       }
     }
     Subsystem {
-      Name		      "<S40>/Integrator"
+      Name		      "<S200>/Disabled"
+    }
+    Subsystem {
+      Name		      "<S201>/Disabled"
+    }
+    Subsystem {
+      Name		      "<S202>/Passthrough"
+    }
+    Subsystem {
+      Name		      "<S203>/TsSignalSpecification"
+    }
+    Subsystem {
+      Name		      "<S204>/Passthrough"
+    }
+    Subsystem {
+      Name		      "<S205>/Forward_Path"
+    }
+    Subsystem {
+      Name		      "<S206>/Internal PreInt"
+    }
+    Subsystem {
+      Name		      "<S207>/Forward_Path"
+    }
+    Subsystem {
+      Name		      "<S236>/Passthrough"
+    }
+    Subsystem {
+      Name		      "<S237>/Internal Parameters"
       Block {
-	Name			"<S50>/Continuous"
+	Name			"<S263>/Derivative Gain"
       }
     }
     Subsystem {
-      Name		      "<S40>/Integrator ICs"
+      Name		      "<S238>/Error"
+    }
+    Subsystem {
+      Name		      "<S239>/Cont. Filter"
       Block {
-	Name			"<S51>/Internal IC"
+	Name			"<S265>/Filter"
+      }
+      Block {
+	Name			"<S265>/SumD"
       }
     }
     Subsystem {
-      Name		      "<S40>/N Copy"
+      Name		      "<S240>/Internal IC - Filter"
+    }
+    Subsystem {
+      Name		      "<S241>/Internal Parameters"
       Block {
-	Name			"<S52>/Disabled"
+	Name			"<S267>/Integral Gain"
       }
     }
     Subsystem {
-      Name		      "<S40>/N Gain"
+      Name		      "<S242>/Passthrough"
+    }
+    Subsystem {
+      Name		      "<S243>/Disabled"
+    }
+    Subsystem {
+      Name		      "<S244>/Continuous"
       Block {
-	Name			"<S53>/Internal Parameters"
+	Name			"<S270>/Integrator"
       }
     }
     Subsystem {
-      Name		      "<S40>/P Copy"
+      Name		      "<S245>/Internal IC"
+    }
+    Subsystem {
+      Name		      "<S246>/Disabled"
+    }
+    Subsystem {
+      Name		      "<S247>/Internal Parameters"
       Block {
-	Name			"<S54>/Disabled"
+	Name			"<S273>/Filter Coefficient"
       }
     }
     Subsystem {
-      Name		      "<S40>/PID Compensator Formula"
+      Name		      "<S248>/Disabled"
     }
     Subsystem {
-      Name		      "<S40>/Parallel P Gain"
+      Name		      "<S249>/Internal Parameters"
       Block {
-	Name			"<S55>/Internal Parameters"
-      }
-    }
-    Subsystem {
-      Name		      "<S40>/Reset Signal"
-      Block {
-	Name			"<S56>/Disabled"
+	Name			"<S275>/Proportional Gain"
       }
     }
     Subsystem {
-      Name		      "<S40>/Saturation"
+      Name		      "<S250>/Disabled"
+    }
+    Subsystem {
+      Name		      "<S251>/Passthrough"
+    }
+    Subsystem {
+      Name		      "<S252>/Disabled"
+    }
+    Subsystem {
+      Name		      "<S253>/Sum_PID"
       Block {
-	Name			"<S57>/Passthrough"
+	Name			"<S279>/Sum"
       }
     }
     Subsystem {
-      Name		      "<S40>/Saturation Fdbk"
+      Name		      "<S254>/Disabled"
+    }
+    Subsystem {
+      Name		      "<S255>/Disabled"
+    }
+    Subsystem {
+      Name		      "<S256>/Passthrough"
+    }
+    Subsystem {
+      Name		      "<S257>/TsSignalSpecification"
+    }
+    Subsystem {
+      Name		      "<S258>/Passthrough"
+    }
+    Subsystem {
+      Name		      "<S259>/Forward_Path"
+    }
+    Subsystem {
+      Name		      "<S260>/Internal PreInt"
+    }
+    Subsystem {
+      Name		      "<S261>/Forward_Path"
+    }
+    Subsystem {
+      Name		      "<S289>/Arithmetic"
       Block {
-	Name			"<S58>/Disabled"
+	Name			"<S291>/Bias"
+      }
+      Block {
+	Name			"<S291>/Bias1"
+      }
+      Block {
+	Name			"<S291>/Gain"
+      }
+      Block {
+	Name			"<S291>/Product2"
+      }
+      Block {
+	Name			"<S291>/Product3"
+      }
+      Block {
+	Name			"<S291>/Product4"
+      }
+      Block {
+	Name			"<S291>/Product5"
+      }
+      Block {
+	Name			"<S291>/Add1"
+      }
+      Block {
+	Name			"<S291>/Add3"
+      }
+      Block {
+	Name			"<S291>/Unary Minus"
       }
     }
     Subsystem {
-      Name		      "<S40>/Sum"
+      Name		      "<S290>/Arithmetic"
       Block {
-	Name			"<S59>/Sum_PID"
+	Name			"<S292>/Bias"
+      }
+      Block {
+	Name			"<S292>/Bias1"
+      }
+      Block {
+	Name			"<S292>/Gain"
+      }
+      Block {
+	Name			"<S292>/Product2"
+      }
+      Block {
+	Name			"<S292>/Product3"
+      }
+      Block {
+	Name			"<S292>/Product4"
+      }
+      Block {
+	Name			"<S292>/Product5"
+      }
+      Block {
+	Name			"<S292>/Add1"
+      }
+      Block {
+	Name			"<S292>/Add3"
+      }
+      Block {
+	Name			"<S292>/Unary Minus"
       }
     }
     Subsystem {
-      Name		      "<S40>/Sum Fdbk"
+      Name		      "<S296>/Passthrough"
+    }
+    Subsystem {
+      Name		      "<S297>/Internal Parameters"
       Block {
-	Name			"<S60>/Disabled"
+	Name			"<S323>/Derivative Gain"
       }
     }
     Subsystem {
-      Name		      "<S40>/Tracking Mode"
+      Name		      "<S298>/Error"
+    }
+    Subsystem {
+      Name		      "<S299>/Cont. Filter"
       Block {
-	Name			"<S61>/Disabled"
+	Name			"<S325>/Filter"
+      }
+      Block {
+	Name			"<S325>/SumD"
       }
     }
     Subsystem {
-      Name		      "<S40>/Tracking Mode Sum"
+      Name		      "<S300>/Internal IC - Filter"
+    }
+    Subsystem {
+      Name		      "<S301>/Internal Parameters"
       Block {
-	Name			"<S62>/Passthrough"
+	Name			"<S327>/Integral Gain"
       }
     }
     Subsystem {
-      Name		      "<S40>/Tsamp - Integral"
+      Name		      "<S302>/Passthrough"
+    }
+    Subsystem {
+      Name		      "<S303>/Disabled"
+    }
+    Subsystem {
+      Name		      "<S304>/Continuous"
       Block {
-	Name			"<S63>/TsSignalSpecification"
+	Name			"<S330>/Integrator"
       }
     }
     Subsystem {
-      Name		      "<S40>/Tsamp - Ngain"
+      Name		      "<S305>/Internal IC"
+    }
+    Subsystem {
+      Name		      "<S306>/Disabled"
+    }
+    Subsystem {
+      Name		      "<S307>/Internal Parameters"
       Block {
-	Name			"<S64>/Passthrough"
+	Name			"<S333>/Filter Coefficient"
       }
     }
     Subsystem {
-      Name		      "<S40>/postSat Signal"
+      Name		      "<S308>/Disabled"
+    }
+    Subsystem {
+      Name		      "<S309>/Internal Parameters"
       Block {
-	Name			"<S65>/Forward_Path"
+	Name			"<S335>/Proportional Gain"
       }
     }
     Subsystem {
-      Name		      "<S40>/preInt Signal"
+      Name		      "<S310>/Disabled"
+    }
+    Subsystem {
+      Name		      "<S311>/Passthrough"
+    }
+    Subsystem {
+      Name		      "<S312>/Disabled"
+    }
+    Subsystem {
+      Name		      "<S313>/Sum_PID"
+    }
+    Subsystem {
+      Name		      "<S314>/Disabled"
+    }
+    Subsystem {
+      Name		      "<S315>/Disabled"
+    }
+    Subsystem {
+      Name		      "<S316>/Passthrough"
+    }
+    Subsystem {
+      Name		      "<S317>/TsSignalSpecification"
+    }
+    Subsystem {
+      Name		      "<S318>/Passthrough"
+    }
+    Subsystem {
+      Name		      "<S319>/Forward_Path"
+    }
+    Subsystem {
+      Name		      "<S320>/Internal PreInt"
+    }
+    Subsystem {
+      Name		      "<S321>/Forward_Path"
+    }
+    Subsystem {
+      Name		      "<S348>/Passthrough"
+    }
+    Subsystem {
+      Name		      "<S349>/Internal Parameters"
       Block {
-	Name			"<S66>/Internal PreInt"
+	Name			"<S375>/Derivative Gain"
       }
     }
     Subsystem {
-      Name		      "<S40>/preSat Signal"
+      Name		      "<S350>/Error"
+    }
+    Subsystem {
+      Name		      "<S351>/Cont. Filter"
       Block {
-	Name			"<S67>/Forward_Path"
+	Name			"<S377>/Filter"
+      }
+      Block {
+	Name			"<S377>/SumD"
       }
     }
     Subsystem {
-      Name		      "<S95>/Positive"
+      Name		      "<S352>/Internal IC - Filter"
+    }
+    Subsystem {
+      Name		      "<S353>/Internal Parameters"
       Block {
-	Name			"<S96>/Constant"
-      }
-      Block {
-	Name			"<S96>/Compare"
+	Name			"<S379>/Integral Gain"
       }
     }
     Subsystem {
-      Name		      "<S97>/SOS1"
+      Name		      "<S354>/Passthrough"
+    }
+    Subsystem {
+      Name		      "<S355>/Disabled"
+    }
+    Subsystem {
+      Name		      "<S356>/Continuous"
       Block {
-	Name			"<S98>/Arithmetic"
-      }
-      Block {
-	Name			"<S98>/Gain1"
-      }
-      Block {
-	Name			"<S98>/tau"
-      }
-      Block {
-	Name			"<S98>/Product1"
-      }
-      Block {
-	Name			"<S98>/Product2"
-      }
-      Block {
-	Name			"<S98>/Product5"
-      }
-      Block {
-	Name			"<S98>/Sum"
-      }
-      Block {
-	Name			"<S98>/Sum1"
-      }
-      Block {
-	Name			"<S98>/Sum2"
-      }
-      Block {
-	Name			"<S98>/Sum3"
-      }
-      Block {
-	Name			"<S98>/Unit Delay1"
-      }
-      Block {
-	Name			"<S98>/Unit Delay2"
+	Name			"<S382>/Integrator"
       }
     }
     Subsystem {
-      Name		      "<S97>/SOS2"
+      Name		      "<S357>/Internal IC"
+    }
+    Subsystem {
+      Name		      "<S358>/Disabled"
+    }
+    Subsystem {
+      Name		      "<S359>/Internal Parameters"
       Block {
-	Name			"<S99>/Arithmetic"
-      }
-      Block {
-	Name			"<S99>/Gain1"
-      }
-      Block {
-	Name			"<S99>/tau"
-      }
-      Block {
-	Name			"<S99>/Product1"
-      }
-      Block {
-	Name			"<S99>/Product2"
-      }
-      Block {
-	Name			"<S99>/Product5"
-      }
-      Block {
-	Name			"<S99>/Sum"
-      }
-      Block {
-	Name			"<S99>/Sum1"
-      }
-      Block {
-	Name			"<S99>/Sum2"
-      }
-      Block {
-	Name			"<S99>/Sum3"
-      }
-      Block {
-	Name			"<S99>/Unit Delay1"
-      }
-      Block {
-	Name			"<S99>/Unit Delay2"
+	Name			"<S385>/Filter Coefficient"
       }
     }
     Subsystem {
-      Name		      "<S42>/Passthrough"
+      Name		      "<S360>/Disabled"
     }
     Subsystem {
-      Name		      "<S43>/Internal Parameters"
+      Name		      "<S361>/Internal Parameters"
       Block {
-	Name			"<S69>/Derivative Gain"
-      }
-    }
-    Subsystem {
-      Name		      "<S44>/Error"
-    }
-    Subsystem {
-      Name		      "<S45>/Cont. Filter"
-      Block {
-	Name			"<S71>/Filter"
-      }
-      Block {
-	Name			"<S71>/SumD"
+	Name			"<S387>/Proportional Gain"
       }
     }
     Subsystem {
-      Name		      "<S46>/Internal IC - Filter"
+      Name		      "<S362>/Disabled"
     }
     Subsystem {
-      Name		      "<S47>/Internal Parameters"
-      Block {
-	Name			"<S73>/Integral Gain"
-      }
+      Name		      "<S363>/Passthrough"
     }
     Subsystem {
-      Name		      "<S48>/Passthrough"
+      Name		      "<S364>/Disabled"
     }
     Subsystem {
-      Name		      "<S49>/Disabled"
+      Name		      "<S365>/Sum_PID"
     }
     Subsystem {
-      Name		      "<S50>/Continuous"
-      Block {
-	Name			"<S76>/Integrator"
-      }
+      Name		      "<S366>/Disabled"
     }
     Subsystem {
-      Name		      "<S51>/Internal IC"
+      Name		      "<S367>/Disabled"
     }
     Subsystem {
-      Name		      "<S52>/Disabled"
+      Name		      "<S368>/Passthrough"
     }
     Subsystem {
-      Name		      "<S53>/Internal Parameters"
-      Block {
-	Name			"<S79>/Filter Coefficient"
-      }
+      Name		      "<S369>/TsSignalSpecification"
     }
     Subsystem {
-      Name		      "<S54>/Disabled"
+      Name		      "<S370>/Passthrough"
     }
     Subsystem {
-      Name		      "<S55>/Internal Parameters"
-      Block {
-	Name			"<S81>/Proportional Gain"
-      }
+      Name		      "<S371>/Forward_Path"
     }
     Subsystem {
-      Name		      "<S56>/Disabled"
+      Name		      "<S372>/Internal PreInt"
     }
     Subsystem {
-      Name		      "<S57>/Passthrough"
-    }
-    Subsystem {
-      Name		      "<S58>/Disabled"
-    }
-    Subsystem {
-      Name		      "<S59>/Sum_PID"
-      Block {
-	Name			"<S85>/Sum"
-      }
-    }
-    Subsystem {
-      Name		      "<S60>/Disabled"
-    }
-    Subsystem {
-      Name		      "<S61>/Disabled"
-    }
-    Subsystem {
-      Name		      "<S62>/Passthrough"
-    }
-    Subsystem {
-      Name		      "<S63>/TsSignalSpecification"
-    }
-    Subsystem {
-      Name		      "<S64>/Passthrough"
-    }
-    Subsystem {
-      Name		      "<S65>/Forward_Path"
-    }
-    Subsystem {
-      Name		      "<S66>/Internal PreInt"
-    }
-    Subsystem {
-      Name		      "<S67>/Forward_Path"
-    }
-    Subsystem {
-      Name		      "<S98>/Arithmetic"
-      Block {
-	Name			"<S100>/Bias"
-      }
-      Block {
-	Name			"<S100>/Bias1"
-      }
-      Block {
-	Name			"<S100>/Gain"
-      }
-      Block {
-	Name			"<S100>/Product2"
-      }
-      Block {
-	Name			"<S100>/Product3"
-      }
-      Block {
-	Name			"<S100>/Product4"
-      }
-      Block {
-	Name			"<S100>/Product5"
-      }
-      Block {
-	Name			"<S100>/Add1"
-      }
-      Block {
-	Name			"<S100>/Add3"
-      }
-      Block {
-	Name			"<S100>/Unary Minus"
-      }
-    }
-    Subsystem {
-      Name		      "<S99>/Arithmetic"
-      Block {
-	Name			"<S101>/Bias"
-      }
-      Block {
-	Name			"<S101>/Bias1"
-      }
-      Block {
-	Name			"<S101>/Gain"
-      }
-      Block {
-	Name			"<S101>/Product2"
-      }
-      Block {
-	Name			"<S101>/Product3"
-      }
-      Block {
-	Name			"<S101>/Product4"
-      }
-      Block {
-	Name			"<S101>/Product5"
-      }
-      Block {
-	Name			"<S101>/Add1"
-      }
-      Block {
-	Name			"<S101>/Add3"
-      }
-      Block {
-	Name			"<S101>/Unary Minus"
-      }
+      Name		      "<S373>/Forward_Path"
     }
   }
   DWorkDefaults {
@@ -1904,14 +5064,14 @@ CompiledModel {
   GenUtilsSrcInSharedLocation 0
   System {
     SystemIdx		    0
-    Name		    "<S14>/turn_adjus"
+    Name		    "<S27>/Chart"
     Type		    "atomic"
-    FileNameOwnerIdx	    3
+    FileNameOwnerIdx	    13
     SystemNamespaceFlag	    0
     NumBlocks		    1
     Block {
       Type		      "S-Function"
-      Name		      "<S41>/ SFunction "
+      Name		      "<S33>/ SFunction "
       RecordType	      "CompiledBlock"
       RecordIdx		      [0, 0]
       BlockIdx		      [0, 0, 0]
@@ -1919,20 +5079,21 @@ CompiledModel {
       PID		      -1
       firstEntryOfTsMapIsGCD  yes
       ExecuteBlockFcns	      0
-      NumDataInputPorts	      1
+      NumDataInputPorts	      2
       DataInputPort {
 	RecordIdx		[0, 0, 0]
 	RollRegions		[0]
       }
-      NumDataOutputPorts      3
+      DataInputPort {
+	RecordIdx		[0, 0, 1]
+	RollRegions		[0]
+      }
+      NumDataOutputPorts      2
       DataOutputPort {
 	RecordIdx		[0, 0, 0]
       }
       DataOutputPort {
 	RecordIdx		[0, 0, 1]
-      }
-      DataOutputPort {
-	RecordIdx		[0, 0, 2]
       }
       NumDWork		      2
       DWork {
@@ -1948,14 +5109,14 @@ CompiledModel {
   }
   System {
     SystemIdx		    1
-    Name		    "<S3>/distance_control"
+    Name		    "<S40>/Chart"
     Type		    "atomic"
-    FileNameOwnerIdx	    3
+    FileNameOwnerIdx	    13
     SystemNamespaceFlag	    0
     NumBlocks		    1
     Block {
       Type		      "S-Function"
-      Name		      "<S16>/ SFunction "
+      Name		      "<S48>/ SFunction "
       RecordType	      "CompiledBlock"
       RecordIdx		      [1, 0]
       BlockIdx		      [1, 1, 0]
@@ -1993,22 +5154,59 @@ CompiledModel {
   }
   System {
     SystemIdx		    2
-    Name		    "<S18>/Median Filter"
+    Name		    "<S18>/Chart"
     Type		    "atomic"
-    FileNameOwnerIdx	    3
+    FileNameOwnerIdx	    13
     SystemNamespaceFlag	    0
-    NumBlocks		    0
+    NumBlocks		    1
+    Block {
+      Type		      "S-Function"
+      Name		      "<S179>/ SFunction "
+      RecordType	      "CompiledBlock"
+      RecordIdx		      [2, 0]
+      BlockIdx		      [2, 2, 0]
+      TID		      1
+      PID		      -1
+      firstEntryOfTsMapIsGCD  yes
+      ExecuteBlockFcns	      0
+      NumDataInputPorts	      2
+      DataInputPort {
+	RecordIdx		[2, 0, 0]
+	RollRegions		[0]
+      }
+      DataInputPort {
+	RecordIdx		[2, 0, 1]
+	RollRegions		[0]
+      }
+      NumDataOutputPorts      2
+      DataOutputPort {
+	RecordIdx		[2, 0, 0]
+      }
+      DataOutputPort {
+	RecordIdx		[2, 0, 1]
+      }
+      NumDWork		      2
+      DWork {
+	RecordIdx		[2, 0, 0]
+	Name			"DWORK1"
+      }
+      DWork {
+	RecordIdx		[2, 0, 1]
+	Name			"DWORK2"
+      }
+      Parameters	      [0]
+    }
   }
   System {
     SystemIdx		    3
-    Name		    "<Root>"
-    Type		    "root"
-    FileNameOwnerIdx	    3
+    Name		    "<S18>/turn_adjus"
+    Type		    "atomic"
+    FileNameOwnerIdx	    13
     SystemNamespaceFlag	    0
-    NumBlocks		    23
+    NumBlocks		    1
     Block {
-      Type		      Constant
-      Name		      "<S94>/Constant"
+      Type		      "S-Function"
+      Name		      "<S181>/ SFunction "
       RecordType	      "CompiledBlock"
       RecordIdx		      [3, 0]
       BlockIdx		      [3, 3, 0]
@@ -2016,139 +5214,480 @@ CompiledModel {
       PID		      -1
       firstEntryOfTsMapIsGCD  yes
       ExecuteBlockFcns	      0
-      NumDataInputPorts	      0
-      NumDataOutputPorts      1
+      NumDataInputPorts	      1
+      DataInputPort {
+	RecordIdx		[3, 0, 0]
+	RollRegions		[0]
+      }
+      NumDataOutputPorts      3
       DataOutputPort {
 	RecordIdx		[3, 0, 0]
       }
-      NumDWork		      0
-      Parameters	      [1]
-      Parameter {
-	BlockParamIdx		0
-	Name			"Value"
+      DataOutputPort {
+	RecordIdx		[3, 0, 1]
+      }
+      DataOutputPort {
+	RecordIdx		[3, 0, 2]
+      }
+      NumDWork		      2
+      DWork {
 	RecordIdx		[3, 0, 0]
-	Value			[1.4F]
-	String			"const"
+	Name			"DWORK1"
       }
-      Value		      Parameter[0]
-    }
-    Block {
-      Type		      Constant
-      Name		      "<S17>/Circumference"
-      RecordType	      "CompiledBlock"
-      RecordIdx		      [3, 1]
-      BlockIdx		      [3, 3, 1]
-      TID		      1
-      PID		      -1
-      firstEntryOfTsMapIsGCD  yes
-      ExecuteBlockFcns	      0
-      NumDataInputPorts	      0
-      NumDataOutputPorts      1
-      DataOutputPort {
-	RecordIdx		[3, 1, 0]
+      DWork {
+	RecordIdx		[3, 0, 1]
+	Name			"DWORK2"
       }
-      NumDWork		      0
-      Parameters	      [1]
-      Parameter {
-	BlockParamIdx		0
-	Name			"Value"
-	RecordIdx		[3, 1, 0]
-	Value			[0.20106192982974677]
-	String			"(2*pi*0.032)"
-      }
-      Value		      Parameter[0]
-    }
-    Block {
-      Type		      Constant
-      Name		      "<S3>/ref"
-      RecordType	      "CompiledBlock"
-      RecordIdx		      [3, 2]
-      BlockIdx		      [3, 3, 2]
-      TID		      1
-      PID		      -1
-      firstEntryOfTsMapIsGCD  yes
-      ExecuteBlockFcns	      0
-      NumDataInputPorts	      0
-      NumDataOutputPorts      1
-      DataOutputPort {
-	RecordIdx		[3, 2, 0]
-      }
-      NumDWork		      0
-      Parameters	      [1]
-      Parameter {
-	BlockParamIdx		0
-	Name			"Value"
-	RecordIdx		[3, 2, 0]
-	Value			[2.0]
-	String			"2"
-      }
-      Value		      Parameter[0]
-    }
-    Block {
-      Type		      SubSystem
-      Name		      "<S3>/distance_control"
-      RecordType	      "CompiledBlock"
-      RecordIdx		      [3, 3]
-      BlockIdx		      [3, 1, 3]
-      TID		      Subsystem
-      SubsystemTID	      1
-      PID		      -1
-      firstEntryOfTsMapIsGCD  yes
-      ExecuteBlockFcns	      0
-      NumDataInputPorts	      0
-      NumDataOutputPorts      0
-      NumDWork		      0
       Parameters	      [0]
     }
+  }
+  System {
+    SystemIdx		    4
+    Name		    "<S3>/draft2_Maze_exploration"
+    Type		    "atomic"
+    FileNameOwnerIdx	    13
+    SystemNamespaceFlag	    0
+    NumBlocks		    1
     Block {
-      Type		      Constant
-      Name		      "<S14>/Constant"
+      Type		      "S-Function"
+      Name		      "<S19>/ SFunction "
       RecordType	      "CompiledBlock"
-      RecordIdx		      [3, 4]
-      BlockIdx		      [3, 3, 4]
-      TID		      1
+      RecordIdx		      [4, 0]
+      BlockIdx		      [4, 4, 0]
+      TID		      0
       PID		      -1
       firstEntryOfTsMapIsGCD  yes
       ExecuteBlockFcns	      0
-      NumDataInputPorts	      0
-      NumDataOutputPorts      1
+      NumDataInputPorts	      5
+      DataInputPort {
+	RecordIdx		[4, 0, 0]
+	RollRegions		[0]
+      }
+      DataInputPort {
+	RecordIdx		[4, 0, 1]
+	RollRegions		[0]
+      }
+      DataInputPort {
+	RecordIdx		[4, 0, 2]
+	RollRegions		[0]
+      }
+      DataInputPort {
+	RecordIdx		[4, 0, 3]
+	RollRegions		[0]
+      }
+      DataInputPort {
+	RecordIdx		[4, 0, 4]
+	RollRegions		[0]
+      }
+      NumDataOutputPorts      5
       DataOutputPort {
-	RecordIdx		[3, 4, 0]
+	RecordIdx		[4, 0, 0]
       }
-      NumDWork		      0
-      Parameters	      [1]
-      Parameter {
-	BlockParamIdx		0
-	Name			"Value"
-	RecordIdx		[3, 4, 0]
-	Value			[0.0]
-	String			"0"
+      DataOutputPort {
+	RecordIdx		[4, 0, 1]
       }
-      Value		      Parameter[0]
-    }
-    Block {
-      Type		      SubSystem
-      Name		      "<S14>/turn_adjus"
-      RecordType	      "CompiledBlock"
-      RecordIdx		      [3, 5]
-      BlockIdx		      [3, 0, 5]
-      TID		      Subsystem
-      SubsystemTID	      1
-      PID		      -1
-      firstEntryOfTsMapIsGCD  yes
-      ExecuteBlockFcns	      0
-      NumDataInputPorts	      0
-      NumDataOutputPorts      0
-      NumDWork		      0
+      DataOutputPort {
+	RecordIdx		[4, 0, 2]
+      }
+      DataOutputPort {
+	RecordIdx		[4, 0, 3]
+      }
+      DataOutputPort {
+	RecordIdx		[4, 0, 4]
+      }
+      NumDWork		      9
+      DWork {
+	RecordIdx		[4, 0, 0]
+	Name			"DWORK1"
+      }
+      DWork {
+	RecordIdx		[4, 0, 1]
+	Name			"DWORK2"
+      }
+      DWork {
+	RecordIdx		[4, 0, 2]
+	Name			"DWORK3"
+      }
+      DWork {
+	RecordIdx		[4, 0, 3]
+	Name			"DWORK4"
+      }
+      DWork {
+	RecordIdx		[4, 0, 4]
+	Name			"DWORK5"
+      }
+      DWork {
+	RecordIdx		[4, 0, 5]
+	Name			"DWORK6"
+      }
+      DWork {
+	RecordIdx		[4, 0, 6]
+	Name			"DWORK7"
+      }
+      DWork {
+	RecordIdx		[4, 0, 7]
+	Name			"DWORK8"
+      }
+      DWork {
+	RecordIdx		[4, 0, 8]
+	Name			"DWORK9"
+      }
       Parameters	      [0]
     }
+  }
+  System {
+    SystemIdx		    5
+    Name		    "<S3>/draft2_Maze_exploration1"
+    Type		    "atomic"
+    FileNameOwnerIdx	    13
+    SystemNamespaceFlag	    0
+    NumBlocks		    1
+    Block {
+      Type		      "S-Function"
+      Name		      "<S20>/ SFunction "
+      RecordType	      "CompiledBlock"
+      RecordIdx		      [5, 0]
+      BlockIdx		      [5, 5, 0]
+      TID		      0
+      PID		      -1
+      firstEntryOfTsMapIsGCD  yes
+      ExecuteBlockFcns	      0
+      NumDataInputPorts	      5
+      DataInputPort {
+	RecordIdx		[5, 0, 0]
+	RollRegions		[0]
+      }
+      DataInputPort {
+	RecordIdx		[5, 0, 1]
+	RollRegions		[0]
+      }
+      DataInputPort {
+	RecordIdx		[5, 0, 2]
+	RollRegions		[0]
+      }
+      DataInputPort {
+	RecordIdx		[5, 0, 3]
+	RollRegions		[0]
+      }
+      DataInputPort {
+	RecordIdx		[5, 0, 4]
+	RollRegions		[0]
+      }
+      NumDataOutputPorts      5
+      DataOutputPort {
+	RecordIdx		[5, 0, 0]
+      }
+      DataOutputPort {
+	RecordIdx		[5, 0, 1]
+      }
+      DataOutputPort {
+	RecordIdx		[5, 0, 2]
+      }
+      DataOutputPort {
+	RecordIdx		[5, 0, 3]
+      }
+      DataOutputPort {
+	RecordIdx		[5, 0, 4]
+      }
+      NumDWork		      5
+      DWork {
+	RecordIdx		[5, 0, 0]
+	Name			"DWORK1"
+      }
+      DWork {
+	RecordIdx		[5, 0, 1]
+	Name			"DWORK2"
+      }
+      DWork {
+	RecordIdx		[5, 0, 2]
+	Name			"DWORK3"
+      }
+      DWork {
+	RecordIdx		[5, 0, 3]
+	Name			"DWORK4"
+      }
+      DWork {
+	RecordIdx		[5, 0, 4]
+	Name			"DWORK5"
+      }
+      Parameters	      [0]
+    }
+  }
+  System {
+    SystemIdx		    6
+    Name		    "<S3>/draft2_Maze_exploration2"
+    Type		    "atomic"
+    FileNameOwnerIdx	    13
+    SystemNamespaceFlag	    0
+    NumBlocks		    1
+    Block {
+      Type		      "S-Function"
+      Name		      "<S21>/ SFunction "
+      RecordType	      "CompiledBlock"
+      RecordIdx		      [6, 0]
+      BlockIdx		      [6, 6, 0]
+      TID		      0
+      PID		      -1
+      firstEntryOfTsMapIsGCD  yes
+      ExecuteBlockFcns	      0
+      NumDataInputPorts	      5
+      DataInputPort {
+	RecordIdx		[6, 0, 0]
+	RollRegions		[0]
+      }
+      DataInputPort {
+	RecordIdx		[6, 0, 1]
+	RollRegions		[0]
+      }
+      DataInputPort {
+	RecordIdx		[6, 0, 2]
+	RollRegions		[0]
+      }
+      DataInputPort {
+	RecordIdx		[6, 0, 3]
+	RollRegions		[0]
+      }
+      DataInputPort {
+	RecordIdx		[6, 0, 4]
+	RollRegions		[0]
+      }
+      NumDataOutputPorts      5
+      DataOutputPort {
+	RecordIdx		[6, 0, 0]
+      }
+      DataOutputPort {
+	RecordIdx		[6, 0, 1]
+      }
+      DataOutputPort {
+	RecordIdx		[6, 0, 2]
+      }
+      DataOutputPort {
+	RecordIdx		[6, 0, 3]
+      }
+      DataOutputPort {
+	RecordIdx		[6, 0, 4]
+      }
+      NumDWork		      4
+      DWork {
+	RecordIdx		[6, 0, 0]
+	Name			"DWORK1"
+      }
+      DWork {
+	RecordIdx		[6, 0, 1]
+	Name			"DWORK2"
+      }
+      DWork {
+	RecordIdx		[6, 0, 2]
+	Name			"DWORK3"
+      }
+      DWork {
+	RecordIdx		[6, 0, 3]
+	Name			"DWORK4"
+      }
+      Parameters	      [0]
+    }
+  }
+  System {
+    SystemIdx		    7
+    Name		    "<S22>/Chart"
+    Type		    "atomic"
+    FileNameOwnerIdx	    13
+    SystemNamespaceFlag	    0
+    NumBlocks		    1
+    Block {
+      Type		      "S-Function"
+      Name		      "<S234>/ SFunction "
+      RecordType	      "CompiledBlock"
+      RecordIdx		      [7, 0]
+      BlockIdx		      [7, 7, 0]
+      TID		      1
+      PID		      -1
+      firstEntryOfTsMapIsGCD  yes
+      ExecuteBlockFcns	      0
+      NumDataInputPorts	      3
+      DataInputPort {
+	RecordIdx		[7, 0, 0]
+	RollRegions		[0]
+      }
+      DataInputPort {
+	RecordIdx		[7, 0, 1]
+	RollRegions		[0]
+      }
+      DataInputPort {
+	RecordIdx		[7, 0, 2]
+	RollRegions		[0]
+      }
+      NumDataOutputPorts      3
+      DataOutputPort {
+	RecordIdx		[7, 0, 0]
+      }
+      DataOutputPort {
+	RecordIdx		[7, 0, 1]
+      }
+      DataOutputPort {
+	RecordIdx		[7, 0, 2]
+      }
+      NumDWork		      3
+      DWork {
+	RecordIdx		[7, 0, 0]
+	Name			"DWORK1"
+      }
+      DWork {
+	RecordIdx		[7, 0, 1]
+	Name			"DWORK2"
+      }
+      DWork {
+	RecordIdx		[7, 0, 2]
+	Name			"DWORK3"
+      }
+      Parameters	      [0]
+    }
+  }
+  System {
+    SystemIdx		    8
+    Name		    "<S23>/Median Filter"
+    Type		    "atomic"
+    FileNameOwnerIdx	    13
+    SystemNamespaceFlag	    0
+    NumBlocks		    0
+  }
+  System {
+    SystemIdx		    9
+    Name		    "<S24>/Moving Average"
+    Type		    "atomic"
+    FileNameOwnerIdx	    13
+    SystemNamespaceFlag	    0
+    NumBlocks		    0
+  }
+  System {
+    SystemIdx		    10
+    Name		    "<S24>/Moving Average1"
+    Type		    "atomic"
+    FileNameOwnerIdx	    13
+    SystemNamespaceFlag	    0
+    NumBlocks		    0
+  }
+  System {
+    SystemIdx		    11
+    Name		    "<S24>/engage_disengage_straightnert"
+    Type		    "atomic"
+    FileNameOwnerIdx	    13
+    SystemNamespaceFlag	    0
+    NumBlocks		    1
+    Block {
+      Type		      "S-Function"
+      Name		      "<S295>/ SFunction "
+      RecordType	      "CompiledBlock"
+      RecordIdx		      [11, 0]
+      BlockIdx		      [11, 11, 0]
+      TID		      1
+      PID		      -1
+      firstEntryOfTsMapIsGCD  yes
+      ExecuteBlockFcns	      0
+      NumDataInputPorts	      5
+      DataInputPort {
+	RecordIdx		[11, 0, 0]
+	RollRegions		[0]
+      }
+      DataInputPort {
+	RecordIdx		[11, 0, 1]
+	RollRegions		[0]
+      }
+      DataInputPort {
+	RecordIdx		[11, 0, 2]
+	RollRegions		[0]
+      }
+      DataInputPort {
+	RecordIdx		[11, 0, 3]
+	RollRegions		[0]
+      }
+      DataInputPort {
+	RecordIdx		[11, 0, 4]
+	RollRegions		[0]
+      }
+      NumDataOutputPorts      4
+      DataOutputPort {
+	RecordIdx		[11, 0, 0]
+      }
+      DataOutputPort {
+	RecordIdx		[11, 0, 1]
+      }
+      DataOutputPort {
+	RecordIdx		[11, 0, 2]
+      }
+      DataOutputPort {
+	RecordIdx		[11, 0, 3]
+      }
+      NumDWork		      2
+      DWork {
+	RecordIdx		[11, 0, 0]
+	Name			"DWORK1"
+      }
+      DWork {
+	RecordIdx		[11, 0, 1]
+	Name			"DWORK2"
+      }
+      Parameters	      [0]
+    }
+  }
+  System {
+    SystemIdx		    12
+    Name		    "<S3>/turn_adjus"
+    Type		    "atomic"
+    FileNameOwnerIdx	    13
+    SystemNamespaceFlag	    0
+    NumBlocks		    1
+    Block {
+      Type		      "S-Function"
+      Name		      "<S25>/ SFunction "
+      RecordType	      "CompiledBlock"
+      RecordIdx		      [12, 0]
+      BlockIdx		      [12, 12, 0]
+      TID		      1
+      PID		      -1
+      firstEntryOfTsMapIsGCD  yes
+      ExecuteBlockFcns	      0
+      NumDataInputPorts	      1
+      DataInputPort {
+	RecordIdx		[12, 0, 0]
+	RollRegions		[0]
+      }
+      NumDataOutputPorts      3
+      DataOutputPort {
+	RecordIdx		[12, 0, 0]
+      }
+      DataOutputPort {
+	RecordIdx		[12, 0, 1]
+      }
+      DataOutputPort {
+	RecordIdx		[12, 0, 2]
+      }
+      NumDWork		      2
+      DWork {
+	RecordIdx		[12, 0, 0]
+	Name			"DWORK1"
+      }
+      DWork {
+	RecordIdx		[12, 0, 1]
+	Name			"DWORK2"
+      }
+      Parameters	      [0]
+    }
+  }
+  System {
+    SystemIdx		    13
+    Name		    "<Root>"
+    Type		    "root"
+    FileNameOwnerIdx	    13
+    SystemNamespaceFlag	    0
+    NumBlocks		    52
     Block {
       Type		      Constant
-      Name		      "<S19>/Time constant"
-      SLName		      "<S19>/Time\nconstant"
+      Name		      "<S54>/Time constant"
+      SLName		      "<S54>/Time\nconstant"
       RecordType	      "CompiledBlock"
-      RecordIdx		      [3, 6]
-      BlockIdx		      [3, 3, 6]
+      RecordIdx		      [13, 0]
+      BlockIdx		      [13, 13, 0]
       TID		      1
       PID		      -1
       firstEntryOfTsMapIsGCD  yes
@@ -2156,14 +5695,14 @@ CompiledModel {
       NumDataInputPorts	      0
       NumDataOutputPorts      1
       DataOutputPort {
-	RecordIdx		[3, 6, 0]
+	RecordIdx		[13, 0, 0]
       }
       NumDWork		      0
       Parameters	      [1]
       Parameter {
 	BlockParamIdx		0
 	Name			"Value"
-	RecordIdx		[3, 6, 0]
+	RecordIdx		[13, 0, 0]
 	Value			[0.1]
 	String			"T"
       }
@@ -2171,10 +5710,10 @@ CompiledModel {
     }
     Block {
       Type		      Constant
-      Name		      "<S19>/Constant"
+      Name		      "<S54>/Constant"
       RecordType	      "CompiledBlock"
-      RecordIdx		      [3, 7]
-      BlockIdx		      [3, 3, 7]
+      RecordIdx		      [13, 1]
+      BlockIdx		      [13, 13, 1]
       TID		      1
       PID		      -1
       firstEntryOfTsMapIsGCD  yes
@@ -2182,14 +5721,14 @@ CompiledModel {
       NumDataInputPorts	      0
       NumDataOutputPorts      1
       DataOutputPort {
-	RecordIdx		[3, 7, 0]
+	RecordIdx		[13, 1, 0]
       }
       NumDWork		      0
       Parameters	      [1]
       Parameter {
 	BlockParamIdx		0
 	Name			"Value"
-	RecordIdx		[3, 7, 0]
+	RecordIdx		[13, 1, 0]
 	Value			[1.0]
 	String			"init_option"
       }
@@ -2197,10 +5736,10 @@ CompiledModel {
     }
     Block {
       Type		      Constant
-      Name		      "<S22>/Constant"
+      Name		      "<S57>/Constant"
       RecordType	      "CompiledBlock"
-      RecordIdx		      [3, 8]
-      BlockIdx		      [3, 3, 8]
+      RecordIdx		      [13, 2]
+      BlockIdx		      [13, 13, 2]
       TID		      1
       PID		      -1
       firstEntryOfTsMapIsGCD  yes
@@ -2208,172 +5747,14 @@ CompiledModel {
       NumDataInputPorts	      0
       NumDataOutputPorts      1
       DataOutputPort {
-	RecordIdx		[3, 8, 0]
+	RecordIdx		[13, 2, 0]
       }
       NumDWork		      0
       Parameters	      [1]
       Parameter {
 	BlockParamIdx		0
 	Name			"Value"
-	RecordIdx		[3, 8, 0]
-	Value			[2.0]
-	String			"const"
-      }
-      Value		      Parameter[0]
-    }
-    Block {
-      Type		      Constant
-      Name		      "<S26>/Time constant"
-      SLName		      "<S26>/Time\nconstant"
-      RecordType	      "CompiledBlock"
-      RecordIdx		      [3, 9]
-      BlockIdx		      [3, 3, 9]
-      TID		      1
-      PID		      -1
-      firstEntryOfTsMapIsGCD  yes
-      ExecuteBlockFcns	      0
-      NumDataInputPorts	      0
-      NumDataOutputPorts      1
-      DataOutputPort {
-	RecordIdx		[3, 9, 0]
-      }
-      NumDWork		      0
-      Parameters	      [1]
-      Parameter {
-	BlockParamIdx		0
-	Name			"Value"
-	RecordIdx		[3, 9, 0]
-	Value			[0.1]
-	String			"T"
-      }
-      Value		      Parameter[0]
-    }
-    Block {
-      Type		      Constant
-      Name		      "<S26>/Constant"
-      RecordType	      "CompiledBlock"
-      RecordIdx		      [3, 10]
-      BlockIdx		      [3, 3, 10]
-      TID		      1
-      PID		      -1
-      firstEntryOfTsMapIsGCD  yes
-      ExecuteBlockFcns	      0
-      NumDataInputPorts	      0
-      NumDataOutputPorts      1
-      DataOutputPort {
-	RecordIdx		[3, 10, 0]
-      }
-      NumDWork		      0
-      Parameters	      [1]
-      Parameter {
-	BlockParamIdx		0
-	Name			"Value"
-	RecordIdx		[3, 10, 0]
-	Value			[1.0]
-	String			"init_option"
-      }
-      Value		      Parameter[0]
-    }
-    Block {
-      Type		      Constant
-      Name		      "<S29>/Constant"
-      RecordType	      "CompiledBlock"
-      RecordIdx		      [3, 11]
-      BlockIdx		      [3, 3, 11]
-      TID		      1
-      PID		      -1
-      firstEntryOfTsMapIsGCD  yes
-      ExecuteBlockFcns	      0
-      NumDataInputPorts	      0
-      NumDataOutputPorts      1
-      DataOutputPort {
-	RecordIdx		[3, 11, 0]
-      }
-      NumDWork		      0
-      Parameters	      [1]
-      Parameter {
-	BlockParamIdx		0
-	Name			"Value"
-	RecordIdx		[3, 11, 0]
-	Value			[2.0]
-	String			"const"
-      }
-      Value		      Parameter[0]
-    }
-    Block {
-      Type		      Constant
-      Name		      "<S33>/Time constant"
-      SLName		      "<S33>/Time\nconstant"
-      RecordType	      "CompiledBlock"
-      RecordIdx		      [3, 12]
-      BlockIdx		      [3, 3, 12]
-      TID		      1
-      PID		      -1
-      firstEntryOfTsMapIsGCD  yes
-      ExecuteBlockFcns	      0
-      NumDataInputPorts	      0
-      NumDataOutputPorts      1
-      DataOutputPort {
-	RecordIdx		[3, 12, 0]
-      }
-      NumDWork		      0
-      Parameters	      [1]
-      Parameter {
-	BlockParamIdx		0
-	Name			"Value"
-	RecordIdx		[3, 12, 0]
-	Value			[0.1]
-	String			"T"
-      }
-      Value		      Parameter[0]
-    }
-    Block {
-      Type		      Constant
-      Name		      "<S33>/Constant"
-      RecordType	      "CompiledBlock"
-      RecordIdx		      [3, 13]
-      BlockIdx		      [3, 3, 13]
-      TID		      1
-      PID		      -1
-      firstEntryOfTsMapIsGCD  yes
-      ExecuteBlockFcns	      0
-      NumDataInputPorts	      0
-      NumDataOutputPorts      1
-      DataOutputPort {
-	RecordIdx		[3, 13, 0]
-      }
-      NumDWork		      0
-      Parameters	      [1]
-      Parameter {
-	BlockParamIdx		0
-	Name			"Value"
-	RecordIdx		[3, 13, 0]
-	Value			[1.0]
-	String			"init_option"
-      }
-      Value		      Parameter[0]
-    }
-    Block {
-      Type		      Constant
-      Name		      "<S36>/Constant"
-      RecordType	      "CompiledBlock"
-      RecordIdx		      [3, 14]
-      BlockIdx		      [3, 3, 14]
-      TID		      1
-      PID		      -1
-      firstEntryOfTsMapIsGCD  yes
-      ExecuteBlockFcns	      0
-      NumDataInputPorts	      0
-      NumDataOutputPorts      1
-      DataOutputPort {
-	RecordIdx		[3, 14, 0]
-      }
-      NumDWork		      0
-      Parameters	      [1]
-      Parameter {
-	BlockParamIdx		0
-	Name			"Value"
-	RecordIdx		[3, 14, 0]
+	RecordIdx		[13, 2, 0]
 	Value			[2.0]
 	String			"const"
       }
@@ -2383,8 +5764,8 @@ CompiledModel {
       Type		      Constant
       Name		      "<S3>/Constant1"
       RecordType	      "CompiledBlock"
-      RecordIdx		      [3, 15]
-      BlockIdx		      [3, 3, 15]
+      RecordIdx		      [13, 3]
+      BlockIdx		      [13, 13, 3]
       TID		      1
       PID		      -1
       firstEntryOfTsMapIsGCD  yes
@@ -2392,25 +5773,26 @@ CompiledModel {
       NumDataInputPorts	      0
       NumDataOutputPorts      1
       DataOutputPort {
-	RecordIdx		[3, 15, 0]
+	RecordIdx		[13, 3, 0]
       }
       NumDWork		      0
       Parameters	      [1]
       Parameter {
 	BlockParamIdx		0
 	Name			"Value"
-	RecordIdx		[3, 15, 0]
-	Value			[0.3]
-	String			"0.3"
+	RecordIdx		[13, 3, 0]
+	Value			[0.2]
+	String			"0.2"
       }
       Value		      Parameter[0]
     }
     Block {
       Type		      Constant
-      Name		      "<S3>/Constant"
+      Name		      "<S68>/Time constant"
+      SLName		      "<S68>/Time\nconstant"
       RecordType	      "CompiledBlock"
-      RecordIdx		      [3, 16]
-      BlockIdx		      [3, 3, 16]
+      RecordIdx		      [13, 4]
+      BlockIdx		      [13, 13, 4]
       TID		      1
       PID		      -1
       firstEntryOfTsMapIsGCD  yes
@@ -2418,16 +5800,251 @@ CompiledModel {
       NumDataInputPorts	      0
       NumDataOutputPorts      1
       DataOutputPort {
-	RecordIdx		[3, 16, 0]
+	RecordIdx		[13, 4, 0]
       }
       NumDWork		      0
       Parameters	      [1]
       Parameter {
 	BlockParamIdx		0
 	Name			"Value"
-	RecordIdx		[3, 16, 0]
-	Value			[27.0]
-	String			"27"
+	RecordIdx		[13, 4, 0]
+	Value			[0.1]
+	String			"T"
+      }
+      Value		      Parameter[0]
+    }
+    Block {
+      Type		      Constant
+      Name		      "<S68>/Constant"
+      RecordType	      "CompiledBlock"
+      RecordIdx		      [13, 5]
+      BlockIdx		      [13, 13, 5]
+      TID		      1
+      PID		      -1
+      firstEntryOfTsMapIsGCD  yes
+      ExecuteBlockFcns	      0
+      NumDataInputPorts	      0
+      NumDataOutputPorts      1
+      DataOutputPort {
+	RecordIdx		[13, 5, 0]
+      }
+      NumDWork		      0
+      Parameters	      [1]
+      Parameter {
+	BlockParamIdx		0
+	Name			"Value"
+	RecordIdx		[13, 5, 0]
+	Value			[1.0]
+	String			"init_option"
+      }
+      Value		      Parameter[0]
+    }
+    Block {
+      Type		      Constant
+      Name		      "<S71>/Constant"
+      RecordType	      "CompiledBlock"
+      RecordIdx		      [13, 6]
+      BlockIdx		      [13, 13, 6]
+      TID		      1
+      PID		      -1
+      firstEntryOfTsMapIsGCD  yes
+      ExecuteBlockFcns	      0
+      NumDataInputPorts	      0
+      NumDataOutputPorts      1
+      DataOutputPort {
+	RecordIdx		[13, 6, 0]
+      }
+      NumDWork		      0
+      Parameters	      [1]
+      Parameter {
+	BlockParamIdx		0
+	Name			"Value"
+	RecordIdx		[13, 6, 0]
+	Value			[2.0]
+	String			"const"
+      }
+      Value		      Parameter[0]
+    }
+    Block {
+      Type		      Constant
+      Name		      "<S34>/Constant"
+      RecordType	      "CompiledBlock"
+      RecordIdx		      [13, 7]
+      BlockIdx		      [13, 13, 7]
+      TID		      1
+      PID		      -1
+      firstEntryOfTsMapIsGCD  yes
+      ExecuteBlockFcns	      0
+      NumDataInputPorts	      0
+      NumDataOutputPorts      1
+      DataOutputPort {
+	RecordIdx		[13, 7, 0]
+      }
+      NumDWork		      0
+      Parameters	      [1]
+      Parameter {
+	BlockParamIdx		0
+	Name			"Value"
+	RecordIdx		[13, 7, 0]
+	Value			[1.0F]
+	String			"const"
+      }
+      Value		      Parameter[0]
+    }
+    Block {
+      Type		      Constant
+      Name		      "<S29>/Circumference"
+      RecordType	      "CompiledBlock"
+      RecordIdx		      [13, 8]
+      BlockIdx		      [13, 13, 8]
+      TID		      1
+      PID		      -1
+      firstEntryOfTsMapIsGCD  yes
+      ExecuteBlockFcns	      0
+      NumDataInputPorts	      0
+      NumDataOutputPorts      1
+      DataOutputPort {
+	RecordIdx		[13, 8, 0]
+      }
+      NumDWork		      0
+      Parameters	      [1]
+      Parameter {
+	BlockParamIdx		0
+	Name			"Value"
+	RecordIdx		[13, 8, 0]
+	Value			[0.19477874452256716]
+	String			"(2*pi*0.031)"
+      }
+      Value		      Parameter[0]
+    }
+    Block {
+      Type		      Constant
+      Name		      "<S30>/Constant"
+      RecordType	      "CompiledBlock"
+      RecordIdx		      [13, 9]
+      BlockIdx		      [13, 13, 9]
+      TID		      1
+      PID		      -1
+      firstEntryOfTsMapIsGCD  yes
+      ExecuteBlockFcns	      0
+      NumDataInputPorts	      0
+      NumDataOutputPorts      1
+      DataOutputPort {
+	RecordIdx		[13, 9, 0]
+      }
+      NumDWork		      0
+      Parameters	      [1]
+      Parameter {
+	BlockParamIdx		0
+	Name			"Value"
+	RecordIdx		[13, 9, 0]
+	Value			[1.0F]
+	String			"const"
+      }
+      Value		      Parameter[0]
+    }
+    Block {
+      Type		      Constant
+      Name		      "<S28>/Circumference"
+      RecordType	      "CompiledBlock"
+      RecordIdx		      [13, 10]
+      BlockIdx		      [13, 13, 10]
+      TID		      1
+      PID		      -1
+      firstEntryOfTsMapIsGCD  yes
+      ExecuteBlockFcns	      0
+      NumDataInputPorts	      0
+      NumDataOutputPorts      1
+      DataOutputPort {
+	RecordIdx		[13, 10, 0]
+      }
+      NumDWork		      0
+      Parameters	      [1]
+      Parameter {
+	BlockParamIdx		0
+	Name			"Value"
+	RecordIdx		[13, 10, 0]
+	Value			[0.19477874452256716]
+	String			"(2*pi*0.031)"
+      }
+      Value		      Parameter[0]
+    }
+    Block {
+      Type		      Constant
+      Name		      "<S61>/Time constant"
+      SLName		      "<S61>/Time\nconstant"
+      RecordType	      "CompiledBlock"
+      RecordIdx		      [13, 11]
+      BlockIdx		      [13, 13, 11]
+      TID		      1
+      PID		      -1
+      firstEntryOfTsMapIsGCD  yes
+      ExecuteBlockFcns	      0
+      NumDataInputPorts	      0
+      NumDataOutputPorts      1
+      DataOutputPort {
+	RecordIdx		[13, 11, 0]
+      }
+      NumDWork		      0
+      Parameters	      [1]
+      Parameter {
+	BlockParamIdx		0
+	Name			"Value"
+	RecordIdx		[13, 11, 0]
+	Value			[0.1]
+	String			"T"
+      }
+      Value		      Parameter[0]
+    }
+    Block {
+      Type		      Constant
+      Name		      "<S61>/Constant"
+      RecordType	      "CompiledBlock"
+      RecordIdx		      [13, 12]
+      BlockIdx		      [13, 13, 12]
+      TID		      1
+      PID		      -1
+      firstEntryOfTsMapIsGCD  yes
+      ExecuteBlockFcns	      0
+      NumDataInputPorts	      0
+      NumDataOutputPorts      1
+      DataOutputPort {
+	RecordIdx		[13, 12, 0]
+      }
+      NumDWork		      0
+      Parameters	      [1]
+      Parameter {
+	BlockParamIdx		0
+	Name			"Value"
+	RecordIdx		[13, 12, 0]
+	Value			[1.0]
+	String			"init_option"
+      }
+      Value		      Parameter[0]
+    }
+    Block {
+      Type		      Constant
+      Name		      "<S64>/Constant"
+      RecordType	      "CompiledBlock"
+      RecordIdx		      [13, 13]
+      BlockIdx		      [13, 13, 13]
+      TID		      1
+      PID		      -1
+      firstEntryOfTsMapIsGCD  yes
+      ExecuteBlockFcns	      0
+      NumDataInputPorts	      0
+      NumDataOutputPorts      1
+      DataOutputPort {
+	RecordIdx		[13, 13, 0]
+      }
+      NumDWork		      0
+      Parameters	      [1]
+      Parameter {
+	BlockParamIdx		0
+	Name			"Value"
+	RecordIdx		[13, 13, 0]
+	Value			[2.0]
+	String			"const"
       }
       Value		      Parameter[0]
     }
@@ -2435,8 +6052,8 @@ CompiledModel {
       Type		      Constant
       Name		      "<S3>/Constant2"
       RecordType	      "CompiledBlock"
-      RecordIdx		      [3, 17]
-      BlockIdx		      [3, 3, 17]
+      RecordIdx		      [13, 14]
+      BlockIdx		      [13, 13, 14]
       TID		      1
       PID		      -1
       firstEntryOfTsMapIsGCD  yes
@@ -2444,26 +6061,25 @@ CompiledModel {
       NumDataInputPorts	      0
       NumDataOutputPorts      1
       DataOutputPort {
-	RecordIdx		[3, 17, 0]
+	RecordIdx		[13, 14, 0]
       }
       NumDWork		      0
       Parameters	      [1]
       Parameter {
 	BlockParamIdx		0
 	Name			"Value"
-	RecordIdx		[3, 17, 0]
-	Value			[5.0]
-	String			"5"
+	RecordIdx		[13, 14, 0]
+	Value			[0.04]
+	String			"0.04"
       }
       Value		      Parameter[0]
     }
     Block {
       Type		      SubSystem
-      Name		      "<S18>/Median Filter"
-      SLName		      "<S18>/Median\nFilter"
+      Name		      "<S3>/draft2_Maze_exploration"
       RecordType	      "CompiledBlock"
-      RecordIdx		      [3, 18]
-      BlockIdx		      [3, 2, 18]
+      RecordIdx		      [13, 15]
+      BlockIdx		      [13, 4, 15]
       TID		      Subsystem
       SubsystemTID	      0
       PID		      -1
@@ -2476,50 +6092,610 @@ CompiledModel {
     }
     Block {
       Type		      Constant
-      Name		      "<S23>/Constant"
+      Name		      "<S22>/constant"
       RecordType	      "CompiledBlock"
-      RecordIdx		      [3, 19]
-      BlockIdx		      [3, 3, 19]
-      TID		      constant
+      RecordIdx		      [13, 16]
+      BlockIdx		      [13, 13, 16]
+      TID		      1
+      PID		      -1
       firstEntryOfTsMapIsGCD  yes
       ExecuteBlockFcns	      0
       NumDataInputPorts	      0
       NumDataOutputPorts      1
       DataOutputPort {
-	RecordIdx		[3, 19, 0]
+	RecordIdx		[13, 16, 0]
       }
       NumDWork		      0
       Parameters	      [1]
       Parameter {
 	BlockParamIdx		0
 	Name			"Value"
-	RecordIdx		[3, 19, 0]
-	Value			[0.0F]
-	String			""
+	RecordIdx		[13, 16, 0]
+	Value			[40.0]
+	String			"40"
+      }
+      Value		      Parameter[0]
+    }
+    Block {
+      Type		      SubSystem
+      Name		      "<S22>/Chart"
+      RecordType	      "CompiledBlock"
+      RecordIdx		      [13, 17]
+      BlockIdx		      [13, 7, 17]
+      TID		      Subsystem
+      SubsystemTID	      1
+      PID		      -1
+      firstEntryOfTsMapIsGCD  yes
+      ExecuteBlockFcns	      0
+      NumDataInputPorts	      0
+      NumDataOutputPorts      0
+      NumDWork		      0
+      Parameters	      [0]
+    }
+    Block {
+      Type		      Constant
+      Name		      "<S22>/Constant1"
+      RecordType	      "CompiledBlock"
+      RecordIdx		      [13, 18]
+      BlockIdx		      [13, 13, 18]
+      TID		      1
+      PID		      -1
+      firstEntryOfTsMapIsGCD  yes
+      ExecuteBlockFcns	      0
+      NumDataInputPorts	      0
+      NumDataOutputPorts      1
+      DataOutputPort {
+	RecordIdx		[13, 18, 0]
+      }
+      NumDWork		      0
+      Parameters	      [1]
+      Parameter {
+	BlockParamIdx		0
+	Name			"Value"
+	RecordIdx		[13, 18, 0]
+	Value			[0.06]
+	String			"0.06"
       }
       Value		      Parameter[0]
     }
     Block {
       Type		      Constant
-      Name		      "<S30>/Constant"
+      Name		      "<S22>/Constant"
       RecordType	      "CompiledBlock"
-      RecordIdx		      [3, 20]
-      BlockIdx		      [3, 3, 20]
-      TID		      constant
+      RecordIdx		      [13, 19]
+      BlockIdx		      [13, 13, 19]
+      TID		      1
+      PID		      -1
       firstEntryOfTsMapIsGCD  yes
       ExecuteBlockFcns	      0
       NumDataInputPorts	      0
       NumDataOutputPorts      1
       DataOutputPort {
-	RecordIdx		[3, 20, 0]
+	RecordIdx		[13, 19, 0]
       }
       NumDWork		      0
       Parameters	      [1]
       Parameter {
 	BlockParamIdx		0
 	Name			"Value"
-	RecordIdx		[3, 20, 0]
-	Value			[0.0F]
+	RecordIdx		[13, 19, 0]
+	Value			[0.06]
+	String			"0.06"
+      }
+      Value		      Parameter[0]
+    }
+    Block {
+      Type		      Constant
+      Name		      "<S22>/Constant4"
+      RecordType	      "CompiledBlock"
+      RecordIdx		      [13, 20]
+      BlockIdx		      [13, 13, 20]
+      TID		      1
+      PID		      -1
+      firstEntryOfTsMapIsGCD  yes
+      ExecuteBlockFcns	      0
+      NumDataInputPorts	      0
+      NumDataOutputPorts      1
+      DataOutputPort {
+	RecordIdx		[13, 20, 0]
+      }
+      NumDWork		      0
+      Parameters	      [1]
+      Parameter {
+	BlockParamIdx		0
+	Name			"Value"
+	RecordIdx		[13, 20, 0]
+	Value			[0.11]
+	String			"0.11"
+      }
+      Value		      Parameter[0]
+    }
+    Block {
+      Type		      Constant
+      Name		      "<S22>/Constant2"
+      RecordType	      "CompiledBlock"
+      RecordIdx		      [13, 21]
+      BlockIdx		      [13, 13, 21]
+      TID		      1
+      PID		      -1
+      firstEntryOfTsMapIsGCD  yes
+      ExecuteBlockFcns	      0
+      NumDataInputPorts	      0
+      NumDataOutputPorts      1
+      DataOutputPort {
+	RecordIdx		[13, 21, 0]
+      }
+      NumDWork		      0
+      Parameters	      [1]
+      Parameter {
+	BlockParamIdx		0
+	Name			"Value"
+	RecordIdx		[13, 21, 0]
+	Value			[0.07]
+	String			"0.07"
+      }
+      Value		      Parameter[0]
+    }
+    Block {
+      Type		      Constant
+      Name		      "<S22>/Constant3"
+      RecordType	      "CompiledBlock"
+      RecordIdx		      [13, 22]
+      BlockIdx		      [13, 13, 22]
+      TID		      1
+      PID		      -1
+      firstEntryOfTsMapIsGCD  yes
+      ExecuteBlockFcns	      0
+      NumDataInputPorts	      0
+      NumDataOutputPorts      1
+      DataOutputPort {
+	RecordIdx		[13, 22, 0]
+      }
+      NumDWork		      0
+      Parameters	      [1]
+      Parameter {
+	BlockParamIdx		0
+	Name			"Value"
+	RecordIdx		[13, 22, 0]
+	Value			[0.07]
+	String			"0.07"
+      }
+      Value		      Parameter[0]
+    }
+    Block {
+      Type		      Constant
+      Name		      "<S22>/Constant5"
+      RecordType	      "CompiledBlock"
+      RecordIdx		      [13, 23]
+      BlockIdx		      [13, 13, 23]
+      TID		      1
+      PID		      -1
+      firstEntryOfTsMapIsGCD  yes
+      ExecuteBlockFcns	      0
+      NumDataInputPorts	      0
+      NumDataOutputPorts      1
+      DataOutputPort {
+	RecordIdx		[13, 23, 0]
+      }
+      NumDWork		      0
+      Parameters	      [1]
+      Parameter {
+	BlockParamIdx		0
+	Name			"Value"
+	RecordIdx		[13, 23, 0]
+	Value			[0.11]
+	String			"0.11"
+      }
+      Value		      Parameter[0]
+    }
+    Block {
+      Type		      Constant
+      Name		      "<S3>/Constant"
+      RecordType	      "CompiledBlock"
+      RecordIdx		      [13, 24]
+      BlockIdx		      [13, 13, 24]
+      TID		      1
+      PID		      -1
+      firstEntryOfTsMapIsGCD  yes
+      ExecuteBlockFcns	      0
+      NumDataInputPorts	      0
+      NumDataOutputPorts      1
+      DataOutputPort {
+	RecordIdx		[13, 24, 0]
+      }
+      NumDWork		      0
+      Parameters	      [1]
+      Parameter {
+	BlockParamIdx		0
+	Name			"Value"
+	RecordIdx		[13, 24, 0]
+	Value			[11.0]
+	String			"11"
+      }
+      Value		      Parameter[0]
+    }
+    Block {
+      Type		      Constant
+      Name		      "<S3>/Constant3"
+      RecordType	      "CompiledBlock"
+      RecordIdx		      [13, 25]
+      BlockIdx		      [13, 13, 25]
+      TID		      1
+      PID		      -1
+      firstEntryOfTsMapIsGCD  yes
+      ExecuteBlockFcns	      0
+      NumDataInputPorts	      0
+      NumDataOutputPorts      1
+      DataOutputPort {
+	RecordIdx		[13, 25, 0]
+      }
+      NumDWork		      0
+      Parameters	      [1]
+      Parameter {
+	BlockParamIdx		0
+	Name			"Value"
+	RecordIdx		[13, 25, 0]
+	Value			[1.0]
+	String			"1"
+      }
+      Value		      Parameter[0]
+    }
+    Block {
+      Type		      Constant
+      Name		      "<S3>/Constant4"
+      RecordType	      "CompiledBlock"
+      RecordIdx		      [13, 26]
+      BlockIdx		      [13, 13, 26]
+      TID		      1
+      PID		      -1
+      firstEntryOfTsMapIsGCD  yes
+      ExecuteBlockFcns	      0
+      NumDataInputPorts	      0
+      NumDataOutputPorts      1
+      DataOutputPort {
+	RecordIdx		[13, 26, 0]
+      }
+      NumDWork		      0
+      Parameters	      [1]
+      Parameter {
+	BlockParamIdx		0
+	Name			"Value"
+	RecordIdx		[13, 26, 0]
+	Value			[0.0]
+	String			"0"
+      }
+      Value		      Parameter[0]
+    }
+    Block {
+      Type		      Constant
+      Name		      "<S3>/Constant5"
+      RecordType	      "CompiledBlock"
+      RecordIdx		      [13, 27]
+      BlockIdx		      [13, 13, 27]
+      TID		      1
+      PID		      -1
+      firstEntryOfTsMapIsGCD  yes
+      ExecuteBlockFcns	      0
+      NumDataInputPorts	      0
+      NumDataOutputPorts      1
+      DataOutputPort {
+	RecordIdx		[13, 27, 0]
+      }
+      NumDWork		      0
+      Parameters	      [1]
+      Parameter {
+	BlockParamIdx		0
+	Name			"Value"
+	RecordIdx		[13, 27, 0]
+	Value			[5.0]
+	String			"5"
+      }
+      Value		      Parameter[0]
+    }
+    Block {
+      Type		      SubSystem
+      Name		      "<S27>/Chart"
+      RecordType	      "CompiledBlock"
+      RecordIdx		      [13, 28]
+      BlockIdx		      [13, 0, 28]
+      TID		      Subsystem
+      SubsystemTID	      1
+      PID		      -1
+      firstEntryOfTsMapIsGCD  yes
+      ExecuteBlockFcns	      0
+      NumDataInputPorts	      0
+      NumDataOutputPorts      0
+      NumDWork		      0
+      Parameters	      [0]
+    }
+    Block {
+      Type		      Constant
+      Name		      "<S3>/Motor_Left2"
+      RecordType	      "CompiledBlock"
+      RecordIdx		      [13, 29]
+      BlockIdx		      [13, 13, 29]
+      TID		      1
+      PID		      -1
+      firstEntryOfTsMapIsGCD  yes
+      ExecuteBlockFcns	      0
+      NumDataInputPorts	      0
+      NumDataOutputPorts      1
+      DataOutputPort {
+	RecordIdx		[13, 29, 0]
+      }
+      NumDWork		      0
+      Parameters	      [1]
+      Parameter {
+	BlockParamIdx		0
+	Name			"Value"
+	RecordIdx		[13, 29, 0]
+	Value			[1.0]
+	String			"1"
+      }
+      Value		      Parameter[0]
+    }
+    Block {
+      Type		      SubSystem
+      Name		      "<S18>/Chart"
+      RecordType	      "CompiledBlock"
+      RecordIdx		      [13, 30]
+      BlockIdx		      [13, 2, 30]
+      TID		      Subsystem
+      SubsystemTID	      1
+      PID		      -1
+      firstEntryOfTsMapIsGCD  yes
+      ExecuteBlockFcns	      0
+      NumDataInputPorts	      0
+      NumDataOutputPorts      0
+      NumDWork		      0
+      Parameters	      [0]
+    }
+    Block {
+      Type		      SubSystem
+      Name		      "<S18>/turn_adjus"
+      RecordType	      "CompiledBlock"
+      RecordIdx		      [13, 31]
+      BlockIdx		      [13, 3, 31]
+      TID		      Subsystem
+      SubsystemTID	      1
+      PID		      -1
+      firstEntryOfTsMapIsGCD  yes
+      ExecuteBlockFcns	      0
+      NumDataInputPorts	      0
+      NumDataOutputPorts      0
+      NumDWork		      0
+      Parameters	      [0]
+    }
+    Block {
+      Type		      SubSystem
+      Name		      "<S23>/Median Filter"
+      SLName		      "<S23>/Median\nFilter"
+      RecordType	      "CompiledBlock"
+      RecordIdx		      [13, 32]
+      BlockIdx		      [13, 8, 32]
+      TID		      Subsystem
+      SubsystemTID	      0
+      PID		      -1
+      firstEntryOfTsMapIsGCD  yes
+      ExecuteBlockFcns	      0
+      NumDataInputPorts	      0
+      NumDataOutputPorts      0
+      NumDWork		      0
+      Parameters	      [0]
+    }
+    Block {
+      Type		      SubSystem
+      Name		      "<S3>/turn_adjus"
+      RecordType	      "CompiledBlock"
+      RecordIdx		      [13, 33]
+      BlockIdx		      [13, 12, 33]
+      TID		      Subsystem
+      SubsystemTID	      1
+      PID		      -1
+      firstEntryOfTsMapIsGCD  yes
+      ExecuteBlockFcns	      0
+      NumDataInputPorts	      0
+      NumDataOutputPorts      0
+      NumDWork		      0
+      Parameters	      [0]
+    }
+    Block {
+      Type		      Constant
+      Name		      "<S45>/Constant"
+      RecordType	      "CompiledBlock"
+      RecordIdx		      [13, 34]
+      BlockIdx		      [13, 13, 34]
+      TID		      1
+      PID		      -1
+      firstEntryOfTsMapIsGCD  yes
+      ExecuteBlockFcns	      0
+      NumDataInputPorts	      0
+      NumDataOutputPorts      1
+      DataOutputPort {
+	RecordIdx		[13, 34, 0]
+      }
+      NumDWork		      0
+      Parameters	      [1]
+      Parameter {
+	BlockParamIdx		0
+	Name			"Value"
+	RecordIdx		[13, 34, 0]
+	Value			[1.0F]
+	String			"const"
+      }
+      Value		      Parameter[0]
+    }
+    Block {
+      Type		      Constant
+      Name		      "<S49>/Constant"
+      RecordType	      "CompiledBlock"
+      RecordIdx		      [13, 35]
+      BlockIdx		      [13, 13, 35]
+      TID		      1
+      PID		      -1
+      firstEntryOfTsMapIsGCD  yes
+      ExecuteBlockFcns	      0
+      NumDataInputPorts	      0
+      NumDataOutputPorts      1
+      DataOutputPort {
+	RecordIdx		[13, 35, 0]
+      }
+      NumDWork		      0
+      Parameters	      [1]
+      Parameter {
+	BlockParamIdx		0
+	Name			"Value"
+	RecordIdx		[13, 35, 0]
+	Value			[1.0F]
+	String			"const"
+      }
+      Value		      Parameter[0]
+    }
+    Block {
+      Type		      SubSystem
+      Name		      "<S40>/Chart"
+      RecordType	      "CompiledBlock"
+      RecordIdx		      [13, 36]
+      BlockIdx		      [13, 1, 36]
+      TID		      Subsystem
+      SubsystemTID	      1
+      PID		      -1
+      firstEntryOfTsMapIsGCD  yes
+      ExecuteBlockFcns	      0
+      NumDataInputPorts	      0
+      NumDataOutputPorts      0
+      NumDWork		      0
+      Parameters	      [0]
+    }
+    Block {
+      Type		      SubSystem
+      Name		      "<S3>/draft2_Maze_exploration1"
+      RecordType	      "CompiledBlock"
+      RecordIdx		      [13, 37]
+      BlockIdx		      [13, 5, 37]
+      TID		      Subsystem
+      SubsystemTID	      0
+      PID		      -1
+      firstEntryOfTsMapIsGCD  yes
+      ExecuteBlockFcns	      0
+      NumDataInputPorts	      0
+      NumDataOutputPorts      0
+      NumDWork		      0
+      Parameters	      [0]
+    }
+    Block {
+      Type		      SubSystem
+      Name		      "<S3>/draft2_Maze_exploration2"
+      RecordType	      "CompiledBlock"
+      RecordIdx		      [13, 38]
+      BlockIdx		      [13, 6, 38]
+      TID		      Subsystem
+      SubsystemTID	      0
+      PID		      -1
+      firstEntryOfTsMapIsGCD  yes
+      ExecuteBlockFcns	      0
+      NumDataInputPorts	      0
+      NumDataOutputPorts      0
+      NumDWork		      0
+      Parameters	      [0]
+    }
+    Block {
+      Type		      SubSystem
+      Name		      "<S24>/Moving Average"
+      SLName		      "<S24>/Moving\nAverage"
+      RecordType	      "CompiledBlock"
+      RecordIdx		      [13, 39]
+      BlockIdx		      [13, 9, 39]
+      TID		      Subsystem
+      SubsystemTID	      1
+      PID		      -1
+      firstEntryOfTsMapIsGCD  yes
+      ExecuteBlockFcns	      0
+      NumDataInputPorts	      0
+      NumDataOutputPorts      0
+      NumDWork		      0
+      Parameters	      [0]
+    }
+    Block {
+      Type		      SubSystem
+      Name		      "<S24>/Moving Average1"
+      SLName		      "<S24>/Moving\nAverage1"
+      RecordType	      "CompiledBlock"
+      RecordIdx		      [13, 40]
+      BlockIdx		      [13, 10, 40]
+      TID		      Subsystem
+      SubsystemTID	      1
+      PID		      -1
+      firstEntryOfTsMapIsGCD  yes
+      ExecuteBlockFcns	      0
+      NumDataInputPorts	      0
+      NumDataOutputPorts      0
+      NumDWork		      0
+      Parameters	      [0]
+    }
+    Block {
+      Type		      Constant
+      Name		      "<S24>/Constant"
+      RecordType	      "CompiledBlock"
+      RecordIdx		      [13, 41]
+      BlockIdx		      [13, 13, 41]
+      TID		      1
+      PID		      -1
+      firstEntryOfTsMapIsGCD  yes
+      ExecuteBlockFcns	      0
+      NumDataInputPorts	      0
+      NumDataOutputPorts      1
+      DataOutputPort {
+	RecordIdx		[13, 41, 0]
+      }
+      NumDWork		      0
+      Parameters	      [1]
+      Parameter {
+	BlockParamIdx		0
+	Name			"Value"
+	RecordIdx		[13, 41, 0]
+	Value			[0.0765]
+	String			"0.0765"
+      }
+      Value		      Parameter[0]
+    }
+    Block {
+      Type		      SubSystem
+      Name		      "<S24>/engage_disengage_straightnert"
+      RecordType	      "CompiledBlock"
+      RecordIdx		      [13, 42]
+      BlockIdx		      [13, 11, 42]
+      TID		      Subsystem
+      SubsystemTID	      1
+      PID		      -1
+      firstEntryOfTsMapIsGCD  yes
+      ExecuteBlockFcns	      0
+      NumDataInputPorts	      0
+      NumDataOutputPorts      0
+      NumDWork		      0
+      Parameters	      [0]
+    }
+    Block {
+      Type		      Constant
+      Name		      "<S32>/Constant"
+      RecordType	      "CompiledBlock"
+      RecordIdx		      [13, 43]
+      BlockIdx		      [13, 13, 43]
+      TID		      constant
+      firstEntryOfTsMapIsGCD  yes
+      ExecuteBlockFcns	      0
+      NumDataInputPorts	      0
+      NumDataOutputPorts      1
+      DataOutputPort {
+	RecordIdx		[13, 43, 0]
+      }
+      NumDWork		      0
+      Parameters	      [1]
+      Parameter {
+	BlockParamIdx		0
+	Name			"Value"
+	RecordIdx		[13, 43, 0]
+	Value			[0]
 	String			""
       }
       Value		      Parameter[0]
@@ -2528,22 +6704,72 @@ CompiledModel {
       Type		      Constant
       Name		      "<S37>/Constant"
       RecordType	      "CompiledBlock"
-      RecordIdx		      [3, 21]
-      BlockIdx		      [3, 3, 21]
+      RecordIdx		      [13, 44]
+      BlockIdx		      [13, 13, 44]
       TID		      constant
       firstEntryOfTsMapIsGCD  yes
       ExecuteBlockFcns	      0
       NumDataInputPorts	      0
       NumDataOutputPorts      1
       DataOutputPort {
-	RecordIdx		[3, 21, 0]
+	RecordIdx		[13, 44, 0]
       }
       NumDWork		      0
       Parameters	      [1]
       Parameter {
 	BlockParamIdx		0
 	Name			"Value"
-	RecordIdx		[3, 21, 0]
+	RecordIdx		[13, 44, 0]
+	Value			[0]
+	String			""
+      }
+      Value		      Parameter[0]
+    }
+    Block {
+      Type		      Constant
+      Name		      "<S38>/Constant"
+      RecordType	      "CompiledBlock"
+      RecordIdx		      [13, 45]
+      BlockIdx		      [13, 13, 45]
+      TID		      constant
+      firstEntryOfTsMapIsGCD  yes
+      ExecuteBlockFcns	      0
+      NumDataInputPorts	      0
+      NumDataOutputPorts      1
+      DataOutputPort {
+	RecordIdx		[13, 45, 0]
+      }
+      NumDWork		      0
+      Parameters	      [1]
+      Parameter {
+	BlockParamIdx		0
+	Name			"Value"
+	RecordIdx		[13, 45, 0]
+	Value			[0]
+	String			""
+      }
+      Value		      Parameter[0]
+    }
+    Block {
+      Type		      Constant
+      Name		      "<S58>/Constant"
+      RecordType	      "CompiledBlock"
+      RecordIdx		      [13, 46]
+      BlockIdx		      [13, 13, 46]
+      TID		      constant
+      firstEntryOfTsMapIsGCD  yes
+      ExecuteBlockFcns	      0
+      NumDataInputPorts	      0
+      NumDataOutputPorts      1
+      DataOutputPort {
+	RecordIdx		[13, 46, 0]
+      }
+      NumDWork		      0
+      Parameters	      [1]
+      Parameter {
+	BlockParamIdx		0
+	Name			"Value"
+	RecordIdx		[13, 46, 0]
 	Value			[0.0F]
 	String			""
       }
@@ -2551,24 +6777,124 @@ CompiledModel {
     }
     Block {
       Type		      Constant
-      Name		      "<S96>/Constant"
+      Name		      "<S65>/Constant"
       RecordType	      "CompiledBlock"
-      RecordIdx		      [3, 22]
-      BlockIdx		      [3, 3, 22]
+      RecordIdx		      [13, 47]
+      BlockIdx		      [13, 13, 47]
       TID		      constant
       firstEntryOfTsMapIsGCD  yes
       ExecuteBlockFcns	      0
       NumDataInputPorts	      0
       NumDataOutputPorts      1
       DataOutputPort {
-	RecordIdx		[3, 22, 0]
+	RecordIdx		[13, 47, 0]
       }
       NumDWork		      0
       Parameters	      [1]
       Parameter {
 	BlockParamIdx		0
 	Name			"Value"
-	RecordIdx		[3, 22, 0]
+	RecordIdx		[13, 47, 0]
+	Value			[0.0F]
+	String			""
+      }
+      Value		      Parameter[0]
+    }
+    Block {
+      Type		      Constant
+      Name		      "<S72>/Constant"
+      RecordType	      "CompiledBlock"
+      RecordIdx		      [13, 48]
+      BlockIdx		      [13, 13, 48]
+      TID		      constant
+      firstEntryOfTsMapIsGCD  yes
+      ExecuteBlockFcns	      0
+      NumDataInputPorts	      0
+      NumDataOutputPorts      1
+      DataOutputPort {
+	RecordIdx		[13, 48, 0]
+      }
+      NumDWork		      0
+      Parameters	      [1]
+      Parameter {
+	BlockParamIdx		0
+	Name			"Value"
+	RecordIdx		[13, 48, 0]
+	Value			[0.0F]
+	String			""
+      }
+      Value		      Parameter[0]
+    }
+    Block {
+      Type		      Constant
+      Name		      "<S47>/Constant"
+      RecordType	      "CompiledBlock"
+      RecordIdx		      [13, 49]
+      BlockIdx		      [13, 13, 49]
+      TID		      constant
+      firstEntryOfTsMapIsGCD  yes
+      ExecuteBlockFcns	      0
+      NumDataInputPorts	      0
+      NumDataOutputPorts      1
+      DataOutputPort {
+	RecordIdx		[13, 49, 0]
+      }
+      NumDWork		      0
+      Parameters	      [1]
+      Parameter {
+	BlockParamIdx		0
+	Name			"Value"
+	RecordIdx		[13, 49, 0]
+	Value			[0]
+	String			""
+      }
+      Value		      Parameter[0]
+    }
+    Block {
+      Type		      Constant
+      Name		      "<S52>/Constant"
+      RecordType	      "CompiledBlock"
+      RecordIdx		      [13, 50]
+      BlockIdx		      [13, 13, 50]
+      TID		      constant
+      firstEntryOfTsMapIsGCD  yes
+      ExecuteBlockFcns	      0
+      NumDataInputPorts	      0
+      NumDataOutputPorts      1
+      DataOutputPort {
+	RecordIdx		[13, 50, 0]
+      }
+      NumDWork		      0
+      Parameters	      [1]
+      Parameter {
+	BlockParamIdx		0
+	Name			"Value"
+	RecordIdx		[13, 50, 0]
+	Value			[0]
+	String			""
+      }
+      Value		      Parameter[0]
+    }
+    Block {
+      Type		      Constant
+      Name		      "<S53>/Constant"
+      RecordType	      "CompiledBlock"
+      RecordIdx		      [13, 51]
+      BlockIdx		      [13, 13, 51]
+      TID		      constant
+      firstEntryOfTsMapIsGCD  yes
+      ExecuteBlockFcns	      0
+      NumDataInputPorts	      0
+      NumDataOutputPorts      1
+      DataOutputPort {
+	RecordIdx		[13, 51, 0]
+      }
+      NumDWork		      0
+      Parameters	      [1]
+      Parameter {
+	BlockParamIdx		0
+	Name			"Value"
+	RecordIdx		[13, 51, 0]
 	Value			[0]
 	String			""
       }
