@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'MicroMouse_Deploy'.
  *
- * Model version                  : 5.30
+ * Model version                  : 5.42
  * Simulink Coder version         : 25.1 (R2025a) 21-Nov-2024
- * C/C++ source code generated on : Sat Oct 25 21:13:17 2025
+ * C/C++ source code generated on : Sun Oct 26 22:36:47 2025
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -174,38 +174,46 @@
 typedef struct {
   real_T RateLimiter2;                 /* '<S11>/Rate Limiter2' */
   real_T RateLimiter4;                 /* '<S11>/Rate Limiter4' */
-  real_T FilterCoefficient;            /* '<S273>/Filter Coefficient' */
+  real_T FilterCoefficient;            /* '<S277>/Filter Coefficient' */
+  real_T FilterCoefficient_g;          /* '<S485>/Filter Coefficient' */
+  real_T FilterCoefficient_j;          /* '<S433>/Filter Coefficient' */
+  real_T FilterCoefficient_b;          /* '<S329>/Filter Coefficient' */
+  real_T FilterCoefficient_n;          /* '<S381>/Filter Coefficient' */
   real_T CastToDouble[3];              /* '<S3>/Cast To Double' */
   real_T IntegralGain;                 /* '<S106>/Integral Gain' */
   real_T FilterCoefficient_k;          /* '<S112>/Filter Coefficient' */
   real_T FilterCoefficient_f;          /* '<S219>/Filter Coefficient' */
-  real_T IntegralGain_c;               /* '<S267>/Integral Gain' */
-  real_T UnitDelay1;                   /* '<S289>/Unit Delay1' */
-  real_T Product3_k;                   /* '<S291>/Product3' */
-  real_T UnitDelay1_n;                 /* '<S290>/Unit Delay1' */
-  real_T Product3_d;                   /* '<S292>/Product3' */
+  real_T IntegralGain_c;               /* '<S271>/Integral Gain' */
+  real_T IntegralGain_a;               /* '<S323>/Integral Gain' */
+  real_T IntegralGain_j;               /* '<S375>/Integral Gain' */
+  real_T IntegralGain_m;               /* '<S427>/Integral Gain' */
+  real_T IntegralGain_o;               /* '<S479>/Integral Gain' */
+  real_T UnitDelay1;                   /* '<S501>/Unit Delay1' */
+  real_T Product3_k;                   /* '<S503>/Product3' */
+  real_T UnitDelay1_n;                 /* '<S502>/Unit Delay1' */
+  real_T Product3_d;                   /* '<S504>/Product3' */
   real_T DeadZone;                     /* '<S23>/Dead Zone' */
-  real_T Product4;                     /* '<S291>/Product4' */
-  real_T Product5;                     /* '<S291>/Product5' */
-  real_T UnitDelay2;                   /* '<S289>/Unit Delay2' */
-  real_T Sum1;                         /* '<S289>/Sum1' */
-  real_T Sum3;                         /* '<S289>/Sum3' */
-  real_T Product4_k;                   /* '<S292>/Product4' */
-  real_T Product5_a;                   /* '<S292>/Product5' */
-  real_T UnitDelay2_b;                 /* '<S290>/Unit Delay2' */
-  real_T Sum1_k;                       /* '<S290>/Sum1' */
-  real_T Sum3_o;                       /* '<S290>/Sum3' */
+  real_T Product4;                     /* '<S503>/Product4' */
+  real_T Product5;                     /* '<S503>/Product5' */
+  real_T UnitDelay2;                   /* '<S501>/Unit Delay2' */
+  real_T Sum1;                         /* '<S501>/Sum1' */
+  real_T Sum3;                         /* '<S501>/Sum3' */
+  real_T Product4_k;                   /* '<S504>/Product4' */
+  real_T Product5_a;                   /* '<S504>/Product5' */
+  real_T UnitDelay2_b;                 /* '<S502>/Unit Delay2' */
+  real_T Sum1_k;                       /* '<S502>/Sum1' */
+  real_T Sum3_o;                       /* '<S502>/Sum3' */
   real_T RateLimiter1;                 /* '<S12>/Rate Limiter1' */
   real_T RateLimiter2_j;               /* '<S12>/Rate Limiter2' */
   real_T DerivativeGain;               /* '<S154>/Derivative Gain' */
   real_T IntegralGain_i;               /* '<S158>/Integral Gain' */
   real_T FilterCoefficient_o;          /* '<S164>/Filter Coefficient' */
-  real_T DerivativeGain_c;             /* '<S323>/Derivative Gain' */
-  real_T IntegralGain_e;               /* '<S327>/Integral Gain' */
-  real_T FilterCoefficient_j;          /* '<S333>/Filter Coefficient' */
-  real_T DerivativeGain_k;             /* '<S375>/Derivative Gain' */
-  real_T IntegralGain_k;               /* '<S379>/Integral Gain' */
-  real_T FilterCoefficient_n;          /* '<S385>/Filter Coefficient' */
+  real_T DerivativeGain_c;             /* '<S535>/Derivative Gain' */
+  real_T IntegralGain_e;               /* '<S539>/Integral Gain' */
+  real_T FilterCoefficient_ja;         /* '<S545>/Filter Coefficient' */
+  real_T DerivativeGain_k;             /* '<S587>/Derivative Gain' */
+  real_T IntegralGain_k;               /* '<S591>/Integral Gain' */
+  real_T FilterCoefficient_nz;         /* '<S597>/Filter Coefficient' */
   real_T error;                      /* '<S24>/engage_disengage_straightnert' */
   real_T TOF_L_out;                  /* '<S24>/engage_disengage_straightnert' */
   real_T TOF_R_out;                  /* '<S24>/engage_disengage_straightnert' */
@@ -230,14 +238,14 @@ typedef struct {
   real32_T uT_p;                       /* '<S14>/1//T' */
   real32_T AvoidDividebyZero_n;        /* '<S68>/Avoid Divide by Zero' */
   real32_T uT_e;                       /* '<S15>/1//T' */
-  uint8_T Delay;                       /* '<S27>/Delay' */
+  uint16_T Delay;                      /* '<S27>/Delay' */
+  uint16_T Add_f;                      /* '<S27>/Add' */
+  uint16_T Delay_f;                    /* '<S26>/Delay' */
+  uint16_T Add_h;                      /* '<S26>/Add' */
   uint8_T Compare;                     /* '<S38>/Compare' */
   uint8_T Uk1;                         /* '<S36>/Delay Input1' */
-  uint8_T Add_f;                       /* '<S27>/Add' */
-  uint8_T Delay_f;                     /* '<S26>/Delay' */
   uint8_T Compare_a;                   /* '<S32>/Compare' */
   uint8_T Uk1_k;                       /* '<S31>/Delay Input1' */
-  uint8_T Add_h;                       /* '<S26>/Add' */
   boolean_T TOF_LEFT;                  /* '<S3>/GreaterThan' */
   boolean_T TOF_RIGHT;                 /* '<S3>/GreaterThan2' */
   boolean_T TOF_FRONT;                 /* '<S3>/GreaterThan1' */
@@ -256,10 +264,10 @@ typedef struct {
   dsp_simulink_MovingAverage_Mi_T obj; /* '<S24>/Moving Average1' */
   dsp_simulink_MovingAverage_Mi_T obj_b;/* '<S24>/Moving Average' */
   dsp_simulink_MedianFilter_Mic_T obj_o;/* '<S23>/Median Filter' */
-  real_T UnitDelay1_DSTATE;            /* '<S289>/Unit Delay1' */
-  real_T UnitDelay1_DSTATE_n;          /* '<S290>/Unit Delay1' */
-  real_T UnitDelay2_DSTATE;            /* '<S289>/Unit Delay2' */
-  real_T UnitDelay2_DSTATE_j;          /* '<S290>/Unit Delay2' */
+  real_T UnitDelay1_DSTATE;            /* '<S501>/Unit Delay1' */
+  real_T UnitDelay1_DSTATE_n;          /* '<S502>/Unit Delay1' */
+  real_T UnitDelay2_DSTATE;            /* '<S501>/Unit Delay2' */
+  real_T UnitDelay2_DSTATE_j;          /* '<S502>/Unit Delay2' */
   real_T Delay_DSTATE;                 /* '<S39>/Delay' */
   real_T Delay_DSTATE_k;               /* '<S40>/Delay' */
   real_T PrevY;                        /* '<S11>/Rate Limiter2' */
@@ -281,10 +289,12 @@ typedef struct {
   real32_T end_dist_o;                 /* '<S3>/draft2_Maze_exploration2' */
   real32_T end_dist_a;                 /* '<S3>/draft2_Maze_exploration1' */
   real32_T theta;                      /* '<S3>/draft2_Maze_exploration1' */
+  real32_T TLR_dist;                   /* '<S3>/draft2_Maze_exploration' */
+  real32_T TFR_dist;                   /* '<S3>/draft2_Maze_exploration' */
   struct {
+    uint_T is_c8_MicroMouse_Deploy : 5;/* '<S3>/draft2_Maze_exploration' */
     uint_T is_c10_MicroMouse_Deploy : 4;/* '<S3>/draft2_Maze_exploration2' */
     uint_T is_c6_MicroMouse_Deploy : 4;/* '<S3>/draft2_Maze_exploration1' */
-    uint_T is_c8_MicroMouse_Deploy : 4;/* '<S3>/draft2_Maze_exploration' */
     uint_T is_active_c10_MicroMouse_Deploy : 1;/* '<S3>/draft2_Maze_exploration2' */
     uint_T is_active_c6_MicroMouse_Deploy : 1;/* '<S3>/draft2_Maze_exploration1' */
     uint_T is_active_c8_MicroMouse_Deploy : 1;/* '<S3>/draft2_Maze_exploration' */
@@ -309,9 +319,9 @@ typedef struct {
     uint_T is_active_c7_MicroMouse_Deploy : 1;/* '<S27>/Chart' */
   } bitsForTID1;
 
-  uint8_T Delay_DSTATE_d;              /* '<S27>/Delay' */
+  uint16_T Delay_DSTATE_d;             /* '<S27>/Delay' */
+  uint16_T Delay_DSTATE_f;             /* '<S26>/Delay' */
   uint8_T DelayInput1_DSTATE;          /* '<S36>/Delay Input1' */
-  uint8_T Delay_DSTATE_f;              /* '<S26>/Delay' */
   uint8_T DelayInput1_DSTATE_c;        /* '<S31>/Delay Input1' */
   uint8_T DelayInput1_DSTATE_b;        /* '<S46>/Delay Input1' */
   uint8_T DelayInput1_DSTATE_k;        /* '<S51>/Delay Input1' */
@@ -332,61 +342,85 @@ typedef struct {
 /* Continuous states (default storage) */
 typedef struct {
   real_T Integrator_CSTATE;            /* '<S3>/Integrator' */
-  real_T Integrator_CSTATE_o;          /* '<S270>/Integrator' */
-  real_T Filter_CSTATE;                /* '<S265>/Filter' */
+  real_T Integrator_CSTATE_o;          /* '<S274>/Integrator' */
+  real_T Filter_CSTATE;                /* '<S269>/Filter' */
+  real_T Integrator_CSTATE_k;          /* '<S482>/Integrator' */
+  real_T Filter_CSTATE_f;              /* '<S477>/Filter' */
+  real_T Integrator_CSTATE_a;          /* '<S430>/Integrator' */
+  real_T Filter_CSTATE_m;              /* '<S425>/Filter' */
+  real_T Integrator_CSTATE_l;          /* '<S326>/Integrator' */
+  real_T Filter_CSTATE_e;              /* '<S321>/Filter' */
+  real_T Integrator_CSTATE_p;          /* '<S378>/Integrator' */
+  real_T Filter_CSTATE_l;              /* '<S373>/Filter' */
   real_T Integrator1_CSTATE;           /* '<S3>/Integrator1' */
   real_T Filter_CSTATE_k;              /* '<S104>/Filter' */
   real_T Integrator_CSTATE_e;          /* '<S109>/Integrator' */
   real_T Integrator_CSTATE_j;          /* '<S18>/Integrator' */
-  real_T Filter_CSTATE_l;              /* '<S211>/Filter' */
+  real_T Filter_CSTATE_lq;             /* '<S211>/Filter' */
   real_T Integrator_CSTATE_f;          /* '<S12>/Integrator' */
   real_T Integrator1_CSTATE_g;         /* '<S12>/Integrator1' */
   real_T Filter_CSTATE_n;              /* '<S156>/Filter' */
-  real_T Integrator_CSTATE_k;          /* '<S161>/Integrator' */
-  real_T Filter_CSTATE_c;              /* '<S325>/Filter' */
-  real_T Integrator_CSTATE_g;          /* '<S330>/Integrator' */
-  real_T Filter_CSTATE_f;              /* '<S377>/Filter' */
-  real_T Integrator_CSTATE_a;          /* '<S382>/Integrator' */
+  real_T Integrator_CSTATE_kx;         /* '<S161>/Integrator' */
+  real_T Filter_CSTATE_c;              /* '<S537>/Filter' */
+  real_T Integrator_CSTATE_g;          /* '<S542>/Integrator' */
+  real_T Filter_CSTATE_fe;             /* '<S589>/Filter' */
+  real_T Integrator_CSTATE_am;         /* '<S594>/Integrator' */
 } X_MicroMouse_Deploy_T;
 
 /* State derivatives (default storage) */
 typedef struct {
   real_T Integrator_CSTATE;            /* '<S3>/Integrator' */
-  real_T Integrator_CSTATE_o;          /* '<S270>/Integrator' */
-  real_T Filter_CSTATE;                /* '<S265>/Filter' */
+  real_T Integrator_CSTATE_o;          /* '<S274>/Integrator' */
+  real_T Filter_CSTATE;                /* '<S269>/Filter' */
+  real_T Integrator_CSTATE_k;          /* '<S482>/Integrator' */
+  real_T Filter_CSTATE_f;              /* '<S477>/Filter' */
+  real_T Integrator_CSTATE_a;          /* '<S430>/Integrator' */
+  real_T Filter_CSTATE_m;              /* '<S425>/Filter' */
+  real_T Integrator_CSTATE_l;          /* '<S326>/Integrator' */
+  real_T Filter_CSTATE_e;              /* '<S321>/Filter' */
+  real_T Integrator_CSTATE_p;          /* '<S378>/Integrator' */
+  real_T Filter_CSTATE_l;              /* '<S373>/Filter' */
   real_T Integrator1_CSTATE;           /* '<S3>/Integrator1' */
   real_T Filter_CSTATE_k;              /* '<S104>/Filter' */
   real_T Integrator_CSTATE_e;          /* '<S109>/Integrator' */
   real_T Integrator_CSTATE_j;          /* '<S18>/Integrator' */
-  real_T Filter_CSTATE_l;              /* '<S211>/Filter' */
+  real_T Filter_CSTATE_lq;             /* '<S211>/Filter' */
   real_T Integrator_CSTATE_f;          /* '<S12>/Integrator' */
   real_T Integrator1_CSTATE_g;         /* '<S12>/Integrator1' */
   real_T Filter_CSTATE_n;              /* '<S156>/Filter' */
-  real_T Integrator_CSTATE_k;          /* '<S161>/Integrator' */
-  real_T Filter_CSTATE_c;              /* '<S325>/Filter' */
-  real_T Integrator_CSTATE_g;          /* '<S330>/Integrator' */
-  real_T Filter_CSTATE_f;              /* '<S377>/Filter' */
-  real_T Integrator_CSTATE_a;          /* '<S382>/Integrator' */
+  real_T Integrator_CSTATE_kx;         /* '<S161>/Integrator' */
+  real_T Filter_CSTATE_c;              /* '<S537>/Filter' */
+  real_T Integrator_CSTATE_g;          /* '<S542>/Integrator' */
+  real_T Filter_CSTATE_fe;             /* '<S589>/Filter' */
+  real_T Integrator_CSTATE_am;         /* '<S594>/Integrator' */
 } XDot_MicroMouse_Deploy_T;
 
 /* State disabled  */
 typedef struct {
   boolean_T Integrator_CSTATE;         /* '<S3>/Integrator' */
-  boolean_T Integrator_CSTATE_o;       /* '<S270>/Integrator' */
-  boolean_T Filter_CSTATE;             /* '<S265>/Filter' */
+  boolean_T Integrator_CSTATE_o;       /* '<S274>/Integrator' */
+  boolean_T Filter_CSTATE;             /* '<S269>/Filter' */
+  boolean_T Integrator_CSTATE_k;       /* '<S482>/Integrator' */
+  boolean_T Filter_CSTATE_f;           /* '<S477>/Filter' */
+  boolean_T Integrator_CSTATE_a;       /* '<S430>/Integrator' */
+  boolean_T Filter_CSTATE_m;           /* '<S425>/Filter' */
+  boolean_T Integrator_CSTATE_l;       /* '<S326>/Integrator' */
+  boolean_T Filter_CSTATE_e;           /* '<S321>/Filter' */
+  boolean_T Integrator_CSTATE_p;       /* '<S378>/Integrator' */
+  boolean_T Filter_CSTATE_l;           /* '<S373>/Filter' */
   boolean_T Integrator1_CSTATE;        /* '<S3>/Integrator1' */
   boolean_T Filter_CSTATE_k;           /* '<S104>/Filter' */
   boolean_T Integrator_CSTATE_e;       /* '<S109>/Integrator' */
   boolean_T Integrator_CSTATE_j;       /* '<S18>/Integrator' */
-  boolean_T Filter_CSTATE_l;           /* '<S211>/Filter' */
+  boolean_T Filter_CSTATE_lq;          /* '<S211>/Filter' */
   boolean_T Integrator_CSTATE_f;       /* '<S12>/Integrator' */
   boolean_T Integrator1_CSTATE_g;      /* '<S12>/Integrator1' */
   boolean_T Filter_CSTATE_n;           /* '<S156>/Filter' */
-  boolean_T Integrator_CSTATE_k;       /* '<S161>/Integrator' */
-  boolean_T Filter_CSTATE_c;           /* '<S325>/Filter' */
-  boolean_T Integrator_CSTATE_g;       /* '<S330>/Integrator' */
-  boolean_T Filter_CSTATE_f;           /* '<S377>/Filter' */
-  boolean_T Integrator_CSTATE_a;       /* '<S382>/Integrator' */
+  boolean_T Integrator_CSTATE_kx;      /* '<S161>/Integrator' */
+  boolean_T Filter_CSTATE_c;           /* '<S537>/Filter' */
+  boolean_T Integrator_CSTATE_g;       /* '<S542>/Integrator' */
+  boolean_T Filter_CSTATE_fe;          /* '<S589>/Filter' */
+  boolean_T Integrator_CSTATE_am;      /* '<S594>/Integrator' */
 } XDis_MicroMouse_Deploy_T;
 
 #ifndef ODE3_INTG
@@ -403,7 +437,19 @@ typedef struct {
 /* Parameters (default storage) */
 struct P_MicroMouse_Deploy_T_ {
   real_T PIDController1_D;             /* Mask Parameter: PIDController1_D
-                                        * Referenced by: '<S263>/Derivative Gain'
+                                        * Referenced by: '<S267>/Derivative Gain'
+                                        */
+  real_T PIDController5_D;             /* Mask Parameter: PIDController5_D
+                                        * Referenced by: '<S475>/Derivative Gain'
+                                        */
+  real_T PIDController4_D;             /* Mask Parameter: PIDController4_D
+                                        * Referenced by: '<S423>/Derivative Gain'
+                                        */
+  real_T PIDController2_D;             /* Mask Parameter: PIDController2_D
+                                        * Referenced by: '<S319>/Derivative Gain'
+                                        */
+  real_T PIDController3_D;             /* Mask Parameter: PIDController3_D
+                                        * Referenced by: '<S371>/Derivative Gain'
                                         */
   real_T PIDController_D;              /* Mask Parameter: PIDController_D
                                         * Referenced by: '<S102>/Derivative Gain'
@@ -411,33 +457,61 @@ struct P_MicroMouse_Deploy_T_ {
   real_T PIDController_D_e;            /* Mask Parameter: PIDController_D_e
                                         * Referenced by: '<S209>/Derivative Gain'
                                         */
-  real_T PIDController4_D;             /* Mask Parameter: PIDController4_D
+  real_T PIDController4_D_i;           /* Mask Parameter: PIDController4_D_i
                                         * Referenced by: '<S154>/Derivative Gain'
                                         */
   real_T PIDController1_D_p;           /* Mask Parameter: PIDController1_D_p
-                                        * Referenced by: '<S323>/Derivative Gain'
+                                        * Referenced by: '<S535>/Derivative Gain'
                                         */
-  real_T PIDController2_D;             /* Mask Parameter: PIDController2_D
-                                        * Referenced by: '<S375>/Derivative Gain'
+  real_T PIDController2_D_g;           /* Mask Parameter: PIDController2_D_g
+                                        * Referenced by: '<S587>/Derivative Gain'
                                         */
   real_T PIDController_I;              /* Mask Parameter: PIDController_I
                                         * Referenced by: '<S106>/Integral Gain'
                                         */
   real_T PIDController1_I;             /* Mask Parameter: PIDController1_I
-                                        * Referenced by: '<S267>/Integral Gain'
+                                        * Referenced by: '<S271>/Integral Gain'
+                                        */
+  real_T PIDController2_I;             /* Mask Parameter: PIDController2_I
+                                        * Referenced by: '<S323>/Integral Gain'
+                                        */
+  real_T PIDController3_I;             /* Mask Parameter: PIDController3_I
+                                        * Referenced by: '<S375>/Integral Gain'
                                         */
   real_T PIDController4_I;             /* Mask Parameter: PIDController4_I
+                                        * Referenced by: '<S427>/Integral Gain'
+                                        */
+  real_T PIDController5_I;             /* Mask Parameter: PIDController5_I
+                                        * Referenced by: '<S479>/Integral Gain'
+                                        */
+  real_T PIDController4_I_j;           /* Mask Parameter: PIDController4_I_j
                                         * Referenced by: '<S158>/Integral Gain'
                                         */
   real_T PIDController1_I_g;           /* Mask Parameter: PIDController1_I_g
-                                        * Referenced by: '<S327>/Integral Gain'
+                                        * Referenced by: '<S539>/Integral Gain'
                                         */
-  real_T PIDController2_I;             /* Mask Parameter: PIDController2_I
-                                        * Referenced by: '<S379>/Integral Gain'
+  real_T PIDController2_I_b;           /* Mask Parameter: PIDController2_I_b
+                                        * Referenced by: '<S591>/Integral Gain'
                                         */
   real_T PIDController1_InitialCondition;
                               /* Mask Parameter: PIDController1_InitialCondition
-                               * Referenced by: '<S265>/Filter'
+                               * Referenced by: '<S269>/Filter'
+                               */
+  real_T PIDController5_InitialCondition;
+                              /* Mask Parameter: PIDController5_InitialCondition
+                               * Referenced by: '<S477>/Filter'
+                               */
+  real_T PIDController4_InitialCondition;
+                              /* Mask Parameter: PIDController4_InitialCondition
+                               * Referenced by: '<S425>/Filter'
+                               */
+  real_T PIDController2_InitialCondition;
+                              /* Mask Parameter: PIDController2_InitialCondition
+                               * Referenced by: '<S321>/Filter'
+                               */
+  real_T PIDController3_InitialCondition;
+                              /* Mask Parameter: PIDController3_InitialCondition
+                               * Referenced by: '<S373>/Filter'
                                */
   real_T PIDController_InitialConditionF;
                               /* Mask Parameter: PIDController_InitialConditionF
@@ -447,21 +521,37 @@ struct P_MicroMouse_Deploy_T_ {
                               /* Mask Parameter: PIDController_InitialConditio_a
                                * Referenced by: '<S211>/Filter'
                                */
-  real_T PIDController4_InitialCondition;
-                              /* Mask Parameter: PIDController4_InitialCondition
+  real_T PIDController4_InitialConditi_i;
+                              /* Mask Parameter: PIDController4_InitialConditi_i
                                * Referenced by: '<S156>/Filter'
                                */
   real_T PIDController1_InitialConditi_h;
                               /* Mask Parameter: PIDController1_InitialConditi_h
-                               * Referenced by: '<S325>/Filter'
+                               * Referenced by: '<S537>/Filter'
                                */
-  real_T PIDController2_InitialCondition;
-                              /* Mask Parameter: PIDController2_InitialCondition
-                               * Referenced by: '<S377>/Filter'
+  real_T PIDController2_InitialConditi_e;
+                              /* Mask Parameter: PIDController2_InitialConditi_e
+                               * Referenced by: '<S589>/Filter'
                                */
   real_T PIDController1_InitialConditi_i;
                               /* Mask Parameter: PIDController1_InitialConditi_i
-                               * Referenced by: '<S270>/Integrator'
+                               * Referenced by: '<S274>/Integrator'
+                               */
+  real_T PIDController5_InitialConditi_i;
+                              /* Mask Parameter: PIDController5_InitialConditi_i
+                               * Referenced by: '<S482>/Integrator'
+                               */
+  real_T PIDController4_InitialConditi_d;
+                              /* Mask Parameter: PIDController4_InitialConditi_d
+                               * Referenced by: '<S430>/Integrator'
+                               */
+  real_T PIDController2_InitialConditi_m;
+                              /* Mask Parameter: PIDController2_InitialConditi_m
+                               * Referenced by: '<S326>/Integrator'
+                               */
+  real_T PIDController3_InitialConditi_n;
+                              /* Mask Parameter: PIDController3_InitialConditi_n
+                               * Referenced by: '<S378>/Integrator'
                                */
   real_T PIDController_InitialConditio_l;
                               /* Mask Parameter: PIDController_InitialConditio_l
@@ -473,14 +563,26 @@ struct P_MicroMouse_Deploy_T_ {
                                */
   real_T PIDController1_InitialConditi_c;
                               /* Mask Parameter: PIDController1_InitialConditi_c
-                               * Referenced by: '<S330>/Integrator'
+                               * Referenced by: '<S542>/Integrator'
                                */
   real_T PIDController2_InitialConditi_f;
                               /* Mask Parameter: PIDController2_InitialConditi_f
-                               * Referenced by: '<S382>/Integrator'
+                               * Referenced by: '<S594>/Integrator'
                                */
   real_T PIDController1_N;             /* Mask Parameter: PIDController1_N
-                                        * Referenced by: '<S273>/Filter Coefficient'
+                                        * Referenced by: '<S277>/Filter Coefficient'
+                                        */
+  real_T PIDController5_N;             /* Mask Parameter: PIDController5_N
+                                        * Referenced by: '<S485>/Filter Coefficient'
+                                        */
+  real_T PIDController4_N;             /* Mask Parameter: PIDController4_N
+                                        * Referenced by: '<S433>/Filter Coefficient'
+                                        */
+  real_T PIDController2_N;             /* Mask Parameter: PIDController2_N
+                                        * Referenced by: '<S329>/Filter Coefficient'
+                                        */
+  real_T PIDController3_N;             /* Mask Parameter: PIDController3_N
+                                        * Referenced by: '<S381>/Filter Coefficient'
                                         */
   real_T PIDController_N;              /* Mask Parameter: PIDController_N
                                         * Referenced by: '<S112>/Filter Coefficient'
@@ -488,17 +590,29 @@ struct P_MicroMouse_Deploy_T_ {
   real_T PIDController_N_j;            /* Mask Parameter: PIDController_N_j
                                         * Referenced by: '<S219>/Filter Coefficient'
                                         */
-  real_T PIDController4_N;             /* Mask Parameter: PIDController4_N
+  real_T PIDController4_N_k;           /* Mask Parameter: PIDController4_N_k
                                         * Referenced by: '<S164>/Filter Coefficient'
                                         */
   real_T PIDController1_N_m;           /* Mask Parameter: PIDController1_N_m
-                                        * Referenced by: '<S333>/Filter Coefficient'
+                                        * Referenced by: '<S545>/Filter Coefficient'
                                         */
-  real_T PIDController2_N;             /* Mask Parameter: PIDController2_N
-                                        * Referenced by: '<S385>/Filter Coefficient'
+  real_T PIDController2_N_n;           /* Mask Parameter: PIDController2_N_n
+                                        * Referenced by: '<S597>/Filter Coefficient'
                                         */
   real_T PIDController1_P;             /* Mask Parameter: PIDController1_P
-                                        * Referenced by: '<S275>/Proportional Gain'
+                                        * Referenced by: '<S279>/Proportional Gain'
+                                        */
+  real_T PIDController5_P;             /* Mask Parameter: PIDController5_P
+                                        * Referenced by: '<S487>/Proportional Gain'
+                                        */
+  real_T PIDController4_P;             /* Mask Parameter: PIDController4_P
+                                        * Referenced by: '<S435>/Proportional Gain'
+                                        */
+  real_T PIDController2_P;             /* Mask Parameter: PIDController2_P
+                                        * Referenced by: '<S331>/Proportional Gain'
+                                        */
+  real_T PIDController3_P;             /* Mask Parameter: PIDController3_P
+                                        * Referenced by: '<S383>/Proportional Gain'
                                         */
   real_T PIDController_P;              /* Mask Parameter: PIDController_P
                                         * Referenced by: '<S114>/Proportional Gain'
@@ -620,13 +734,13 @@ struct P_MicroMouse_Deploy_T_ {
   real_T Gain1_Gain;                   /* Expression: 0.5
                                         * Referenced by: '<S11>/Gain1'
                                         */
-  real_T Constant2_Value;              /* Expression: 0.04
+  real_T Constant2_Value;              /* Expression: 0.05
                                         * Referenced by: '<S3>/Constant2'
                                         */
   real_T Integrator_IC;                /* Expression: 0
                                         * Referenced by: '<S3>/Integrator'
                                         */
-  real_T constant_Value;               /* Expression: 40
+  real_T constant_Value;               /* Expression: 45
                                         * Referenced by: '<S22>/constant'
                                         */
   real_T Gain5_Gain;                   /* Expression: 10
@@ -635,10 +749,10 @@ struct P_MicroMouse_Deploy_T_ {
   real_T Gain6_Gain;                   /* Expression: 10
                                         * Referenced by: '<S22>/Gain6'
                                         */
-  real_T Constant1_Value_a;            /* Expression: 0.06
+  real_T Constant1_Value_a;            /* Expression: 0.07
                                         * Referenced by: '<S22>/Constant1'
                                         */
-  real_T Constant_Value;               /* Expression: 0.06
+  real_T Constant_Value;               /* Expression: 0.07
                                         * Referenced by: '<S22>/Constant'
                                         */
   real_T Constant4_Value;              /* Expression: 0.11
@@ -646,9 +760,6 @@ struct P_MicroMouse_Deploy_T_ {
                                         */
   real_T Constant2_Value_a;            /* Expression: 0.07
                                         * Referenced by: '<S22>/Constant2'
-                                        */
-  real_T Gain3_Gain;                   /* Expression: 150
-                                        * Referenced by: '<S22>/Gain3'
                                         */
   real_T Constant3_Value;              /* Expression: 0.07
                                         * Referenced by: '<S22>/Constant3'
@@ -684,28 +795,28 @@ struct P_MicroMouse_Deploy_T_ {
                                         * Referenced by: '<S18>/Integrator'
                                         */
   real_T UnitDelay1_InitialCondition;  /* Expression: 0
-                                        * Referenced by: '<S289>/Unit Delay1'
+                                        * Referenced by: '<S501>/Unit Delay1'
                                         */
   real_T tau_Gain;                     /* Expression: tau
-                                        * Referenced by: '<S289>/tau'
+                                        * Referenced by: '<S501>/tau'
                                         */
   real_T Bias_Bias;                    /* Expression: 1
-                                        * Referenced by: '<S291>/Bias'
+                                        * Referenced by: '<S503>/Bias'
                                         */
   real_T Gain_Gain_n;                  /* Expression: 2*zeta
-                                        * Referenced by: '<S291>/Gain'
+                                        * Referenced by: '<S503>/Gain'
                                         */
   real_T UnitDelay1_InitialCondition_k;/* Expression: 0
-                                        * Referenced by: '<S290>/Unit Delay1'
+                                        * Referenced by: '<S502>/Unit Delay1'
                                         */
   real_T tau_Gain_b;                   /* Expression: tau
-                                        * Referenced by: '<S290>/tau'
+                                        * Referenced by: '<S502>/tau'
                                         */
   real_T Bias_Bias_b;                  /* Expression: 1
-                                        * Referenced by: '<S292>/Bias'
+                                        * Referenced by: '<S504>/Bias'
                                         */
   real_T Gain_Gain_l;                  /* Expression: 2*zeta
-                                        * Referenced by: '<S292>/Gain'
+                                        * Referenced by: '<S504>/Gain'
                                         */
   real_T DeadZone_Start;               /* Expression: -0.5
                                         * Referenced by: '<S23>/Dead Zone'
@@ -714,22 +825,22 @@ struct P_MicroMouse_Deploy_T_ {
                                         * Referenced by: '<S23>/Dead Zone'
                                         */
   real_T Bias1_Bias;                   /* Expression: 1
-                                        * Referenced by: '<S291>/Bias1'
+                                        * Referenced by: '<S503>/Bias1'
                                         */
   real_T Gain1_Gain_b;                 /* Expression: 2
-                                        * Referenced by: '<S289>/Gain1'
+                                        * Referenced by: '<S501>/Gain1'
                                         */
   real_T UnitDelay2_InitialCondition;  /* Expression: 0
-                                        * Referenced by: '<S289>/Unit Delay2'
+                                        * Referenced by: '<S501>/Unit Delay2'
                                         */
   real_T Bias1_Bias_f;                 /* Expression: 1
-                                        * Referenced by: '<S292>/Bias1'
+                                        * Referenced by: '<S504>/Bias1'
                                         */
   real_T Gain1_Gain_h;                 /* Expression: 2
-                                        * Referenced by: '<S290>/Gain1'
+                                        * Referenced by: '<S502>/Gain1'
                                         */
   real_T UnitDelay2_InitialCondition_e;/* Expression: 0
-                                        * Referenced by: '<S290>/Unit Delay2'
+                                        * Referenced by: '<S502>/Unit Delay2'
                                         */
   real_T Integrator_IC_p;              /* Expression: 0
                                         * Referenced by: '<S12>/Integrator'
@@ -824,15 +935,6 @@ struct P_MicroMouse_Deploy_T_ {
   real32_T Saturation_LowerSat_b;   /* Computed Parameter: Saturation_LowerSat_b
                                      * Referenced by: '<S67>/Saturation'
                                      */
-  real32_T Gain1_Gain_a;               /* Computed Parameter: Gain1_Gain_a
-                                        * Referenced by: '<S22>/Gain1'
-                                        */
-  real32_T Gain2_Gain_k;               /* Computed Parameter: Gain2_Gain_k
-                                        * Referenced by: '<S22>/Gain2'
-                                        */
-  real32_T Gain4_Gain;                 /* Computed Parameter: Gain4_Gain
-                                        * Referenced by: '<S22>/Gain4'
-                                        */
   real32_T Gain2_Gain_f;               /* Computed Parameter: Gain2_Gain_f
                                         * Referenced by: '<S3>/Gain2'
                                         */
@@ -880,6 +982,20 @@ struct P_MicroMouse_Deploy_T_ {
                           /* Computed Parameter: DataStoreMemory2_InitialValue_g
                            * Referenced by: '<S10>/Data Store Memory2'
                            */
+  uint16_T Delay_InitialCondition_j;
+                                 /* Computed Parameter: Delay_InitialCondition_j
+                                  * Referenced by: '<S27>/Delay'
+                                  */
+  uint16_T Delay_InitialCondition_c;
+                                 /* Computed Parameter: Delay_InitialCondition_c
+                                  * Referenced by: '<S26>/Delay'
+                                  */
+  uint16_T Gain1_Gain_k;               /* Computed Parameter: Gain1_Gain_k
+                                        * Referenced by: '<S27>/Gain1'
+                                        */
+  uint16_T Gain1_Gain_m;               /* Computed Parameter: Gain1_Gain_m
+                                        * Referenced by: '<S26>/Gain1'
+                                        */
   uint16_T DataStoreMemory_InitialValue_b;
                            /* Computed Parameter: DataStoreMemory_InitialValue_b
                             * Referenced by: '<S4>/Data Store Memory'
@@ -926,14 +1042,12 @@ struct P_MicroMouse_Deploy_T_ {
                           /* Computed Parameter: DataStoreMemory1_InitialValu_p2
                            * Referenced by: '<S1>/Data Store Memory1'
                            */
-  uint8_T Delay_InitialCondition_j;
-                                 /* Computed Parameter: Delay_InitialCondition_j
-                                  * Referenced by: '<S27>/Delay'
-                                  */
-  uint8_T Delay_InitialCondition_c;
-                                 /* Computed Parameter: Delay_InitialCondition_c
-                                  * Referenced by: '<S26>/Delay'
-                                  */
+  uint8_T Gain_Gain_f;                 /* Computed Parameter: Gain_Gain_f
+                                        * Referenced by: '<S27>/Gain'
+                                        */
+  uint8_T Gain_Gain_nt;                /* Computed Parameter: Gain_Gain_nt
+                                        * Referenced by: '<S26>/Gain'
+                                        */
   uint8_T DataStoreMemory_InitialValue_e;
                            /* Computed Parameter: DataStoreMemory_InitialValue_e
                             * Referenced by: '<S2>/Data Store Memory'
@@ -986,8 +1100,8 @@ struct tag_RTM_MicroMouse_Deploy_T {
   boolean_T zCCacheNeedsReset;
   boolean_T derivCacheNeedsReset;
   boolean_T CTOutputIncnstWithState;
-  real_T odeY[16];
-  real_T odeF[3][16];
+  real_T odeY[24];
+  real_T odeF[3][24];
   ODE3_IntgData intgData;
 
   /*
@@ -1142,10 +1256,10 @@ extern volatile boolean_T runModel;
  * Block '<S22>/Scope6' : Unused code path elimination
  * Block '<S24>/Display9' : Unused code path elimination
  * Block '<S24>/Gain' : Unused code path elimination
- * Block '<S335>/Proportional Gain' : Unused code path elimination
- * Block '<S339>/Sum' : Unused code path elimination
- * Block '<S387>/Proportional Gain' : Unused code path elimination
- * Block '<S391>/Sum' : Unused code path elimination
+ * Block '<S547>/Proportional Gain' : Unused code path elimination
+ * Block '<S551>/Sum' : Unused code path elimination
+ * Block '<S599>/Proportional Gain' : Unused code path elimination
+ * Block '<S603>/Sum' : Unused code path elimination
  * Block '<S24>/Scope' : Unused code path elimination
  * Block '<S24>/Scope1' : Unused code path elimination
  * Block '<S24>/Scope6' : Unused code path elimination
@@ -1166,6 +1280,7 @@ extern volatile boolean_T runModel;
  * Block '<S3>/Cast' : Eliminate redundant data type conversion
  * Block '<S3>/Cast1' : Eliminate redundant data type conversion
  * Block '<S3>/Cast2' : Eliminate redundant data type conversion
+ * Block '<S22>/Cast To Double3' : Eliminate redundant data type conversion
  * Block '<S5>/Cast To Single' : Eliminate redundant data type conversion
  * Block '<S5>/Cast To Single1' : Eliminate redundant data type conversion
  */
@@ -1420,170 +1535,382 @@ extern volatile boolean_T runModel;
  * '<S233>' : 'MicroMouse_Deploy/StudentTemplate/angle_adjus_draft2/PID Controller/preSat Signal/Forward_Path'
  * '<S234>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/Chart'
  * '<S235>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1'
- * '<S236>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Anti-windup'
- * '<S237>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/D Gain'
- * '<S238>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/External Derivative'
- * '<S239>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Filter'
- * '<S240>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Filter ICs'
- * '<S241>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/I Gain'
- * '<S242>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Ideal P Gain'
- * '<S243>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Ideal P Gain Fdbk'
- * '<S244>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Integrator'
- * '<S245>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Integrator ICs'
- * '<S246>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/N Copy'
- * '<S247>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/N Gain'
- * '<S248>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/P Copy'
- * '<S249>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Parallel P Gain'
- * '<S250>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Reset Signal'
- * '<S251>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Saturation'
- * '<S252>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Saturation Fdbk'
- * '<S253>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Sum'
- * '<S254>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Sum Fdbk'
- * '<S255>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Tracking Mode'
- * '<S256>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Tracking Mode Sum'
- * '<S257>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Tsamp - Integral'
- * '<S258>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Tsamp - Ngain'
- * '<S259>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/postSat Signal'
- * '<S260>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/preInt Signal'
- * '<S261>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/preSat Signal'
- * '<S262>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Anti-windup/Passthrough'
- * '<S263>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/D Gain/Internal Parameters'
- * '<S264>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/External Derivative/Error'
- * '<S265>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Filter/Cont. Filter'
- * '<S266>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Filter ICs/Internal IC - Filter'
- * '<S267>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/I Gain/Internal Parameters'
- * '<S268>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Ideal P Gain/Passthrough'
- * '<S269>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Ideal P Gain Fdbk/Disabled'
- * '<S270>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Integrator/Continuous'
- * '<S271>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Integrator ICs/Internal IC'
- * '<S272>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/N Copy/Disabled'
- * '<S273>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/N Gain/Internal Parameters'
- * '<S274>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/P Copy/Disabled'
- * '<S275>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Parallel P Gain/Internal Parameters'
- * '<S276>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Reset Signal/Disabled'
- * '<S277>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Saturation/Passthrough'
- * '<S278>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Saturation Fdbk/Disabled'
- * '<S279>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Sum/Sum_PID'
- * '<S280>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Sum Fdbk/Disabled'
- * '<S281>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Tracking Mode/Disabled'
- * '<S282>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Tracking Mode Sum/Passthrough'
- * '<S283>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Tsamp - Integral/TsSignalSpecification'
- * '<S284>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Tsamp - Ngain/Passthrough'
- * '<S285>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/postSat Signal/Forward_Path'
- * '<S286>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/preInt Signal/Internal PreInt'
- * '<S287>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/preSat Signal/Forward_Path'
- * '<S288>' : 'MicroMouse_Deploy/StudentTemplate/gyro wave smoothing /Discrete Varying Lowpass'
- * '<S289>' : 'MicroMouse_Deploy/StudentTemplate/gyro wave smoothing /Discrete Varying Lowpass/SOS1'
- * '<S290>' : 'MicroMouse_Deploy/StudentTemplate/gyro wave smoothing /Discrete Varying Lowpass/SOS2'
- * '<S291>' : 'MicroMouse_Deploy/StudentTemplate/gyro wave smoothing /Discrete Varying Lowpass/SOS1/Arithmetic'
- * '<S292>' : 'MicroMouse_Deploy/StudentTemplate/gyro wave smoothing /Discrete Varying Lowpass/SOS2/Arithmetic'
- * '<S293>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1'
- * '<S294>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2'
- * '<S295>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/engage_disengage_straightnert'
- * '<S296>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Anti-windup'
- * '<S297>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/D Gain'
- * '<S298>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/External Derivative'
- * '<S299>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Filter'
- * '<S300>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Filter ICs'
- * '<S301>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/I Gain'
- * '<S302>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Ideal P Gain'
- * '<S303>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Ideal P Gain Fdbk'
- * '<S304>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Integrator'
- * '<S305>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Integrator ICs'
- * '<S306>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/N Copy'
- * '<S307>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/N Gain'
- * '<S308>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/P Copy'
- * '<S309>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Parallel P Gain'
- * '<S310>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Reset Signal'
- * '<S311>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Saturation'
- * '<S312>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Saturation Fdbk'
- * '<S313>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Sum'
- * '<S314>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Sum Fdbk'
- * '<S315>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Tracking Mode'
- * '<S316>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Tracking Mode Sum'
- * '<S317>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Tsamp - Integral'
- * '<S318>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Tsamp - Ngain'
- * '<S319>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/postSat Signal'
- * '<S320>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/preInt Signal'
- * '<S321>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/preSat Signal'
- * '<S322>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Anti-windup/Passthrough'
- * '<S323>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/D Gain/Internal Parameters'
- * '<S324>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/External Derivative/Error'
- * '<S325>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Filter/Cont. Filter'
- * '<S326>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Filter ICs/Internal IC - Filter'
- * '<S327>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/I Gain/Internal Parameters'
- * '<S328>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Ideal P Gain/Passthrough'
- * '<S329>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Ideal P Gain Fdbk/Disabled'
- * '<S330>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Integrator/Continuous'
- * '<S331>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Integrator ICs/Internal IC'
- * '<S332>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/N Copy/Disabled'
- * '<S333>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/N Gain/Internal Parameters'
- * '<S334>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/P Copy/Disabled'
- * '<S335>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Parallel P Gain/Internal Parameters'
- * '<S336>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Reset Signal/Disabled'
- * '<S337>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Saturation/Passthrough'
- * '<S338>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Saturation Fdbk/Disabled'
- * '<S339>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Sum/Sum_PID'
- * '<S340>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Sum Fdbk/Disabled'
- * '<S341>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Tracking Mode/Disabled'
- * '<S342>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Tracking Mode Sum/Passthrough'
- * '<S343>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Tsamp - Integral/TsSignalSpecification'
- * '<S344>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Tsamp - Ngain/Passthrough'
- * '<S345>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/postSat Signal/Forward_Path'
- * '<S346>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/preInt Signal/Internal PreInt'
- * '<S347>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/preSat Signal/Forward_Path'
- * '<S348>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Anti-windup'
- * '<S349>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/D Gain'
- * '<S350>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/External Derivative'
- * '<S351>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Filter'
- * '<S352>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Filter ICs'
- * '<S353>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/I Gain'
- * '<S354>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Ideal P Gain'
- * '<S355>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Ideal P Gain Fdbk'
- * '<S356>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Integrator'
- * '<S357>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Integrator ICs'
- * '<S358>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/N Copy'
- * '<S359>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/N Gain'
- * '<S360>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/P Copy'
- * '<S361>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Parallel P Gain'
- * '<S362>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Reset Signal'
- * '<S363>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Saturation'
- * '<S364>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Saturation Fdbk'
- * '<S365>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Sum'
- * '<S366>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Sum Fdbk'
- * '<S367>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Tracking Mode'
- * '<S368>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Tracking Mode Sum'
- * '<S369>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Tsamp - Integral'
- * '<S370>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Tsamp - Ngain'
- * '<S371>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/postSat Signal'
- * '<S372>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/preInt Signal'
- * '<S373>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/preSat Signal'
- * '<S374>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Anti-windup/Passthrough'
- * '<S375>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/D Gain/Internal Parameters'
- * '<S376>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/External Derivative/Error'
- * '<S377>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Filter/Cont. Filter'
- * '<S378>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Filter ICs/Internal IC - Filter'
- * '<S379>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/I Gain/Internal Parameters'
- * '<S380>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Ideal P Gain/Passthrough'
- * '<S381>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Ideal P Gain Fdbk/Disabled'
- * '<S382>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Integrator/Continuous'
- * '<S383>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Integrator ICs/Internal IC'
- * '<S384>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/N Copy/Disabled'
- * '<S385>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/N Gain/Internal Parameters'
- * '<S386>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/P Copy/Disabled'
- * '<S387>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Parallel P Gain/Internal Parameters'
- * '<S388>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Reset Signal/Disabled'
- * '<S389>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Saturation/Passthrough'
- * '<S390>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Saturation Fdbk/Disabled'
- * '<S391>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Sum/Sum_PID'
- * '<S392>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Sum Fdbk/Disabled'
- * '<S393>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Tracking Mode/Disabled'
- * '<S394>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Tracking Mode Sum/Passthrough'
- * '<S395>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Tsamp - Integral/TsSignalSpecification'
- * '<S396>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Tsamp - Ngain/Passthrough'
- * '<S397>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/postSat Signal/Forward_Path'
- * '<S398>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/preInt Signal/Internal PreInt'
- * '<S399>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/preSat Signal/Forward_Path'
+ * '<S236>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller2'
+ * '<S237>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller3'
+ * '<S238>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller4'
+ * '<S239>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller5'
+ * '<S240>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Anti-windup'
+ * '<S241>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/D Gain'
+ * '<S242>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/External Derivative'
+ * '<S243>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Filter'
+ * '<S244>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Filter ICs'
+ * '<S245>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/I Gain'
+ * '<S246>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Ideal P Gain'
+ * '<S247>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Ideal P Gain Fdbk'
+ * '<S248>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Integrator'
+ * '<S249>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Integrator ICs'
+ * '<S250>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/N Copy'
+ * '<S251>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/N Gain'
+ * '<S252>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/P Copy'
+ * '<S253>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Parallel P Gain'
+ * '<S254>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Reset Signal'
+ * '<S255>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Saturation'
+ * '<S256>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Saturation Fdbk'
+ * '<S257>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Sum'
+ * '<S258>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Sum Fdbk'
+ * '<S259>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Tracking Mode'
+ * '<S260>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Tracking Mode Sum'
+ * '<S261>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Tsamp - Integral'
+ * '<S262>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Tsamp - Ngain'
+ * '<S263>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/postSat Signal'
+ * '<S264>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/preInt Signal'
+ * '<S265>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/preSat Signal'
+ * '<S266>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Anti-windup/Passthrough'
+ * '<S267>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/D Gain/Internal Parameters'
+ * '<S268>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/External Derivative/Error'
+ * '<S269>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Filter/Cont. Filter'
+ * '<S270>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Filter ICs/Internal IC - Filter'
+ * '<S271>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/I Gain/Internal Parameters'
+ * '<S272>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Ideal P Gain/Passthrough'
+ * '<S273>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Ideal P Gain Fdbk/Disabled'
+ * '<S274>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Integrator/Continuous'
+ * '<S275>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Integrator ICs/Internal IC'
+ * '<S276>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/N Copy/Disabled'
+ * '<S277>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/N Gain/Internal Parameters'
+ * '<S278>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/P Copy/Disabled'
+ * '<S279>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Parallel P Gain/Internal Parameters'
+ * '<S280>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Reset Signal/Disabled'
+ * '<S281>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Saturation/Passthrough'
+ * '<S282>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Saturation Fdbk/Disabled'
+ * '<S283>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Sum/Sum_PID'
+ * '<S284>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Sum Fdbk/Disabled'
+ * '<S285>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Tracking Mode/Disabled'
+ * '<S286>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Tracking Mode Sum/Passthrough'
+ * '<S287>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Tsamp - Integral/TsSignalSpecification'
+ * '<S288>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/Tsamp - Ngain/Passthrough'
+ * '<S289>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/postSat Signal/Forward_Path'
+ * '<S290>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/preInt Signal/Internal PreInt'
+ * '<S291>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller1/preSat Signal/Forward_Path'
+ * '<S292>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller2/Anti-windup'
+ * '<S293>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller2/D Gain'
+ * '<S294>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller2/External Derivative'
+ * '<S295>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller2/Filter'
+ * '<S296>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller2/Filter ICs'
+ * '<S297>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller2/I Gain'
+ * '<S298>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller2/Ideal P Gain'
+ * '<S299>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller2/Ideal P Gain Fdbk'
+ * '<S300>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller2/Integrator'
+ * '<S301>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller2/Integrator ICs'
+ * '<S302>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller2/N Copy'
+ * '<S303>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller2/N Gain'
+ * '<S304>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller2/P Copy'
+ * '<S305>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller2/Parallel P Gain'
+ * '<S306>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller2/Reset Signal'
+ * '<S307>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller2/Saturation'
+ * '<S308>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller2/Saturation Fdbk'
+ * '<S309>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller2/Sum'
+ * '<S310>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller2/Sum Fdbk'
+ * '<S311>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller2/Tracking Mode'
+ * '<S312>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller2/Tracking Mode Sum'
+ * '<S313>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller2/Tsamp - Integral'
+ * '<S314>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller2/Tsamp - Ngain'
+ * '<S315>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller2/postSat Signal'
+ * '<S316>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller2/preInt Signal'
+ * '<S317>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller2/preSat Signal'
+ * '<S318>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller2/Anti-windup/Passthrough'
+ * '<S319>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller2/D Gain/Internal Parameters'
+ * '<S320>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller2/External Derivative/Error'
+ * '<S321>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller2/Filter/Cont. Filter'
+ * '<S322>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller2/Filter ICs/Internal IC - Filter'
+ * '<S323>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller2/I Gain/Internal Parameters'
+ * '<S324>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller2/Ideal P Gain/Passthrough'
+ * '<S325>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller2/Ideal P Gain Fdbk/Disabled'
+ * '<S326>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller2/Integrator/Continuous'
+ * '<S327>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller2/Integrator ICs/Internal IC'
+ * '<S328>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller2/N Copy/Disabled'
+ * '<S329>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller2/N Gain/Internal Parameters'
+ * '<S330>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller2/P Copy/Disabled'
+ * '<S331>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller2/Parallel P Gain/Internal Parameters'
+ * '<S332>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller2/Reset Signal/Disabled'
+ * '<S333>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller2/Saturation/Passthrough'
+ * '<S334>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller2/Saturation Fdbk/Disabled'
+ * '<S335>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller2/Sum/Sum_PID'
+ * '<S336>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller2/Sum Fdbk/Disabled'
+ * '<S337>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller2/Tracking Mode/Disabled'
+ * '<S338>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller2/Tracking Mode Sum/Passthrough'
+ * '<S339>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller2/Tsamp - Integral/TsSignalSpecification'
+ * '<S340>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller2/Tsamp - Ngain/Passthrough'
+ * '<S341>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller2/postSat Signal/Forward_Path'
+ * '<S342>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller2/preInt Signal/Internal PreInt'
+ * '<S343>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller2/preSat Signal/Forward_Path'
+ * '<S344>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller3/Anti-windup'
+ * '<S345>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller3/D Gain'
+ * '<S346>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller3/External Derivative'
+ * '<S347>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller3/Filter'
+ * '<S348>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller3/Filter ICs'
+ * '<S349>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller3/I Gain'
+ * '<S350>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller3/Ideal P Gain'
+ * '<S351>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller3/Ideal P Gain Fdbk'
+ * '<S352>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller3/Integrator'
+ * '<S353>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller3/Integrator ICs'
+ * '<S354>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller3/N Copy'
+ * '<S355>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller3/N Gain'
+ * '<S356>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller3/P Copy'
+ * '<S357>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller3/Parallel P Gain'
+ * '<S358>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller3/Reset Signal'
+ * '<S359>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller3/Saturation'
+ * '<S360>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller3/Saturation Fdbk'
+ * '<S361>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller3/Sum'
+ * '<S362>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller3/Sum Fdbk'
+ * '<S363>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller3/Tracking Mode'
+ * '<S364>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller3/Tracking Mode Sum'
+ * '<S365>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller3/Tsamp - Integral'
+ * '<S366>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller3/Tsamp - Ngain'
+ * '<S367>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller3/postSat Signal'
+ * '<S368>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller3/preInt Signal'
+ * '<S369>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller3/preSat Signal'
+ * '<S370>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller3/Anti-windup/Passthrough'
+ * '<S371>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller3/D Gain/Internal Parameters'
+ * '<S372>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller3/External Derivative/Error'
+ * '<S373>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller3/Filter/Cont. Filter'
+ * '<S374>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller3/Filter ICs/Internal IC - Filter'
+ * '<S375>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller3/I Gain/Internal Parameters'
+ * '<S376>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller3/Ideal P Gain/Passthrough'
+ * '<S377>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller3/Ideal P Gain Fdbk/Disabled'
+ * '<S378>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller3/Integrator/Continuous'
+ * '<S379>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller3/Integrator ICs/Internal IC'
+ * '<S380>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller3/N Copy/Disabled'
+ * '<S381>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller3/N Gain/Internal Parameters'
+ * '<S382>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller3/P Copy/Disabled'
+ * '<S383>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller3/Parallel P Gain/Internal Parameters'
+ * '<S384>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller3/Reset Signal/Disabled'
+ * '<S385>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller3/Saturation/Passthrough'
+ * '<S386>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller3/Saturation Fdbk/Disabled'
+ * '<S387>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller3/Sum/Sum_PID'
+ * '<S388>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller3/Sum Fdbk/Disabled'
+ * '<S389>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller3/Tracking Mode/Disabled'
+ * '<S390>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller3/Tracking Mode Sum/Passthrough'
+ * '<S391>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller3/Tsamp - Integral/TsSignalSpecification'
+ * '<S392>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller3/Tsamp - Ngain/Passthrough'
+ * '<S393>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller3/postSat Signal/Forward_Path'
+ * '<S394>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller3/preInt Signal/Internal PreInt'
+ * '<S395>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller3/preSat Signal/Forward_Path'
+ * '<S396>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller4/Anti-windup'
+ * '<S397>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller4/D Gain'
+ * '<S398>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller4/External Derivative'
+ * '<S399>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller4/Filter'
+ * '<S400>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller4/Filter ICs'
+ * '<S401>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller4/I Gain'
+ * '<S402>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller4/Ideal P Gain'
+ * '<S403>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller4/Ideal P Gain Fdbk'
+ * '<S404>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller4/Integrator'
+ * '<S405>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller4/Integrator ICs'
+ * '<S406>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller4/N Copy'
+ * '<S407>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller4/N Gain'
+ * '<S408>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller4/P Copy'
+ * '<S409>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller4/Parallel P Gain'
+ * '<S410>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller4/Reset Signal'
+ * '<S411>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller4/Saturation'
+ * '<S412>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller4/Saturation Fdbk'
+ * '<S413>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller4/Sum'
+ * '<S414>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller4/Sum Fdbk'
+ * '<S415>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller4/Tracking Mode'
+ * '<S416>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller4/Tracking Mode Sum'
+ * '<S417>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller4/Tsamp - Integral'
+ * '<S418>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller4/Tsamp - Ngain'
+ * '<S419>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller4/postSat Signal'
+ * '<S420>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller4/preInt Signal'
+ * '<S421>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller4/preSat Signal'
+ * '<S422>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller4/Anti-windup/Passthrough'
+ * '<S423>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller4/D Gain/Internal Parameters'
+ * '<S424>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller4/External Derivative/Error'
+ * '<S425>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller4/Filter/Cont. Filter'
+ * '<S426>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller4/Filter ICs/Internal IC - Filter'
+ * '<S427>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller4/I Gain/Internal Parameters'
+ * '<S428>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller4/Ideal P Gain/Passthrough'
+ * '<S429>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller4/Ideal P Gain Fdbk/Disabled'
+ * '<S430>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller4/Integrator/Continuous'
+ * '<S431>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller4/Integrator ICs/Internal IC'
+ * '<S432>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller4/N Copy/Disabled'
+ * '<S433>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller4/N Gain/Internal Parameters'
+ * '<S434>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller4/P Copy/Disabled'
+ * '<S435>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller4/Parallel P Gain/Internal Parameters'
+ * '<S436>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller4/Reset Signal/Disabled'
+ * '<S437>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller4/Saturation/Passthrough'
+ * '<S438>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller4/Saturation Fdbk/Disabled'
+ * '<S439>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller4/Sum/Sum_PID'
+ * '<S440>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller4/Sum Fdbk/Disabled'
+ * '<S441>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller4/Tracking Mode/Disabled'
+ * '<S442>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller4/Tracking Mode Sum/Passthrough'
+ * '<S443>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller4/Tsamp - Integral/TsSignalSpecification'
+ * '<S444>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller4/Tsamp - Ngain/Passthrough'
+ * '<S445>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller4/postSat Signal/Forward_Path'
+ * '<S446>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller4/preInt Signal/Internal PreInt'
+ * '<S447>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller4/preSat Signal/Forward_Path'
+ * '<S448>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller5/Anti-windup'
+ * '<S449>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller5/D Gain'
+ * '<S450>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller5/External Derivative'
+ * '<S451>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller5/Filter'
+ * '<S452>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller5/Filter ICs'
+ * '<S453>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller5/I Gain'
+ * '<S454>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller5/Ideal P Gain'
+ * '<S455>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller5/Ideal P Gain Fdbk'
+ * '<S456>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller5/Integrator'
+ * '<S457>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller5/Integrator ICs'
+ * '<S458>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller5/N Copy'
+ * '<S459>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller5/N Gain'
+ * '<S460>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller5/P Copy'
+ * '<S461>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller5/Parallel P Gain'
+ * '<S462>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller5/Reset Signal'
+ * '<S463>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller5/Saturation'
+ * '<S464>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller5/Saturation Fdbk'
+ * '<S465>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller5/Sum'
+ * '<S466>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller5/Sum Fdbk'
+ * '<S467>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller5/Tracking Mode'
+ * '<S468>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller5/Tracking Mode Sum'
+ * '<S469>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller5/Tsamp - Integral'
+ * '<S470>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller5/Tsamp - Ngain'
+ * '<S471>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller5/postSat Signal'
+ * '<S472>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller5/preInt Signal'
+ * '<S473>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller5/preSat Signal'
+ * '<S474>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller5/Anti-windup/Passthrough'
+ * '<S475>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller5/D Gain/Internal Parameters'
+ * '<S476>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller5/External Derivative/Error'
+ * '<S477>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller5/Filter/Cont. Filter'
+ * '<S478>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller5/Filter ICs/Internal IC - Filter'
+ * '<S479>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller5/I Gain/Internal Parameters'
+ * '<S480>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller5/Ideal P Gain/Passthrough'
+ * '<S481>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller5/Ideal P Gain Fdbk/Disabled'
+ * '<S482>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller5/Integrator/Continuous'
+ * '<S483>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller5/Integrator ICs/Internal IC'
+ * '<S484>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller5/N Copy/Disabled'
+ * '<S485>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller5/N Gain/Internal Parameters'
+ * '<S486>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller5/P Copy/Disabled'
+ * '<S487>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller5/Parallel P Gain/Internal Parameters'
+ * '<S488>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller5/Reset Signal/Disabled'
+ * '<S489>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller5/Saturation/Passthrough'
+ * '<S490>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller5/Saturation Fdbk/Disabled'
+ * '<S491>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller5/Sum/Sum_PID'
+ * '<S492>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller5/Sum Fdbk/Disabled'
+ * '<S493>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller5/Tracking Mode/Disabled'
+ * '<S494>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller5/Tracking Mode Sum/Passthrough'
+ * '<S495>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller5/Tsamp - Integral/TsSignalSpecification'
+ * '<S496>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller5/Tsamp - Ngain/Passthrough'
+ * '<S497>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller5/postSat Signal/Forward_Path'
+ * '<S498>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller5/preInt Signal/Internal PreInt'
+ * '<S499>' : 'MicroMouse_Deploy/StudentTemplate/encoder_straightening/PID Controller5/preSat Signal/Forward_Path'
+ * '<S500>' : 'MicroMouse_Deploy/StudentTemplate/gyro wave smoothing /Discrete Varying Lowpass'
+ * '<S501>' : 'MicroMouse_Deploy/StudentTemplate/gyro wave smoothing /Discrete Varying Lowpass/SOS1'
+ * '<S502>' : 'MicroMouse_Deploy/StudentTemplate/gyro wave smoothing /Discrete Varying Lowpass/SOS2'
+ * '<S503>' : 'MicroMouse_Deploy/StudentTemplate/gyro wave smoothing /Discrete Varying Lowpass/SOS1/Arithmetic'
+ * '<S504>' : 'MicroMouse_Deploy/StudentTemplate/gyro wave smoothing /Discrete Varying Lowpass/SOS2/Arithmetic'
+ * '<S505>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1'
+ * '<S506>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2'
+ * '<S507>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/engage_disengage_straightnert'
+ * '<S508>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Anti-windup'
+ * '<S509>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/D Gain'
+ * '<S510>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/External Derivative'
+ * '<S511>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Filter'
+ * '<S512>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Filter ICs'
+ * '<S513>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/I Gain'
+ * '<S514>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Ideal P Gain'
+ * '<S515>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Ideal P Gain Fdbk'
+ * '<S516>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Integrator'
+ * '<S517>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Integrator ICs'
+ * '<S518>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/N Copy'
+ * '<S519>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/N Gain'
+ * '<S520>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/P Copy'
+ * '<S521>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Parallel P Gain'
+ * '<S522>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Reset Signal'
+ * '<S523>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Saturation'
+ * '<S524>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Saturation Fdbk'
+ * '<S525>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Sum'
+ * '<S526>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Sum Fdbk'
+ * '<S527>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Tracking Mode'
+ * '<S528>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Tracking Mode Sum'
+ * '<S529>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Tsamp - Integral'
+ * '<S530>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Tsamp - Ngain'
+ * '<S531>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/postSat Signal'
+ * '<S532>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/preInt Signal'
+ * '<S533>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/preSat Signal'
+ * '<S534>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Anti-windup/Passthrough'
+ * '<S535>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/D Gain/Internal Parameters'
+ * '<S536>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/External Derivative/Error'
+ * '<S537>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Filter/Cont. Filter'
+ * '<S538>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Filter ICs/Internal IC - Filter'
+ * '<S539>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/I Gain/Internal Parameters'
+ * '<S540>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Ideal P Gain/Passthrough'
+ * '<S541>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Ideal P Gain Fdbk/Disabled'
+ * '<S542>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Integrator/Continuous'
+ * '<S543>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Integrator ICs/Internal IC'
+ * '<S544>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/N Copy/Disabled'
+ * '<S545>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/N Gain/Internal Parameters'
+ * '<S546>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/P Copy/Disabled'
+ * '<S547>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Parallel P Gain/Internal Parameters'
+ * '<S548>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Reset Signal/Disabled'
+ * '<S549>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Saturation/Passthrough'
+ * '<S550>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Saturation Fdbk/Disabled'
+ * '<S551>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Sum/Sum_PID'
+ * '<S552>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Sum Fdbk/Disabled'
+ * '<S553>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Tracking Mode/Disabled'
+ * '<S554>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Tracking Mode Sum/Passthrough'
+ * '<S555>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Tsamp - Integral/TsSignalSpecification'
+ * '<S556>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/Tsamp - Ngain/Passthrough'
+ * '<S557>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/postSat Signal/Forward_Path'
+ * '<S558>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/preInt Signal/Internal PreInt'
+ * '<S559>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller1/preSat Signal/Forward_Path'
+ * '<S560>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Anti-windup'
+ * '<S561>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/D Gain'
+ * '<S562>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/External Derivative'
+ * '<S563>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Filter'
+ * '<S564>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Filter ICs'
+ * '<S565>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/I Gain'
+ * '<S566>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Ideal P Gain'
+ * '<S567>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Ideal P Gain Fdbk'
+ * '<S568>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Integrator'
+ * '<S569>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Integrator ICs'
+ * '<S570>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/N Copy'
+ * '<S571>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/N Gain'
+ * '<S572>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/P Copy'
+ * '<S573>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Parallel P Gain'
+ * '<S574>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Reset Signal'
+ * '<S575>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Saturation'
+ * '<S576>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Saturation Fdbk'
+ * '<S577>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Sum'
+ * '<S578>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Sum Fdbk'
+ * '<S579>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Tracking Mode'
+ * '<S580>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Tracking Mode Sum'
+ * '<S581>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Tsamp - Integral'
+ * '<S582>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Tsamp - Ngain'
+ * '<S583>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/postSat Signal'
+ * '<S584>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/preInt Signal'
+ * '<S585>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/preSat Signal'
+ * '<S586>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Anti-windup/Passthrough'
+ * '<S587>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/D Gain/Internal Parameters'
+ * '<S588>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/External Derivative/Error'
+ * '<S589>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Filter/Cont. Filter'
+ * '<S590>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Filter ICs/Internal IC - Filter'
+ * '<S591>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/I Gain/Internal Parameters'
+ * '<S592>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Ideal P Gain/Passthrough'
+ * '<S593>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Ideal P Gain Fdbk/Disabled'
+ * '<S594>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Integrator/Continuous'
+ * '<S595>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Integrator ICs/Internal IC'
+ * '<S596>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/N Copy/Disabled'
+ * '<S597>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/N Gain/Internal Parameters'
+ * '<S598>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/P Copy/Disabled'
+ * '<S599>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Parallel P Gain/Internal Parameters'
+ * '<S600>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Reset Signal/Disabled'
+ * '<S601>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Saturation/Passthrough'
+ * '<S602>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Saturation Fdbk/Disabled'
+ * '<S603>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Sum/Sum_PID'
+ * '<S604>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Sum Fdbk/Disabled'
+ * '<S605>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Tracking Mode/Disabled'
+ * '<S606>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Tracking Mode Sum/Passthrough'
+ * '<S607>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Tsamp - Integral/TsSignalSpecification'
+ * '<S608>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/Tsamp - Ngain/Passthrough'
+ * '<S609>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/postSat Signal/Forward_Path'
+ * '<S610>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/preInt Signal/Internal PreInt'
+ * '<S611>' : 'MicroMouse_Deploy/StudentTemplate/maze_straightener_draft1/PID Controller2/preSat Signal/Forward_Path'
  */
 #endif                                 /* MicroMouse_Deploy_h_ */
 

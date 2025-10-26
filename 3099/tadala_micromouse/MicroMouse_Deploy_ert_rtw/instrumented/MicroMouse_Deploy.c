@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'MicroMouse_Deploy'.
  *
- * Model version                  : 5.30
+ * Model version                  : 5.42
  * Simulink Coder version         : 25.1 (R2025a) 21-Nov-2024
- * C/C++ source code generated on : Sat Oct 25 21:13:17 2025
+ * C/C++ source code generated on : Sun Oct 26 22:36:47 2025
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -45,17 +45,32 @@
 #define MicroMouse_Deploy_IN_turnRight ((uint8_T)3U)
 
 /* Named constants for Chart: '<S3>/draft2_Maze_exploration' */
-#define MicroMouse_D_IN_left_turn_setup ((uint8_T)8U)
+#define MicroMou_IN_orientation_adjsut1 ((uint8_T)12U)
+#define MicroMou_IN_orientation_adjsut2 ((uint8_T)13U)
+#define MicroMou_IN_orientation_adjsut3 ((uint8_T)14U)
+#define MicroMous_IN_orientation_adjsut ((uint8_T)11U)
+#define MicroMouse_D_IN_left_turn_setup ((uint8_T)9U)
 #define MicroMouse_Dep_IN_Full_rotation ((uint8_T)1U)
 #define MicroMouse_Depl_IN_Go_straight1 ((uint8_T)3U)
+#define MicroMouse_Depl_IN_Go_straight2 ((uint8_T)4U)
 #define MicroMouse_Deplo_IN_Go_straight ((uint8_T)2U)
-#define MicroMouse_Deplo_IN_set_Z_angle ((uint8_T)11U)
-#define MicroMouse_Deploy_IN_Left_turn ((uint8_T)4U)
-#define MicroMouse_Deploy_IN_Left_turn1 ((uint8_T)5U)
-#define MicroMouse_Deploy_IN_Left_turn2 ((uint8_T)6U)
-#define MicroMouse_Deploy_IN_Start_p   ((uint8_T)7U)
-#define MicroMouse_Deploy_IN_right_turn ((uint8_T)10U)
-#define MicroMouse__IN_left_turn_setup1 ((uint8_T)9U)
+#define MicroMouse_Deplo_IN_set_Z_angle ((uint8_T)16U)
+#define MicroMouse_Deploy_IN_Left_turn ((uint8_T)5U)
+#define MicroMouse_Deploy_IN_Left_turn1 ((uint8_T)6U)
+#define MicroMouse_Deploy_IN_Left_turn2 ((uint8_T)7U)
+#define MicroMouse_Deploy_IN_Start_p   ((uint8_T)8U)
+#define MicroMouse_Deploy_IN_right_turn ((uint8_T)15U)
+#define MicroMouse__IN_left_turn_setup1 ((uint8_T)10U)
+
+/* Named constants for Chart: '<S3>/draft2_Maze_exploration1' */
+#define MicroMous_IN_left_turn_setup1_d ((uint8_T)9U)
+#define MicroMouse_Dep_IN_set_Z_angle_o ((uint8_T)11U)
+#define MicroMouse_Depl_IN_Left_turn1_l ((uint8_T)5U)
+#define MicroMouse_Depl_IN_Left_turn2_d ((uint8_T)6U)
+#define MicroMouse_Depl_IN_right_turn_n ((uint8_T)10U)
+#define MicroMouse_Deplo_IN_Left_turn_f ((uint8_T)4U)
+#define MicroMouse_Deploy_IN_Start_f   ((uint8_T)7U)
+#define MicroMouse_IN_left_turn_setup_g ((uint8_T)8U)
 
 /* Named constants for Chart: '<S22>/Chart' */
 #define MicroMou_IN_distance_corrcetion ((uint8_T)2U)
@@ -120,7 +135,7 @@ static void rt_ertODEUpdateContinuousStates(RTWSolverInfo *si )
   real_T *f2 = id->f[2];
   real_T hB[3];
   int_T i;
-  int_T nXc = 16;
+  int_T nXc = 24;
   rtsiSetSimTimeStep(si,MINOR_TIME_STEP);
 
   /* Save the state values at time t in y, we'll use x as ynew. */
@@ -327,9 +342,12 @@ void MicroMouse_Deploy_step(void)
   real_T Product;
   real_T Product_g;
   real_T elapsedTime;
-  real_T p;
+  real_T rtb_CastToDouble1_b;
   real_T rtb_Product1_b;
+  real_T rtb_Product2_e;
+  real_T rtb_Product4;
   real_T rtb_Sum2_j;
+  real_T rtb_Sum_m;
   real_T rtb_d;
   real_T rtb_p;
   real_T rtb_p_a;
@@ -337,15 +355,14 @@ void MicroMouse_Deploy_step(void)
   real_T rtb_q_g;
   real_T rtb_r;
   real_T rtb_r_p;
-  real_T temp;
-  real_T vprev;
+  real_T tmp_1;
   int32_T k;
   real32_T K;
   real32_T K_e;
   real32_T K_p;
-  real32_T rtb_Gain1_h;
-  real32_T rtb_Gain2_b;
-  real32_T rtb_Gain4;
+  real32_T rtb_Max;
+  real32_T rtb_Product5_p;
+  uint32_T rtb_Gain1_i;
   char_T rtb_ComposeString1_0[256];
   char_T rtb_ComposeString2_0[256];
   char_T rtb_ComposeString4_0[256];
@@ -551,35 +568,58 @@ void MicroMouse_Deploy_step(void)
     MicroMouse_Deploy_P.Constant_Value_j);
 
   /* Sum: '<S27>/Add' incorporates:
+   *  Delay: '<S27>/Delay'
+   *  Gain: '<S27>/Gain'
    *  RelationalOperator: '<S36>/FixPt Relational Operator'
    */
-  MicroMouse_Deploy_B.Add_f = (uint8_T)((uint32_T)(MicroMouse_Deploy_B.Compare >
-    MicroMouse_Deploy_B.Uk1) + MicroMouse_Deploy_B.Delay);
+  MicroMouse_Deploy_B.Add_f = (uint16_T)((uint32_T)(MicroMouse_Deploy_B.Compare >
+    MicroMouse_Deploy_B.Uk1) * MicroMouse_Deploy_P.Gain_Gain_f +
+    MicroMouse_Deploy_B.Delay);
+
+  /* Gain: '<S27>/Gain1' incorporates:
+   *  Gain: '<S26>/Gain1'
+   *  Sum: '<S27>/Add'
+   */
+  rtb_Gain1_i = (uint32_T)MicroMouse_Deploy_P.Gain1_Gain_k *
+    MicroMouse_Deploy_B.Add_f;
 
   /* RateLimiter: '<S11>/Rate Limiter2' incorporates:
    *  DataTypeConversion: '<S11>/Data Type Conversion1'
    */
   if (MicroMouse_Deploy_DW.LastMajorTime == (rtInf)) {
-    /* RateLimiter: '<S11>/Rate Limiter2' incorporates:
-     *  DataTypeConversion: '<S11>/Data Type Conversion1'
+    /* DataTypeConversion: '<S11>/Data Type Conversion1' incorporates:
+     *  Gain: '<S26>/Gain1'
+     *  RateLimiter: '<S11>/Rate Limiter2'
      */
-    MicroMouse_Deploy_B.RateLimiter2 = MicroMouse_Deploy_B.Add_f;
+    MicroMouse_Deploy_B.RateLimiter2 = (real_T)rtb_Gain1_i *
+      1.1920928955078125E-7;
   } else {
     Gain1 = MicroMouse_Deploy_M->Timing.t[0];
     Product_g = Gain1 - MicroMouse_Deploy_DW.LastMajorTime;
     if (MicroMouse_Deploy_DW.LastMajorTime == Gain1) {
       if (MicroMouse_Deploy_DW.PrevLimited) {
-        /* RateLimiter: '<S11>/Rate Limiter2' */
+        /* DataTypeConversion: '<S11>/Data Type Conversion1' incorporates:
+         *  RateLimiter: '<S11>/Rate Limiter2'
+         */
         MicroMouse_Deploy_B.RateLimiter2 = MicroMouse_Deploy_DW.PrevY;
       } else {
-        /* RateLimiter: '<S11>/Rate Limiter2' incorporates:
-         *  DataTypeConversion: '<S11>/Data Type Conversion1'
+        /* DataTypeConversion: '<S11>/Data Type Conversion1' incorporates:
+         *  Gain: '<S26>/Gain1'
+         *  RateLimiter: '<S11>/Rate Limiter2'
          */
-        MicroMouse_Deploy_B.RateLimiter2 = MicroMouse_Deploy_B.Add_f;
+        MicroMouse_Deploy_B.RateLimiter2 = (real_T)rtb_Gain1_i *
+          1.1920928955078125E-7;
       }
     } else {
       elapsedTime = Product_g * MicroMouse_Deploy_P.RateLimiter2_RisingLim;
-      Gain1 = (real_T)MicroMouse_Deploy_B.Add_f - MicroMouse_Deploy_DW.PrevY;
+
+      /* DataTypeConversion: '<S11>/Data Type Conversion1' incorporates:
+       *  Gain: '<S26>/Gain1'
+       *  RateLimiter: '<S11>/Rate Limiter2'
+       */
+      MicroMouse_Deploy_B.RateLimiter2 = (real_T)rtb_Gain1_i *
+        1.1920928955078125E-7;
+      Gain1 = MicroMouse_Deploy_B.RateLimiter2 - MicroMouse_Deploy_DW.PrevY;
       if (Gain1 > elapsedTime) {
         /* RateLimiter: '<S11>/Rate Limiter2' */
         MicroMouse_Deploy_B.RateLimiter2 = MicroMouse_Deploy_DW.PrevY +
@@ -593,8 +633,6 @@ void MicroMouse_Deploy_step(void)
             Product_g;
           rtb_NOT = true;
         } else {
-          /* RateLimiter: '<S11>/Rate Limiter2' */
-          MicroMouse_Deploy_B.RateLimiter2 = MicroMouse_Deploy_B.Add_f;
           rtb_NOT = false;
         }
       }
@@ -639,35 +677,57 @@ void MicroMouse_Deploy_step(void)
     (int32_T)MicroMouse_Deploy_P.Constant_Value_m);
 
   /* Sum: '<S26>/Add' incorporates:
+   *  Delay: '<S26>/Delay'
+   *  Gain: '<S26>/Gain'
    *  RelationalOperator: '<S31>/FixPt Relational Operator'
    */
-  MicroMouse_Deploy_B.Add_h = (uint8_T)((uint32_T)(MicroMouse_Deploy_B.Compare_a
-    > MicroMouse_Deploy_B.Uk1_k) + MicroMouse_Deploy_B.Delay_f);
+  MicroMouse_Deploy_B.Add_h = (uint16_T)((uint32_T)
+    (MicroMouse_Deploy_B.Compare_a > MicroMouse_Deploy_B.Uk1_k) *
+    MicroMouse_Deploy_P.Gain_Gain_nt + MicroMouse_Deploy_B.Delay_f);
+
+  /* Gain: '<S26>/Gain1' incorporates:
+   *  Sum: '<S26>/Add'
+   */
+  rtb_Gain1_i = (uint32_T)MicroMouse_Deploy_P.Gain1_Gain_m *
+    MicroMouse_Deploy_B.Add_h;
 
   /* RateLimiter: '<S11>/Rate Limiter4' incorporates:
    *  DataTypeConversion: '<S11>/Data Type Conversion'
    */
   if (MicroMouse_Deploy_DW.LastMajorTime_b == (rtInf)) {
-    /* RateLimiter: '<S11>/Rate Limiter4' incorporates:
-     *  DataTypeConversion: '<S11>/Data Type Conversion'
+    /* DataTypeConversion: '<S11>/Data Type Conversion' incorporates:
+     *  Gain: '<S26>/Gain1'
+     *  RateLimiter: '<S11>/Rate Limiter4'
      */
-    MicroMouse_Deploy_B.RateLimiter4 = MicroMouse_Deploy_B.Add_h;
+    MicroMouse_Deploy_B.RateLimiter4 = (real_T)rtb_Gain1_i *
+      1.1920928955078125E-7;
   } else {
     Gain1 = MicroMouse_Deploy_M->Timing.t[0];
     Product_g = Gain1 - MicroMouse_Deploy_DW.LastMajorTime_b;
     if (MicroMouse_Deploy_DW.LastMajorTime_b == Gain1) {
       if (MicroMouse_Deploy_DW.PrevLimited_o) {
-        /* RateLimiter: '<S11>/Rate Limiter4' */
+        /* DataTypeConversion: '<S11>/Data Type Conversion' incorporates:
+         *  RateLimiter: '<S11>/Rate Limiter4'
+         */
         MicroMouse_Deploy_B.RateLimiter4 = MicroMouse_Deploy_DW.PrevY_i;
       } else {
-        /* RateLimiter: '<S11>/Rate Limiter4' incorporates:
-         *  DataTypeConversion: '<S11>/Data Type Conversion'
+        /* DataTypeConversion: '<S11>/Data Type Conversion' incorporates:
+         *  Gain: '<S26>/Gain1'
+         *  RateLimiter: '<S11>/Rate Limiter4'
          */
-        MicroMouse_Deploy_B.RateLimiter4 = MicroMouse_Deploy_B.Add_h;
+        MicroMouse_Deploy_B.RateLimiter4 = (real_T)rtb_Gain1_i *
+          1.1920928955078125E-7;
       }
     } else {
       elapsedTime = Product_g * MicroMouse_Deploy_P.RateLimiter4_RisingLim;
-      Gain1 = (real_T)MicroMouse_Deploy_B.Add_h - MicroMouse_Deploy_DW.PrevY_i;
+
+      /* DataTypeConversion: '<S11>/Data Type Conversion' incorporates:
+       *  Gain: '<S26>/Gain1'
+       *  RateLimiter: '<S11>/Rate Limiter4'
+       */
+      MicroMouse_Deploy_B.RateLimiter4 = (real_T)rtb_Gain1_i *
+        1.1920928955078125E-7;
+      Gain1 = MicroMouse_Deploy_B.RateLimiter4 - MicroMouse_Deploy_DW.PrevY_i;
       if (Gain1 > elapsedTime) {
         /* RateLimiter: '<S11>/Rate Limiter4' */
         MicroMouse_Deploy_B.RateLimiter4 = MicroMouse_Deploy_DW.PrevY_i +
@@ -681,8 +741,6 @@ void MicroMouse_Deploy_step(void)
             Product_g;
           rtb_NOT = true;
         } else {
-          /* RateLimiter: '<S11>/Rate Limiter4' */
-          MicroMouse_Deploy_B.RateLimiter4 = MicroMouse_Deploy_B.Add_h;
           rtb_NOT = false;
         }
       }
@@ -807,9 +865,7 @@ void MicroMouse_Deploy_step(void)
     } else {
       switch (MicroMouse_Deploy_DW.bitsForTID0.is_c8_MicroMouse_Deploy) {
        case MicroMouse_Dep_IN_Full_rotation:
-        if ((MicroMouse_Deploy_X.Integrator_CSTATE <=
-             MicroMouse_Deploy_B.Z_angle_f) && (Gain1 >=
-             MicroMouse_Deploy_DW.turn_dist)) {
+        if (Gain1 >= MicroMouse_Deploy_DW.turn_dist) {
           MicroMouse_Deploy_DW.temporalCounter_i1 = 0.0;
           MicroMouse_Deploy_DW.bitsForTID0.is_c8_MicroMouse_Deploy =
             MicroMouse_Deploy_IN_Start_p;
@@ -861,43 +917,51 @@ void MicroMouse_Deploy_step(void)
         }
         break;
 
-       case MicroMouse_Deploy_IN_Left_turn:
-        if ((MicroMouse_Deploy_X.Integrator_CSTATE >=
-             MicroMouse_Deploy_B.Z_angle_f) && (Gain1 >=
-             MicroMouse_Deploy_DW.turn_dist)) {
+       case MicroMouse_Depl_IN_Go_straight2:
+        if (MicroMouse_Deploy_B.TOF_FRONT || MicroMouse_Deploy_B.TOF_RIGHT ||
+            MicroMouse_Deploy_B.TOF_LEFT) {
           MicroMouse_Deploy_DW.temporalCounter_i1 = 0.0;
           MicroMouse_Deploy_DW.bitsForTID0.is_c8_MicroMouse_Deploy =
             MicroMouse_Deploy_IN_Start_p;
           MicroMouse_Deploy_B.LW_c = 0.0;
           MicroMouse_Deploy_B.RW_d = 0.0;
           MicroMouse_Deploy_B.turn_indicator_i = 0.0;
+          rtsiSetBlockStateForSolverChangedAtMajorStep
+            (&MicroMouse_Deploy_M->solverInfo, true);
+        }
+        break;
+
+       case MicroMouse_Deploy_IN_Left_turn:
+        if (Gain1 >= MicroMouse_Deploy_DW.turn_dist) {
+          MicroMouse_Deploy_DW.bitsForTID0.is_c8_MicroMouse_Deploy =
+            MicroMou_IN_orientation_adjsut2;
+          MicroMouse_Deploy_B.LW_c = 0.0;
+          MicroMouse_Deploy_B.RW_d = 0.0;
+          MicroMouse_Deploy_DW.TFR_dist = MicroMouse_Deploy_B.Saturation_m;
           rtsiSetBlockStateForSolverChangedAtMajorStep
             (&MicroMouse_Deploy_M->solverInfo, true);
         }
         break;
 
        case MicroMouse_Deploy_IN_Left_turn1:
-        if ((MicroMouse_Deploy_X.Integrator_CSTATE >=
-             MicroMouse_Deploy_B.Z_angle_f) && (Gain1 >=
-             MicroMouse_Deploy_DW.turn_dist)) {
+        if (Gain1 >= MicroMouse_Deploy_DW.turn_dist) {
           MicroMouse_Deploy_DW.bitsForTID0.is_c8_MicroMouse_Deploy =
-            MicroMouse_Depl_IN_Go_straight1;
-          MicroMouse_Deploy_B.turn_indicator_i = 0.0;
+            MicroMous_IN_orientation_adjsut;
+          MicroMouse_Deploy_B.LW_c = 0.0;
+          MicroMouse_Deploy_B.RW_d = 0.0;
+          MicroMouse_Deploy_DW.TFR_dist = MicroMouse_Deploy_B.Saturation_m;
           rtsiSetBlockStateForSolverChangedAtMajorStep
             (&MicroMouse_Deploy_M->solverInfo, true);
         }
         break;
 
        case MicroMouse_Deploy_IN_Left_turn2:
-        if ((MicroMouse_Deploy_X.Integrator_CSTATE >=
-             MicroMouse_Deploy_B.Z_angle_f) && (Gain1 >=
-             MicroMouse_Deploy_DW.turn_dist)) {
-          MicroMouse_Deploy_DW.temporalCounter_i1 = 0.0;
+        if (Gain1 >= MicroMouse_Deploy_DW.turn_dist) {
           MicroMouse_Deploy_DW.bitsForTID0.is_c8_MicroMouse_Deploy =
-            MicroMouse_Deploy_IN_Start_p;
+            MicroMou_IN_orientation_adjsut1;
           MicroMouse_Deploy_B.LW_c = 0.0;
           MicroMouse_Deploy_B.RW_d = 0.0;
-          MicroMouse_Deploy_B.turn_indicator_i = 0.0;
+          MicroMouse_Deploy_DW.TFR_dist = MicroMouse_Deploy_B.Saturation_m;
           rtsiSetBlockStateForSolverChangedAtMajorStep
             (&MicroMouse_Deploy_M->solverInfo, true);
         }
@@ -917,7 +981,8 @@ void MicroMouse_Deploy_step(void)
             MicroMouse_Deploy_IN_Left_turn;
           MicroMouse_Deploy_B.Z_angle_f += 1.5707963267948966;
           MicroMouse_Deploy_DW.turn_dist = Gain1;
-          MicroMouse_Deploy_DW.turn_dist += 0.086393797973719308;
+          MicroMouse_Deploy_DW.turn_dist += 0.084823001646924412;
+          MicroMouse_Deploy_B.turn_indicator_i = 1.0;
           rtsiSetBlockStateForSolverChangedAtMajorStep
             (&MicroMouse_Deploy_M->solverInfo, true);
         } else if ((!MicroMouse_Deploy_B.TOF_RIGHT) &&
@@ -926,7 +991,8 @@ void MicroMouse_Deploy_step(void)
             MicroMouse_Deploy_IN_right_turn;
           MicroMouse_Deploy_B.Z_angle_f -= 1.5707963267948966;
           MicroMouse_Deploy_DW.turn_dist = Gain1;
-          MicroMouse_Deploy_DW.turn_dist += 0.086393797973719308;
+          MicroMouse_Deploy_DW.turn_dist += 0.084823001646924412;
+          MicroMouse_Deploy_B.turn_indicator_i = 1.0;
           rtsiSetBlockStateForSolverChangedAtMajorStep
             (&MicroMouse_Deploy_M->solverInfo, true);
         } else if (((MicroMouse_Deploy_M->Timing.t[0] -
@@ -939,6 +1005,16 @@ void MicroMouse_Deploy_step(void)
           MicroMouse_Deploy_B.Z_angle_f -= 3.1415926535897931;
           MicroMouse_Deploy_DW.turn_dist = Gain1;
           MicroMouse_Deploy_DW.turn_dist += 0.15707963267948966;
+          rtsiSetBlockStateForSolverChangedAtMajorStep
+            (&MicroMouse_Deploy_M->solverInfo, true);
+        } else if (((MicroMouse_Deploy_M->Timing.t[0] -
+                     MicroMouse_Deploy_DW.previousTime) +
+                    MicroMouse_Deploy_DW.temporalCounter_i1 >= 1.0) &&
+                   (!MicroMouse_Deploy_B.TOF_FRONT) &&
+                   (!MicroMouse_Deploy_B.TOF_RIGHT) &&
+                   (!MicroMouse_Deploy_B.TOF_LEFT)) {
+          MicroMouse_Deploy_DW.bitsForTID0.is_c8_MicroMouse_Deploy =
+            MicroMouse_Depl_IN_Go_straight2;
           rtsiSetBlockStateForSolverChangedAtMajorStep
             (&MicroMouse_Deploy_M->solverInfo, true);
         }
@@ -961,7 +1037,8 @@ void MicroMouse_Deploy_step(void)
             MicroMouse_Deploy_IN_Left_turn1;
           MicroMouse_Deploy_B.Z_angle_f += 1.5707963267948966;
           MicroMouse_Deploy_DW.turn_dist = Gain1;
-          MicroMouse_Deploy_DW.turn_dist += 0.086393797973719308;
+          MicroMouse_Deploy_DW.turn_dist += 0.084823001646924412;
+          MicroMouse_Deploy_B.turn_indicator_i = 1.0;
           rtsiSetBlockStateForSolverChangedAtMajorStep
             (&MicroMouse_Deploy_M->solverInfo, true);
         }
@@ -969,6 +1046,12 @@ void MicroMouse_Deploy_step(void)
 
        case MicroMouse__IN_left_turn_setup1:
         if (MicroMouse_Deploy_B.TOF_LEFT) {
+          MicroMouse_Deploy_DW.bitsForTID0.is_c8_MicroMouse_Deploy =
+            MicroMouse_Depl_IN_Go_straight1;
+          MicroMouse_Deploy_B.turn_indicator_i = 0.0;
+          rtsiSetBlockStateForSolverChangedAtMajorStep
+            (&MicroMouse_Deploy_M->solverInfo, true);
+        } else if (MicroMouse_Deploy_B.TOF_LEFT) {
           MicroMouse_Deploy_DW.temporalCounter_i1 = 0.0;
           MicroMouse_Deploy_DW.bitsForTID0.is_c8_MicroMouse_Deploy =
             MicroMouse_Deploy_IN_Start_p;
@@ -984,22 +1067,73 @@ void MicroMouse_Deploy_step(void)
             MicroMouse_Deploy_IN_Left_turn2;
           MicroMouse_Deploy_B.Z_angle_f += 1.5707963267948966;
           MicroMouse_Deploy_DW.turn_dist = Gain1;
-          MicroMouse_Deploy_DW.turn_dist += 0.086393797973719308;
+          MicroMouse_Deploy_DW.turn_dist += 0.084823001646924412;
+          MicroMouse_Deploy_B.turn_indicator_i = 1.0;
           rtsiSetBlockStateForSolverChangedAtMajorStep
             (&MicroMouse_Deploy_M->solverInfo, true);
         }
         break;
 
-       case MicroMouse_Deploy_IN_right_turn:
-        if ((MicroMouse_Deploy_X.Integrator_CSTATE <=
-             MicroMouse_Deploy_B.Z_angle_f) && (Gain1 >=
-             MicroMouse_Deploy_DW.turn_dist)) {
+       case MicroMous_IN_orientation_adjsut:
+        if ((MicroMouse_Deploy_B.Saturation_m <= 0.1) ||
+            (MicroMouse_Deploy_B.Saturation_m > 0.2)) {
+          MicroMouse_Deploy_DW.bitsForTID0.is_c8_MicroMouse_Deploy =
+            MicroMouse_Depl_IN_Go_straight1;
+          MicroMouse_Deploy_B.turn_indicator_i = 0.0;
+          rtsiSetBlockStateForSolverChangedAtMajorStep
+            (&MicroMouse_Deploy_M->solverInfo, true);
+        }
+        break;
+
+       case MicroMou_IN_orientation_adjsut1:
+        if ((MicroMouse_Deploy_B.Saturation_m <= 0.1) ||
+            (MicroMouse_Deploy_B.Saturation_m > 0.2)) {
           MicroMouse_Deploy_DW.temporalCounter_i1 = 0.0;
           MicroMouse_Deploy_DW.bitsForTID0.is_c8_MicroMouse_Deploy =
             MicroMouse_Deploy_IN_Start_p;
           MicroMouse_Deploy_B.LW_c = 0.0;
           MicroMouse_Deploy_B.RW_d = 0.0;
           MicroMouse_Deploy_B.turn_indicator_i = 0.0;
+          rtsiSetBlockStateForSolverChangedAtMajorStep
+            (&MicroMouse_Deploy_M->solverInfo, true);
+        }
+        break;
+
+       case MicroMou_IN_orientation_adjsut2:
+        if ((MicroMouse_Deploy_B.Saturation_m <= 0.1) ||
+            (MicroMouse_Deploy_B.Saturation_m > 0.2)) {
+          MicroMouse_Deploy_DW.temporalCounter_i1 = 0.0;
+          MicroMouse_Deploy_DW.bitsForTID0.is_c8_MicroMouse_Deploy =
+            MicroMouse_Deploy_IN_Start_p;
+          MicroMouse_Deploy_B.LW_c = 0.0;
+          MicroMouse_Deploy_B.RW_d = 0.0;
+          MicroMouse_Deploy_B.turn_indicator_i = 0.0;
+          rtsiSetBlockStateForSolverChangedAtMajorStep
+            (&MicroMouse_Deploy_M->solverInfo, true);
+        }
+        break;
+
+       case MicroMou_IN_orientation_adjsut3:
+        if ((MicroMouse_Deploy_B.Saturation <= 0.1) ||
+            (MicroMouse_Deploy_B.Saturation > 0.2)) {
+          MicroMouse_Deploy_DW.temporalCounter_i1 = 0.0;
+          MicroMouse_Deploy_DW.bitsForTID0.is_c8_MicroMouse_Deploy =
+            MicroMouse_Deploy_IN_Start_p;
+          MicroMouse_Deploy_B.LW_c = 0.0;
+          MicroMouse_Deploy_B.RW_d = 0.0;
+          MicroMouse_Deploy_B.turn_indicator_i = 0.0;
+          rtsiSetBlockStateForSolverChangedAtMajorStep
+            (&MicroMouse_Deploy_M->solverInfo, true);
+        }
+        break;
+
+       case MicroMouse_Deploy_IN_right_turn:
+        if (Gain1 >= MicroMouse_Deploy_DW.turn_dist) {
+          MicroMouse_Deploy_DW.bitsForTID0.is_c8_MicroMouse_Deploy =
+            MicroMou_IN_orientation_adjsut3;
+          MicroMouse_Deploy_B.LW_c = 0.0;
+          MicroMouse_Deploy_B.RW_d = 0.0;
+          MicroMouse_Deploy_DW.TLR_dist = MicroMouse_Deploy_B.Saturation;
           rtsiSetBlockStateForSolverChangedAtMajorStep
             (&MicroMouse_Deploy_M->solverInfo, true);
         }
@@ -1036,6 +1170,11 @@ void MicroMouse_Deploy_step(void)
     MicroMouse_Deploy_B.RW_d = 1.0;
     break;
 
+   case MicroMouse_Depl_IN_Go_straight2:
+    MicroMouse_Deploy_B.LW_c = 1.0;
+    MicroMouse_Deploy_B.RW_d = 1.0;
+    break;
+
    case MicroMouse_Deploy_IN_Left_turn:
     MicroMouse_Deploy_B.LW_c = -1.0;
     MicroMouse_Deploy_B.RW_d = 1.0;
@@ -1054,6 +1193,38 @@ void MicroMouse_Deploy_step(void)
    case MicroMouse_Deploy_IN_Start_p:
    case MicroMouse_D_IN_left_turn_setup:
    case MicroMouse__IN_left_turn_setup1:
+    break;
+
+   case MicroMous_IN_orientation_adjsut:
+    if ((MicroMouse_Deploy_DW.TFR_dist <= 0.2) && (MicroMouse_Deploy_DW.TFR_dist
+         >= 0.1)) {
+      MicroMouse_Deploy_B.LW_c = 1.0;
+      MicroMouse_Deploy_B.RW_d = -1.0;
+    }
+    break;
+
+   case MicroMou_IN_orientation_adjsut1:
+    if ((MicroMouse_Deploy_DW.TFR_dist <= 0.2) && (MicroMouse_Deploy_DW.TFR_dist
+         >= 0.1)) {
+      MicroMouse_Deploy_B.LW_c = 1.0;
+      MicroMouse_Deploy_B.RW_d = -1.0;
+    }
+    break;
+
+   case MicroMou_IN_orientation_adjsut2:
+    if ((MicroMouse_Deploy_DW.TFR_dist <= 0.2) && (MicroMouse_Deploy_DW.TFR_dist
+         >= 0.1)) {
+      MicroMouse_Deploy_B.LW_c = 1.0;
+      MicroMouse_Deploy_B.RW_d = -1.0;
+    }
+    break;
+
+   case MicroMou_IN_orientation_adjsut3:
+    if ((MicroMouse_Deploy_DW.TLR_dist <= 0.2) && (MicroMouse_Deploy_DW.TLR_dist
+         >= 0.1)) {
+      MicroMouse_Deploy_B.LW_c = -1.0;
+      MicroMouse_Deploy_B.RW_d = 1.0;
+    }
     break;
 
    case MicroMouse_Deploy_IN_right_turn:
@@ -1111,33 +1282,54 @@ void MicroMouse_Deploy_step(void)
    *  Sum: '<S22>/Sum'
    *  Sum: '<S22>/Sum1'
    */
-  Product = ((Product_g + MicroMouse_Deploy_B.Left_distance) *
-             MicroMouse_Deploy_P.Gain5_Gain - (Product +
-              MicroMouse_Deploy_B.Right_distance) *
-             MicroMouse_Deploy_P.Gain6_Gain) * (real_T)rtb_NOT;
+  rtb_Product2_e = ((Product_g + MicroMouse_Deploy_B.Left_distance) *
+                    MicroMouse_Deploy_P.Gain5_Gain - (Product +
+    MicroMouse_Deploy_B.Right_distance) * MicroMouse_Deploy_P.Gain6_Gain) *
+    (real_T)rtb_NOT;
 
-  /* Gain: '<S273>/Filter Coefficient' incorporates:
-   *  Gain: '<S263>/Derivative Gain'
-   *  Integrator: '<S265>/Filter'
-   *  Sum: '<S265>/SumD'
+  /* Gain: '<S277>/Filter Coefficient' incorporates:
+   *  Gain: '<S267>/Derivative Gain'
+   *  Integrator: '<S269>/Filter'
+   *  Sum: '<S269>/SumD'
    */
   MicroMouse_Deploy_B.FilterCoefficient = (MicroMouse_Deploy_P.PIDController1_D *
-    Product - MicroMouse_Deploy_X.Filter_CSTATE) *
+    rtb_Product2_e - MicroMouse_Deploy_X.Filter_CSTATE) *
     MicroMouse_Deploy_P.PIDController1_N;
 
-  /* Sum: '<S279>/Sum' incorporates:
-   *  Gain: '<S275>/Proportional Gain'
-   *  Integrator: '<S270>/Integrator'
+  /* Sum: '<S283>/Sum' incorporates:
+   *  Gain: '<S279>/Proportional Gain'
+   *  Integrator: '<S274>/Integrator'
    */
-  rtb_Sum2_j = (MicroMouse_Deploy_P.PIDController1_P * Product +
-                MicroMouse_Deploy_X.Integrator_CSTATE_o) +
+  Product_g = (MicroMouse_Deploy_P.PIDController1_P * rtb_Product2_e +
+               MicroMouse_Deploy_X.Integrator_CSTATE_o) +
     MicroMouse_Deploy_B.FilterCoefficient;
 
-  /* Gain: '<S22>/Gain1' incorporates:
+  /* DataTypeConversion: '<S22>/Cast To Double' incorporates:
    *  Product: '<S22>/Product3'
    */
-  rtb_Gain1_h = (real32_T)rtb_NOT * MicroMouse_Deploy_B.Saturation_m * (real32_T)
-    MicroMouse_Deploy_B.RelationalOperator * MicroMouse_Deploy_P.Gain1_Gain_a;
+  elapsedTime = (real32_T)rtb_NOT * MicroMouse_Deploy_B.Saturation_m * (real32_T)
+    MicroMouse_Deploy_B.RelationalOperator;
+
+  /* Gain: '<S485>/Filter Coefficient' incorporates:
+   *  DataTypeConversion: '<S22>/Cast To Double'
+   *  Gain: '<S475>/Derivative Gain'
+   *  Integrator: '<S477>/Filter'
+   *  Product: '<S22>/Product3'
+   *  Sum: '<S477>/SumD'
+   */
+  MicroMouse_Deploy_B.FilterCoefficient_g = ((real32_T)rtb_NOT *
+    MicroMouse_Deploy_B.Saturation_m * (real32_T)
+    MicroMouse_Deploy_B.RelationalOperator *
+    MicroMouse_Deploy_P.PIDController5_D - MicroMouse_Deploy_X.Filter_CSTATE_f) *
+    MicroMouse_Deploy_P.PIDController5_N;
+
+  /* Sum: '<S491>/Sum' incorporates:
+   *  Gain: '<S487>/Proportional Gain'
+   *  Integrator: '<S482>/Integrator'
+   */
+  Gain1 = (MicroMouse_Deploy_P.PIDController5_P * elapsedTime +
+           MicroMouse_Deploy_X.Integrator_CSTATE_k) +
+    MicroMouse_Deploy_B.FilterCoefficient_g;
   if (tmp) {
     /* RelationalOperator: '<S22>/Relational Operator1' incorporates:
      *  Constant: '<S22>/Constant'
@@ -1158,20 +1350,55 @@ void MicroMouse_Deploy_step(void)
       MicroMouse_Deploy_P.Constant2_Value_a);
   }
 
-  /* Gain: '<S22>/Gain2' incorporates:
+  /* DataTypeConversion: '<S22>/Cast To Double1' incorporates:
    *  Product: '<S22>/Product1'
    */
-  rtb_Gain2_b = MicroMouse_Deploy_B.Saturation * (real32_T)rtb_NOT * (real32_T)
-    MicroMouse_Deploy_B.RelationalOperator1 * MicroMouse_Deploy_P.Gain2_Gain_k;
+  rtb_CastToDouble1_b = MicroMouse_Deploy_B.Saturation * (real32_T)rtb_NOT *
+    (real32_T)MicroMouse_Deploy_B.RelationalOperator1;
 
-  /* Gain: '<S22>/Gain3' incorporates:
-   *  Constant: '<S22>/Constant2'
-   *  Product: '<S22>/Product4'
+  /* Gain: '<S433>/Filter Coefficient' incorporates:
+   *  DataTypeConversion: '<S22>/Cast To Double1'
+   *  Gain: '<S423>/Derivative Gain'
+   *  Integrator: '<S425>/Filter'
+   *  Product: '<S22>/Product1'
+   *  Sum: '<S425>/SumD'
    */
-  Gain1 = (MicroMouse_Deploy_B.RelationalOperator4 ? (real_T)
-           MicroMouse_Deploy_B.RelationalOperator2 : 0.0) *
-    MicroMouse_Deploy_P.Constant2_Value_a * (real_T)rtb_NOT *
-    MicroMouse_Deploy_P.Gain3_Gain;
+  MicroMouse_Deploy_B.FilterCoefficient_j = (MicroMouse_Deploy_B.Saturation *
+    (real32_T)rtb_NOT * (real32_T)MicroMouse_Deploy_B.RelationalOperator1 *
+    MicroMouse_Deploy_P.PIDController4_D - MicroMouse_Deploy_X.Filter_CSTATE_m) *
+    MicroMouse_Deploy_P.PIDController4_N;
+
+  /* Sum: '<S439>/Sum' incorporates:
+   *  Gain: '<S435>/Proportional Gain'
+   *  Integrator: '<S430>/Integrator'
+   */
+  rtb_Sum_m = (MicroMouse_Deploy_P.PIDController4_P * rtb_CastToDouble1_b +
+               MicroMouse_Deploy_X.Integrator_CSTATE_a) +
+    MicroMouse_Deploy_B.FilterCoefficient_j;
+
+  /* Product: '<S22>/Product4' incorporates:
+   *  Constant: '<S22>/Constant2'
+   */
+  rtb_Product4 = (MicroMouse_Deploy_B.RelationalOperator4 ? (real_T)
+                  MicroMouse_Deploy_B.RelationalOperator2 : 0.0) *
+    MicroMouse_Deploy_P.Constant2_Value_a * (real_T)rtb_NOT;
+
+  /* Gain: '<S329>/Filter Coefficient' incorporates:
+   *  Gain: '<S319>/Derivative Gain'
+   *  Integrator: '<S321>/Filter'
+   *  Sum: '<S321>/SumD'
+   */
+  MicroMouse_Deploy_B.FilterCoefficient_b =
+    (MicroMouse_Deploy_P.PIDController2_D * rtb_Product4 -
+     MicroMouse_Deploy_X.Filter_CSTATE_e) * MicroMouse_Deploy_P.PIDController2_N;
+
+  /* Sum: '<S335>/Sum' incorporates:
+   *  Gain: '<S331>/Proportional Gain'
+   *  Integrator: '<S326>/Integrator'
+   */
+  rtb_Sum2_j = (MicroMouse_Deploy_P.PIDController2_P * rtb_Product4 +
+                MicroMouse_Deploy_X.Integrator_CSTATE_l) +
+    MicroMouse_Deploy_B.FilterCoefficient_b;
   if (tmp) {
     /* RelationalOperator: '<S22>/Relational Operator3' incorporates:
      *  Constant: '<S22>/Constant3'
@@ -1186,12 +1413,33 @@ void MicroMouse_Deploy_step(void)
       MicroMouse_Deploy_P.Constant5_Value);
   }
 
-  /* Gain: '<S22>/Gain4' incorporates:
+  /* Product: '<S22>/Product5' */
+  rtb_Product5_p = (real32_T)rtb_NOT * MicroMouse_Deploy_B.Saturation *
+    (real32_T)MicroMouse_Deploy_B.RelationalOperator3 * (real32_T)
+    MicroMouse_Deploy_B.RelationalOperator5;
+
+  /* Gain: '<S381>/Filter Coefficient' incorporates:
+   *  DataTypeConversion: '<S22>/Cast To Double2'
+   *  Gain: '<S371>/Derivative Gain'
+   *  Integrator: '<S373>/Filter'
+   *  Sum: '<S373>/SumD'
+   */
+  MicroMouse_Deploy_B.FilterCoefficient_n =
+    (MicroMouse_Deploy_P.PIDController3_D * rtb_Product5_p -
+     MicroMouse_Deploy_X.Filter_CSTATE_l) * MicroMouse_Deploy_P.PIDController3_N;
+
+  /* Sum: '<S387>/Sum' incorporates:
+   *  DataTypeConversion: '<S22>/Cast To Double2'
+   *  Gain: '<S383>/Proportional Gain'
+   *  Integrator: '<S378>/Integrator'
    *  Product: '<S22>/Product5'
    */
-  rtb_Gain4 = (real32_T)rtb_NOT * MicroMouse_Deploy_B.Saturation * (real32_T)
-    MicroMouse_Deploy_B.RelationalOperator3 * (real32_T)
-    MicroMouse_Deploy_B.RelationalOperator5 * MicroMouse_Deploy_P.Gain4_Gain;
+  Product = ((real32_T)rtb_NOT * MicroMouse_Deploy_B.Saturation * (real32_T)
+             MicroMouse_Deploy_B.RelationalOperator3 * (real32_T)
+             MicroMouse_Deploy_B.RelationalOperator5 *
+             MicroMouse_Deploy_P.PIDController3_P +
+             MicroMouse_Deploy_X.Integrator_CSTATE_p) +
+    MicroMouse_Deploy_B.FilterCoefficient_n;
 
   /* DataTypeConversion: '<S1>/Cast1' incorporates:
    *  Constant: '<S22>/constant'
@@ -1201,17 +1449,17 @@ void MicroMouse_Deploy_step(void)
    *  Sum: '<S22>/Add4'
    *  Sum: '<S22>/Add5'
    */
-  Product_g = floor((((((MicroMouse_Deploy_P.constant_Value + rtb_Sum2_j) +
-                        rtb_Gain1_h) - rtb_Gain2_b) - Gain1) + rtb_Gain4) *
-                    MicroMouse_Deploy_B.RW_d * MicroMouse_Deploy_P.Gain1_Gain_d);
-  if (rtIsNaN(Product_g) || rtIsInf(Product_g)) {
-    Product_g = 0.0;
+  tmp_1 = floor((((((MicroMouse_Deploy_P.constant_Value + Product_g) + Gain1) -
+                   rtb_Sum_m) - rtb_Sum2_j) + Product) *
+                MicroMouse_Deploy_B.RW_d * MicroMouse_Deploy_P.Gain1_Gain_d);
+  if (rtIsNaN(tmp_1) || rtIsInf(tmp_1)) {
+    tmp_1 = 0.0;
   } else {
-    Product_g = fmod(Product_g, 256.0);
+    tmp_1 = fmod(tmp_1, 256.0);
   }
 
-  MOTOR_RS = (int8_T)(Product_g < 0.0 ? (int32_T)(int8_T)-(int8_T)(uint8_T)
-                      -Product_g : (int32_T)(int8_T)(uint8_T)Product_g);
+  MOTOR_RS = (int8_T)(tmp_1 < 0.0 ? (int32_T)(int8_T)-(int8_T)(uint8_T)-tmp_1 :
+                      (int32_T)(int8_T)(uint8_T)tmp_1);
 
   /* End of DataTypeConversion: '<S1>/Cast1' */
 
@@ -1223,17 +1471,17 @@ void MicroMouse_Deploy_step(void)
    *  Sum: '<S22>/Add1'
    *  Sum: '<S22>/Add3'
    */
-  Product_g = floor((((((MicroMouse_Deploy_P.constant_Value - rtb_Sum2_j) -
-                        rtb_Gain1_h) + rtb_Gain2_b) + Gain1) - rtb_Gain4) *
-                    MicroMouse_Deploy_B.LW_c * MicroMouse_Deploy_P.Gain_Gain);
-  if (rtIsNaN(Product_g) || rtIsInf(Product_g)) {
-    Product_g = 0.0;
+  tmp_1 = floor((((((MicroMouse_Deploy_P.constant_Value - Product_g) - Gain1) +
+                   rtb_Sum_m) + rtb_Sum2_j) - Product) *
+                MicroMouse_Deploy_B.LW_c * MicroMouse_Deploy_P.Gain_Gain);
+  if (rtIsNaN(tmp_1) || rtIsInf(tmp_1)) {
+    tmp_1 = 0.0;
   } else {
-    Product_g = fmod(Product_g, 256.0);
+    tmp_1 = fmod(tmp_1, 256.0);
   }
 
-  MOTOR_LS = (int8_T)(Product_g < 0.0 ? (int32_T)(int8_T)-(int8_T)(uint8_T)
-                      -Product_g : (int32_T)(int8_T)(uint8_T)Product_g);
+  MOTOR_LS = (int8_T)(tmp_1 < 0.0 ? (int32_T)(int8_T)-(int8_T)(uint8_T)-tmp_1 :
+                      (int32_T)(int8_T)(uint8_T)tmp_1);
 
   /* End of DataTypeConversion: '<S1>/Cast' */
 
@@ -1341,15 +1589,15 @@ void MicroMouse_Deploy_step(void)
      *  Constant: '<S3>/Constant'
      *  DataStoreWrite: '<S9>/Data Store Write'
      */
-    Product_g = floor(MicroMouse_Deploy_P.Constant_Value_l);
-    if (rtIsNaN(Product_g) || rtIsInf(Product_g)) {
-      Product_g = 0.0;
+    tmp_1 = floor(MicroMouse_Deploy_P.Constant_Value_l);
+    if (rtIsNaN(tmp_1) || rtIsInf(tmp_1)) {
+      tmp_1 = 0.0;
     } else {
-      Product_g = fmod(Product_g, 256.0);
+      tmp_1 = fmod(tmp_1, 256.0);
     }
 
-    STATE = (uint8_T)(Product_g < 0.0 ? (int32_T)(uint8_T)-(int8_T)(uint8_T)
-                      -Product_g : (int32_T)(uint8_T)Product_g);
+    STATE = (uint8_T)(tmp_1 < 0.0 ? (int32_T)(uint8_T)-(int8_T)(uint8_T)-tmp_1 :
+                      (int32_T)(uint8_T)tmp_1);
 
     /* End of DataTypeConversion: '<S9>/Cast To Boolean' */
 
@@ -1387,32 +1635,32 @@ void MicroMouse_Deploy_step(void)
     /* MinMax: '<S54>/Max' incorporates:
      *  Constant: '<S54>/Time constant'
      */
-    rtb_Gain1_h = (real32_T)fmax(MicroMouse_Deploy_B.Probe[0],
+    rtb_Max = (real32_T)fmax(MicroMouse_Deploy_B.Probe[0],
       MicroMouse_Deploy_P.LowPassFilterDiscreteorContinuo);
 
     /* Fcn: '<S54>/Avoid Divide by Zero' */
-    MicroMouse_Deploy_B.AvoidDividebyZero = (real32_T)(rtb_Gain1_h == 0.0F) *
-      2.22044605e-16F + rtb_Gain1_h;
+    MicroMouse_Deploy_B.AvoidDividebyZero = (real32_T)(rtb_Max == 0.0F) *
+      2.22044605e-16F + rtb_Max;
 
     /* MinMax: '<S61>/Max' incorporates:
      *  Constant: '<S61>/Time constant'
      */
-    rtb_Gain1_h = (real32_T)fmax(MicroMouse_Deploy_B.Probe_h[0],
+    rtb_Max = (real32_T)fmax(MicroMouse_Deploy_B.Probe_h[0],
       MicroMouse_Deploy_P.LowPassFilterDiscreteorContin_p);
 
     /* Fcn: '<S61>/Avoid Divide by Zero' */
-    MicroMouse_Deploy_B.AvoidDividebyZero_k = (real32_T)(rtb_Gain1_h == 0.0F) *
-      2.22044605e-16F + rtb_Gain1_h;
+    MicroMouse_Deploy_B.AvoidDividebyZero_k = (real32_T)(rtb_Max == 0.0F) *
+      2.22044605e-16F + rtb_Max;
 
     /* MinMax: '<S68>/Max' incorporates:
      *  Constant: '<S68>/Time constant'
      */
-    rtb_Gain1_h = (real32_T)fmax(MicroMouse_Deploy_B.Probe_g[0],
+    rtb_Max = (real32_T)fmax(MicroMouse_Deploy_B.Probe_g[0],
       MicroMouse_Deploy_P.LowPassFilterDiscreteorContin_e);
 
     /* Fcn: '<S68>/Avoid Divide by Zero' */
-    MicroMouse_Deploy_B.AvoidDividebyZero_n = (real32_T)(rtb_Gain1_h == 0.0F) *
-      2.22044605e-16F + rtb_Gain1_h;
+    MicroMouse_Deploy_B.AvoidDividebyZero_n = (real32_T)(rtb_Max == 0.0F) *
+      2.22044605e-16F + rtb_Max;
 
     /* RelationalOperator: '<S3>/Relational Operator' incorporates:
      *  Constant: '<S3>/Constant3'
@@ -1427,7 +1675,7 @@ void MicroMouse_Deploy_step(void)
    *  Constant: '<S3>/Constant4'
    *  Integrator: '<S3>/Integrator1'
    */
-  elapsedTime = MicroMouse_Deploy_P.Constant4_Value_d -
+  Gain1 = MicroMouse_Deploy_P.Constant4_Value_d -
     MicroMouse_Deploy_X.Integrator1_CSTATE;
 
   /* Product: '<S13>/1//T' incorporates:
@@ -1449,8 +1697,7 @@ void MicroMouse_Deploy_step(void)
     (K_e - MicroMouse_Deploy_B.Saturation_m);
 
   /* Gain: '<S106>/Integral Gain' */
-  MicroMouse_Deploy_B.IntegralGain = MicroMouse_Deploy_P.PIDController_I *
-    elapsedTime;
+  MicroMouse_Deploy_B.IntegralGain = MicroMouse_Deploy_P.PIDController_I * Gain1;
 
   /* Gain: '<S112>/Filter Coefficient' incorporates:
    *  Gain: '<S102>/Derivative Gain'
@@ -1458,7 +1705,7 @@ void MicroMouse_Deploy_step(void)
    *  Sum: '<S104>/SumD'
    */
   MicroMouse_Deploy_B.FilterCoefficient_k = (MicroMouse_Deploy_P.PIDController_D
-    * elapsedTime - MicroMouse_Deploy_X.Filter_CSTATE_k) *
+    * Gain1 - MicroMouse_Deploy_X.Filter_CSTATE_k) *
     MicroMouse_Deploy_P.PIDController_N;
 
   /* Product: '<S3>/Product3' incorporates:
@@ -1466,13 +1713,13 @@ void MicroMouse_Deploy_step(void)
    *  Integrator: '<S109>/Integrator'
    *  Sum: '<S118>/Sum'
    */
-  Product_g = ((MicroMouse_Deploy_P.PIDController_P * elapsedTime +
+  Product_g = ((MicroMouse_Deploy_P.PIDController_P * Gain1 +
                 MicroMouse_Deploy_X.Integrator_CSTATE_e) +
                MicroMouse_Deploy_B.FilterCoefficient_k) * (real_T)
     MicroMouse_Deploy_B.RelationalOperator_n;
 
   /* Clock: '<S18>/Clock' */
-  Gain1 = MicroMouse_Deploy_M->Timing.t[0];
+  Product = MicroMouse_Deploy_M->Timing.t[0];
   if (tmp) {
     /* Chart: '<S18>/Chart' incorporates:
      *  Integrator: '<S18>/Integrator'
@@ -1483,7 +1730,7 @@ void MicroMouse_Deploy_step(void)
         MicroMouse_Deploy_IN_Start;
     } else if (MicroMouse_Deploy_DW.bitsForTID1.is_c2_MicroMouse_Deploy ==
                MicroMouse_Deploy_IN_Set_Offset) {
-      if (Gain1 > 0.1) {
+      if (Product > 0.1) {
         MicroMouse_Deploy_DW.bitsForTID1.is_c2_MicroMouse_Deploy =
           MicroMouse_Deploy_IN_Set_Offset;
       } else {
@@ -1491,7 +1738,7 @@ void MicroMouse_Deploy_step(void)
       }
 
       /* case IN_Start: */
-    } else if (Gain1 < 0.1) {
+    } else if (Product < 0.1) {
       MicroMouse_Deploy_DW.bitsForTID1.is_c2_MicroMouse_Deploy =
         MicroMouse_Deploy_IN_Set_Offset;
     } else {
@@ -1504,8 +1751,7 @@ void MicroMouse_Deploy_step(void)
   /* Sum: '<S18>/Error' incorporates:
    *  Integrator: '<S18>/Integrator'
    */
-  elapsedTime = MicroMouse_Deploy_B.offset -
-    MicroMouse_Deploy_X.Integrator_CSTATE_j;
+  Gain1 = MicroMouse_Deploy_B.offset - MicroMouse_Deploy_X.Integrator_CSTATE_j;
 
   /* Gain: '<S219>/Filter Coefficient' incorporates:
    *  Gain: '<S209>/Derivative Gain'
@@ -1513,14 +1759,14 @@ void MicroMouse_Deploy_step(void)
    *  Sum: '<S211>/SumD'
    */
   MicroMouse_Deploy_B.FilterCoefficient_f =
-    (MicroMouse_Deploy_P.PIDController_D_e * elapsedTime -
-     MicroMouse_Deploy_X.Filter_CSTATE_l) *
+    (MicroMouse_Deploy_P.PIDController_D_e * Gain1 -
+     MicroMouse_Deploy_X.Filter_CSTATE_lq) *
     MicroMouse_Deploy_P.PIDController_N_j;
 
   /* Sum: '<S225>/Sum' incorporates:
    *  Gain: '<S221>/Proportional Gain'
    */
-  Gain1 = MicroMouse_Deploy_P.PIDController_P_c * elapsedTime +
+  Product = MicroMouse_Deploy_P.PIDController_P_c * Gain1 +
     MicroMouse_Deploy_B.FilterCoefficient_f;
   if (tmp) {
     /* Chart: '<S18>/turn_adjus' */
@@ -1531,10 +1777,10 @@ void MicroMouse_Deploy_step(void)
     } else {
       switch (MicroMouse_Deploy_DW.bitsForTID1.is_c1_MicroMouse_Deploy) {
        case MicroMouse_Deploy_IN_deafult:
-        if (Gain1 < 0.0) {
+        if (Product < 0.0) {
           MicroMouse_Deploy_DW.bitsForTID1.is_c1_MicroMouse_Deploy =
             MicroMouse_Deploy_IN_turnRight;
-        } else if (Gain1 > 0.0) {
+        } else if (Product > 0.0) {
           MicroMouse_Deploy_DW.bitsForTID1.is_c1_MicroMouse_Deploy =
             MicroMouse_Deploy_IN_turnLeft;
         }
@@ -1551,70 +1797,87 @@ void MicroMouse_Deploy_step(void)
 
     /* End of Chart: '<S18>/turn_adjus' */
 
-    /* UnitDelay: '<S289>/Unit Delay1' */
+    /* UnitDelay: '<S501>/Unit Delay1' */
     MicroMouse_Deploy_B.UnitDelay1 = MicroMouse_Deploy_DW.UnitDelay1_DSTATE;
 
-    /* Gain: '<S289>/tau' incorporates:
+    /* Gain: '<S501>/tau' incorporates:
      *  Constant: '<S3>/Constant5'
      */
     rtb_p = MicroMouse_Deploy_P.tau_Gain * MicroMouse_Deploy_P.Constant5_Value_n;
 
-    /* Product: '<S291>/Product2' */
+    /* Product: '<S503>/Product2' */
     rtb_q = rtb_p * rtb_p;
 
-    /* Bias: '<S291>/Bias' */
+    /* Bias: '<S503>/Bias' */
     rtb_r = rtb_q + MicroMouse_Deploy_P.Bias_Bias;
 
-    /* Gain: '<S291>/Gain' */
+    /* Gain: '<S503>/Gain' */
     rtb_p *= MicroMouse_Deploy_P.Gain_Gain_n;
 
-    /* Sum: '<S291>/Add1' */
+    /* Sum: '<S503>/Add1' */
     rtb_d = rtb_r + rtb_p;
 
-    /* Product: '<S291>/Product3' */
+    /* Product: '<S503>/Product3' */
     MicroMouse_Deploy_B.Product3_k = rtb_q / rtb_d;
 
-    /* UnitDelay: '<S290>/Unit Delay1' */
+    /* UnitDelay: '<S502>/Unit Delay1' */
     MicroMouse_Deploy_B.UnitDelay1_n = MicroMouse_Deploy_DW.UnitDelay1_DSTATE_n;
 
-    /* Gain: '<S290>/tau' incorporates:
+    /* Gain: '<S502>/tau' incorporates:
      *  Constant: '<S3>/Constant5'
      */
     rtb_p_a = MicroMouse_Deploy_P.tau_Gain_b *
       MicroMouse_Deploy_P.Constant5_Value_n;
 
-    /* Product: '<S292>/Product2' */
+    /* Product: '<S504>/Product2' */
     rtb_q_g = rtb_p_a * rtb_p_a;
 
-    /* Bias: '<S292>/Bias' */
+    /* Bias: '<S504>/Bias' */
     rtb_r_p = rtb_q_g + MicroMouse_Deploy_P.Bias_Bias_b;
 
-    /* Gain: '<S292>/Gain' */
+    /* Gain: '<S504>/Gain' */
     rtb_p_a *= MicroMouse_Deploy_P.Gain_Gain_l;
 
-    /* Sum: '<S292>/Add1' */
+    /* Sum: '<S504>/Add1' */
     rtb_Product1_b = rtb_r_p + rtb_p_a;
 
-    /* Product: '<S292>/Product3' */
+    /* Product: '<S504>/Product3' */
     MicroMouse_Deploy_B.Product3_d = rtb_q_g / rtb_Product1_b;
   }
 
-  /* Gain: '<S267>/Integral Gain' */
+  /* Gain: '<S271>/Integral Gain' */
   MicroMouse_Deploy_B.IntegralGain_c = MicroMouse_Deploy_P.PIDController1_I *
-    Product;
+    rtb_Product2_e;
 
-  /* Sum: '<S289>/Sum' */
-  elapsedTime = MicroMouse_Deploy_B.CastToDouble[2] +
-    MicroMouse_Deploy_B.UnitDelay1;
+  /* Gain: '<S323>/Integral Gain' */
+  MicroMouse_Deploy_B.IntegralGain_a = MicroMouse_Deploy_P.PIDController2_I *
+    rtb_Product4;
 
-  /* Product: '<S289>/Product1' */
-  Gain1 = elapsedTime * MicroMouse_Deploy_B.Product3_k;
+  /* Gain: '<S375>/Integral Gain' incorporates:
+   *  DataTypeConversion: '<S22>/Cast To Double2'
+   */
+  MicroMouse_Deploy_B.IntegralGain_j = MicroMouse_Deploy_P.PIDController3_I *
+    rtb_Product5_p;
 
-  /* Sum: '<S290>/Sum' */
-  Product = Gain1 + MicroMouse_Deploy_B.UnitDelay1_n;
+  /* Gain: '<S427>/Integral Gain' */
+  MicroMouse_Deploy_B.IntegralGain_m = MicroMouse_Deploy_P.PIDController4_I *
+    rtb_CastToDouble1_b;
 
-  /* Product: '<S290>/Product1' */
-  rtb_Sum2_j = Product * MicroMouse_Deploy_B.Product3_d;
+  /* Gain: '<S479>/Integral Gain' */
+  MicroMouse_Deploy_B.IntegralGain_o = MicroMouse_Deploy_P.PIDController5_I *
+    elapsedTime;
+
+  /* Sum: '<S501>/Sum' */
+  Gain1 = MicroMouse_Deploy_B.CastToDouble[2] + MicroMouse_Deploy_B.UnitDelay1;
+
+  /* Product: '<S501>/Product1' */
+  Product = Gain1 * MicroMouse_Deploy_B.Product3_k;
+
+  /* Sum: '<S502>/Sum' */
+  elapsedTime = Product + MicroMouse_Deploy_B.UnitDelay1_n;
+
+  /* Product: '<S502>/Product1' */
+  rtb_Sum2_j = elapsedTime * MicroMouse_Deploy_B.Product3_d;
 
   /* MATLABSystem: '<S23>/Median Filter' */
   if (MicroMouse_Deploy_DW.obj_o.pMID.isInitialized != 1) {
@@ -1623,11 +1886,11 @@ void MicroMouse_Deploy_step(void)
     MicroMou_MedianFilter_resetImpl(&MicroMouse_Deploy_DW.obj_o.pMID);
   }
 
-  vprev = MicroMouse_Deploy_DW.obj_o.pMID.pBuf[(int32_T)
+  rtb_CastToDouble1_b = MicroMouse_Deploy_DW.obj_o.pMID.pBuf[(int32_T)
     MicroMouse_Deploy_DW.obj_o.pMID.pIdx - 1];
   MicroMouse_Deploy_DW.obj_o.pMID.pBuf[(int32_T)
     MicroMouse_Deploy_DW.obj_o.pMID.pIdx - 1] = rtb_Sum2_j;
-  p = MicroMouse_Deploy_DW.obj_o.pMID.pPos[(int32_T)
+  rtb_Product4 = MicroMouse_Deploy_DW.obj_o.pMID.pPos[(int32_T)
     MicroMouse_Deploy_DW.obj_o.pMID.pIdx - 1];
   MicroMouse_Deploy_DW.obj_o.pMID.pIdx++;
   if (MicroMouse_Deploy_DW.obj_o.pMID.pWinLen + 1.0 ==
@@ -1635,77 +1898,86 @@ void MicroMouse_Deploy_step(void)
     MicroMouse_Deploy_DW.obj_o.pMID.pIdx = 1.0;
   }
 
-  if (p > MicroMouse_Deploy_DW.obj_o.pMID.pMidHeap) {
-    if (vprev < rtb_Sum2_j) {
-      Mic_MedianFilter_trickleDownMin(&MicroMouse_Deploy_DW.obj_o.pMID, (p -
-        MicroMouse_Deploy_DW.obj_o.pMID.pMidHeap) * 2.0);
+  if (rtb_Product4 > MicroMouse_Deploy_DW.obj_o.pMID.pMidHeap) {
+    if (rtb_CastToDouble1_b < rtb_Sum2_j) {
+      Mic_MedianFilter_trickleDownMin(&MicroMouse_Deploy_DW.obj_o.pMID,
+        (rtb_Product4 - MicroMouse_Deploy_DW.obj_o.pMID.pMidHeap) * 2.0);
     } else {
-      p -= MicroMouse_Deploy_DW.obj_o.pMID.pMidHeap;
+      rtb_Product4 -= MicroMouse_Deploy_DW.obj_o.pMID.pMidHeap;
       exitg1 = false;
-      while ((!exitg1) && (p > 0.0)) {
-        rtb_Sum2_j = p / 2.0;
-        temp = trunc(rtb_Sum2_j);
+      while ((!exitg1) && (rtb_Product4 > 0.0)) {
+        rtb_Sum2_j = rtb_Product4 / 2.0;
+        rtb_Product2_e = trunc(rtb_Sum2_j);
         if (!(MicroMouse_Deploy_DW.obj_o.pMID.pBuf[(int32_T)
-              MicroMouse_Deploy_DW.obj_o.pMID.pHeap[(int32_T)(p +
+              MicroMouse_Deploy_DW.obj_o.pMID.pHeap[(int32_T)(rtb_Product4 +
               MicroMouse_Deploy_DW.obj_o.pMID.pMidHeap) - 1] - 1] <
               MicroMouse_Deploy_DW.obj_o.pMID.pBuf[(int32_T)
-              MicroMouse_Deploy_DW.obj_o.pMID.pHeap[(int32_T)(temp +
+              MicroMouse_Deploy_DW.obj_o.pMID.pHeap[(int32_T)(rtb_Product2_e +
               MicroMouse_Deploy_DW.obj_o.pMID.pMidHeap) - 1] - 1])) {
           exitg1 = true;
         } else {
-          vprev = p + MicroMouse_Deploy_DW.obj_o.pMID.pMidHeap;
-          p = temp + MicroMouse_Deploy_DW.obj_o.pMID.pMidHeap;
-          temp = MicroMouse_Deploy_DW.obj_o.pMID.pHeap[(int32_T)vprev - 1];
-          MicroMouse_Deploy_DW.obj_o.pMID.pHeap[(int32_T)vprev - 1] =
-            MicroMouse_Deploy_DW.obj_o.pMID.pHeap[(int32_T)p - 1];
-          MicroMouse_Deploy_DW.obj_o.pMID.pHeap[(int32_T)p - 1] = temp;
+          rtb_CastToDouble1_b = rtb_Product4 +
+            MicroMouse_Deploy_DW.obj_o.pMID.pMidHeap;
+          rtb_Product4 = rtb_Product2_e +
+            MicroMouse_Deploy_DW.obj_o.pMID.pMidHeap;
+          rtb_Product2_e = MicroMouse_Deploy_DW.obj_o.pMID.pHeap[(int32_T)
+            rtb_CastToDouble1_b - 1];
+          MicroMouse_Deploy_DW.obj_o.pMID.pHeap[(int32_T)rtb_CastToDouble1_b - 1]
+            = MicroMouse_Deploy_DW.obj_o.pMID.pHeap[(int32_T)rtb_Product4 - 1];
+          MicroMouse_Deploy_DW.obj_o.pMID.pHeap[(int32_T)rtb_Product4 - 1] =
+            rtb_Product2_e;
           MicroMouse_Deploy_DW.obj_o.pMID.pPos[(int32_T)
-            MicroMouse_Deploy_DW.obj_o.pMID.pHeap[(int32_T)vprev - 1] - 1] =
-            vprev;
+            MicroMouse_Deploy_DW.obj_o.pMID.pHeap[(int32_T)rtb_CastToDouble1_b -
+            1] - 1] = rtb_CastToDouble1_b;
           MicroMouse_Deploy_DW.obj_o.pMID.pPos[(int32_T)
-            MicroMouse_Deploy_DW.obj_o.pMID.pHeap[(int32_T)p - 1] - 1] = p;
-          p = trunc(rtb_Sum2_j);
+            MicroMouse_Deploy_DW.obj_o.pMID.pHeap[(int32_T)rtb_Product4 - 1] - 1]
+            = rtb_Product4;
+          rtb_Product4 = trunc(rtb_Sum2_j);
         }
       }
 
-      if (p == 0.0) {
+      if (rtb_Product4 == 0.0) {
         Mic_MedianFilter_trickleDownMax(&MicroMouse_Deploy_DW.obj_o.pMID, -1.0);
       }
     }
-  } else if (p < MicroMouse_Deploy_DW.obj_o.pMID.pMidHeap) {
-    if (rtb_Sum2_j < vprev) {
-      Mic_MedianFilter_trickleDownMax(&MicroMouse_Deploy_DW.obj_o.pMID, (p -
-        MicroMouse_Deploy_DW.obj_o.pMID.pMidHeap) * 2.0);
+  } else if (rtb_Product4 < MicroMouse_Deploy_DW.obj_o.pMID.pMidHeap) {
+    if (rtb_Sum2_j < rtb_CastToDouble1_b) {
+      Mic_MedianFilter_trickleDownMax(&MicroMouse_Deploy_DW.obj_o.pMID,
+        (rtb_Product4 - MicroMouse_Deploy_DW.obj_o.pMID.pMidHeap) * 2.0);
     } else {
-      p -= MicroMouse_Deploy_DW.obj_o.pMID.pMidHeap;
+      rtb_Product4 -= MicroMouse_Deploy_DW.obj_o.pMID.pMidHeap;
       exitg1 = false;
-      while ((!exitg1) && (p < 0.0)) {
-        rtb_Sum2_j = p / 2.0;
-        temp = trunc(rtb_Sum2_j);
+      while ((!exitg1) && (rtb_Product4 < 0.0)) {
+        rtb_Sum2_j = rtb_Product4 / 2.0;
+        rtb_Product2_e = trunc(rtb_Sum2_j);
         if (!(MicroMouse_Deploy_DW.obj_o.pMID.pBuf[(int32_T)
-              MicroMouse_Deploy_DW.obj_o.pMID.pHeap[(int32_T)(temp +
+              MicroMouse_Deploy_DW.obj_o.pMID.pHeap[(int32_T)(rtb_Product2_e +
               MicroMouse_Deploy_DW.obj_o.pMID.pMidHeap) - 1] - 1] <
               MicroMouse_Deploy_DW.obj_o.pMID.pBuf[(int32_T)
-              MicroMouse_Deploy_DW.obj_o.pMID.pHeap[(int32_T)(p +
+              MicroMouse_Deploy_DW.obj_o.pMID.pHeap[(int32_T)(rtb_Product4 +
               MicroMouse_Deploy_DW.obj_o.pMID.pMidHeap) - 1] - 1])) {
           exitg1 = true;
         } else {
-          vprev = temp + MicroMouse_Deploy_DW.obj_o.pMID.pMidHeap;
-          p += MicroMouse_Deploy_DW.obj_o.pMID.pMidHeap;
-          temp = MicroMouse_Deploy_DW.obj_o.pMID.pHeap[(int32_T)vprev - 1];
-          MicroMouse_Deploy_DW.obj_o.pMID.pHeap[(int32_T)vprev - 1] =
-            MicroMouse_Deploy_DW.obj_o.pMID.pHeap[(int32_T)p - 1];
-          MicroMouse_Deploy_DW.obj_o.pMID.pHeap[(int32_T)p - 1] = temp;
+          rtb_CastToDouble1_b = rtb_Product2_e +
+            MicroMouse_Deploy_DW.obj_o.pMID.pMidHeap;
+          rtb_Product4 += MicroMouse_Deploy_DW.obj_o.pMID.pMidHeap;
+          rtb_Product2_e = MicroMouse_Deploy_DW.obj_o.pMID.pHeap[(int32_T)
+            rtb_CastToDouble1_b - 1];
+          MicroMouse_Deploy_DW.obj_o.pMID.pHeap[(int32_T)rtb_CastToDouble1_b - 1]
+            = MicroMouse_Deploy_DW.obj_o.pMID.pHeap[(int32_T)rtb_Product4 - 1];
+          MicroMouse_Deploy_DW.obj_o.pMID.pHeap[(int32_T)rtb_Product4 - 1] =
+            rtb_Product2_e;
           MicroMouse_Deploy_DW.obj_o.pMID.pPos[(int32_T)
-            MicroMouse_Deploy_DW.obj_o.pMID.pHeap[(int32_T)vprev - 1] - 1] =
-            vprev;
+            MicroMouse_Deploy_DW.obj_o.pMID.pHeap[(int32_T)rtb_CastToDouble1_b -
+            1] - 1] = rtb_CastToDouble1_b;
           MicroMouse_Deploy_DW.obj_o.pMID.pPos[(int32_T)
-            MicroMouse_Deploy_DW.obj_o.pMID.pHeap[(int32_T)p - 1] - 1] = p;
-          p = trunc(rtb_Sum2_j);
+            MicroMouse_Deploy_DW.obj_o.pMID.pHeap[(int32_T)rtb_Product4 - 1] - 1]
+            = rtb_Product4;
+          rtb_Product4 = trunc(rtb_Sum2_j);
         }
       }
 
-      if (p == 0.0) {
+      if (rtb_Product4 == 0.0) {
         Mic_MedianFilter_trickleDownMin(&MicroMouse_Deploy_DW.obj_o.pMID, 1.0);
       }
     }
@@ -1747,64 +2019,66 @@ void MicroMouse_Deploy_step(void)
 
   /* End of DeadZone: '<S23>/Dead Zone' */
   if (tmp) {
-    /* Product: '<S291>/Product4' incorporates:
-     *  Bias: '<S291>/Bias1'
-     *  UnaryMinus: '<S291>/Unary Minus'
+    /* Product: '<S503>/Product4' incorporates:
+     *  Bias: '<S503>/Bias1'
+     *  UnaryMinus: '<S503>/Unary Minus'
      */
     MicroMouse_Deploy_B.Product4 = (-rtb_q + MicroMouse_Deploy_P.Bias1_Bias) /
       rtb_d;
 
-    /* Product: '<S291>/Product5' incorporates:
-     *  Sum: '<S291>/Add3'
+    /* Product: '<S503>/Product5' incorporates:
+     *  Sum: '<S503>/Add3'
      */
     MicroMouse_Deploy_B.Product5 = 1.0 / rtb_d * (rtb_r - rtb_p);
 
-    /* UnitDelay: '<S289>/Unit Delay2' */
+    /* UnitDelay: '<S501>/Unit Delay2' */
     MicroMouse_Deploy_B.UnitDelay2 = MicroMouse_Deploy_DW.UnitDelay2_DSTATE;
 
-    /* Product: '<S292>/Product4' incorporates:
-     *  Bias: '<S292>/Bias1'
-     *  UnaryMinus: '<S292>/Unary Minus'
+    /* Product: '<S504>/Product4' incorporates:
+     *  Bias: '<S504>/Bias1'
+     *  UnaryMinus: '<S504>/Unary Minus'
      */
     MicroMouse_Deploy_B.Product4_k = (-rtb_q_g +
       MicroMouse_Deploy_P.Bias1_Bias_f) / rtb_Product1_b;
 
-    /* Product: '<S292>/Product5' incorporates:
-     *  Sum: '<S292>/Add3'
+    /* Product: '<S504>/Product5' incorporates:
+     *  Sum: '<S504>/Add3'
      */
     MicroMouse_Deploy_B.Product5_a = 1.0 / rtb_Product1_b * (rtb_r_p - rtb_p_a);
 
-    /* UnitDelay: '<S290>/Unit Delay2' */
+    /* UnitDelay: '<S502>/Unit Delay2' */
     MicroMouse_Deploy_B.UnitDelay2_b = MicroMouse_Deploy_DW.UnitDelay2_DSTATE_j;
   }
 
-  /* Sum: '<S289>/Sum1' incorporates:
-   *  Gain: '<S289>/Gain1'
-   *  Product: '<S289>/Product5'
-   *  Sum: '<S289>/Sum2'
+  /* Sum: '<S501>/Sum1' incorporates:
+   *  Gain: '<S501>/Gain1'
+   *  Product: '<S501>/Product5'
+   *  Sum: '<S501>/Sum2'
    */
-  MicroMouse_Deploy_B.Sum1 = (elapsedTime * MicroMouse_Deploy_B.Product4 +
+  MicroMouse_Deploy_B.Sum1 = (Gain1 * MicroMouse_Deploy_B.Product4 +
     MicroMouse_Deploy_B.CastToDouble[2]) * MicroMouse_Deploy_P.Gain1_Gain_b +
     MicroMouse_Deploy_B.UnitDelay2;
 
-  /* Sum: '<S289>/Sum3' incorporates:
-   *  Product: '<S289>/Product2'
+  /* Sum: '<S501>/Sum3' incorporates:
+   *  Product: '<S501>/Product2'
    */
-  MicroMouse_Deploy_B.Sum3 = MicroMouse_Deploy_B.CastToDouble[2] - elapsedTime *
+  MicroMouse_Deploy_B.Sum3 = MicroMouse_Deploy_B.CastToDouble[2] - Gain1 *
     MicroMouse_Deploy_B.Product5;
 
-  /* Sum: '<S290>/Sum1' incorporates:
-   *  Gain: '<S290>/Gain1'
-   *  Product: '<S290>/Product5'
-   *  Sum: '<S290>/Sum2'
+  /* Sum: '<S502>/Sum1' incorporates:
+   *  Gain: '<S502>/Gain1'
+   *  Product: '<S502>/Product5'
+   *  Sum: '<S502>/Sum2'
    */
-  MicroMouse_Deploy_B.Sum1_k = (Product * MicroMouse_Deploy_B.Product4_k + Gain1)
-    * MicroMouse_Deploy_P.Gain1_Gain_h + MicroMouse_Deploy_B.UnitDelay2_b;
+  MicroMouse_Deploy_B.Sum1_k = (elapsedTime * MicroMouse_Deploy_B.Product4_k +
+    Product) * MicroMouse_Deploy_P.Gain1_Gain_h +
+    MicroMouse_Deploy_B.UnitDelay2_b;
 
-  /* Sum: '<S290>/Sum3' incorporates:
-   *  Product: '<S290>/Product2'
+  /* Sum: '<S502>/Sum3' incorporates:
+   *  Product: '<S502>/Product2'
    */
-  MicroMouse_Deploy_B.Sum3_o = Gain1 - Product * MicroMouse_Deploy_B.Product5_a;
+  MicroMouse_Deploy_B.Sum3_o = Product - elapsedTime *
+    MicroMouse_Deploy_B.Product5_a;
   if (tmp) {
     /* Chart: '<S3>/turn_adjus' */
     if (MicroMouse_Deploy_DW.bitsForTID1.is_active_c5_MicroMouse_Deploy == 0) {
@@ -2016,11 +2290,11 @@ void MicroMouse_Deploy_step(void)
     /* End of Chart: '<S40>/Chart' */
 
     /* Gain: '<S154>/Derivative Gain' */
-    MicroMouse_Deploy_B.DerivativeGain = MicroMouse_Deploy_P.PIDController4_D *
+    MicroMouse_Deploy_B.DerivativeGain = MicroMouse_Deploy_P.PIDController4_D_i *
       0.0;
 
     /* Gain: '<S158>/Integral Gain' */
-    MicroMouse_Deploy_B.IntegralGain_i = MicroMouse_Deploy_P.PIDController4_I *
+    MicroMouse_Deploy_B.IntegralGain_i = MicroMouse_Deploy_P.PIDController4_I_j *
       0.0;
   }
 
@@ -2030,7 +2304,7 @@ void MicroMouse_Deploy_step(void)
    */
   MicroMouse_Deploy_B.FilterCoefficient_o = (MicroMouse_Deploy_B.DerivativeGain
     - MicroMouse_Deploy_X.Filter_CSTATE_n) *
-    MicroMouse_Deploy_P.PIDController4_N;
+    MicroMouse_Deploy_P.PIDController4_N_k;
 
   /* Chart: '<S3>/draft2_Maze_exploration1' incorporates:
    *  Chart: '<S3>/draft2_Maze_exploration2'
@@ -2041,7 +2315,7 @@ void MicroMouse_Deploy_step(void)
       MicroMouse_Deploy_DW.bitsForTID0.is_active_c6_MicroMouse_Deploy = 1U;
       rtb_Compare_c = true;
       MicroMouse_Deploy_DW.bitsForTID0.is_c6_MicroMouse_Deploy =
-        MicroMouse_Deplo_IN_set_Z_angle;
+        MicroMouse_Dep_IN_set_Z_angle_o;
       MicroMouse_Deploy_B.Z_angle_l = 0.0;
     } else {
       switch (MicroMouse_Deploy_DW.bitsForTID0.is_c6_MicroMouse_Deploy) {
@@ -2049,33 +2323,33 @@ void MicroMouse_Deploy_step(void)
         if (MicroMouse_Deploy_DW.theta - 3.14159274F >= 0.0F) {
           rtb_Compare_c = true;
           MicroMouse_Deploy_DW.bitsForTID0.is_c6_MicroMouse_Deploy =
-            MicroMouse_Deploy_IN_Start_p;
+            MicroMouse_Deploy_IN_Start_f;
         }
         break;
 
        case MicroMouse_Deplo_IN_Go_straight:
         rtb_Compare_c = true;
         MicroMouse_Deploy_DW.bitsForTID0.is_c6_MicroMouse_Deploy =
-          MicroMouse_D_IN_left_turn_setup;
+          MicroMouse_IN_left_turn_setup_g;
         MicroMouse_Deploy_DW.end_dist_a = 0.14F;
         break;
 
        case MicroMouse_Depl_IN_Go_straight1:
         rtb_Compare_c = true;
         MicroMouse_Deploy_DW.bitsForTID0.is_c6_MicroMouse_Deploy =
-          MicroMouse__IN_left_turn_setup1;
+          MicroMous_IN_left_turn_setup1_d;
         MicroMouse_Deploy_DW.end_dist_a = 0.14F;
         break;
 
-       case MicroMouse_Deploy_IN_Left_turn:
+       case MicroMouse_Deplo_IN_Left_turn_f:
         if (MicroMouse_Deploy_DW.theta + 1.57079637F <= 0.0F) {
           rtb_Compare_c = true;
           MicroMouse_Deploy_DW.bitsForTID0.is_c6_MicroMouse_Deploy =
-            MicroMouse_Deploy_IN_Start_p;
+            MicroMouse_Deploy_IN_Start_f;
         }
         break;
 
-       case MicroMouse_Deploy_IN_Left_turn1:
+       case MicroMouse_Depl_IN_Left_turn1_l:
         if (MicroMouse_Deploy_DW.theta + 1.57079637F <= 0.0F) {
           rtb_Compare_c = true;
           MicroMouse_Deploy_DW.bitsForTID0.is_c6_MicroMouse_Deploy =
@@ -2083,42 +2357,42 @@ void MicroMouse_Deploy_step(void)
         }
         break;
 
-       case MicroMouse_Deploy_IN_Left_turn2:
+       case MicroMouse_Depl_IN_Left_turn2_d:
         if (MicroMouse_Deploy_DW.theta + 1.57079637F <= 0.0F) {
           rtb_Compare_c = true;
           MicroMouse_Deploy_DW.bitsForTID0.is_c6_MicroMouse_Deploy =
-            MicroMouse_Deploy_IN_Start_p;
+            MicroMouse_Deploy_IN_Start_f;
         }
         break;
 
-       case MicroMouse_Deploy_IN_Start_p:
+       case MicroMouse_Deploy_IN_Start_f:
         break;
 
-       case MicroMouse_D_IN_left_turn_setup:
+       case MicroMouse_IN_left_turn_setup_g:
         if (MicroMouse_Deploy_DW.end_dist_a <= 0.0F) {
           rtb_Compare_c = true;
           MicroMouse_Deploy_DW.bitsForTID0.is_c6_MicroMouse_Deploy =
-            MicroMouse_Deploy_IN_Left_turn1;
+            MicroMouse_Depl_IN_Left_turn1_l;
           MicroMouse_Deploy_DW.theta = 0.0F;
           MicroMouse_Deploy_B.Z_angle_l += 1.5707963267948966;
         }
         break;
 
-       case MicroMouse__IN_left_turn_setup1:
+       case MicroMous_IN_left_turn_setup1_d:
         if (MicroMouse_Deploy_DW.end_dist_a <= 0.0F) {
           rtb_Compare_c = true;
           MicroMouse_Deploy_DW.bitsForTID0.is_c6_MicroMouse_Deploy =
-            MicroMouse_Deploy_IN_Left_turn2;
+            MicroMouse_Depl_IN_Left_turn2_d;
           MicroMouse_Deploy_DW.theta = 0.0F;
           MicroMouse_Deploy_B.Z_angle_l += 1.5707963267948966;
         }
         break;
 
-       case MicroMouse_Deploy_IN_right_turn:
+       case MicroMouse_Depl_IN_right_turn_n:
         if (MicroMouse_Deploy_DW.theta - 1.57079637F >= 0.0F) {
           rtb_Compare_c = true;
           MicroMouse_Deploy_DW.bitsForTID0.is_c6_MicroMouse_Deploy =
-            MicroMouse_Deploy_IN_Start_p;
+            MicroMouse_Deploy_IN_Start_f;
         }
         break;
 
@@ -2126,7 +2400,7 @@ void MicroMouse_Deploy_step(void)
         /* case IN_set_Z_angle: */
         rtb_Compare_c = true;
         MicroMouse_Deploy_DW.bitsForTID0.is_c6_MicroMouse_Deploy =
-          MicroMouse_Deploy_IN_Start_p;
+          MicroMouse_Deploy_IN_Start_f;
         break;
       }
     }
@@ -2141,7 +2415,7 @@ void MicroMouse_Deploy_step(void)
       MicroMouse_Deploy_DW.bitsForTID0.is_active_c10_MicroMouse_Deploy = 1U;
       rtb_Compare_c = true;
       MicroMouse_Deploy_DW.bitsForTID0.is_c10_MicroMouse_Deploy =
-        MicroMouse_Deplo_IN_set_Z_angle;
+        MicroMouse_Dep_IN_set_Z_angle_o;
       MicroMouse_Deploy_B.Z_angle = 0.0;
     } else {
       switch (MicroMouse_Deploy_DW.bitsForTID0.is_c10_MicroMouse_Deploy) {
@@ -2149,33 +2423,33 @@ void MicroMouse_Deploy_step(void)
         if (MicroMouse_Deploy_B.Z_angle >= 0.0) {
           rtb_Compare_c = true;
           MicroMouse_Deploy_DW.bitsForTID0.is_c10_MicroMouse_Deploy =
-            MicroMouse_Deploy_IN_Start_p;
+            MicroMouse_Deploy_IN_Start_f;
         }
         break;
 
        case MicroMouse_Deplo_IN_Go_straight:
         rtb_Compare_c = true;
         MicroMouse_Deploy_DW.bitsForTID0.is_c10_MicroMouse_Deploy =
-          MicroMouse_D_IN_left_turn_setup;
+          MicroMouse_IN_left_turn_setup_g;
         MicroMouse_Deploy_DW.end_dist_o = 0.145F;
         break;
 
        case MicroMouse_Depl_IN_Go_straight1:
         rtb_Compare_c = true;
         MicroMouse_Deploy_DW.bitsForTID0.is_c10_MicroMouse_Deploy =
-          MicroMouse__IN_left_turn_setup1;
+          MicroMous_IN_left_turn_setup1_d;
         MicroMouse_Deploy_DW.end_dist_o = 0.145F;
         break;
 
-       case MicroMouse_Deploy_IN_Left_turn:
+       case MicroMouse_Deplo_IN_Left_turn_f:
         if (MicroMouse_Deploy_B.Z_angle <= 0.0) {
           rtb_Compare_c = true;
           MicroMouse_Deploy_DW.bitsForTID0.is_c10_MicroMouse_Deploy =
-            MicroMouse_Deploy_IN_Start_p;
+            MicroMouse_Deploy_IN_Start_f;
         }
         break;
 
-       case MicroMouse_Deploy_IN_Left_turn1:
+       case MicroMouse_Depl_IN_Left_turn1_l:
         if (MicroMouse_Deploy_B.Z_angle <= 0.0) {
           rtb_Compare_c = true;
           MicroMouse_Deploy_DW.bitsForTID0.is_c10_MicroMouse_Deploy =
@@ -2183,40 +2457,40 @@ void MicroMouse_Deploy_step(void)
         }
         break;
 
-       case MicroMouse_Deploy_IN_Left_turn2:
+       case MicroMouse_Depl_IN_Left_turn2_d:
         if (MicroMouse_Deploy_B.Z_angle <= 0.0) {
           rtb_Compare_c = true;
           MicroMouse_Deploy_DW.bitsForTID0.is_c10_MicroMouse_Deploy =
-            MicroMouse_Deploy_IN_Start_p;
+            MicroMouse_Deploy_IN_Start_f;
         }
         break;
 
-       case MicroMouse_Deploy_IN_Start_p:
+       case MicroMouse_Deploy_IN_Start_f:
         break;
 
-       case MicroMouse_D_IN_left_turn_setup:
+       case MicroMouse_IN_left_turn_setup_g:
         if (MicroMouse_Deploy_DW.end_dist_o <= 0.0F) {
           rtb_Compare_c = true;
           MicroMouse_Deploy_DW.bitsForTID0.is_c10_MicroMouse_Deploy =
-            MicroMouse_Deploy_IN_Left_turn1;
+            MicroMouse_Depl_IN_Left_turn1_l;
           MicroMouse_Deploy_B.Z_angle += 1.5707963267948966;
         }
         break;
 
-       case MicroMouse__IN_left_turn_setup1:
+       case MicroMous_IN_left_turn_setup1_d:
         if (MicroMouse_Deploy_DW.end_dist_o <= 0.0F) {
           rtb_Compare_c = true;
           MicroMouse_Deploy_DW.bitsForTID0.is_c10_MicroMouse_Deploy =
-            MicroMouse_Deploy_IN_Left_turn2;
+            MicroMouse_Depl_IN_Left_turn2_d;
           MicroMouse_Deploy_B.Z_angle += 1.5707963267948966;
         }
         break;
 
-       case MicroMouse_Deploy_IN_right_turn:
+       case MicroMouse_Depl_IN_right_turn_n:
         if (MicroMouse_Deploy_B.Z_angle >= 0.0) {
           rtb_Compare_c = true;
           MicroMouse_Deploy_DW.bitsForTID0.is_c10_MicroMouse_Deploy =
-            MicroMouse_Deploy_IN_Start_p;
+            MicroMouse_Deploy_IN_Start_f;
         }
         break;
 
@@ -2224,7 +2498,7 @@ void MicroMouse_Deploy_step(void)
         /* case IN_set_Z_angle: */
         rtb_Compare_c = true;
         MicroMouse_Deploy_DW.bitsForTID0.is_c10_MicroMouse_Deploy =
-          MicroMouse_Deploy_IN_Start_p;
+          MicroMouse_Deploy_IN_Start_f;
         break;
       }
     }
@@ -2253,9 +2527,9 @@ void MicroMouse_Deploy_step(void)
       MicroMouse_Deploy_DW.obj_b.pCumRevIndex - 1] =
       MicroMouse_Deploy_B.Saturation;
     if (MicroMouse_Deploy_DW.obj_b.pCumRevIndex != 299.0F) {
-      rtb_Gain1_h = MicroMouse_Deploy_DW.obj_b.pCumRevIndex + 1.0F;
+      rtb_Product5_p = MicroMouse_Deploy_DW.obj_b.pCumRevIndex + 1.0F;
     } else {
-      rtb_Gain1_h = 1.0F;
+      rtb_Product5_p = 1.0F;
       K_p = 0.0F;
       for (k = 297; k >= 0; k--) {
         MicroMouse_Deploy_DW.obj_b.pCumSumRev[k] +=
@@ -2268,7 +2542,7 @@ void MicroMouse_Deploy_step(void)
     }
 
     MicroMouse_Deploy_DW.obj_b.pCumSum = K_p;
-    MicroMouse_Deploy_DW.obj_b.pCumRevIndex = rtb_Gain1_h;
+    MicroMouse_Deploy_DW.obj_b.pCumRevIndex = rtb_Product5_p;
     if (MicroMouse_Deploy_DW.obj_b.pModValueRev > 0.0F) {
       MicroMouse_Deploy_DW.obj_b.pModValueRev--;
     } else {
@@ -2281,7 +2555,7 @@ void MicroMouse_Deploy_step(void)
     }
 
     K = 0.0F;
-    rtb_Gain2_b = 0.0F;
+    rtb_Max = 0.0F;
     K_p = MicroMouse_Deploy_DW.obj.pCumSum + MicroMouse_Deploy_B.Saturation_m;
     if (MicroMouse_Deploy_DW.obj.pModValueRev == 0.0F) {
       K = MicroMouse_Deploy_DW.obj.pCumSumRev[(int32_T)
@@ -2292,9 +2566,9 @@ void MicroMouse_Deploy_step(void)
       MicroMouse_Deploy_DW.obj.pCumRevIndex - 1] =
       MicroMouse_Deploy_B.Saturation_m;
     if (MicroMouse_Deploy_DW.obj.pCumRevIndex != 299.0F) {
-      rtb_Gain1_h = MicroMouse_Deploy_DW.obj.pCumRevIndex + 1.0F;
+      rtb_Product5_p = MicroMouse_Deploy_DW.obj.pCumRevIndex + 1.0F;
     } else {
-      rtb_Gain1_h = 1.0F;
+      rtb_Product5_p = 1.0F;
       K_p = 0.0F;
       for (k = 297; k >= 0; k--) {
         MicroMouse_Deploy_DW.obj.pCumSumRev[k] +=
@@ -2303,11 +2577,11 @@ void MicroMouse_Deploy_step(void)
     }
 
     if (MicroMouse_Deploy_DW.obj.pModValueRev == 0.0F) {
-      rtb_Gain2_b = K / 300.0F;
+      rtb_Max = K / 300.0F;
     }
 
     MicroMouse_Deploy_DW.obj.pCumSum = K_p;
-    MicroMouse_Deploy_DW.obj.pCumRevIndex = rtb_Gain1_h;
+    MicroMouse_Deploy_DW.obj.pCumRevIndex = rtb_Product5_p;
     if (MicroMouse_Deploy_DW.obj.pModValueRev > 0.0F) {
       MicroMouse_Deploy_DW.obj.pModValueRev--;
     } else {
@@ -2337,7 +2611,7 @@ void MicroMouse_Deploy_step(void)
             MicroMouse_De_IN_Going_straight;
           MicroMouse_Deploy_B.error = 1.0;
           MicroMouse_Deploy_B.TOF_L_out = K_e;
-          MicroMouse_Deploy_B.TOF_R_out = rtb_Gain2_b;
+          MicroMouse_Deploy_B.TOF_R_out = rtb_Max;
         }
         break;
 
@@ -2363,11 +2637,11 @@ void MicroMouse_Deploy_step(void)
     rtb_Product1_b = (MicroMouse_Deploy_P.Constant_Value_g -
                       MicroMouse_Deploy_B.TOF_L_out) * MicroMouse_Deploy_B.error;
 
-    /* Gain: '<S323>/Derivative Gain' */
+    /* Gain: '<S535>/Derivative Gain' */
     MicroMouse_Deploy_B.DerivativeGain_c =
       MicroMouse_Deploy_P.PIDController1_D_p * rtb_Product1_b;
 
-    /* Gain: '<S327>/Integral Gain' */
+    /* Gain: '<S539>/Integral Gain' */
     MicroMouse_Deploy_B.IntegralGain_e = MicroMouse_Deploy_P.PIDController1_I_g *
       rtb_Product1_b;
 
@@ -2378,30 +2652,30 @@ void MicroMouse_Deploy_step(void)
     rtb_Product1_b = (MicroMouse_Deploy_P.Constant_Value_g -
                       MicroMouse_Deploy_B.TOF_R_out) * MicroMouse_Deploy_B.error;
 
-    /* Gain: '<S375>/Derivative Gain' */
-    MicroMouse_Deploy_B.DerivativeGain_k = MicroMouse_Deploy_P.PIDController2_D *
-      rtb_Product1_b;
+    /* Gain: '<S587>/Derivative Gain' */
+    MicroMouse_Deploy_B.DerivativeGain_k =
+      MicroMouse_Deploy_P.PIDController2_D_g * rtb_Product1_b;
 
-    /* Gain: '<S379>/Integral Gain' */
-    MicroMouse_Deploy_B.IntegralGain_k = MicroMouse_Deploy_P.PIDController2_I *
+    /* Gain: '<S591>/Integral Gain' */
+    MicroMouse_Deploy_B.IntegralGain_k = MicroMouse_Deploy_P.PIDController2_I_b *
       rtb_Product1_b;
   }
 
-  /* Gain: '<S333>/Filter Coefficient' incorporates:
-   *  Integrator: '<S325>/Filter'
-   *  Sum: '<S325>/SumD'
+  /* Gain: '<S545>/Filter Coefficient' incorporates:
+   *  Integrator: '<S537>/Filter'
+   *  Sum: '<S537>/SumD'
    */
-  MicroMouse_Deploy_B.FilterCoefficient_j =
+  MicroMouse_Deploy_B.FilterCoefficient_ja =
     (MicroMouse_Deploy_B.DerivativeGain_c - MicroMouse_Deploy_X.Filter_CSTATE_c)
     * MicroMouse_Deploy_P.PIDController1_N_m;
 
-  /* Gain: '<S385>/Filter Coefficient' incorporates:
-   *  Integrator: '<S377>/Filter'
-   *  Sum: '<S377>/SumD'
+  /* Gain: '<S597>/Filter Coefficient' incorporates:
+   *  Integrator: '<S589>/Filter'
+   *  Sum: '<S589>/SumD'
    */
-  MicroMouse_Deploy_B.FilterCoefficient_n =
-    (MicroMouse_Deploy_B.DerivativeGain_k - MicroMouse_Deploy_X.Filter_CSTATE_f)
-    * MicroMouse_Deploy_P.PIDController2_N;
+  MicroMouse_Deploy_B.FilterCoefficient_nz =
+    (MicroMouse_Deploy_B.DerivativeGain_k - MicroMouse_Deploy_X.Filter_CSTATE_fe)
+    * MicroMouse_Deploy_P.PIDController2_N_n;
   if (rtmIsMajorTimeStep(MicroMouse_Deploy_M)) {
     {
       {
@@ -2472,7 +2746,9 @@ void MicroMouse_Deploy_step(void)
 
           /* End of Update for DiscreteIntegrator: '<S74>/Integrator' */
 
-          /* Update for Delay: '<S27>/Delay' */
+          /* Update for Delay: '<S27>/Delay' incorporates:
+           *  Sum: '<S27>/Add'
+           */
           MicroMouse_Deploy_DW.Delay_DSTATE_d = MicroMouse_Deploy_B.Add_f;
 
           /* Update for UnitDelay: '<S36>/Delay Input1'
@@ -2483,7 +2759,9 @@ void MicroMouse_Deploy_step(void)
            */
           MicroMouse_Deploy_DW.DelayInput1_DSTATE = MicroMouse_Deploy_B.Compare;
 
-          /* Update for Delay: '<S26>/Delay' */
+          /* Update for Delay: '<S26>/Delay' incorporates:
+           *  Sum: '<S26>/Add'
+           */
           MicroMouse_Deploy_DW.Delay_DSTATE_f = MicroMouse_Deploy_B.Add_h;
 
           /* Update for UnitDelay: '<S31>/Delay Input1'
@@ -2523,16 +2801,16 @@ void MicroMouse_Deploy_step(void)
           MicroMouse_Deploy_DW.DelayInput1_DSTATE_e =
             MicroMouse_Deploy_B.Compare_n;
 
-          /* Update for UnitDelay: '<S289>/Unit Delay1' */
+          /* Update for UnitDelay: '<S501>/Unit Delay1' */
           MicroMouse_Deploy_DW.UnitDelay1_DSTATE = MicroMouse_Deploy_B.Sum1;
 
-          /* Update for UnitDelay: '<S290>/Unit Delay1' */
+          /* Update for UnitDelay: '<S502>/Unit Delay1' */
           MicroMouse_Deploy_DW.UnitDelay1_DSTATE_n = MicroMouse_Deploy_B.Sum1_k;
 
-          /* Update for UnitDelay: '<S289>/Unit Delay2' */
+          /* Update for UnitDelay: '<S501>/Unit Delay2' */
           MicroMouse_Deploy_DW.UnitDelay2_DSTATE = MicroMouse_Deploy_B.Sum3;
 
-          /* Update for UnitDelay: '<S290>/Unit Delay2' */
+          /* Update for UnitDelay: '<S502>/Unit Delay2' */
           MicroMouse_Deploy_DW.UnitDelay2_DSTATE_j = MicroMouse_Deploy_B.Sum3_o;
 
           /* Update for UnitDelay: '<S46>/Delay Input1'
@@ -2620,11 +2898,35 @@ void MicroMouse_Deploy_derivatives(void)
   /* Derivatives for Integrator: '<S3>/Integrator' */
   _rtXdot->Integrator_CSTATE = MicroMouse_Deploy_B.CastToDouble[2];
 
-  /* Derivatives for Integrator: '<S270>/Integrator' */
+  /* Derivatives for Integrator: '<S274>/Integrator' */
   _rtXdot->Integrator_CSTATE_o = MicroMouse_Deploy_B.IntegralGain_c;
 
-  /* Derivatives for Integrator: '<S265>/Filter' */
+  /* Derivatives for Integrator: '<S269>/Filter' */
   _rtXdot->Filter_CSTATE = MicroMouse_Deploy_B.FilterCoefficient;
+
+  /* Derivatives for Integrator: '<S482>/Integrator' */
+  _rtXdot->Integrator_CSTATE_k = MicroMouse_Deploy_B.IntegralGain_o;
+
+  /* Derivatives for Integrator: '<S477>/Filter' */
+  _rtXdot->Filter_CSTATE_f = MicroMouse_Deploy_B.FilterCoefficient_g;
+
+  /* Derivatives for Integrator: '<S430>/Integrator' */
+  _rtXdot->Integrator_CSTATE_a = MicroMouse_Deploy_B.IntegralGain_m;
+
+  /* Derivatives for Integrator: '<S425>/Filter' */
+  _rtXdot->Filter_CSTATE_m = MicroMouse_Deploy_B.FilterCoefficient_j;
+
+  /* Derivatives for Integrator: '<S326>/Integrator' */
+  _rtXdot->Integrator_CSTATE_l = MicroMouse_Deploy_B.IntegralGain_a;
+
+  /* Derivatives for Integrator: '<S321>/Filter' */
+  _rtXdot->Filter_CSTATE_e = MicroMouse_Deploy_B.FilterCoefficient_b;
+
+  /* Derivatives for Integrator: '<S378>/Integrator' */
+  _rtXdot->Integrator_CSTATE_p = MicroMouse_Deploy_B.IntegralGain_j;
+
+  /* Derivatives for Integrator: '<S373>/Filter' */
+  _rtXdot->Filter_CSTATE_l = MicroMouse_Deploy_B.FilterCoefficient_n;
 
   /* Derivatives for Integrator: '<S3>/Integrator1' */
   _rtXdot->Integrator1_CSTATE = MicroMouse_Deploy_B.DeadZone;
@@ -2639,7 +2941,7 @@ void MicroMouse_Deploy_derivatives(void)
   _rtXdot->Integrator_CSTATE_j = MicroMouse_Deploy_B.CastToDouble[2];
 
   /* Derivatives for Integrator: '<S211>/Filter' */
-  _rtXdot->Filter_CSTATE_l = MicroMouse_Deploy_B.FilterCoefficient_f;
+  _rtXdot->Filter_CSTATE_lq = MicroMouse_Deploy_B.FilterCoefficient_f;
 
   /* Derivatives for Integrator: '<S12>/Integrator' */
   _rtXdot->Integrator_CSTATE_f = MicroMouse_Deploy_B.RateLimiter1;
@@ -2651,19 +2953,19 @@ void MicroMouse_Deploy_derivatives(void)
   _rtXdot->Filter_CSTATE_n = MicroMouse_Deploy_B.FilterCoefficient_o;
 
   /* Derivatives for Integrator: '<S161>/Integrator' */
-  _rtXdot->Integrator_CSTATE_k = MicroMouse_Deploy_B.IntegralGain_i;
+  _rtXdot->Integrator_CSTATE_kx = MicroMouse_Deploy_B.IntegralGain_i;
 
-  /* Derivatives for Integrator: '<S325>/Filter' */
-  _rtXdot->Filter_CSTATE_c = MicroMouse_Deploy_B.FilterCoefficient_j;
+  /* Derivatives for Integrator: '<S537>/Filter' */
+  _rtXdot->Filter_CSTATE_c = MicroMouse_Deploy_B.FilterCoefficient_ja;
 
-  /* Derivatives for Integrator: '<S330>/Integrator' */
+  /* Derivatives for Integrator: '<S542>/Integrator' */
   _rtXdot->Integrator_CSTATE_g = MicroMouse_Deploy_B.IntegralGain_e;
 
-  /* Derivatives for Integrator: '<S377>/Filter' */
-  _rtXdot->Filter_CSTATE_f = MicroMouse_Deploy_B.FilterCoefficient_n;
+  /* Derivatives for Integrator: '<S589>/Filter' */
+  _rtXdot->Filter_CSTATE_fe = MicroMouse_Deploy_B.FilterCoefficient_nz;
 
-  /* Derivatives for Integrator: '<S382>/Integrator' */
-  _rtXdot->Integrator_CSTATE_a = MicroMouse_Deploy_B.IntegralGain_k;
+  /* Derivatives for Integrator: '<S594>/Integrator' */
+  _rtXdot->Integrator_CSTATE_am = MicroMouse_Deploy_B.IntegralGain_k;
 }
 
 /* Model initialize function */
@@ -2943,13 +3245,45 @@ void MicroMouse_Deploy_initialize(void)
       /* InitializeConditions for Integrator: '<S3>/Integrator' */
       MicroMouse_Deploy_X.Integrator_CSTATE = MicroMouse_Deploy_P.Integrator_IC;
 
-      /* InitializeConditions for Integrator: '<S270>/Integrator' */
+      /* InitializeConditions for Integrator: '<S274>/Integrator' */
       MicroMouse_Deploy_X.Integrator_CSTATE_o =
         MicroMouse_Deploy_P.PIDController1_InitialConditi_i;
 
-      /* InitializeConditions for Integrator: '<S265>/Filter' */
+      /* InitializeConditions for Integrator: '<S269>/Filter' */
       MicroMouse_Deploy_X.Filter_CSTATE =
         MicroMouse_Deploy_P.PIDController1_InitialCondition;
+
+      /* InitializeConditions for Integrator: '<S482>/Integrator' */
+      MicroMouse_Deploy_X.Integrator_CSTATE_k =
+        MicroMouse_Deploy_P.PIDController5_InitialConditi_i;
+
+      /* InitializeConditions for Integrator: '<S477>/Filter' */
+      MicroMouse_Deploy_X.Filter_CSTATE_f =
+        MicroMouse_Deploy_P.PIDController5_InitialCondition;
+
+      /* InitializeConditions for Integrator: '<S430>/Integrator' */
+      MicroMouse_Deploy_X.Integrator_CSTATE_a =
+        MicroMouse_Deploy_P.PIDController4_InitialConditi_d;
+
+      /* InitializeConditions for Integrator: '<S425>/Filter' */
+      MicroMouse_Deploy_X.Filter_CSTATE_m =
+        MicroMouse_Deploy_P.PIDController4_InitialCondition;
+
+      /* InitializeConditions for Integrator: '<S326>/Integrator' */
+      MicroMouse_Deploy_X.Integrator_CSTATE_l =
+        MicroMouse_Deploy_P.PIDController2_InitialConditi_m;
+
+      /* InitializeConditions for Integrator: '<S321>/Filter' */
+      MicroMouse_Deploy_X.Filter_CSTATE_e =
+        MicroMouse_Deploy_P.PIDController2_InitialCondition;
+
+      /* InitializeConditions for Integrator: '<S378>/Integrator' */
+      MicroMouse_Deploy_X.Integrator_CSTATE_p =
+        MicroMouse_Deploy_P.PIDController3_InitialConditi_n;
+
+      /* InitializeConditions for Integrator: '<S373>/Filter' */
+      MicroMouse_Deploy_X.Filter_CSTATE_l =
+        MicroMouse_Deploy_P.PIDController3_InitialCondition;
 
       /* InitializeConditions for UnitDelay: '<S35>/Delay Input1'
        *
@@ -2977,22 +3311,22 @@ void MicroMouse_Deploy_initialize(void)
         MicroMouse_Deploy_P.Integrator_IC_b;
 
       /* InitializeConditions for Integrator: '<S211>/Filter' */
-      MicroMouse_Deploy_X.Filter_CSTATE_l =
+      MicroMouse_Deploy_X.Filter_CSTATE_lq =
         MicroMouse_Deploy_P.PIDController_InitialConditio_a;
 
-      /* InitializeConditions for UnitDelay: '<S289>/Unit Delay1' */
+      /* InitializeConditions for UnitDelay: '<S501>/Unit Delay1' */
       MicroMouse_Deploy_DW.UnitDelay1_DSTATE =
         MicroMouse_Deploy_P.UnitDelay1_InitialCondition;
 
-      /* InitializeConditions for UnitDelay: '<S290>/Unit Delay1' */
+      /* InitializeConditions for UnitDelay: '<S502>/Unit Delay1' */
       MicroMouse_Deploy_DW.UnitDelay1_DSTATE_n =
         MicroMouse_Deploy_P.UnitDelay1_InitialCondition_k;
 
-      /* InitializeConditions for UnitDelay: '<S289>/Unit Delay2' */
+      /* InitializeConditions for UnitDelay: '<S501>/Unit Delay2' */
       MicroMouse_Deploy_DW.UnitDelay2_DSTATE =
         MicroMouse_Deploy_P.UnitDelay2_InitialCondition;
 
-      /* InitializeConditions for UnitDelay: '<S290>/Unit Delay2' */
+      /* InitializeConditions for UnitDelay: '<S502>/Unit Delay2' */
       MicroMouse_Deploy_DW.UnitDelay2_DSTATE_j =
         MicroMouse_Deploy_P.UnitDelay2_InitialCondition_e;
 
@@ -3047,26 +3381,26 @@ void MicroMouse_Deploy_initialize(void)
 
       /* InitializeConditions for Integrator: '<S156>/Filter' */
       MicroMouse_Deploy_X.Filter_CSTATE_n =
-        MicroMouse_Deploy_P.PIDController4_InitialCondition;
+        MicroMouse_Deploy_P.PIDController4_InitialConditi_i;
 
       /* InitializeConditions for Integrator: '<S161>/Integrator' */
-      MicroMouse_Deploy_X.Integrator_CSTATE_k =
+      MicroMouse_Deploy_X.Integrator_CSTATE_kx =
         MicroMouse_Deploy_P.PIDController4_InitialConditi_e;
 
-      /* InitializeConditions for Integrator: '<S325>/Filter' */
+      /* InitializeConditions for Integrator: '<S537>/Filter' */
       MicroMouse_Deploy_X.Filter_CSTATE_c =
         MicroMouse_Deploy_P.PIDController1_InitialConditi_h;
 
-      /* InitializeConditions for Integrator: '<S330>/Integrator' */
+      /* InitializeConditions for Integrator: '<S542>/Integrator' */
       MicroMouse_Deploy_X.Integrator_CSTATE_g =
         MicroMouse_Deploy_P.PIDController1_InitialConditi_c;
 
-      /* InitializeConditions for Integrator: '<S377>/Filter' */
-      MicroMouse_Deploy_X.Filter_CSTATE_f =
-        MicroMouse_Deploy_P.PIDController2_InitialCondition;
+      /* InitializeConditions for Integrator: '<S589>/Filter' */
+      MicroMouse_Deploy_X.Filter_CSTATE_fe =
+        MicroMouse_Deploy_P.PIDController2_InitialConditi_e;
 
-      /* InitializeConditions for Integrator: '<S382>/Integrator' */
-      MicroMouse_Deploy_X.Integrator_CSTATE_a =
+      /* InitializeConditions for Integrator: '<S594>/Integrator' */
+      MicroMouse_Deploy_X.Integrator_CSTATE_am =
         MicroMouse_Deploy_P.PIDController2_InitialConditi_f;
 
       /* SystemInitialize for Chart: '<S3>/draft2_Maze_exploration' */

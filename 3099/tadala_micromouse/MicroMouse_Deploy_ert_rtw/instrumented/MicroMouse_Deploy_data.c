@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'MicroMouse_Deploy'.
  *
- * Model version                  : 5.30
+ * Model version                  : 5.42
  * Simulink Coder version         : 25.1 (R2025a) 21-Nov-2024
- * C/C++ source code generated on : Sat Oct 25 21:13:17 2025
+ * C/C++ source code generated on : Sun Oct 26 22:36:47 2025
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -25,7 +25,27 @@
 /* Block parameters (default storage) */
 P_MicroMouse_Deploy_T MicroMouse_Deploy_P = {
   /* Mask Parameter: PIDController1_D
-   * Referenced by: '<S263>/Derivative Gain'
+   * Referenced by: '<S267>/Derivative Gain'
+   */
+  0.0,
+
+  /* Mask Parameter: PIDController5_D
+   * Referenced by: '<S475>/Derivative Gain'
+   */
+  0.0,
+
+  /* Mask Parameter: PIDController4_D
+   * Referenced by: '<S423>/Derivative Gain'
+   */
+  0.0,
+
+  /* Mask Parameter: PIDController2_D
+   * Referenced by: '<S319>/Derivative Gain'
+   */
+  0.0,
+
+  /* Mask Parameter: PIDController3_D
+   * Referenced by: '<S371>/Derivative Gain'
    */
   0.0,
 
@@ -39,18 +59,18 @@ P_MicroMouse_Deploy_T MicroMouse_Deploy_P = {
    */
   1.0,
 
-  /* Mask Parameter: PIDController4_D
+  /* Mask Parameter: PIDController4_D_i
    * Referenced by: '<S154>/Derivative Gain'
    */
   0.001,
 
   /* Mask Parameter: PIDController1_D_p
-   * Referenced by: '<S323>/Derivative Gain'
+   * Referenced by: '<S535>/Derivative Gain'
    */
   0.0,
 
-  /* Mask Parameter: PIDController2_D
-   * Referenced by: '<S375>/Derivative Gain'
+  /* Mask Parameter: PIDController2_D_g
+   * Referenced by: '<S587>/Derivative Gain'
    */
   0.0,
 
@@ -60,27 +80,67 @@ P_MicroMouse_Deploy_T MicroMouse_Deploy_P = {
   1.0,
 
   /* Mask Parameter: PIDController1_I
-   * Referenced by: '<S267>/Integral Gain'
+   * Referenced by: '<S271>/Integral Gain'
+   */
+  1.0,
+
+  /* Mask Parameter: PIDController2_I
+   * Referenced by: '<S323>/Integral Gain'
+   */
+  1.0,
+
+  /* Mask Parameter: PIDController3_I
+   * Referenced by: '<S375>/Integral Gain'
    */
   1.0,
 
   /* Mask Parameter: PIDController4_I
+   * Referenced by: '<S427>/Integral Gain'
+   */
+  5.0,
+
+  /* Mask Parameter: PIDController5_I
+   * Referenced by: '<S479>/Integral Gain'
+   */
+  5.0,
+
+  /* Mask Parameter: PIDController4_I_j
    * Referenced by: '<S158>/Integral Gain'
    */
   1.0,
 
   /* Mask Parameter: PIDController1_I_g
-   * Referenced by: '<S327>/Integral Gain'
+   * Referenced by: '<S539>/Integral Gain'
    */
   100.0,
 
-  /* Mask Parameter: PIDController2_I
-   * Referenced by: '<S379>/Integral Gain'
+  /* Mask Parameter: PIDController2_I_b
+   * Referenced by: '<S591>/Integral Gain'
    */
   100.0,
 
   /* Mask Parameter: PIDController1_InitialCondition
-   * Referenced by: '<S265>/Filter'
+   * Referenced by: '<S269>/Filter'
+   */
+  0.0,
+
+  /* Mask Parameter: PIDController5_InitialCondition
+   * Referenced by: '<S477>/Filter'
+   */
+  0.0,
+
+  /* Mask Parameter: PIDController4_InitialCondition
+   * Referenced by: '<S425>/Filter'
+   */
+  0.0,
+
+  /* Mask Parameter: PIDController2_InitialCondition
+   * Referenced by: '<S321>/Filter'
+   */
+  0.0,
+
+  /* Mask Parameter: PIDController3_InitialCondition
+   * Referenced by: '<S373>/Filter'
    */
   0.0,
 
@@ -94,23 +154,43 @@ P_MicroMouse_Deploy_T MicroMouse_Deploy_P = {
    */
   0.0,
 
-  /* Mask Parameter: PIDController4_InitialCondition
+  /* Mask Parameter: PIDController4_InitialConditi_i
    * Referenced by: '<S156>/Filter'
    */
   0.0,
 
   /* Mask Parameter: PIDController1_InitialConditi_h
-   * Referenced by: '<S325>/Filter'
+   * Referenced by: '<S537>/Filter'
    */
   0.0,
 
-  /* Mask Parameter: PIDController2_InitialCondition
-   * Referenced by: '<S377>/Filter'
+  /* Mask Parameter: PIDController2_InitialConditi_e
+   * Referenced by: '<S589>/Filter'
    */
   0.0,
 
   /* Mask Parameter: PIDController1_InitialConditi_i
-   * Referenced by: '<S270>/Integrator'
+   * Referenced by: '<S274>/Integrator'
+   */
+  0.0,
+
+  /* Mask Parameter: PIDController5_InitialConditi_i
+   * Referenced by: '<S482>/Integrator'
+   */
+  0.0,
+
+  /* Mask Parameter: PIDController4_InitialConditi_d
+   * Referenced by: '<S430>/Integrator'
+   */
+  0.0,
+
+  /* Mask Parameter: PIDController2_InitialConditi_m
+   * Referenced by: '<S326>/Integrator'
+   */
+  0.0,
+
+  /* Mask Parameter: PIDController3_InitialConditi_n
+   * Referenced by: '<S378>/Integrator'
    */
   0.0,
 
@@ -125,17 +205,37 @@ P_MicroMouse_Deploy_T MicroMouse_Deploy_P = {
   0.0,
 
   /* Mask Parameter: PIDController1_InitialConditi_c
-   * Referenced by: '<S330>/Integrator'
+   * Referenced by: '<S542>/Integrator'
    */
   0.0,
 
   /* Mask Parameter: PIDController2_InitialConditi_f
-   * Referenced by: '<S382>/Integrator'
+   * Referenced by: '<S594>/Integrator'
    */
   0.0,
 
   /* Mask Parameter: PIDController1_N
-   * Referenced by: '<S273>/Filter Coefficient'
+   * Referenced by: '<S277>/Filter Coefficient'
+   */
+  100.0,
+
+  /* Mask Parameter: PIDController5_N
+   * Referenced by: '<S485>/Filter Coefficient'
+   */
+  100.0,
+
+  /* Mask Parameter: PIDController4_N
+   * Referenced by: '<S433>/Filter Coefficient'
+   */
+  100.0,
+
+  /* Mask Parameter: PIDController2_N
+   * Referenced by: '<S329>/Filter Coefficient'
+   */
+  100.0,
+
+  /* Mask Parameter: PIDController3_N
+   * Referenced by: '<S381>/Filter Coefficient'
    */
   100.0,
 
@@ -149,25 +249,45 @@ P_MicroMouse_Deploy_T MicroMouse_Deploy_P = {
    */
   100.0,
 
-  /* Mask Parameter: PIDController4_N
+  /* Mask Parameter: PIDController4_N_k
    * Referenced by: '<S164>/Filter Coefficient'
    */
   100.0,
 
   /* Mask Parameter: PIDController1_N_m
-   * Referenced by: '<S333>/Filter Coefficient'
+   * Referenced by: '<S545>/Filter Coefficient'
    */
   100.0,
 
-  /* Mask Parameter: PIDController2_N
-   * Referenced by: '<S385>/Filter Coefficient'
+  /* Mask Parameter: PIDController2_N_n
+   * Referenced by: '<S597>/Filter Coefficient'
    */
   100.0,
 
   /* Mask Parameter: PIDController1_P
-   * Referenced by: '<S275>/Proportional Gain'
+   * Referenced by: '<S279>/Proportional Gain'
    */
   75.0,
+
+  /* Mask Parameter: PIDController5_P
+   * Referenced by: '<S487>/Proportional Gain'
+   */
+  150.0,
+
+  /* Mask Parameter: PIDController4_P
+   * Referenced by: '<S435>/Proportional Gain'
+   */
+  150.0,
+
+  /* Mask Parameter: PIDController2_P
+   * Referenced by: '<S331>/Proportional Gain'
+   */
+  125.0,
+
+  /* Mask Parameter: PIDController3_P
+   * Referenced by: '<S383>/Proportional Gain'
+   */
+  125.0,
 
   /* Mask Parameter: PIDController_P
    * Referenced by: '<S114>/Proportional Gain'
@@ -339,20 +459,20 @@ P_MicroMouse_Deploy_T MicroMouse_Deploy_P = {
    */
   0.5,
 
-  /* Expression: 0.04
+  /* Expression: 0.05
    * Referenced by: '<S3>/Constant2'
    */
-  0.04,
+  0.05,
 
   /* Expression: 0
    * Referenced by: '<S3>/Integrator'
    */
   0.0,
 
-  /* Expression: 40
+  /* Expression: 45
    * Referenced by: '<S22>/constant'
    */
-  40.0,
+  45.0,
 
   /* Expression: 10
    * Referenced by: '<S22>/Gain5'
@@ -364,15 +484,15 @@ P_MicroMouse_Deploy_T MicroMouse_Deploy_P = {
    */
   10.0,
 
-  /* Expression: 0.06
+  /* Expression: 0.07
    * Referenced by: '<S22>/Constant1'
    */
-  0.06,
+  0.07,
 
-  /* Expression: 0.06
+  /* Expression: 0.07
    * Referenced by: '<S22>/Constant'
    */
-  0.06,
+  0.07,
 
   /* Expression: 0.11
    * Referenced by: '<S22>/Constant4'
@@ -383,11 +503,6 @@ P_MicroMouse_Deploy_T MicroMouse_Deploy_P = {
    * Referenced by: '<S22>/Constant2'
    */
   0.07,
-
-  /* Expression: 150
-   * Referenced by: '<S22>/Gain3'
-   */
-  150.0,
 
   /* Expression: 0.07
    * Referenced by: '<S22>/Constant3'
@@ -445,42 +560,42 @@ P_MicroMouse_Deploy_T MicroMouse_Deploy_P = {
   0.0,
 
   /* Expression: 0
-   * Referenced by: '<S289>/Unit Delay1'
+   * Referenced by: '<S501>/Unit Delay1'
    */
   0.0,
 
   /* Expression: tau
-   * Referenced by: '<S289>/tau'
+   * Referenced by: '<S501>/tau'
    */
   0.005,
 
   /* Expression: 1
-   * Referenced by: '<S291>/Bias'
+   * Referenced by: '<S503>/Bias'
    */
   1.0,
 
   /* Expression: 2*zeta
-   * Referenced by: '<S291>/Gain'
+   * Referenced by: '<S503>/Gain'
    */
   0.76536686473017956,
 
   /* Expression: 0
-   * Referenced by: '<S290>/Unit Delay1'
+   * Referenced by: '<S502>/Unit Delay1'
    */
   0.0,
 
   /* Expression: tau
-   * Referenced by: '<S290>/tau'
+   * Referenced by: '<S502>/tau'
    */
   0.005,
 
   /* Expression: 1
-   * Referenced by: '<S292>/Bias'
+   * Referenced by: '<S504>/Bias'
    */
   1.0,
 
   /* Expression: 2*zeta
-   * Referenced by: '<S292>/Gain'
+   * Referenced by: '<S504>/Gain'
    */
   1.8477590650225735,
 
@@ -495,32 +610,32 @@ P_MicroMouse_Deploy_T MicroMouse_Deploy_P = {
   0.5,
 
   /* Expression: 1
-   * Referenced by: '<S291>/Bias1'
+   * Referenced by: '<S503>/Bias1'
    */
   1.0,
 
   /* Expression: 2
-   * Referenced by: '<S289>/Gain1'
+   * Referenced by: '<S501>/Gain1'
    */
   2.0,
 
   /* Expression: 0
-   * Referenced by: '<S289>/Unit Delay2'
+   * Referenced by: '<S501>/Unit Delay2'
    */
   0.0,
 
   /* Expression: 1
-   * Referenced by: '<S292>/Bias1'
+   * Referenced by: '<S504>/Bias1'
    */
   1.0,
 
   /* Expression: 2
-   * Referenced by: '<S290>/Gain1'
+   * Referenced by: '<S502>/Gain1'
    */
   2.0,
 
   /* Expression: 0
-   * Referenced by: '<S290>/Unit Delay2'
+   * Referenced by: '<S502>/Unit Delay2'
    */
   0.0,
 
@@ -679,21 +794,6 @@ P_MicroMouse_Deploy_T MicroMouse_Deploy_P = {
    */
   -INFINITY,
 
-  /* Computed Parameter: Gain1_Gain_a
-   * Referenced by: '<S22>/Gain1'
-   */
-  250.0F,
-
-  /* Computed Parameter: Gain2_Gain_k
-   * Referenced by: '<S22>/Gain2'
-   */
-  250.0F,
-
-  /* Computed Parameter: Gain4_Gain
-   * Referenced by: '<S22>/Gain4'
-   */
-  150.0F,
-
   /* Computed Parameter: Gain2_Gain_f
    * Referenced by: '<S3>/Gain2'
    */
@@ -753,6 +853,26 @@ P_MicroMouse_Deploy_T MicroMouse_Deploy_P = {
    * Referenced by: '<S10>/Data Store Memory2'
    */
   0,
+
+  /* Computed Parameter: Delay_InitialCondition_j
+   * Referenced by: '<S27>/Delay'
+   */
+  0U,
+
+  /* Computed Parameter: Delay_InitialCondition_c
+   * Referenced by: '<S26>/Delay'
+   */
+  0U,
+
+  /* Computed Parameter: Gain1_Gain_k
+   * Referenced by: '<S27>/Gain1'
+   */
+  64000U,
+
+  /* Computed Parameter: Gain1_Gain_m
+   * Referenced by: '<S26>/Gain1'
+   */
+  64000U,
 
   /* Computed Parameter: DataStoreMemory_InitialValue_b
    * Referenced by: '<S4>/Data Store Memory'
@@ -819,15 +939,15 @@ P_MicroMouse_Deploy_T MicroMouse_Deploy_P = {
    */
   0,
 
-  /* Computed Parameter: Delay_InitialCondition_j
-   * Referenced by: '<S27>/Delay'
+  /* Computed Parameter: Gain_Gain_f
+   * Referenced by: '<S27>/Gain'
    */
-  0U,
+  131U,
 
-  /* Computed Parameter: Delay_InitialCondition_c
-   * Referenced by: '<S26>/Delay'
+  /* Computed Parameter: Gain_Gain_nt
+   * Referenced by: '<S26>/Gain'
    */
-  0U,
+  131U,
 
   /* Computed Parameter: DataStoreMemory_InitialValue_e
    * Referenced by: '<S2>/Data Store Memory'

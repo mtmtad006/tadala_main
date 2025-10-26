@@ -1,0 +1,56 @@
+%implements s13_b0_grvnp_ModuleConstants "C"
+
+%function ModuleConstants(block) Output
+
+
+/* Named constants for Chart: '<S27>/Chart' */
+#define MicroMouse_D_IN_NO_ACTIVE_CHILD ((uint8_T)0U)
+#define MicroMouse_Deploy_IN_default ((uint8_T)1U)
+#define MicroMouse_IN_encoder_pulse_end ((uint8_T)2U)
+
+/* Named constants for Chart: '<S18>/Chart' */
+#define MicroMouse_Deploy_IN_Set_Offset ((uint8_T)1U)
+#define MicroMouse_Deploy_IN_Start ((uint8_T)2U)
+
+/* Named constants for Chart: '<S18>/turn_adjus' */
+#define MicroMouse_Deploy_IN_deafult ((uint8_T)1U)
+#define MicroMouse_Deploy_IN_turnLeft ((uint8_T)2U)
+#define MicroMouse_Deploy_IN_turnRight ((uint8_T)3U)
+
+/* Named constants for Chart: '<S3>/draft2_Maze_exploration' */
+#define MicroMou_IN_orientation_adjsut1 ((uint8_T)12U)
+#define MicroMou_IN_orientation_adjsut2 ((uint8_T)13U)
+#define MicroMou_IN_orientation_adjsut3 ((uint8_T)14U)
+#define MicroMous_IN_orientation_adjsut ((uint8_T)11U)
+#define MicroMouse_D_IN_left_turn_setup ((uint8_T)9U)
+#define MicroMouse_Dep_IN_Full_rotation ((uint8_T)1U)
+#define MicroMouse_Depl_IN_Go_straight1 ((uint8_T)3U)
+#define MicroMouse_Depl_IN_Go_straight2 ((uint8_T)4U)
+#define MicroMouse_Deplo_IN_Go_straight ((uint8_T)2U)
+#define MicroMouse_Deplo_IN_set_Z_angle ((uint8_T)16U)
+#define MicroMouse_Deploy_IN_Left_turn ((uint8_T)5U)
+#define MicroMouse_Deploy_IN_Left_turn1 ((uint8_T)6U)
+#define MicroMouse_Deploy_IN_Left_turn2 ((uint8_T)7U)
+#define MicroMouse_Deploy_IN_Start_p ((uint8_T)8U)
+#define MicroMouse_Deploy_IN_right_turn ((uint8_T)15U)
+#define MicroMouse__IN_left_turn_setup1 ((uint8_T)10U)
+
+/* Named constants for Chart: '<S3>/draft2_Maze_exploration1' */
+#define MicroMous_IN_left_turn_setup1_d ((uint8_T)9U)
+#define MicroMouse_Dep_IN_set_Z_angle_o ((uint8_T)11U)
+#define MicroMouse_Depl_IN_Left_turn1_l ((uint8_T)5U)
+#define MicroMouse_Depl_IN_Left_turn2_d ((uint8_T)6U)
+#define MicroMouse_Depl_IN_right_turn_n ((uint8_T)10U)
+#define MicroMouse_Deplo_IN_Left_turn_f ((uint8_T)4U)
+#define MicroMouse_Deploy_IN_Start_f ((uint8_T)7U)
+#define MicroMouse_IN_left_turn_setup_g ((uint8_T)8U)
+
+/* Named constants for Chart: '<S22>/Chart' */
+#define MicroMou_IN_distance_corrcetion ((uint8_T)2U)
+#define MicroMouse_Deploy_IN_after_turn ((uint8_T)1U)
+
+/* Named constants for Chart: '<S24>/engage_disengage_straightnert' */
+#define MicroMouse_De_IN_Going_straight ((uint8_T)2U)
+#define MicroMouse_Depl_IN_Turn_is_seen ((uint8_T)3U)
+#define MicroMouse_Deploy_IN_Deafult ((uint8_T)1U)
+%endfunction

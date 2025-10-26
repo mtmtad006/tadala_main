@@ -1,0 +1,71 @@
+%implements s13_b0_grvnp_ForcingFunction "C"
+
+%function ForcingFunction(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+XDot_MicroMouse_Deploy_T *_rtXdot;
+%closefile localVarDecl
+_rtXdot = %<(SLibCG_SE(SLibGetContStatesDerivativeStructPtr()))>;
+/* ForcingFunction for Integrator: '<S3>/Integrator' */
+/*@>1c2cb2*/_rtXdot->/*@>1cbe96*/Integrator_CSTATE/*@>14fd8a*/ = /*@>1c2330*/MicroMouse_Deploy_B./*@>1cbe4e*/CastToDouble/*@>1befad*/[/*@>1befaa*/2];
+/* ForcingFunction for Integrator: '<S274>/Integrator' */
+/*@>1c2cb9*/_rtXdot->/*@>1cbe99*/Integrator_CSTATE_o/*@>14fd96*/ = /*@>1c2336*/MicroMouse_Deploy_B./*@>1cbe51*/IntegralGain_c;
+/* ForcingFunction for Integrator: '<S269>/Filter' */
+/*@>1c2cc0*/_rtXdot->/*@>1cbe9c*/Filter_CSTATE/*@>14fda2*/ = /*@>1c233c*/MicroMouse_Deploy_B./*@>1cbe54*/FilterCoefficient;
+/* ForcingFunction for Integrator: '<S482>/Integrator' */
+/*@>1c2cc7*/_rtXdot->/*@>1cbe9f*/Integrator_CSTATE_k/*@>14fdae*/ = /*@>1c2342*/MicroMouse_Deploy_B./*@>1cbe57*/IntegralGain_o;
+/* ForcingFunction for Integrator: '<S477>/Filter' */
+/*@>1c2cce*/_rtXdot->/*@>1cbea2*/Filter_CSTATE_f/*@>14fdba*/ = /*@>1c2348*/MicroMouse_Deploy_B./*@>1cbe5a*/FilterCoefficient_g;
+/* ForcingFunction for Integrator: '<S430>/Integrator' */
+/*@>1c2cd5*/_rtXdot->/*@>1cbea5*/Integrator_CSTATE_a/*@>14fdc6*/ = /*@>1c234e*/MicroMouse_Deploy_B./*@>1cbe5d*/IntegralGain_m;
+/* ForcingFunction for Integrator: '<S425>/Filter' */
+/*@>1c2cdc*/_rtXdot->/*@>1cbea8*/Filter_CSTATE_m/*@>14fdd2*/ = /*@>1c2354*/MicroMouse_Deploy_B./*@>1cbe60*/FilterCoefficient_j;
+/* ForcingFunction for Integrator: '<S326>/Integrator' */
+/*@>1c2ce3*/_rtXdot->/*@>1cbeab*/Integrator_CSTATE_l/*@>14fdde*/ = /*@>1c235a*/MicroMouse_Deploy_B./*@>1cbe63*/IntegralGain_a;
+/* ForcingFunction for Integrator: '<S321>/Filter' */
+/*@>1c2cea*/_rtXdot->/*@>1cbeae*/Filter_CSTATE_e/*@>14fdea*/ = /*@>1c2360*/MicroMouse_Deploy_B./*@>1cbe66*/FilterCoefficient_b;
+/* ForcingFunction for Integrator: '<S378>/Integrator' */
+/*@>1c2cf1*/_rtXdot->/*@>1cbeb1*/Integrator_CSTATE_p/*@>14fdf6*/ = /*@>1c2366*/MicroMouse_Deploy_B./*@>1cbe69*/IntegralGain_j;
+/* ForcingFunction for Integrator: '<S373>/Filter' */
+/*@>1c2cf8*/_rtXdot->/*@>1cbeb4*/Filter_CSTATE_l/*@>14fe02*/ = /*@>1c236c*/MicroMouse_Deploy_B./*@>1cbe6c*/FilterCoefficient_n;
+/* ForcingFunction for Integrator: '<S3>/Integrator1' */
+/*@>1c2cff*/_rtXdot->/*@>1cbeb7*/Integrator1_CSTATE/*@>14fe0e*/ = /*@>1c2372*/MicroMouse_Deploy_B./*@>1cbe6f*/DeadZone;
+/* ForcingFunction for Integrator: '<S104>/Filter' */
+/*@>1c2d06*/_rtXdot->/*@>1cbeba*/Filter_CSTATE_k/*@>14fe1a*/ = /*@>1c2378*/MicroMouse_Deploy_B./*@>1cbe72*/FilterCoefficient_k;
+/* ForcingFunction for Integrator: '<S109>/Integrator' */
+/*@>1c2d0d*/_rtXdot->/*@>1cbebd*/Integrator_CSTATE_e/*@>14fe26*/ = /*@>1c237e*/MicroMouse_Deploy_B./*@>1cbe75*/IntegralGain;
+/* ForcingFunction for Integrator: '<S18>/Integrator' */
+/*@>1c2d14*/_rtXdot->/*@>1cbec0*/Integrator_CSTATE_j/*@>14fe32*/ = /*@>1c2384*/MicroMouse_Deploy_B./*@>1cbe78*/CastToDouble/*@>1befb2*/[/*@>1befaf*/2];
+/* ForcingFunction for Integrator: '<S211>/Filter' */
+/*@>1c2d1b*/_rtXdot->/*@>1cbec3*/Filter_CSTATE_lq/*@>14fe3e*/ = /*@>1c238a*/MicroMouse_Deploy_B./*@>1cbe7b*/FilterCoefficient_f;
+/* ForcingFunction for Integrator: '<S12>/Integrator' */
+/*@>1c2d22*/_rtXdot->/*@>1cbec6*/Integrator_CSTATE_f/*@>14fe4a*/ = /*@>1c2390*/MicroMouse_Deploy_B./*@>1cbe7e*/RateLimiter1;
+/* ForcingFunction for Integrator: '<S12>/Integrator1' */
+/*@>1c2d29*/_rtXdot->/*@>1cbec9*/Integrator1_CSTATE_g/*@>14fe56*/ = /*@>1c2396*/MicroMouse_Deploy_B./*@>1cbe81*/RateLimiter2_j;
+/* ForcingFunction for Integrator: '<S156>/Filter' */
+/*@>1c2d30*/_rtXdot->/*@>1cbecc*/Filter_CSTATE_n/*@>14fe62*/ = /*@>1c239c*/MicroMouse_Deploy_B./*@>1cbe84*/FilterCoefficient_o;
+/* ForcingFunction for Integrator: '<S161>/Integrator' */
+/*@>1c2d37*/_rtXdot->/*@>1cbecf*/Integrator_CSTATE_kx/*@>14fe6e*/ = /*@>1c23a2*/MicroMouse_Deploy_B./*@>1cbe87*/IntegralGain_i;
+/* ForcingFunction for Integrator: '<S537>/Filter' */
+/*@>1c2d3e*/_rtXdot->/*@>1cbed2*/Filter_CSTATE_c/*@>14fe7a*/ = /*@>1c23a8*/MicroMouse_Deploy_B./*@>1cbe8a*/FilterCoefficient_ja;
+/* ForcingFunction for Integrator: '<S542>/Integrator' */
+/*@>1c2d45*/_rtXdot->/*@>1cbed5*/Integrator_CSTATE_g/*@>14fe86*/ = /*@>1c23ae*/MicroMouse_Deploy_B./*@>1cbe8d*/IntegralGain_e;
+/* ForcingFunction for Integrator: '<S589>/Filter' */
+/*@>1c2d4c*/_rtXdot->/*@>1cbed8*/Filter_CSTATE_fe/*@>14fe92*/ = /*@>1c23b4*/MicroMouse_Deploy_B./*@>1cbe90*/FilterCoefficient_nz;
+/* ForcingFunction for Integrator: '<S594>/Integrator' */
+/*@>1c2d53*/_rtXdot->/*@>1cbedb*/Integrator_CSTATE_am/*@>14fe9e*/ = /*@>1c23ba*/MicroMouse_Deploy_B./*@>1cbe93*/IntegralGain_k;
+%closefile cfgTxt
+%<cfgTxt>
+%<LibSetSystemField(system, "CachedForcingFunctionLocalVars", localVarDecl)>
+%endfunction
+%function ForcingFunctionFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void ForcingFunction(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(0, 10, fcnProtoType)>
+%endfunction

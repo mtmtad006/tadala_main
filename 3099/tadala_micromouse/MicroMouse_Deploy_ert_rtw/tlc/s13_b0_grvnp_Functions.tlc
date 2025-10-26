@@ -1,0 +1,241 @@
+%implements s13_b0_grvnp_Functions "C"
+
+%function MicroMou_MedianFilter_resetImpl_Fcn0(block) void
+%assign fcnBuff = ""
+%openfile fcnBuff
+%assign cfgTxt = ""
+%openfile cfgTxt
+real_T cnt2;
+int32_T cnt1;
+int32_T i;
+/*@>17620b*/for (/*@>1c8dfd*/i = /*@>1c8dfc*/0; /*@>1c8e07*/i < /*@>1c8e05*/5; /*@>1c8e03*/i/*@>1c8e0b*/++) {
+    /* {S!d11258}Start for MATLABSystem: '<S23>/Median Filter' */
+    /*@>18a466*/obj->/*@>1c8ec4*/pBuf/*@>176200*/[/*@>19dc88*/i]/*@>1761ff*/ = /*@>18a45a*/0.0;
+    /*@>18a469*/obj->/*@>1c8ec7*/pPos/*@>17621a*/[/*@>19dc8e*/i]/*@>176219*/ = /*@>18a462*/0.0;
+    /*@>18a46c*/obj->/*@>1c8eca*/pHeap/*@>176234*/[/*@>19dc94*/i]/*@>176233*/ = /*@>18a465*/0.0;
+}
+/* {S!d11260}Start for MATLABSystem: '<S23>/Median Filter' */
+/*@>18a3f3*/obj->/*@>1c8eb5*/pWinLen/*@>5fdad*/ = /*@>18a435*/5.0;
+/*@>18a3f6*/obj->/*@>1c8eb8*/pIdx/*@>5fdbc*/ = /*@>18a3f9*/obj->pWinLen;
+/* {S!d11262}Start for MATLABSystem: '<S23>/Median Filter' */
+/*@[25*/
+/*@>18a3fc*/obj->/*@>1c8ebb*/pMidHeap/*@>5fdc8*/ = /*@>1b88a5*/ceil((/*@>18a44a*/obj->pWinLen/*@>15f542*/ + /*@>18a44d*/1.0)/*@>18b12a*/ / /*@>18a44e*/2.0);
+/*@]*/
+/*@[26*/
+/*@>18a3ff*/obj->/*@>1c8ebe*/pMinHeapLength/*@>5fdd4*/ = /*@>1b88a7*/trunc((/*@>18a44f*/obj->pWinLen/*@>15f54c*/ - /*@>18a452*/1.0)/*@>18b120*/ / /*@>18a453*/2.0);
+/*@]*/
+/*@[27*/
+/*@>18a402*/obj->/*@>1c8ec1*/pMaxHeapLength/*@>5fddf*/ = /*@>1b88a9*/trunc(/*@>18a454*/obj->pWinLen/*@>18b11c*/ / /*@>18a457*/2.0);
+/*@]*/
+/*@>18a405*/cnt1/*@>5fde6*/ = /*@>1c8de2*/1;
+/*@>18a408*/cnt2/*@>5fdec*/ = /*@>18a40a*/obj->pWinLen;
+/*@>5fd6c*/for (/*@>1c8dec*/i = /*@>1c8deb*/0; /*@>1c8df6*/i < /*@>1c8df4*/5; /*@>1c8df2*/i/*@>1c8e0c*/++) {
+    /* {S!d11264}Start for MATLABSystem: '<S23>/Median Filter' */
+    /*@>120f85*/if (/*@>1b88ab*/fmod(/*@>196714*/5.0/*@>196713*/ - /*@>19d8c7*/(real_T)/*@>196717*/i, /*@>196718*/2.0)/*@>120f76*/ == /*@>19d8a5*/0.0) {
+        /*@>18a476*/obj->/*@>1c8ed0*/pPos/*@>17d0bc*/[/*@>18a47c*/4/*@>18dc5a*/ - /*@>18a47a*/i]/*@>5fe04*/ = /*@>18a40e*/cnt1;
+        /*@>18a410*/cnt1/*@>1c8e0d*/++;
+    } else {
+        /*@>18a46f*/obj->/*@>1c8ecd*/pPos/*@>17d081*/[/*@>18a475*/4/*@>18dc58*/ - /*@>18a473*/i]/*@>5fe13*/ = /*@>18a415*/cnt2;
+        /*@>18a417*/cnt2/*@>1c8e0e*/--;
+    }
+    /*@>18a47d*/obj->/*@>1c8ed3*/pHeap/*@>17d11a*/[/*@>18b137*/(int32_T)/*@>1befb9*/obj->/*@>1c8ed6*/pPos/*@>1befbf*/[/*@>1befb5*/4/*@>1befb4*/ - /*@>1befb7*/i]/*@>17d122*/ - /*@>18a487*/1]/*@>5fe27*/ = /*@>18a43e*/5.0/*@>12d5ea*/ - /*@>19d8dd*/(real_T)/*@>18a448*/i;
+}
+%closefile cfgTxt
+%<cfgTxt>
+%closefile fcnBuff
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void MicroMou_MedianFilter_resetImpl(\
+%assign comma = ""
+%<comma>e_dsp_internal_codegen_Median_T *obj\
+%assign comma = ", "
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(0, 0, fcnProtoType)>
+%return fcnBuff
+%endfunction
+
+%function Mic_MedianFilter_trickleDownMax_Fcn1(block) void
+%assign fcnBuff = ""
+%openfile fcnBuff
+%assign cfgTxt = ""
+%openfile cfgTxt
+boolean_T exitg1;
+exitg1 = false;
+while/*@<62a58*/ ((!exitg1) && (/*@>18a582*/i/*@>62a86*/ >= -/*@<18b232*//*@>18a584*/obj->pMaxHeapLength)) {
+    real_T ind1;
+    real_T ind2;
+    real_T tmp;
+    real_T tmp_0;
+    /*@>629f7*/if ((/*@>18a587*/i/*@>62a8b*/ < /*@>18a5b4*/-1.0)/*@>130c39*/ && (/*@>18a589*/i/*@>62a8f*/ > -/*@<18b2b9*//*@>18a58b*/obj->pMaxHeapLength)/*@>1c85e0*/ && (/*@>1bf0a4*/obj->/*@>1c900a*/pBuf/*@>1bf0aa*/[/*@>1bf090*/(int32_T)/*@>1bf095*/obj->/*@>1c9007*/pHeap/*@>1bf092*/[/*@>1bf098*/(int32_T)(/*@>1bf09b*/i/*@>1bf099*/ + /*@>1bf09f*/obj->pMidHeap)/*@>1bf097*/ - /*@>1bf0a1*/1]/*@>1bf08f*/ - /*@>1bf0a2*/1]/*@>15f656*/ < /*@>1bf0d9*/obj->/*@>1c9010*/pBuf/*@>1bf0df*/[/*@>1bf0c3*/(int32_T)/*@>1bf0c8*/obj->/*@>1c900d*/pHeap/*@>1bf0c5*/[/*@>1bf0cb*/(int32_T)((/*@>1bf0cf*/i/*@>1bf0cd*/ - /*@>1bf0d0*/1.0)/*@>1bf0cc*/ + /*@>1bf0d4*/obj->pMidHeap)/*@>1bf0ca*/ - /*@>1bf0d6*/1]/*@>1bf0c2*/ - /*@>1bf0d7*/1])) {
+        /*@>18a58e*/i/*@>1c8f21*/--;
+    }
+/*@[29*/
+    /*@>1a7217*/ind1/*@>1a7219*/ = /*@>1b88af*/trunc(/*@>1a88df*/i/*@>1a88dd*/ / /*@>1a88e0*/2.0)/*@>17d5da*/ + /*@>18a5d8*/obj->pMidHeap;
+/*@]*/
+    /*@>1a7221*/ind2/*@>1a7223*/ = /*@>18a5e3*/i/*@>17d643*/ + /*@>18a5e5*/obj->pMidHeap;
+    /*@>1a722b*/tmp/*@>1a722d*/ = /*@>1bf0e7*/obj->/*@>1c9013*/pHeap/*@>1bf0ed*/[/*@>1bf0e2*/(int32_T)/*@>1bf0e4*/ind1/*@>1bf0e1*/ - /*@>1bf0e5*/1];
+    /*@>1a7235*/tmp_0/*@>1a7237*/ = /*@>1bf0f5*/obj->/*@>1c9016*/pHeap/*@>1bf0fb*/[/*@>1bf0f0*/(int32_T)/*@>1bf0f2*/ind2/*@>1bf0ef*/ - /*@>1bf0f3*/1];
+    /*@>629fa*/if (!/*@<62ac1*/(/*@>1bf103*/obj->/*@>1c9019*/pBuf/*@>1bf109*/[/*@>1bf0fe*/(int32_T)/*@>1bf100*/tmp/*@>1bf0fd*/ - /*@>1bf101*/1]/*@>15f6a8*/ < /*@>1bf111*/obj->/*@>1c901c*/pBuf/*@>1bf117*/[/*@>1bf10c*/(int32_T)/*@>1bf10e*/tmp_0/*@>1bf10b*/ - /*@>1bf10f*/1])) {
+        exitg1 = true;
+    } else {
+        /*@>18a5f6*/obj->/*@>1c8ffb*/pHeap/*@>17d6cf*/[/*@>1b5e4a*/(int32_T)/*@>1b5e4c*/ind1/*@>1b5e49*/ - /*@>1b5e4d*/1]/*@>122911*/ = tmp_0;
+        /*@>18a5fc*/obj->/*@>1c8ffe*/pHeap/*@>17d707*/[/*@>1b5e52*/(int32_T)/*@>1b5e54*/ind2/*@>1b5e51*/ - /*@>1b5e55*/1]/*@>12291c*/ = tmp;
+        /*@>18a602*/obj->/*@>1c9001*/pPos/*@>17d769*/[/*@>18b250*/(int32_T)/*@>1bf11f*/obj->/*@>1c901f*/pHeap/*@>1bf125*/[/*@>1bf11a*/(int32_T)/*@>1bf11c*/ind1/*@>1bf119*/ - /*@>1bf11d*/1]/*@>17d771*/ - /*@>18a60b*/1]/*@>12292e*/ = ind1;
+        /*@>18a60c*/obj->/*@>1c9004*/pPos/*@>17d7d4*/[/*@>18b242*/(int32_T)/*@>1bf12d*/obj->/*@>1c9022*/pHeap/*@>1bf133*/[/*@>1bf128*/(int32_T)/*@>1bf12a*/ind2/*@>1bf127*/ - /*@>1bf12b*/1]/*@>17d7dc*/ - /*@>18a615*/1]/*@>122940*/ = ind2;
+        /*@>18a593*/i/*@>1c8f22*/ *= /*@>18a597*/2.0;
+    }
+}
+%closefile cfgTxt
+%<cfgTxt>
+%closefile fcnBuff
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Mic_MedianFilter_trickleDownMax(\
+%assign comma = ""
+%<comma>e_dsp_internal_codegen_Median_T *obj\
+%assign comma = ", "
+%<comma>real_T i\
+%assign comma = ", "
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(0, 1, fcnProtoType)>
+%return fcnBuff
+%endfunction
+
+%function Mic_MedianFilter_trickleDownMin_Fcn2(block) void
+%assign fcnBuff = ""
+%openfile fcnBuff
+%assign cfgTxt = ""
+%openfile cfgTxt
+boolean_T exitg1;
+exitg1 = false;
+while/*@<62419*/ ((!exitg1) && (/*@>18a4a3*/i/*@>62446*/ <= /*@>18a4a5*/obj->pMinHeapLength)) {
+    real_T ind1;
+    real_T ind2;
+    real_T tmp;
+    real_T tmp_0;
+    /*@>623be*/if ((/*@>18a4a8*/i/*@>6244a*/ > /*@>18a4aa*/1.0)/*@>130c36*/ && (/*@>18a4ab*/i/*@>6244d*/ < /*@>18a4ad*/obj->pMinHeapLength)/*@>1c85dd*/ && (/*@>1befee*/obj->/*@>1c9159*/pBuf/*@>1beff4*/[/*@>1befd8*/(int32_T)/*@>1befdd*/obj->/*@>1c9156*/pHeap/*@>1befda*/[/*@>1befe0*/(int32_T)((/*@>1befe4*/i/*@>1befe2*/ + /*@>1befe5*/1.0)/*@>1befe1*/ + /*@>1befe9*/obj->pMidHeap)/*@>1befdf*/ - /*@>1befeb*/1]/*@>1befd7*/ - /*@>1befec*/1]/*@>15f57a*/ < /*@>1bf01f*/obj->/*@>1c915f*/pBuf/*@>1bf025*/[/*@>1bf00b*/(int32_T)/*@>1bf010*/obj->/*@>1c915c*/pHeap/*@>1bf00d*/[/*@>1bf013*/(int32_T)(/*@>1bf016*/i/*@>1bf014*/ + /*@>1bf01a*/obj->pMidHeap)/*@>1bf012*/ - /*@>1bf01c*/1]/*@>1bf00a*/ - /*@>1bf01d*/1])) {
+        /*@>18a4b0*/i/*@>1c9070*/++;
+    }
+    /*@>1a6cda*/ind1/*@>1a6cdc*/ = /*@>18a4f7*/i/*@>17d27e*/ + /*@>18a4f9*/obj->pMidHeap;
+/*@[28*/
+    /*@>1a6ce4*/ind2/*@>1a6ce6*/ = /*@>1b88ad*/trunc(/*@>1a8852*/i/*@>1a8850*/ / /*@>1a8853*/2.0)/*@>17d2e7*/ + /*@>18a506*/obj->pMidHeap;
+/*@]*/
+    /*@>1a6cee*/tmp/*@>1a6cf0*/ = /*@>1bf02d*/obj->/*@>1c9162*/pHeap/*@>1bf033*/[/*@>1bf028*/(int32_T)/*@>1bf02a*/ind1/*@>1bf027*/ - /*@>1bf02b*/1];
+    /*@>1a6cf8*/tmp_0/*@>1a6cfa*/ = /*@>1bf03b*/obj->/*@>1c9165*/pHeap/*@>1bf041*/[/*@>1bf036*/(int32_T)/*@>1bf038*/ind2/*@>1bf035*/ - /*@>1bf039*/1];
+    /*@>623c1*/if (!/*@<625d5*/(/*@>1bf049*/obj->/*@>1c9168*/pBuf/*@>1bf04f*/[/*@>1bf044*/(int32_T)/*@>1bf046*/tmp/*@>1bf043*/ - /*@>1bf047*/1]/*@>15f5cc*/ < /*@>1bf057*/obj->/*@>1c916b*/pBuf/*@>1bf05d*/[/*@>1bf052*/(int32_T)/*@>1bf054*/tmp_0/*@>1bf051*/ - /*@>1bf055*/1])) {
+        exitg1 = true;
+    } else {
+        /*@>18a517*/obj->/*@>1c914a*/pHeap/*@>17d373*/[/*@>1b5de7*/(int32_T)/*@>1b5de9*/ind1/*@>1b5de6*/ - /*@>1b5dea*/1]/*@>122613*/ = tmp_0;
+        /*@>18a51d*/obj->/*@>1c914d*/pHeap/*@>17d3ab*/[/*@>1b5def*/(int32_T)/*@>1b5df1*/ind2/*@>1b5dee*/ - /*@>1b5df2*/1]/*@>12261e*/ = tmp;
+        /*@>18a523*/obj->/*@>1c9150*/pPos/*@>17d40d*/[/*@>18b1c9*/(int32_T)/*@>1bf065*/obj->/*@>1c916e*/pHeap/*@>1bf06b*/[/*@>1bf060*/(int32_T)/*@>1bf062*/ind1/*@>1bf05f*/ - /*@>1bf063*/1]/*@>17d415*/ - /*@>18a52c*/1]/*@>122630*/ = ind1;
+        /*@>18a52d*/obj->/*@>1c9153*/pPos/*@>17d478*/[/*@>18b1bb*/(int32_T)/*@>1bf073*/obj->/*@>1c9171*/pHeap/*@>1bf079*/[/*@>1bf06e*/(int32_T)/*@>1bf070*/ind2/*@>1bf06d*/ - /*@>1bf071*/1]/*@>17d480*/ - /*@>18a536*/1]/*@>122642*/ = ind2;
+        /*@>18a4b5*/i/*@>1c9071*/ *= /*@>18a4b9*/2.0;
+    }
+}
+%closefile cfgTxt
+%<cfgTxt>
+%closefile fcnBuff
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Mic_MedianFilter_trickleDownMin(\
+%assign comma = ""
+%<comma>e_dsp_internal_codegen_Median_T *obj\
+%assign comma = ", "
+%<comma>real_T i\
+%assign comma = ", "
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(0, 2, fcnProtoType)>
+%return fcnBuff
+%endfunction
+
+%function MicroMouse_Dep_SystemCore_setup_Fcn3(block) void
+%assign fcnBuff = ""
+%openfile fcnBuff
+%assign cfgTxt = ""
+%openfile cfgTxt
+int32_T i;
+/*@>18a660*/obj->/*@>1c91fd*/isInitialized/*@>8dc1e*/ = /*@>1c919b*/1;
+/* {S!d11266}Start for MATLABSystem: '<S24>/Moving Average' incorporates:
+ *  MATLABSystem: '<S24>/Moving Average1'
+ */
+/*@>18a676*/obj->/*@>1c920f*/NumChannels/*@>13291a*/ = /*@>1c919e*/1;
+/*@>18a678*/obj->/*@>1c9212*/FrameLength/*@>132920*/ = /*@>1c91a1*/1;
+/*@>18a67a*/obj->/*@>1c9206*/pCumSum/*@>132820*/ = /*@>18a66f*/0.0F;
+/*@>176276*/for (/*@>1c91ab*/i = /*@>1c91aa*/0; /*@>1c91b5*/i < /*@>1c91b3*/299; /*@>1c91b1*/i/*@>1c91b9*/++) {
+    /* {S!d11268}Start for MATLABSystem: '<S24>/Moving Average' incorporates:
+ *  MATLABSystem: '<S24>/Moving Average1'
+ */
+    /*@>18a688*/obj->/*@>1c9215*/pCumSumRev/*@>17626b*/[/*@>19dca5*/i]/*@>17626a*/ = /*@>18a682*/0.0F;
+}
+/* {S!d11270}Start for MATLABSystem: '<S24>/Moving Average' incorporates:
+ *  MATLABSystem: '<S24>/Moving Average1'
+ */
+/*@>18a67c*/obj->/*@>1c9209*/pCumRevIndex/*@>132828*/ = /*@>18a670*/1.0F;
+/*@>18a67e*/obj->/*@>1c920c*/pModValueRev/*@>13282c*/ = /*@>18a671*/0.0F;
+/*@>18a663*/obj->/*@>1c9200*/isSetupComplete/*@>8dc9f*/ = /*@>18a669*/true;
+/*@>18a666*/obj->/*@>1c9203*/TunablePropsChanged/*@>8dcd7*/ = /*@>18a66a*/false;
+%closefile cfgTxt
+%<cfgTxt>
+%closefile fcnBuff
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void MicroMouse_Dep_SystemCore_setup(\
+%assign comma = ""
+%<comma>dsp_simulink_MovingAverage_Mi_T *obj\
+%assign comma = ", "
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(0, 3, fcnProtoType)>
+%return fcnBuff
+%endfunction
+
+%function mdlDerivatives_c8_MicroMouse_Deploy_Fcn4(block) void
+%assign fcnBuff = ""
+%openfile fcnBuff
+%assign cfgTxt = ""
+%openfile cfgTxt
+%closefile cfgTxt
+%<cfgTxt>
+%closefile fcnBuff
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+extern void mdlDerivatives_c8_MicroMouse_Deploy(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(0, 4, fcnProtoType)>
+%return fcnBuff
+%endfunction
+
+%function mdlDerivatives_c6_MicroMouse_Deploy_Fcn5(block) void
+%assign fcnBuff = ""
+%openfile fcnBuff
+%assign cfgTxt = ""
+%openfile cfgTxt
+%closefile cfgTxt
+%<cfgTxt>
+%closefile fcnBuff
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+extern void mdlDerivatives_c6_MicroMouse_Deploy(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(0, 5, fcnProtoType)>
+%return fcnBuff
+%endfunction
+
+%function mdlDerivatives_c10_MicroMouse_Deploy_Fcn6(block) void
+%assign fcnBuff = ""
+%openfile fcnBuff
+%assign cfgTxt = ""
+%openfile cfgTxt
+%closefile cfgTxt
+%<cfgTxt>
+%closefile fcnBuff
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+extern void mdlDerivatives_c10_MicroMouse_Deploy(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(0, 6, fcnProtoType)>
+%return fcnBuff
+%endfunction
+

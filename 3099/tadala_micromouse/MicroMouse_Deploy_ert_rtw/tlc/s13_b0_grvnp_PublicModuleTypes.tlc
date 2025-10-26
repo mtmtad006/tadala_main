@@ -1,4 +1,4 @@
-%implements s13_b0_a8wlp_PublicModuleTypes "C"
+%implements s13_b0_grvnp_PublicModuleTypes "C"
 
 %function PublicModuleTypes(block) Output
 
